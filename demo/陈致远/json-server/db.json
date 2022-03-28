@@ -45,5 +45,22 @@
       "主要功能及用途简介": "21212",
       "id": 9
     }
+  ],
+  "userinfo": [
+    {
+      "username": "123",
+      "password": "456",
+      "id": 1
+    },
+    {
+      "username": "114514",
+      "password": "666",
+      "id": 2
+    },
+    {
+      "username": "aaa",
+      "password": "aaa",
+      "id": 3
+    }
   ]
 }
