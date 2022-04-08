@@ -52,17 +52,6 @@ class App extends Component {
         return i !== index
       }),
     })
-    /*
-    this.setState({
-      characters2: characters2.filter((character, i) => {
-        return i == index
-      }),
-    })
-    this.setState({
-      characters2: [...this.state.characters2, characters1.filter((character, i) => {
-        return i !== index
-      }),]
-    })*/
   }
 
   acceptCharacter = (index) => {
@@ -71,14 +60,18 @@ class App extends Component {
   
     this.setState({
       characters1: characters1.filter((character, i) => {
+        if(i==index){
+          const chara=characters1[i]
+          this.setState({
+            characters2: [...this.state.characters2,characters1[i]]
+          })
+        }
         return i !== index
       }),
     })
-    this.setState({
-      characters2: [...this.state.characters2, characters1.filter((character, i) => {
-        return i !== index
-      }),]
-    })
+    
+    
+    
   }
 
   handleSubmit = (character) => {
@@ -100,9 +93,11 @@ class App extends Component {
     const { characters1 } = this.state;
     const { characters2 } = this.state;
 
+    const NameTitleStyle = { fontSize:40 , fontWeight: 'bolder' ,textAlign:'center'}
+
     return (
       <div className="container">
-        <h1>委托管理</h1>
+        <h1 style = {NameTitleStyle} >委托管理</h1>
         <h2>委托信息填报情况</h2>
         <Table characterData={characters1} removeCharacter={this.removeCharacter} acceptCharacter={this.acceptCharacter}/>
         <h2>  </h2>
