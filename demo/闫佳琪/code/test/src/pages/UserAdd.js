@@ -10,7 +10,7 @@
  class UserAdd extends React.Component {
    render() {
      return (
-       <HomeLayout title="添加用户">
+       <HomeLayout title="新用户注册">
          <UserEditor />
        </HomeLayout>
      );

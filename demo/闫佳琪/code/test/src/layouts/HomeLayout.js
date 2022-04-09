@@ -9,10 +9,10 @@
      const { title, children } = this.props;
      return (
        <div>
-         <header>
+         <header style={{ textAlign:'center' }}>
            <h1>{title}</h1>
          </header>
-
+        
          <main>
            {children}
          </main>

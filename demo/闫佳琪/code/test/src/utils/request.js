@@ -1,7 +1,7 @@
 /**
  * 封装 fetch
  */
- import { hashHistory } from 'react-router';
+ //import { hashHistory } from 'react-router';
   
  export default function request (method, url, body) {
    method = method.toUpperCase();
@@ -23,7 +23,7 @@
    })
    .then((res) => {
      if (res.status === 401) {
-       hashHistory.push('/login');//不知道是否跳转失败
+       //hashHistory.push('/login');//不知道是否跳转失败
        return Promise.reject('Unauthorized.');
      } else {
        const token = res.headers.get('access-token');

@@ -37,7 +37,7 @@
          });
        });
    }
-  
+
    /**
     * 编辑
     */
@@ -45,7 +45,7 @@
      // 跳转编辑页面
      this.context.router.push('/user/edit/' + user.id);//跳转失败
    }
-  
+
    /**
     * 删除
     */
@@ -74,11 +74,11 @@
        });
      }
    }
-  
+
    render() {
      // 定义变量
      const { userList } = this.state;
-  
+
      return (
        <HomeLayout title="用户列表">
          <table>
@@ -86,12 +86,10 @@
              <tr>
                <th>用户ID</th>
                <th>用户名</th>
-               <th>性别</th>
-               <th>年龄</th>
-               <th>操作</th>
+               <th>密码</th>
              </tr>
            </thead>
-  
+
            <tbody>
              {
                userList.map((user) => {
@@ -99,12 +97,11 @@
                    <tr key={user.id}>
                      <td>{user.id}</td>
                      <td>{user.name}</td>
-                     <td>{user.gender}</td>
-                     <td>{user.age}</td>
+                     <td>{user.password}</td>
                      <td>
-                       <a onClick={() => this.handleEdit(user)}>编辑</a>
+                       <button><a onClick={() => this.handleEdit(user)}>编辑</a></button>
 
-                       <a onClick={() => this.handleDel(user)}>删除</a>
+                       <button><a onClick={() => this.handleDel(user)}>删除</a></button>
                      </td>
                    </tr>
                  );
@@ -116,12 +113,12 @@
      );
    }
  }
-  
+
  /**
   * 任何使用this.context.xxx的地方，必须在组件的contextTypes里定义对应的PropTypes
   */
  UserList.contextTypes = {
    router: PropTypes.object.isRequired
  };
-  
+
  export default UserList;

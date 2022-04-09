@@ -3,20 +3,12 @@
     {
       "id": 10000,
       "name": "小泥坑",
-      "age": 0,
-      "gender": "male"
+      "password": "123456"
     },
     {
-      "name": "1",
-      "age": "1",
-      "gender": "male",
-      "id": 10001
-    },
-    {
-      "name": "1",
-      "age": "1",
-      "gender": "male",
-      "id": 10002
+      "name": "小尼克",
+      "password": "123456",
+      "id": 10003
     }
   ],
   "book": [
