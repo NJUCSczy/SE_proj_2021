@@ -1,7 +1,8 @@
 /**
  * 封装 fetch
  */
- import { hashHistory } from 'react-router';
+ import { createHashHistory } from 'history';
+ const hashHistory = createHashHistory();
   
  export default function request (method, url, body) {
    method = method.toUpperCase();

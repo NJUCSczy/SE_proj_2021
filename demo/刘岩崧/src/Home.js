@@ -4,6 +4,7 @@ import "./Home.css"
 import User from './User/src/User';
 import { findDOMNode } from 'react-dom';
 import Administration from "./Adiministration/Administration"
+import UserApp from "./User/mycode/test1/src/App"
 import {BrowserRouter as Router,Switch,Route} from "react-router-dom"
 
 
@@ -21,7 +22,7 @@ class Home extends React.Component{
             <div id="header">
                 <div id="title"><span>南京大学软件测试中心</span></div>
                 <div id="login_or_register">
-                        <a onClick={()=>(ReactDOM.render(<User/>,document.getElementById('root')))}>登录</a> | <a href="">注册</a>
+                        <a onClick={()=>(ReactDOM.render(<UserApp/>,document.getElementById('root')))}>登录</a> | <a href="">注册</a>
                 </div>
 
             </div>

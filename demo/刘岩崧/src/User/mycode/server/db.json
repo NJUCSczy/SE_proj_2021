@@ -1,24 +1,5 @@
 {
-  "user": [
-    {
-      "id": 10000,
-      "name": "小泥坑",
-      "age": 0,
-      "gender": "male"
-    },
-    {
-      "name": "1",
-      "age": "1",
-      "gender": "male",
-      "id": 10001
-    },
-    {
-      "name": "1",
-      "age": "1",
-      "gender": "male",
-      "id": 10002
-    }
-  ],
+  "user": [],
   "book": [
     {
       "id": 10000,

@@ -2,12 +2,15 @@ import React from'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Home from './pages/Home';
 import Page1 from './Page1';
-import {hashHistory} from 'react-router';
+import { createHashHistory } from 'history';
 import UserAddPage from './pages/UserAdd';
 import UserListPage from './pages/UserList';
 import LoginPage from './pages/Login';
 import UserEditPage from './pages/UserEdit'; // 用户编辑页面
-class App extends React.Component{
+
+const hashHistory = createHashHistory();
+class UserApp extends React.Component{
+    
     render(){
         return(
             <Router history={hashHistory}>
@@ -24,4 +27,4 @@ class App extends React.Component{
     }
 }
 
-export default App;
+export default UserApp;

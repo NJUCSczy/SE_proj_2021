@@ -1,11 +1,11 @@
 // 配置路由
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import UserApp from './App';
 
 ReactDOM.render(
     <React.StrictMode>
-      <App />
+      <UserApp />
     </React.StrictMode>,
     document.getElementById('root')
   );
