@@ -3,10 +3,10 @@
 总文件夹　　  
 　　|——package.json  
 　　|——public  
-　　|——src
-　　　　|——Home.js //主界面 
-　　　　|——Home.css
-　　　　|——index.js  
+　　|——src  
+　　　　|——Home.js //主界面   
+　　　　|——Home.css  
+　　　　|——index.js    
 　　　　|——index.css    
 　　　　|——User //用户登录界面   
 　　　　　　　|——mycode  
