@@ -1,25 +1,26 @@
 # 界面跳转
 ## 文件结构
- 总文件夹  
-   |——package.json  
-   |——public  
-   |——src  
-        |——User //用户登录界面   
-            |——mycode  
-            |——src  
-                |——User.js  
-                |——User.css  
-                |——...  
-        |——Adiministration //委托申请提交界面  
-           |——Administration.js  
-           |——Form.js  
-               |——Table2.js  
-               |——Table.js    
-               |——Home.js //主界面  
-        |——Home.css  
-        |——index.js  
-        |——index.css  
-        |——...  
+总文件夹　　  
+　　|——package.json  
+　　|——public  
+　　|——src
+　　　　|——Home.js //主界面 
+　　　　|——Home.css
+　　　　|——index.js  
+　　　　|——index.css    
+　　　　|——User //用户登录界面   
+　　　　　　　|——mycode  
+　　　　　　　|——src  
+　　　　　　　　　|——User.js  
+　　　　　　　　　|——User.css  
+　　　　　　　　　|——...  
+　　　　|——Adiministration //委托申请提交界面  
+　　　　　　　|——Administration.js  
+　　　　　　　|——Form.js  
+　　　　　　　|——Table2.js  
+　　　　　　　|——Table.js    
+ 
+　　　　|——...  
 ## 暂定逻辑
 ### 主界面定为信息网页，点击登录可跳转到用户登录界面，点击提交申请跳转到委托申请界面
 ## 修改声明
