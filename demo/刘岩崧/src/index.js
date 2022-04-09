@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Home from './Home';
 import reportWebVitals from './reportWebVitals';
-import User from "./User/src/User"
 ReactDOM.render(
     <Home />
   ,

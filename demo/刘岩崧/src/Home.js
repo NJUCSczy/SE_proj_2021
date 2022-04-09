@@ -1,10 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
 import "./Home.css"
-import User from './User/src/User';
 import { findDOMNode } from 'react-dom';
 import Administration from "./Adiministration/Administration"
-import UserApp from "./User/mycode/test1/src/App"
+import UserApp from "./User/code/src/App"
 import {BrowserRouter as Router,Switch,Route} from "react-router-dom"
 
 

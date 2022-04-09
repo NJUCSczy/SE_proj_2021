@@ -21,6 +21,23 @@
 　　　　　　　|——Table.js    
  
 　　　　|——...  
+## 操作方式
+若未安装json-server,则执行如下指令
+```
+$ npm install -g json-server
+```
+若未安装react-router-dom，使用powershell执行如下指令
+```
+npm i -S react-router-dom
+```
+运行start_server.bat启动本地模拟后端  
+      
+---
+
+在此目录下执行以下指令打开网页
+```
+npm start
+```
 ## 暂定逻辑
 ### 主界面定为信息网页，点击登录可跳转到用户登录界面，点击提交申请跳转到委托申请界面
 ## 修改声明
@@ -37,3 +54,5 @@
 *  1、代码风格统合
 *  2、用户登录确认（cookie部分）
 *  3、网页信息与刷新
+
+
