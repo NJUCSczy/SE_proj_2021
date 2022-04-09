@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Home from './first';
-import All from './All';
+import Home from './Home';
 import reportWebVitals from './reportWebVitals';
-import Cover from './cover'
+import User from "./User/src/User"
 ReactDOM.render(
-  <Cover/>,
+    <Home />
+  ,
   document.getElementById('root')
 );
 
