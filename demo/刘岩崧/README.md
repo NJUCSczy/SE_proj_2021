@@ -9,11 +9,8 @@
 　　　　|——index.js    
 　　　　|——index.css    
 　　　　|——User //用户登录界面   
-　　　　　　　|——mycode  
-　　　　　　　|——src  
-　　　　　　　　　|——User.js  
-　　　　　　　　　|——User.css  
-　　　　　　　　　|——...  
+　　　　　　　|——server    
+　　　　　　　|——code   
 　　　　|——Adiministration //委托申请提交界面  
 　　　　　　　|——Administration.js  
 　　　　　　　|——Form.js  
