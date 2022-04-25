@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Home from './Home';
+import All from './All';
 import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
-    <Home />
+  <React.StrictMode>
+    <All />
+  </React.StrictMode>
+
   ,
   document.getElementById('root')
 );
