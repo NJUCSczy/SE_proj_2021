@@ -32,5 +32,11 @@ class All extends React.Component{
         </Router>
         )
     }
+    // componentWillMount() {  
+    //     if (noLogin == 1) {  
+    //         this.context.router.push({ pathname : '/', state : { msg : 'you have logined and will redirect to your page'}});  
+    //     } else if (noLogin == 0) {  
+    //         this.context.router.push({ pathname : '/login', state : { msg : 'you do not login yet, please login' }});  
+    //     }  
 }
 export default All;
