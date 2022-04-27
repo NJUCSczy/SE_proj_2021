@@ -29,6 +29,11 @@
       "email": "1@yjq",
       "password": "$2a$10$sAZfFWVdulxo2dYdl9aMg.MioSrwgcJZgslpVkymy7d2aNzuqfTKi",
       "id": 6
+    },
+    {
+      "email": "czy@123",
+      "password": "$2a$10$PKcetstRpD1o7lc.fwEyaOcMpBJ4kc/Pu2Q2VPc.uVO3ioV5z5nsy",
+      "id": 7
     }
   ]
 }
