@@ -1,7 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Link} from 'react-router-dom';
+import "./Home.css";
+import Administration from "./Adiministration/Administration"
+
+
 class Home extends React.Component{
+    handle(){
+        const w=window.open("","App/Administration")
+        //console.log("'w' constructed!\n")
+        ReactDOM.render(<Administration/>,w.document)
+        //console.log("React!!")
+    }
+
     render(){
         return(
             <div>

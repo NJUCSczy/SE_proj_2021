@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import "./Home.css"
 import { findDOMNode } from 'react-dom';
 import Administration from "./Adiministration/Administration"
-import register_login from "./register_login"
 import {HashRouter as Router, Route, Routes} from 'react-router-dom';
-import Home from './register_login/pages/Home';
+import Home from './Home';
+import View from './register_login/View';
 import UserAddPage from './register_login/pages/UserAdd';
 import UserListPage from './register_login/pages/UserList';
 import LoginPage from './register_login/pages/Login';
@@ -28,15 +28,10 @@ class All extends React.Component{
                     <Route path="/user/add" element={<UserAddPage />} />
                     <Route path="/user/list" element={<UserListPage />} />
                     <Route path="/user/edit/:id" element={<UserEditPage />} />
+                    <Route path="/yjqtest" element={<View />} />
                 </Routes>
         </Router>
         )
     }
-    // componentWillMount() {  
-    //     if (noLogin == 1) {  
-    //         this.context.router.push({ pathname : '/', state : { msg : 'you have logined and will redirect to your page'}});  
-    //     } else if (noLogin == 0) {  
-    //         this.context.router.push({ pathname : '/login', state : { msg : 'you do not login yet, please login' }});  
-    //     }  
 }
 export default All;

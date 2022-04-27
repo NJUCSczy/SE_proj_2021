@@ -11,13 +11,14 @@
  import formProvider from '../utils/formProvider';
  // 引入 prop-types
  import PropTypes from 'prop-types';
-
  import { useState } from 'react';
+ import {useNavigate} from "react-router-dom";
  var _ = require('lodash');
 
 function Login() {
   const [formData, setFormData] = useState({})
   var [userInfo, setUserInfo] = useState({})
+  const navigate = useNavigate();
 
   const handleChange = (type, value) => {
     setFormData(prev => {
@@ -41,7 +42,8 @@ function Login() {
     .then(res => {
       console.log(formData)
       if (res.status === 200) {
-        alert("登录成功！")
+        alert("登录成功了耶！")
+        navigate('/yjqtest', {state:{email:formData['email'],password: formData['password']}})
       }
       return res.json()
     })

@@ -9,12 +9,14 @@ import formProvider from '../utils/formProvider';
 import PropTypes from 'prop-types';
  // 引入 封装fetch工具类
  import request from '../utils/request';
+ import {useNavigate} from "react-router-dom";
 import { useState } from 'react';
 var _ = require('lodash');
 
 function UserEditor() {
   const [formData, setFormData] = useState({})
   var [userInfo, setUserInfo] = useState({})
+  const navigate = useNavigate();
 
   const handleChange = (type, value) => {
     setFormData(prev => {
@@ -36,40 +38,12 @@ function UserEditor() {
         console.log(formData)
         if (res.status === 201) {
           alert("注册成功！")
+          navigate('/')
         }
         return res.json()
       })
       .then(data => {
         alert(JSON.stringify(data))
-        console.log(data)
-      })
-  }
-
-  const handleLogin = () => {
-    fetch("http://localhost:8000/login", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        'email': formData['email'],
-        "password": formData['password']
-      })
-    })
-      .then(res => {
-        console.log(formData)
-        if (res.status === 200) {
-          alert("登录成功！")
-        }
-        return res.json()
-      })
-      .then(data => {
-        if (data.accessToken === undefined) {
-          alert("登录失败！")
-        }
-        else {
-          handleChange('Authorization', data.accessToken)
-        }
         console.log(data)
       })
   }
@@ -130,7 +104,7 @@ function UserEditor() {
          onChange={(e) => {handleChange("password", e.target.value)}}></input>
       </FormItem>
       <br />
-      <FormItem><button onClick={handleLogin} style={{textAlign:'center'}} >登录</button>{" "}
+      <FormItem>
       <button onClick={handleRigister}>注册</button>{" "}
       <button onClick={updateInfo}>查看</button>
       </FormItem>
