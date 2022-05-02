@@ -48,11 +48,11 @@ function Login() {
       return res.json()
     })
     .then(data => {
-      if (data.accessToken === undefined) {
+      if (data["token"] === undefined) {
        alert("登录失败！")
       }
       else {
-        handleChange('Authorization', data.accessToken)
+        handleChange('Authorization', data["token"])
       }
       console.log(data)
     })

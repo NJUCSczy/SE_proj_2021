@@ -32,7 +32,7 @@ function UserEditor() {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ 'email': formData['email'], "password": formData['password'] })
+      body: JSON.stringify({ 'username': formData['username'], "password": formData['password'],"email": formData['email'] })
     })
       .then(res => {
         console.log(formData)
@@ -43,8 +43,10 @@ function UserEditor() {
         return res.json()
       })
       .then(data => {
-        alert(JSON.stringify(data))
         console.log(data)
+        if(data["errorInfo"]!=undefined){
+          alert(data["errorInfo"])
+        }
       })
   }
 
@@ -94,7 +96,18 @@ function UserEditor() {
         </input>
       </FormItem>
       <FormItem >
-        <label  >密码</label>
+        <label >账号</label>
+        <input type="text" placeholder="请输入账号"
+         style={{ height:"25px",
+         width:"200px",
+         marginTop:"20px",
+         marginLeft:"14px",
+         border:"0.15rem solid"}}
+         onChange={(e) => {handleChange("username", e.target.value)}}>
+        </input>
+      </FormItem>
+      <FormItem >
+        <label>密码</label>
         <input type="password" placeholder="请输入密码"
          style={{ height:"25px",
          width:"200px",

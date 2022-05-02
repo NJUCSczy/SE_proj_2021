@@ -34,6 +34,12 @@
       "email": "czy@123",
       "password": "$2a$10$PKcetstRpD1o7lc.fwEyaOcMpBJ4kc/Pu2Q2VPc.uVO3ioV5z5nsy",
       "id": 7
+    },
+    {
+      "email": "czy@qq.com",
+      "password": "$2a$10$1/DJUZc.zo/JXT8RACCFB.dSDZu1Slq830Bu8a/mzglLiO8VhBJRy",
+      "username": "czy",
+      "id": 8
     }
   ]
 }
