@@ -40,6 +40,12 @@
       "password": "$2a$10$1/DJUZc.zo/JXT8RACCFB.dSDZu1Slq830Bu8a/mzglLiO8VhBJRy",
       "username": "czy",
       "id": 8
+    },
+    {
+      "email": "111111@11",
+      "password": "$2a$10$OoVkaFU5K/WktADHf.wIoeVrzbJTyNqRNo25tGMgG1B4.5mhTzXrW",
+      "username": "czy123",
+      "id": 9
     }
   ]
 }
