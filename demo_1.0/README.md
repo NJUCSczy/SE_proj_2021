@@ -30,6 +30,10 @@ $ npm install -g json-server
 ```
 npm i -S react-router-dom
 ```
+若未安装is-mobile，使用powershell执行如下指令
+```
+npm i is-mobile
+```
 运行start_server.bat启动本地模拟后端  
       
 ---
