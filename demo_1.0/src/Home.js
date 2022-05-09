@@ -10,9 +10,20 @@ import { DownOutlined, SmileOutlined } from '@ant-design/icons';
 import Login from './register_login/pages/Login';
 const { Header, Content, Footer, Sider } = Layout;
 
-const MainPage = (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>
-    首页
-</div>)
+const MainPage = (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>首页</div>)
+
+const infoPages = [
+    (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>机构信息</div>),
+    (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>资质信息</div>),
+    (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>政策法规</div>),
+    (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>业务信息</div>),
+    (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>新闻资讯</div>),
+    (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>联系我们</div>),
+]
+
+const fuctionPages = [
+    (<Administration />)
+]
 
 
 class Home extends React.Component {
@@ -21,7 +32,7 @@ class Home extends React.Component {
         PageContent: MainPage,
     };
 
-    ReturnToMainPage = () => {
+    GoToMainPage = () => {
         this.setState({
             PageContent: MainPage
         })
@@ -30,7 +41,19 @@ class Home extends React.Component {
 
     GotoUserPage = () => {
         this.setState({
-            PageContent: (<Login></Login>)
+            PageContent: (<Login />)
+        })
+    }
+
+    GotoInfoPage = (index) => {
+        this.setState({
+            PageContent: infoPages[index]
+        })
+    }
+
+    GotoFunctionPage = (index) => {
+        this.setState({
+            PageContent: fuctionPages[index]
         })
     }
 
@@ -38,61 +61,10 @@ class Home extends React.Component {
         var mobile = require('is-mobile');
 
 
-
-        const infoMenu = (
-            <Menu
-                mode="inline"
-                items={[
-                    {
-                        label: (
-                            <a >
-                                机构信息
-                            </a>
-                        ),
-                    },
-                    {
-                        label: (
-                            <a>
-                                资质信息
-                            </a>
-                        ),
-                    },
-                    {
-                        label: (
-                            <a>
-                                政策法规
-                            </a>
-                        ),
-                    },
-                    {
-                        label: (
-                            <a>
-                                业务信息
-                            </a>
-                        ),
-                    },
-                    {
-                        label: (
-                            <a>
-                                新闻资讯
-                            </a>
-                        ),
-                    },
-                    {
-                        label: (
-                            <a>
-                                友情链接
-                            </a>
-                        ),
-                    },
-
-                ]}
-            />
-        );
         return (
 
 
-            <Layout>
+            <Layout style={{ overflow: 'hidden' }}>
                 <Header style={{ position: "fixed", zIndex: 1, paddingLeft: mobile() ? "0px" : "50px", paddingRight: mobile() ? "0px" : "50px", width: "100%", }}>
                     <Menu
                         style={{ margin: 0, paddingInlineStart: 0 }}
@@ -102,10 +74,18 @@ class Home extends React.Component {
                         items={new Array(4).fill(null).map((_, index) => ({
                             key: String(index + 1),
                             label: {
-                                0: (<a onClick={this.ReturnToMainPage}>首页</a>),
-                                1: (<a onClick={this.GotoUserPage}>用户</a>),
-                                2: (<a onClick={this.handle}>操作</a>),
-                                3: (<Dropdown overlay={infoMenu} placement="bottomCenter">
+                                0: (<a onClick={() => { this.GoToMainPage() }}>首页</a>),
+                                1: (<a onClick={() => { this.GotoUserPage() }}>用户</a>),
+                                2: (<a onClick={() => { this.GotoFunctionPage(0) }}>操作</a>),
+                                3: (<Dropdown overlay={<Menu
+                                    items={[
+                                        { label: (<a onClick={() => { this.GotoInfoPage(0) }}>机构信息</a>), },
+                                        { label: (<a onClick={() => { this.GotoInfoPage(1) }}>资质信息</a>), },
+                                        { label: (<a onClick={() => { this.GotoInfoPage(2) }}>政策法规</a>), },
+                                        { label: (<a onClick={() => { this.GotoInfoPage(3) }}>业务信息</a>), },
+                                        { label: (<a onClick={() => { this.GotoInfoPage(4) }}>新闻资讯</a>), },
+                                        { label: (<a onClick={() => { this.GotoInfoPage(5) }}>友情链接</a>), },
+                                    ]} />} placement="bottom">
                                     <a onClick={e => e.preventDefault()}>
                                         <Space>
                                             信息
@@ -117,15 +97,15 @@ class Home extends React.Component {
                         }))}
                     />
                 </Header>
-                <Layout style={{ boxSizing: 'content-box' }}>
-                    <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64,   }}>
+                <Layout style={{ overflowY: 'hidden' }}>
+                    <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64, marginBottom: 70 }}>
                         <Breadcrumb style={{ margin: '16px 0' }}>
                             <Breadcrumb.Item>Home</Breadcrumb.Item>
                             <Breadcrumb.Item>List</Breadcrumb.Item>
                             <Breadcrumb.Item>Login</Breadcrumb.Item>
                         </Breadcrumb>
-                        <Layout style={{ overflowY: 'scroll' }}>
-                            <div className="site-layout-background" style={{ padding: 0,  height:'fit-content' }}>
+                        <Layout style={{ overflowY: 'scroll', marginBottom: 100, height: '90%' }}>
+                            <div className="site-layout-background" style={{ padding: 0, height: 'fit-content' }}>
                                 {this.state.PageContent}
 
                             </div>
