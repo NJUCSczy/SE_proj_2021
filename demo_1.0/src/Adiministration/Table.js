@@ -4,8 +4,9 @@ const TableHeader = () => {
   return (
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Software</th>
+        <th>委托单位(中文)</th>
+        <th>软件名称</th>
+        <th>测试类型</th>
         <th>Delete</th>
         <th>Accept</th>
       </tr>
@@ -17,8 +18,10 @@ const TableBody = props => {
   const rows = props.characterData.map((row, index) => {
       return (
           <tr key={index}>
-              <td>{row.name}</td>
+              <td>{row.名字}</td>
               <td>{row.software}</td>
+              <td>{row.测试类型.map(item=>(<td key={item}> {item}</td>))}</td>
+              
               <td>
                 <button onClick={() => props.removeCharacter(index)}>Delete</button>
               </td>
