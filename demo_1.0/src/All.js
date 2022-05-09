@@ -9,6 +9,7 @@ import View from './register_login/View';
 import UserAddPage from './register_login/pages/UserAdd';
 import UserListPage from './register_login/pages/UserList';
 import LoginPage from './register_login/pages/Login';
+import RegisterPage from './register_login/pages/Register';
 import UserEditPage from './register_login/pages/UserEdit'; // 用户编辑页面
 
 class All extends React.Component{
@@ -25,7 +26,8 @@ class All extends React.Component{
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<LoginPage />} />
-                    <Route path="/user/add" element={<UserAddPage />} />
+                    {/* <Route path="/user/add" element={<UserAddPage />} /> */}
+                    <Route path="/register" element={<RegisterPage />} />
                     <Route path="/user/list" element={<UserListPage />} />
                     <Route path="/user/edit/:id" element={<UserEditPage />} />
                     <Route path="/yjqtest" element={<View />} />

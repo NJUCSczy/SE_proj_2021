@@ -1,18 +1,11 @@
-/**
- * 登录页
- */
- import React from 'react';
- // 页面布局组件
- import HomeLayout from '../layouts/HomeLayout';
- import FormItem from '../components/FormItem';
- // 引入 封装后的fetch工具类
- import { post } from '../utils/request';
- // 表单验证组件
- import formProvider from '../utils/formProvider';
- // 引入 prop-types
- import PropTypes from 'prop-types';
- import { useState } from 'react';
- import {useNavigate} from "react-router-dom";
+import React from 'react';
+import HomeLayout from '../layouts/HomeLayout';
+import FormItem from '../components/FormItem';
+import { useState } from 'react';
+import {useNavigate} from "react-router-dom";
+import {Input,Card,Button,Row, Anchor } from 'antd';
+import './css/register.css';
+
  var _ = require('lodash');
 
 function Login() {
@@ -58,82 +51,61 @@ function Login() {
     })
   }
 
-  //  render () {
-  //   var headImg={
-  //     //top:"0%",
-  //     //marginTop:"0px",
-  //     //marginBottom:"44px",
-  //     width:'200px',
-  //     height:'200px',
-  //     left:'50%',
-  //     marginLeft:'-100px',
-  //     position:'relative',
-  //     //left:"50%",
-  //     //marginLeft:"-56px"
-  //     //textAlign:"center"不识别
-  // }
-  // var telInput={
-  //   height:"25px",
-  //   width:"200px",
-  //   marginTop:"20px",
-  //   marginLeft:"14px",
-  //   border:"0.15rem solid",//默认框
-  // }
+  const updateInfo = () => {
+    fetch("http://localhost:8000/users", {
+      method: "GET",
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': "Bearer " + formData['Authorization']
+      },
+    })
+      .then(res => {
+        console.log("Bearer " + formData['authentication'])
+        if (formData['Authorization'] == null) {
+          alert("请先登录！")
+          return null
+        }
+        else if (res.status === 201) {
+          alert("读取成功！")
+          navigate('/')
+        }
+        return res.json()
+      })
+      .then(data => {
+        if (data != null) {
+          setUserInfo(prev => {
+            const newFormData = _.cloneDeep(prev)
+            newFormData["userInfo"] = data
+            return newFormData
+          })
+        }
+        console.log(data)
+      })
+  }
 
-
-  // var login={
-  //   width:"150px",
-  //   height:"42px",
-  //   backgroundColor:"rgb(72, 39, 124)",
-  //   color:"rgb(213, 205, 226)",
-  //   fontSize:"18px",
-  //   position:'relative',
-  //   //left:"50%",
-  //   //marginLeft:'-100px',
-  //   marginTop:'10px',
-  //   textAlign:'center',
-
-  // }
-  //    const {form: {account, password}, onFormChange} = this.props;
      return (
-       <div style={{backgroundImage:"url(" + require("./images/back.jpg") + ")",backgroundSize:'100%'}} >
-          <HomeLayout title="用户登录">
-            <img src={require('./images/head.jpg')} style={{width:'200px',
-              height:'200px',
-              left:'50%',
-              marginLeft:'-100px',
-              position:'relative'}}/>
-            <FormItem>
-              <input type="text" placeholder="请输入邮箱"
-               style={{ height:"25px",
-               width:"200px",
-               marginTop:"20px",
-               marginLeft:"14px",
-               border:"0.15rem solid"}}
-               onChange={(e) => {handleChange("email", e.target.value)}}/>
-            </FormItem>
-            <br/>
-            <FormItem>
-              <input type="password" placeholder="请输入密码"
-              style={{ height:"25px",
-              width:"200px",
-              marginTop:"20px",
-              marginLeft:"14px",
-              border:"0.15rem solid"}}
-              onChange={(e) => {handleChange("password", e.target.value)}}/>
-            </FormItem>
+       <div className="App" style={{ float: "center" }} >
+        <Row justify="center" align="middle" className="register_ground" style={{backgroundImage:"url(" + require("./images/westWorld1.jpeg") + ")"}}>
+          <Card  justify="center"  title="用户登录" className="register_card">
+          <br/>
+            <Input placeholder="请输入邮箱" className="register_email"
+                   onChange={(e) => {handleChange("email", e.target.value)}}/>
             <br/>
             <br/>
+            <Input placeholder="请输入账号" className="register_username"
+                   onChange={(e) => {handleChange("username", e.target.value)}}/>
             <br/>
             <br/>
-            <FormItem><button onClick={handleLogin} style={{textAlign:'center'}} >登录</button>{" "}</FormItem>
+            <Input.Password className="register_password" placeholder="请输入密码"
+                            onChange={(e) => {handleChange("password", e.target.value)}}/>
             <br/>
             <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-          </HomeLayout>
+            <Button className="register_btn" onClick={handleLogin}>登录</Button>{" "}
+            <Button className="register_btn" onClick={updateInfo}>查看</Button>{" "}
+            <Button href="/#/register" className="register_btn" > 立即注册</Button>
+          </Card>
+        </Row>
        </div>
      );
 }

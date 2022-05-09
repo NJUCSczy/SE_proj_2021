@@ -46,6 +46,18 @@
       "password": "$2a$10$OoVkaFU5K/WktADHf.wIoeVrzbJTyNqRNo25tGMgG1B4.5mhTzXrW",
       "username": "czy123",
       "id": 9
+    },
+    {
+      "email": "11@111",
+      "password": "$2a$10$KJ84WZ4q4R0RNOwSY14W2eSKQg5ZEhWA7q8a/qnPKvvM.xCGVadZe",
+      "username": "1",
+      "id": 10
+    },
+    {
+      "email": "yjq@y",
+      "password": "$2a$10$kY/hY8A42UzOzbdv4Wlccehk6FWXdpxotXHtcGPs25/s4m975qSsK",
+      "username": "111",
+      "id": 11
     }
   ],
   "characters1": [

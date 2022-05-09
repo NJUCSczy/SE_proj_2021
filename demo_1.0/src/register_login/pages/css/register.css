@@ -1,0 +1,39 @@
+
+.register_ground{
+	/* background-image: url(./images/back.jpg); */
+	background-repeat: no-repeat;
+	background-size: cover;
+	text-align: center;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+}
+.register_card{
+	width: 300px;
+	height: 380px;
+	position:absolute;
+	background-color: rosybrown;
+	opacity:0.7;
+
+}
+.register_card .ant-card-head{
+	min-height: 40px;
+}
+.register_email{
+	width:250px;
+	margin-bottom:20px;
+}
+.register_username{
+	width:250px;
+	margin-bottom:20px;
+}
+.register_password{
+	width:250px;
+	margin-bottom:20px;
+}
+.register_btn{
+	background: rosybrown;
+}
+.ant-card-head-title{
+	padding:9px 0px;
+}
