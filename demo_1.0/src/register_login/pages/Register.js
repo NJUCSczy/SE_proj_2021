@@ -33,7 +33,7 @@ function RegisterPage(props) {
         console.log(formData)
         if (res.status === 201) {
           alert("注册成功！")
-          navigate('/')
+          //navigate('/')
         }
         return res.json()
       })
@@ -41,6 +41,9 @@ function RegisterPage(props) {
         console.log(data)
         if (data["errorInfo"] != undefined) {
           alert(data["errorInfo"])
+        }
+        else{
+          GotoPage('Login');
         }
       })
   }

@@ -58,6 +58,12 @@
       "password": "$2a$10$kY/hY8A42UzOzbdv4Wlccehk6FWXdpxotXHtcGPs25/s4m975qSsK",
       "username": "111",
       "id": 11
+    },
+    {
+      "email": "czy111@111",
+      "password": "$2a$10$R.ks9JGjx1g9z1IGioNcuOouur0nVLVzpWnIBivGXIHuyQRmsSUnS",
+      "username": "czy111",
+      "id": 12
     }
   ],
   "characters1": [

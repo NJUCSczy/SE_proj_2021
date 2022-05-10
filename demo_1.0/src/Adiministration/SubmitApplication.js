@@ -35,7 +35,6 @@ class SubmitApplication extends Component {
       },*/
     ],
   }
-  console.log('aaaaa:',this.state);
   }
 
   removeCharacter = (index) => {

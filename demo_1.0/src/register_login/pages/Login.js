@@ -35,7 +35,6 @@ function Login(props) {
       })
     })
       .then(res => {
-        console.log(formData)
         if (res.status === 200) {
           alert("登录成功了耶！")
           //navigate('/yjqtest', { state: { email: formData['email'], password: formData['password'] } })
@@ -49,7 +48,8 @@ function Login(props) {
         }
         else {
           handleChange('Authorization', data.accessToken)
-          UpdateUserInfo({userID:data.user.id,userName:data.user.username,Authorization:data.accessToken});
+          var _info={userID:data.user.id,userName:data.user.username,Authorization:data.accessToken};
+          UpdateUserInfo(_info,GotoPage('UserInfo',_info));
         }
       })
   }
