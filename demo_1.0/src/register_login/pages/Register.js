@@ -1,8 +1,9 @@
 import React from 'react';
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from 'react';
-import { Input, Card, Button, Row, Anchor } from 'antd';
+import {Input,Card,Button,Row, Space } from 'antd';
 import './css/register.css';
+
 
 var _ = require('lodash');
 

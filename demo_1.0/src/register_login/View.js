@@ -1,36 +1,21 @@
 import React from'react';
 import { useLocation } from "react-router-dom";
 import { Layout, Menu, Breadcrumb, Input,Card,Button,Row } from 'antd';
-
+import Menu_1 from './Menu_1.js';
 const { Header, Footer, Content } = Layout;
 function View(){
     let location = useLocation();
     const server_id = location.state;
     let e=server_id.email;
     let p=server_id.password;
+    var mobile = require('is-mobile');
 
     return(
         <Layout className="layout">
-            <Header>
-                <div className="logo" />
-                <Menu
-                    theme="dark"
-                    mode="horizontal"
-                    defaultSelectedKeys={['2']}
-                    items = {[
-                        { label: '菜单项一' },
-                        {label: (<a href="/#/login" target="_blank" rel="noopener noreferrer">登录</a>),},
-                        {label: (<a href="/#/user/add" target="_blank" rel="noopener noreferrer">注册</a>),},
-                      ]}
-                    // items={new Array(15).fill(null).map((_, index) => {
-                    //     const key = index + 1;
-                    //     return {
-                    //         key,
-                    //         label: `nav ${key}`,
-                    //     };
-                    // })}
-                />
+            <Header style={{ position: "fixed", zIndex: 1, paddingLeft:mobile()?"0px":"50px",paddingRight:mobile()?"0px":"50px",width:"100%",}}>
+            <Menu_1/>
             </Header>
+            <Layout style={{ overflowY: 'hidden' }}>
             <Content style={{ padding: '0 50px' }}>
                 <Breadcrumb style={{ margin: '16px 0' }}>
                     <Breadcrumb.Item>Home</Breadcrumb.Item>
@@ -56,6 +41,7 @@ function View(){
                 </div>
             </Content>
             <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+            </Layout>
         </Layout>
     )
 

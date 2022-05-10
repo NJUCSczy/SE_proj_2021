@@ -2,8 +2,8 @@ import React from 'react';
 import HomeLayout from '../layouts/HomeLayout';
 import FormItem from '../components/FormItem';
 import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
-import { Input, Card, Button, Row, Anchor } from 'antd';
+import {useNavigate} from "react-router-dom";
+import {Input,Card,Button,Row, Space } from 'antd';
 import './css/register.css';
 
 var _ = require('lodash');

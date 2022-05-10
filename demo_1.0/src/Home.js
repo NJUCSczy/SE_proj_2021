@@ -123,16 +123,13 @@ class Home extends React.Component {
                             <Breadcrumb.Item>List</Breadcrumb.Item>
                             <Breadcrumb.Item>Login</Breadcrumb.Item>
                         </Breadcrumb>
-                        <Layout style={{ overflowY: 'scroll', marginBottom: 100, height: '90%' }}>
+                        <Layout style={{ overflowY: 'scroll', marginBottom: 100, height: '100%' }}>
                             <div className="site-layout-background" style={{ padding: 0, height: 'fit-content' }}>
                                 {this.state.PageContent}
-
                             </div>
                         </Layout>
                     </Content>
-                    <Footer style={{ textAlign: 'center', position: 'fixed', bottom: 0, left: 0, right: 0 }}>Ant Design ©2018 Created by Ant UED</Footer>
                 </Layout>
-
             </Layout>
 
         )
