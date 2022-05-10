@@ -3,7 +3,7 @@ import HomeLayout from '../layouts/HomeLayout';
 import FormItem from '../components/FormItem';
 import { useState } from 'react';
 import {useNavigate} from "react-router-dom";
-import {Input,Card,Button,Row, Anchor } from 'antd';
+import {Input,Card,Button,Row, Space } from 'antd';
 import './css/register.css';
 
  var _ = require('lodash');
@@ -42,7 +42,6 @@ function Login() {
     })
     .then(data => {
       if (data["token"] === undefined) {
-       alert("登录失败！")
       }
       else {
         handleChange('Authorization', data["token"])
@@ -85,7 +84,7 @@ function Login() {
   }
 
      return (
-       <div className="App" style={{ float: "center" }} >
+       <div style={{ float: "center" }} >
         <Row justify="center" align="middle" className="register_ground" style={{backgroundImage:"url(" + require("./images/westWorld1.jpeg") + ")"}}>
           <Card  justify="center"  title="用户登录" className="register_card">
           <br/>
@@ -101,43 +100,16 @@ function Login() {
                             onChange={(e) => {handleChange("password", e.target.value)}}/>
             <br/>
             <br/>
-            <Button className="register_btn" onClick={handleLogin}>登录</Button>{" "}
-            <Button className="register_btn" onClick={updateInfo}>查看</Button>{" "}
-            <Button href="/#/register" className="register_btn" > 立即注册</Button>
+            <Space size='large'>
+              <Button className="register_btn" onClick={handleLogin}>登录</Button>
+              <Button className="register_btn" onClick={updateInfo}>查看</Button>
+              <Button href="/#/register" className="register_btn" > 立即注册</Button>
+            </Space>
           </Card>
         </Row>
        </div>
+
      );
 }
-
-//  Login.contextTypes = {
-//    router: PropTypes.object.isRequired
-//  };
-
-//  Login = formProvider({
-//    account: {
-//      defaultValue: '',
-//      rules: [
-//        {
-//          pattern (value) {
-//            return value.length > 0;
-//          },
-//          error: '请输入账号'
-//        }
-//      ]
-//    },
-//    password: {
-//      defaultValue: '',
-//      rules: [
-//        {
-//          pattern (value) {
-//            return value.length > 0;
-//          },
-//          error: '请输入密码'
-//        }
-//      ]
-//    }
-//  })(Login);
-
 
  export default Login;

@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { Layout, Menu, Dropdown, Breadcrumb, Space } from 'antd';
 import { DownOutlined, SmileOutlined } from '@ant-design/icons';
 import Login from './register_login/pages/Login';
+import Register from './register_login/pages/Register';
 const { Header, Content, Footer, Sider } = Layout;
 
 const MainPage = (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>首页</div>)
@@ -25,45 +26,23 @@ const fuctionPages = [
     (<Administration />)
 ]
 
-
 class Home extends React.Component {
 
-    state = {
-        PageContent: MainPage,
-    };
+    state = {PageContent: MainPage,};
 
-    GoToMainPage = () => {
-        this.setState({
-            PageContent: MainPage
-        })
-    }
+    GoToMainPage = () => {this.setState({PageContent: MainPage})}
 
+    GotoLoginPage = () => {this.setState({PageContent: (<Login />)})}
 
-    GotoUserPage = () => {
-        this.setState({
-            PageContent: (<Login />)
-        })
-    }
+    GotoRegisterPage = () => {this.setState({PageContent: (<Register />)})}
 
-    GotoInfoPage = (index) => {
-        this.setState({
-            PageContent: infoPages[index]
-        })
-    }
+    GotoInfoPage = (index) => {this.setState({PageContent: infoPages[index]})}
 
-    GotoFunctionPage = (index) => {
-        this.setState({
-            PageContent: fuctionPages[index]
-        })
-    }
+    GotoFunctionPage = (index) => {this.setState({PageContent: fuctionPages[index]})}
 
     render() {
         var mobile = require('is-mobile');
-
-
         return (
-
-
             <Layout style={{ overflow: 'hidden' }}>
                 <Header style={{ position: "fixed", zIndex: 1, paddingLeft: mobile() ? "0px" : "50px", paddingRight: mobile() ? "0px" : "50px", width: "100%", }}>
                     <Menu
@@ -75,7 +54,7 @@ class Home extends React.Component {
                             key: String(index + 1),
                             label: {
                                 0: (<a onClick={() => { this.GoToMainPage() }}>首页</a>),
-                                1: (<a onClick={() => { this.GotoUserPage() }}>用户</a>),
+                                1: (<a onClick={() => { this.GotoLoginPage() }}>用户</a>),
                                 2: (<a onClick={() => { this.GotoFunctionPage(0) }}>操作</a>),
                                 3: (<Dropdown overlay={<Menu
                                     items={[
@@ -104,16 +83,13 @@ class Home extends React.Component {
                             <Breadcrumb.Item>List</Breadcrumb.Item>
                             <Breadcrumb.Item>Login</Breadcrumb.Item>
                         </Breadcrumb>
-                        <Layout style={{ overflowY: 'scroll', marginBottom: 100, height: '90%' }}>
+                        <Layout style={{ overflowY: 'scroll', marginBottom: 100, height: '100%' }}>
                             <div className="site-layout-background" style={{ padding: 0, height: 'fit-content' }}>
                                 {this.state.PageContent}
-
                             </div>
                         </Layout>
                     </Content>
-                    <Footer style={{ textAlign: 'center', position: 'fixed', bottom: 0, left: 0, right: 0 }}>Ant Design ©2018 Created by Ant UED</Footer>
                 </Layout>
-
             </Layout>
 
         )

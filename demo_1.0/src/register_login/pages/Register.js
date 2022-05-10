@@ -1,8 +1,9 @@
 import React from 'react';
 import {useNavigate, Link} from "react-router-dom";
 import { useState } from 'react';
-import {Input,Card,Button,Row, Anchor } from 'antd';
+import {Input,Card,Button,Row, Space } from 'antd';
 import './css/register.css';
+
 
 var _ = require('lodash');
 
@@ -93,12 +94,13 @@ function RegisterPage() {
                             onChange={(e) => {handleChange("password", e.target.value)}}/>
             <br/>
             <br/>
-            <Button className="register_btn" onClick={handleRigister}>注册</Button>{" "}
-            <Button className="register_btn" onClick={updateInfo}>查看</Button>{" "}
-            <Button href="/#/login" className="register_btn" > 转到登录</Button>
+            <Space size='large'>
+              <Button className="register_btn" onClick={handleRigister}>注册</Button>
+              <Button className="register_btn" onClick={updateInfo}>查看</Button>
+              <Button href="/#/login" className="register_btn" > 转到登录</Button>
+            </Space>
           </Card>
         </Row>
-
         {/* {JSON.stringify(userInfo)} */}
       </div>
     );
