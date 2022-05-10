@@ -16,6 +16,6 @@ ReactDOM.render(<App />, document.getElementById('root'))*/
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Administration from './Administration'
+import UserApplication from './UserApplication'
 
-ReactDOM.render(<Administration />, document.getElementById('root'))
+ReactDOM.render(<SubmitApplication />, document.getElementById('root'))

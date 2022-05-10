@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 import "./Home.css"
 import { findDOMNode } from 'react-dom';
-import Administration from "./Adiministration/Administration"
+import SubmitApplication from "./Adiministration/SubmitApplication"
 import {HashRouter as Router, Route, Routes} from 'react-router-dom';
 import Home from './Home';
 import View from './register_login/View';
@@ -16,7 +16,7 @@ class All extends React.Component{
     handle(){
         const w=window.open("","App/Administration")
         //console.log("'w' constructed!\n")
-        ReactDOM.render(<Administration/>,w.document)
+        ReactDOM.render(<SubmitApplication/>,w.document)
         //console.log("React!!")
 
     }

@@ -2,13 +2,15 @@ import React from 'react';
 import HomeLayout from '../layouts/HomeLayout';
 import FormItem from '../components/FormItem';
 import { useState } from 'react';
-import {useNavigate} from "react-router-dom";
-import {Input,Card,Button,Row, Anchor } from 'antd';
+import { useNavigate } from "react-router-dom";
+import { Input, Card, Button, Row, Anchor } from 'antd';
 import './css/register.css';
 
- var _ = require('lodash');
+var _ = require('lodash');
 
-function Login() {
+function Login(props) {
+  const { UpdateUserInfo,GotoPage } = props;
+
   const [formData, setFormData] = useState({})
   var [userInfo, setUserInfo] = useState({})
   const navigate = useNavigate();
@@ -32,23 +34,24 @@ function Login() {
         "password": formData['password']
       })
     })
-    .then(res => {
-      console.log(formData)
-      if (res.status === 200) {
-        alert("登录成功了耶！")
-        navigate('/yjqtest', {state:{email:formData['email'],password: formData['password']}})
-      }
-      return res.json()
-    })
-    .then(data => {
-      if (data["token"] === undefined) {
-       alert("登录失败！")
-      }
-      else {
-        handleChange('Authorization', data["token"])
-      }
-      console.log(data)
-    })
+      .then(res => {
+        console.log(formData)
+        if (res.status === 200) {
+          alert("登录成功了耶！")
+          //navigate('/yjqtest', { state: { email: formData['email'], password: formData['password'] } })
+        }
+        return res.json()
+      })
+      .then(data => {
+        console.log(data)
+        if (data.accessToken === undefined) {
+          alert("登录失败！")
+        }
+        else {
+          handleChange('Authorization', data.accessToken)
+          UpdateUserInfo({userID:data.user.id,userName:data.user.username,Authorization:data.accessToken});
+        }
+      })
   }
 
   const updateInfo = () => {
@@ -84,30 +87,30 @@ function Login() {
       })
   }
 
-     return (
-       <div className="App" style={{ float: "center" }} >
-        <Row justify="center" align="middle" className="register_ground" style={{backgroundImage:"url(" + require("./images/westWorld1.jpeg") + ")"}}>
-          <Card  justify="center"  title="用户登录" className="register_card">
-          <br/>
-            <Input placeholder="请输入邮箱" className="register_email"
-                   onChange={(e) => {handleChange("email", e.target.value)}}/>
-            <br/>
-            <br/>
-            <Input placeholder="请输入账号" className="register_username"
-                   onChange={(e) => {handleChange("username", e.target.value)}}/>
-            <br/>
-            <br/>
-            <Input.Password className="register_password" placeholder="请输入密码"
-                            onChange={(e) => {handleChange("password", e.target.value)}}/>
-            <br/>
-            <br/>
-            <Button className="register_btn" onClick={handleLogin}>登录</Button>{" "}
-            <Button className="register_btn" onClick={updateInfo}>查看</Button>{" "}
-            <Button href="/#/register" className="register_btn" > 立即注册</Button>
-          </Card>
-        </Row>
-       </div>
-     );
+  return (
+    <div className="App" style={{ float: "center" }} >
+      <Row justify="center" align="middle" className="register_ground" style={{ backgroundImage: "url(" + require("./images/westWorld1.jpeg") + ")" }}>
+        <Card justify="center" title="用户登录" className="register_card">
+          <br />
+          <Input placeholder="请输入邮箱" className="register_email"
+            onChange={(e) => { handleChange("email", e.target.value) }} />
+          <br />
+          <br />
+          <Input placeholder="请输入账号" className="register_username"
+            onChange={(e) => { handleChange("username", e.target.value) }} />
+          <br />
+          <br />
+          <Input.Password className="register_password" placeholder="请输入密码"
+            onChange={(e) => { handleChange("password", e.target.value) }} />
+          <br />
+          <br />
+          <Button className="register_btn" onClick={handleLogin}>登录</Button>{" "}
+          <Button className="register_btn" onClick={updateInfo}>查看</Button>{" "}
+          <Button onClick={() => {GotoPage('Register')}} className="register_btn" > 立即注册</Button>
+        </Card>
+      </Row>
+    </div>
+  );
 }
 
 //  Login.contextTypes = {
@@ -140,4 +143,4 @@ function Login() {
 //  })(Login);
 
 
- export default Login;
+export default Login;
