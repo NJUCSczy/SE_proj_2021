@@ -36,7 +36,7 @@ function Login(props) {
     })
       .then(res => {
         if (res.status === 200) {
-          alert("登录成功了耶！")
+          //alert("登录成功了耶！")
           //navigate('/yjqtest', { state: { email: formData['email'], password: formData['password'] } })
         }
         return res.json()
