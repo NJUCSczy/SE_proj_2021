@@ -10,6 +10,7 @@ import { DownOutlined, SmileOutlined } from '@ant-design/icons';
 import UserInfoPage from './register_login/pages/UserInfo';
 import Login from './register_login/pages/Login';
 import RegisterPage from './register_login/pages/Register';
+import ConfidentialAgreement from './Adiministration/src/ConfidentialAgreement/ConfidentialAgreement';
 const { Header, Content, Footer, Sider } = Layout;
 
 
@@ -84,7 +85,7 @@ class Home extends React.Component {
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>新闻资讯</div>);
             case 'Info6' : 
                 this.setState({HeaderMenuIndex:'4'});       
-                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>联系我们</div>);
+                return (<ConfidentialAgreement></ConfidentialAgreement>);
         }
         return null;
     }
