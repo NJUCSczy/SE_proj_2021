@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import "./Home.css";
-import SubmitApplication from "./Adiministration/SubmitApplication"
+import SubmitApplication from './Adiministration/src/SubmitApplication/SubmitApplication';
 import { useState } from 'react';
 
 import { Layout, Menu, Dropdown, Breadcrumb, Space } from 'antd';
