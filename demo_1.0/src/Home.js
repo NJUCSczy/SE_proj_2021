@@ -82,7 +82,7 @@ class Home extends React.Component {
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>业务信息</div>);
             case 'Info5' : 
                 this.setState({HeaderMenuIndex:'4'});   
-                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>新闻资讯</div>);
+                return (<ViewApplication></ViewApplication>);
             case 'Info6' : 
                 this.setState({HeaderMenuIndex:'4'});       
                 return (<ConfidentialAgreement></ConfidentialAgreement>);
