@@ -330,7 +330,7 @@ function SubmitApplication(props) {
         validateTrigger
       >
         <div style={{ fontStyle: 'italic', fontWeight: 'lighter' }}>（以下三项请至少选填一项）</div><br></br>
-        <h4 style={{ fontWeight: 'bolder' }}>功能数（到最后一级菜单）</h4>
+        <h4 style={{ fontWeight: 'bolder' }}>功能数(到最后一级菜单)</h4>
         <Form.Item 
         name={["软件规模", "功能数(到最后一级菜单)"]}
         rules={[{pattern: new RegExp(/^[1-9]\d*$/, "g"),message:'请正确输入功能数'}]}
