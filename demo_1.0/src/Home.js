@@ -8,7 +8,7 @@ import ViewApplication from './Adiministration/src/ViewApplication/ViewApplicati
 import ViewEntrustList from './Adiministration/src/ViewEntrustList/ViewEntrustList';
 import ViewEntrust from './Adiministration/src/ViewEntrust/ViewEntrust';
 import { useState } from 'react';
-
+import MktdptApplication from './Adiministration/mktdept';
 import { Layout, Menu, Dropdown, Breadcrumb, Space } from 'antd';
 import { DownOutlined, SmileOutlined } from '@ant-design/icons';
 import UserInfoPage from './register_login/pages/UserInfo';
