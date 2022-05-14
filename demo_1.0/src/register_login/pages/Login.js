@@ -71,7 +71,7 @@ function Login(props) {
         }
         else if (res.status === 201) {
           alert("读取成功！")
-          navigate('/')
+          //navigate('/')
         }
         return res.json()
       })
