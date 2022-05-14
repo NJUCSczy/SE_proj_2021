@@ -70,6 +70,12 @@
       "password": "$2a$10$46T1KvwVL0/hWIpn7kuW8OFFIC8nZwagYlgTltRAWDQ/Z98KRlkLq",
       "username": "gbl",
       "id": 13
+    },
+    {
+      "email": "1@111",
+      "password": "$2a$10$mimHqUx/hxWFwtslWAeo/el893Ko5fBBwab0RBbECNqffvtpBU3G.",
+      "username": "1@111",
+      "id": 14
     }
   ],
   "docs": [
@@ -102,8 +108,7 @@
         "软件规模": {
           "功能数(到最后一级菜单)": "111"
         },
-        "软件类型": 
-          "系统软件-操作系统",
+        "软件类型": "系统软件-操作系统",
         "运行环境": {
           "客户端": {
             "操作系统-Windows版本": "1wfaeadf",
