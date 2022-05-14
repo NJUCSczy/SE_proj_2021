@@ -67,7 +67,19 @@ function MktdptApplication(props){
         >
             <TextArea rows={5}  style={{maxWidth:700}}></TextArea>
         </Form.Item></div>):null}
-        
+        {
+            (formData['是否受理']==='需进一步审理')?(
+                <div>
+                    <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>进一步审理方向及原因</h2>
+        <Form.Item
+            name="进一步审理方向及原因"
+            rules={[{ required: true, message: '请填写进一步审理方向及原因，暂无请填“无”' }]}
+        >
+            <TextArea rows={5}  style={{maxWidth:700}}></TextArea>
+        </Form.Item>
+                </div>
+            ):null
+        }
     
       </Form>
     )
