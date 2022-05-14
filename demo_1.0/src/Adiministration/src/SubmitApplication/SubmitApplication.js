@@ -419,7 +419,7 @@ function SubmitApplication(props) {
             <Radio value={['应用软件-信息管理软件']} style={{ lineHeight: '32px' }}>信息管理软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '数据库管理应用软件']} style={{ lineHeight: '32px' }}>数据库管理应用软件</Radio>
+            <Radio value={['应用软件-数据库管理应用软件']} style={{ lineHeight: '32px' }}>数据库管理应用软件</Radio>
           </Col>
           <Col span={30}>
             <Radio value={['应用软件-安全与保密软件']} style={{ lineHeight: '32px' }}>安全与保密软件</Radio>

@@ -6,6 +6,7 @@ import TextArea from 'antd/lib/input/TextArea';
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
 import { NoFormStatus } from 'antd/lib/form/context';
 import { useEffect, useState } from 'react';
+import moment from 'moment';
 
 var _ = require('lodash');
 
@@ -324,85 +325,85 @@ useEffect(() => {
           
           <h4 style={{ fontWeight: 'bolder' }}>系统软件</h4>
           <Col span={30} >
-            <Radio value={['系统软件', '操作系统']} style={{ lineHeight: '32px' }} >操作系统</Radio>
+            <Radio value={['系统软件-操作系统']} style={{ lineHeight: '32px' }} >操作系统</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['系统软件', '中文处理系统']} style={{ lineHeight: '32px' }}>中文处理系统</Radio>
+            <Radio value={['系统软件-中文处理系统']} style={{ lineHeight: '32px' }}>中文处理系统</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['系统软件', '网络系统']} style={{ lineHeight: '32px' }}>网络系统</Radio>
+            <Radio value={['系统软件-网络系统']} style={{ lineHeight: '32px' }}>网络系统</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['系统软件', '嵌入式操作系统']} style={{ lineHeight: '32px' }}>嵌入式操作系统</Radio>
+            <Radio value={['系统软件-嵌入式操作系统']} style={{ lineHeight: '32px' }}>嵌入式操作系统</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['系统软件', '其他']} style={{ lineHeight: '32px' }}>其他</Radio>
+            <Radio value={['系统软件-其他']} style={{ lineHeight: '32px' }}>其他</Radio>
           </Col>
 
           <h4 style={{ fontWeight: 'bolder' }}>支持软件</h4>
           <Col span={30} >
-            <Radio value={['支持软件', '程序设计语言']} style={{ lineHeight: '32px' }} >程序设计语言</Radio>
+            <Radio value={['支持软件-程序设计语言']} style={{ lineHeight: '32px' }} >程序设计语言</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['支持软件', '数据库系统设计']} style={{ lineHeight: '32px' }}>数据库系统设计</Radio>
+            <Radio value={['支持软件-数据库系统设计']} style={{ lineHeight: '32px' }}>数据库系统设计</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['支持软件', '工具软件']} style={{ lineHeight: '32px' }}>工具软件</Radio>
+            <Radio value={['支持软件-工具软件']} style={{ lineHeight: '32px' }}>工具软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['支持软件', '网络通信软件']} style={{ lineHeight: '32px' }}>网络通信软件</Radio>
+            <Radio value={['支持软件-网络通信软件']} style={{ lineHeight: '32px' }}>网络通信软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['支持软件', '中间件']} style={{ lineHeight: '32px' }}>中间件</Radio>
+            <Radio value={['支持软件-中间件']} style={{ lineHeight: '32px' }}>中间件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['支持软件', '其他']} style={{ lineHeight: '32px' }}>其他</Radio>
+            <Radio value={['支持软件-其他']} style={{ lineHeight: '32px' }}>其他</Radio>
           </Col>
 
           <h4 style={{ fontWeight: 'bolder' }}>应用软件</h4>
           <Col span={30} >
-            <Radio value={['应用软件', '行业管理软件']} style={{ lineHeight: '32px' }} >行业管理软件</Radio>
+            <Radio value={['应用软件-行业管理软件']} style={{ lineHeight: '32px' }} >行业管理软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '办公软件']} style={{ lineHeight: '32px' }}>办公软件</Radio>
+            <Radio value={['应用软件-办公软件']} style={{ lineHeight: '32px' }}>办公软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '模式识别软件']} style={{ lineHeight: '32px' }}>模式识别软件</Radio>
+            <Radio value={['应用软件-模式识别软件']} style={{ lineHeight: '32px' }}>模式识别软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '图形图像软件']} style={{ lineHeight: '32px' }}>图形图像软件</Radio>
+            <Radio value={['应用软件-图形图像软件']} style={{ lineHeight: '32px' }}>图形图像软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '控制软件']} style={{ lineHeight: '32px' }}>控制软件</Radio>
+            <Radio value={['应用软件-控制软件']} style={{ lineHeight: '32px' }}>控制软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '网络应用软件']} style={{ lineHeight: '32px' }}>网络应用软件</Radio>
+            <Radio value={['应用软件-网络应用软件']} style={{ lineHeight: '32px' }}>网络应用软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '信息管理软件']} style={{ lineHeight: '32px' }}>信息管理软件</Radio>
+            <Radio value={['应用软件-信息管理软件']} style={{ lineHeight: '32px' }}>信息管理软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '数据库管理应用软件']} style={{ lineHeight: '32px' }}>数据库管理应用软件</Radio>
+            <Radio value={['应用软件-数据库管理应用软件']} style={{ lineHeight: '32px' }}>数据库管理应用软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '安全与保密软件']} style={{ lineHeight: '32px' }}>安全与保密软件</Radio>
+            <Radio value={['应用软件-安全与保密软件']} style={{ lineHeight: '32px' }}>安全与保密软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '嵌入式应用软件']} style={{ lineHeight: '32px' }}>嵌入式应用软件</Radio>
+            <Radio value={['应用软件-嵌入式应用软件']} style={{ lineHeight: '32px' }}>嵌入式应用软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '教育软件']} style={{ lineHeight: '32px' }}>教育软件</Radio>
+            <Radio value={['应用软件-教育软件']} style={{ lineHeight: '32px' }}>教育软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '游戏软件']} style={{ lineHeight: '32px' }}>游戏软件</Radio>
+            <Radio value={['应用软件-游戏软件']} style={{ lineHeight: '32px' }}>游戏软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '其他']} style={{ lineHeight: '32px' }}>其他</Radio>
+            <Radio value={['应用软件-其他']} style={{ lineHeight: '32px' }}>其他</Radio>
           </Col>
 
           <h4 style={{ fontWeight: 'bolder' }}>其他</h4>
           <Col span={30} >
-            <Radio value={['其他', '其他']} style={{ lineHeight: '32px' }} >其他</Radio>
+            <Radio value={['其他-其他']} style={{ lineHeight: '32px' }} >其他</Radio>
           </Col>
         </Radio.Group>
         <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>运行环境</h2>
@@ -512,6 +513,44 @@ useEffect(() => {
             </Radio>
           </Col>
         </Radio.Group>
+
+      <h3 style={{ fontWeight: 'bolder', marginTop: 60 }}>提交的样品(硬拷贝资料、硬件)五年保存期满后</h3>
+        <Radio.Group disabled defaultValue={entrustData["formData"]["userApplication"]["样品和数量"]["提交的样品(硬拷贝资料、硬件)五年保存期满后"]} >
+          <Col span={30} >
+            <Radio value="由本实验室销毁 " style={{ lineHeight: '32px' }} >由本实验室销毁 </Radio>
+          </Col>
+          <Col span={30}>
+            <Radio value="退还给我们" style={{ lineHeight: '32px' }}>退还给我们</Radio>
+          </Col>
+        </Radio.Group>
+
+      <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>希望测试完成时间</h2>
+        <DatePicker disabled defaultValue={moment((entrustData["formData"]["userApplication"]["希望测试完成时间"]), 'YYYY/MM/DD')} format='YYYY/MM/DD'/>
+        
+      <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>委托单位信息</h2>
+      <h3 style={{ fontWeight: 'bolder', marginTop: 0 }}>电话</h3>
+        <Input style={{maxWidth:500}} disabled defaultValue={entrustData["formData"]["userApplication"]["委托单位信息"]["电话"]}/>
+
+      <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>传真</h3>
+        <Input style={{maxWidth:500}} />
+
+      <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>地址</h3>
+        <Input style={{maxWidth:500}} disabled defaultValue={entrustData["formData"]["userApplication"]["委托单位信息"]["地址"]}/>
+
+      <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>邮编</h3>
+        <Input style={{maxWidth:500}} disabled defaultValue={entrustData["formData"]["userApplication"]["委托单位信息"]["邮编"]}/>
+
+      <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>联系人</h3>
+        <Input style={{maxWidth:500}} disabled defaultValue={entrustData["formData"]["userApplication"]["委托单位信息"]["联系人"]}/>
+
+      <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>手机</h3>
+        <Input style={{maxWidth:500}} disabled defaultValue={entrustData["formData"]["userApplication"]["委托单位信息"]["手机"]}/>
+
+      <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>E-mail</h3>
+        <Input style={{maxWidth:500}} disabled defaultValue={entrustData["formData"]["userApplication"]["委托单位信息"]["E-mail"]}/>
+
+      <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>网址</h3>
+        <Input style={{maxWidth:500}} disabled defaultValue={entrustData["formData"]["userApplication"]["委托单位信息"]["网址"]}/>
       </Form>)
   )
 }
