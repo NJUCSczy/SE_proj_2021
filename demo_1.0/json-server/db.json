@@ -66,16 +66,6 @@
       "id": 12
     },
     {
-<<<<<<< HEAD
-      "email": "1@111",
-      "password": "$2a$10$umFGITAqqc9bij1FfuUEfO7Nzj2gZNrPnswUbhlRQXej.2.XLiQSu",
-      "username": "1",
-      "id": 13
-    }
-  ],
-  "docs": [],
-  "forms": []
-=======
       "email": "gbl@qq.com",
       "password": "$2a$10$46T1KvwVL0/hWIpn7kuW8OFFIC8nZwagYlgTltRAWDQ/Z98KRlkLq",
       "username": "gbl",
@@ -245,5 +235,4 @@
       "id": 2
     }
   ]
->>>>>>> 5aa326b115f91707baf37377335234aa6ee361f0
 }
