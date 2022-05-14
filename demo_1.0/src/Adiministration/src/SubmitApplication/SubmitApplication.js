@@ -56,7 +56,8 @@ function SubmitApplication(props) {
   };
   const onFinishForm = (values) => {
     console.log('Success:', values);
-    var form=values
+    var form={}
+    form['userApplication']=values
     form['userID']=userState['userID']
     SubmitForm(form)
   };

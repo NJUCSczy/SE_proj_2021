@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import "./Home.css";
 import SubmitApplication from './Adiministration/src/SubmitApplication/SubmitApplication';
+import ViewApplication from './Adiministration/ViewApplication/ViewApplication'
 import { useState } from 'react';
 
 import { Layout, Menu, Dropdown, Breadcrumb, Space } from 'antd';
