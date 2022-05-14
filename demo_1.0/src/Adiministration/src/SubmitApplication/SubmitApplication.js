@@ -59,6 +59,7 @@ function SubmitApplication(props) {
     var form={}
     form['userApplication']=values
     form['userID']=userState['userID']
+    form['userName']=userState['userName']
     SubmitForm(form)
   };
 
