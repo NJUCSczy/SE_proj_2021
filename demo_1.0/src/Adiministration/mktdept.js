@@ -1,7 +1,6 @@
 import isMobile from 'is-mobile';
 import React, { Component } from 'react'
 import { DatePicker,Divider, Form, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
-import './SubmitApplication.css'
 import { useState } from 'react';
 import TextArea from 'antd/lib/input/TextArea';
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons';

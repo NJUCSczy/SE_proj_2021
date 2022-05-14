@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import "./Home.css";
+
 import SubmitApplication from './Adiministration/src/SubmitApplication/SubmitApplication';
-import ViewApplication from './Adiministration/ViewApplication/ViewApplication'
+import ViewApplication from './Adiministration/src/ViewApplication/ViewApplication';
 import ViewEntrustList from './Adiministration/src/ViewEntrustList/ViewEntrustList';
 import ViewEntrust from './Adiministration/src/ViewEntrust/ViewEntrust';
 import { useState } from 'react';
@@ -69,16 +70,6 @@ class Home extends React.Component {
                     this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '提交申请', '0', '0', '0'] });
                     return (<SubmitApplication _state={_state} GotoPage={this.GotoPage} />);
                 }
-            case 'MktdptApplication':
-                if(this.state.Authorization === null){
-                    alert('请先登录！')
-                    return this.GetPageInfo('Login',_state);
-                }
-                else{
-                    this.setState({HeaderMenuIndex:'3',BreadcrumbByIndex:['首页','市场部审理','0','0','0']});
-                    return (<MktdptApplication _state={_state} GotoPage={this.GotoPage} />);
-                }
-            
             case 'ViewEntrustList':
                 this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托', '0', '0', '0'] });
                 return (<ViewEntrustList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewEntrustList>);
@@ -96,7 +87,7 @@ class Home extends React.Component {
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>资质信息</div>);
             case 'Info3':
                 this.setState({ HeaderMenuIndex: '4' });
-                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>政策法规</div>);
+                return (<MktdptApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></MktdptApplication>);
             case 'Info4':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>业务信息</div>);
@@ -134,22 +125,20 @@ class Home extends React.Component {
             <a onClick={e => e.preventDefault()}><Space>信息<DownOutlined /></Space></a>
         </Dropdown>)
 
-        const Breadcrumbitems={
-            0:null,
-            "首页":<Breadcrumb.Item><a onClick={() => {this.GotoPage('MainPage',this.state)}}>首页</a></Breadcrumb.Item>,
-            "用户信息":<Breadcrumb.Item><a onClick={() => {this.GotoPage('UserInfo',this.state)}}>用户信息</a></Breadcrumb.Item>,
-            "登录":<Breadcrumb.Item><a onClick={() => {this.GotoPage('Login',this.state)}}>登录</a></Breadcrumb.Item>,
-            "注册":<Breadcrumb.Item><a onClick={() => {this.GotoPage('Register',this.state)}}>注册</a></Breadcrumb.Item>,
-            "提交申请":<Breadcrumb.Item><a onClick={() => {this.GotoPage('SubmitApplication',this.state)}}>提交申请</a></Breadcrumb.Item>,
-            "查看委托":<Breadcrumb.Item><a onClick={() => {this.GotoPage('ViewApplication',this.state)}}>提交申请</a></Breadcrumb.Item>,
-            "市场部审理":<Breadcrumb.Item><a onClick={() => {this.GotoPage('MktdptApplication',this.state)}}>市场部审理</a></Breadcrumb.Item>,
+        const Breadcrumbitems = {
+            0: null,
+            "首页": <Breadcrumb.Item><a onClick={() => { this.GotoPage('MainPage', this.state) }}>首页</a></Breadcrumb.Item>,
+            "用户信息": <Breadcrumb.Item><a onClick={() => { this.GotoPage('UserInfo', this.state) }}>用户信息</a></Breadcrumb.Item>,
+            "登录": <Breadcrumb.Item><a onClick={() => { this.GotoPage('Login', this.state) }}>登录</a></Breadcrumb.Item>,
+            "注册": <Breadcrumb.Item><a onClick={() => { this.GotoPage('Register', this.state) }}>注册</a></Breadcrumb.Item>,
+            "提交申请": <Breadcrumb.Item><a onClick={() => { this.GotoPage('SubmitApplication', this.state) }}>提交申请</a></Breadcrumb.Item>,
+            "查看委托": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a></Breadcrumb.Item>,
         };
 
         const userFunctionMenu = (<Dropdown overlay={<Menu
             items={[
                 { label: (<a onClick={() => { this.GotoPage('SubmitApplication', this.state) }}>提交申请</a>), },
-                { label: (<a onClick={() => { this.GotoPage('ViewApplication', this.state) }}>查看委托</a>), },
-                { label: (<a onClick={() => { this.GotoPage('MktdptApplication', this.state) }}>市场部审理</a>), },
+                { label: (<a onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
             ]} />} placement="bottom">
             <a onClick={e => e.preventDefault()}><Space>操作<DownOutlined /></Space></a>
         </Dropdown>)
@@ -164,9 +153,7 @@ class Home extends React.Component {
         const adminFunctionMenu = (<Dropdown overlay={<Menu
             items={[
                 { label: (<a onClick={() => { this.GotoPage('SubmitApplication', this.state) }}>提交申请</a>), },
-
                 { label: (<a onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
-                { label: (<a onClick={() => { this.GotoPage('MktdptApplication', this.state) }}>市场部审理</a>), },
             ]} />} placement="bottom">
             <a onClick={e => e.preventDefault()}><Space>操作<DownOutlined /></Space></a>
         </Dropdown>)
