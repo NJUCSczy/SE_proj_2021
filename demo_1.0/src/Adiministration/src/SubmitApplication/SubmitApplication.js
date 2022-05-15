@@ -56,13 +56,16 @@ function SubmitApplication(props) {
   };
   const onFinishForm = (values) => {
     console.log('Success:', values);
-    var form=values
+    var form={}
+    form['用户申请表']=values
     form['userID']=userState['userID']
+    form['userName']=userState['userName']
     SubmitForm(form)
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
+    alert('请正确填写！')
   };
 
   return (
@@ -328,7 +331,7 @@ function SubmitApplication(props) {
         validateTrigger
       >
         <div style={{ fontStyle: 'italic', fontWeight: 'lighter' }}>（以下三项请至少选填一项）</div><br></br>
-        <h4 style={{ fontWeight: 'bolder' }}>功能数（到最后一级菜单）</h4>
+        <h4 style={{ fontWeight: 'bolder' }}>功能数(到最后一级菜单)</h4>
         <Form.Item 
         name={["软件规模", "功能数(到最后一级菜单)"]}
         rules={[{pattern: new RegExp(/^[1-9]\d*$/, "g"),message:'请正确输入功能数'}]}
@@ -359,85 +362,85 @@ function SubmitApplication(props) {
         <Radio.Group >
           <h4 style={{ fontWeight: 'bolder' }}>系统软件</h4>
           <Col span={30} >
-            <Radio value={['系统软件', '操作系统']} style={{ lineHeight: '32px' }} >操作系统</Radio>
+            <Radio value="系统软件-操作系统" style={{ lineHeight: '32px' }} >操作系统</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['系统软件', '中文处理系统']} style={{ lineHeight: '32px' }}>中文处理系统</Radio>
+            <Radio value="系统软件-中文处理系统" style={{ lineHeight: '32px' }}>中文处理系统</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['系统软件', '网络系统']} style={{ lineHeight: '32px' }}>网络系统</Radio>
+            <Radio value="系统软件-网络系统" style={{ lineHeight: '32px' }}>网络系统</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['系统软件', '嵌入式操作系统']} style={{ lineHeight: '32px' }}>嵌入式操作系统</Radio>
+            <Radio value="系统软件-嵌入式操作系统" style={{ lineHeight: '32px' }}>嵌入式操作系统</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['系统软件', '其他']} style={{ lineHeight: '32px' }}>其他</Radio>
+            <Radio value="系统软件-其他" style={{ lineHeight: '32px' }}>其他</Radio>
           </Col>
 
           <h4 style={{ fontWeight: 'bolder' }}>支持软件</h4>
           <Col span={30} >
-            <Radio value={['支持软件', '程序设计语言']} style={{ lineHeight: '32px' }} >程序设计语言</Radio>
+            <Radio value="支持软件-程序设计语言" style={{ lineHeight: '32px' }} >程序设计语言</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['支持软件', '数据库系统设计']} style={{ lineHeight: '32px' }}>数据库系统设计</Radio>
+            <Radio value="支持软件-数据库系统设计" style={{ lineHeight: '32px' }}>数据库系统设计</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['支持软件', '工具软件']} style={{ lineHeight: '32px' }}>工具软件</Radio>
+            <Radio value="支持软件-工具软件" style={{ lineHeight: '32px' }}>工具软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['支持软件', '网络通信软件']} style={{ lineHeight: '32px' }}>网络通信软件</Radio>
+            <Radio value="支持软件-网络通信软件" style={{ lineHeight: '32px' }}>网络通信软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['支持软件', '中间件']} style={{ lineHeight: '32px' }}>中间件</Radio>
+            <Radio value="支持软件-中间件" style={{ lineHeight: '32px' }}>中间件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['支持软件', '其他']} style={{ lineHeight: '32px' }}>其他</Radio>
+            <Radio value="支持软件-其他" style={{ lineHeight: '32px' }}>其他</Radio>
           </Col>
 
           <h4 style={{ fontWeight: 'bolder' }}>应用软件</h4>
           <Col span={30} >
-            <Radio value={['应用软件', '行业管理软件']} style={{ lineHeight: '32px' }} >行业管理软件</Radio>
+            <Radio value="应用软件-行业管理软件" style={{ lineHeight: '32px' }} >行业管理软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '办公软件']} style={{ lineHeight: '32px' }}>办公软件</Radio>
+            <Radio value="应用软件-办公软件" style={{ lineHeight: '32px' }}>办公软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '模式识别软件']} style={{ lineHeight: '32px' }}>模式识别软件</Radio>
+            <Radio value="应用软件-模式识别软件" style={{ lineHeight: '32px' }}>模式识别软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '图形图像软件']} style={{ lineHeight: '32px' }}>图形图像软件</Radio>
+            <Radio value="应用软件-图形图像软件" style={{ lineHeight: '32px' }}>图形图像软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '控制软件']} style={{ lineHeight: '32px' }}>控制软件</Radio>
+            <Radio value="应用软件-控制软件" style={{ lineHeight: '32px' }}>控制软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '网络应用软件']} style={{ lineHeight: '32px' }}>网络应用软件</Radio>
+            <Radio value="应用软件-网络应用软件" style={{ lineHeight: '32px' }}>网络应用软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '信息管理软件']} style={{ lineHeight: '32px' }}>信息管理软件</Radio>
+            <Radio value="应用软件-信息管理软件" style={{ lineHeight: '32px' }}>信息管理软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '数据库管理应用软件']} style={{ lineHeight: '32px' }}>数据库管理应用软件</Radio>
+            <Radio value="应用软件-数据库管理应用软件" style={{ lineHeight: '32px' }}>数据库管理应用软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '安全与保密软件']} style={{ lineHeight: '32px' }}>安全与保密软件</Radio>
+            <Radio value="应用软件-安全与保密软件" style={{ lineHeight: '32px' }}>安全与保密软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '嵌入式应用软件']} style={{ lineHeight: '32px' }}>嵌入式应用软件</Radio>
+            <Radio value="应用软件-嵌入式应用软件" style={{ lineHeight: '32px' }}>嵌入式应用软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '教育软件']} style={{ lineHeight: '32px' }}>教育软件</Radio>
+            <Radio value="应用软件-教育软件" style={{ lineHeight: '32px' }}>教育软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '游戏软件']} style={{ lineHeight: '32px' }}>游戏软件</Radio>
+            <Radio value="应用软件-游戏软件" style={{ lineHeight: '32px' }}>游戏软件</Radio>
           </Col>
           <Col span={30}>
-            <Radio value={['应用软件', '其他']} style={{ lineHeight: '32px' }}>其他</Radio>
+            <Radio value="应用软件-其他" style={{ lineHeight: '32px' }}>其他</Radio>
           </Col>
 
           <h4 style={{ fontWeight: 'bolder' }}>其他</h4>
           <Col span={30} >
-            <Radio value={['其他', '其他']} style={{ lineHeight: '32px' }} >其他</Radio>
+            <Radio value="其他-其他" style={{ lineHeight: '32px' }} >其他</Radio>
           </Col>
         </Radio.Group>
       </Form.Item>
