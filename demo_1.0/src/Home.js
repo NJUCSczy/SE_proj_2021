@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import "./Home.css";
+
 import SubmitApplication from './Adiministration/src/SubmitApplication/SubmitApplication';
 import ViewApplication from './Adiministration/src/ViewApplication/ViewApplication';
 import ViewEntrustList from './Adiministration/src/ViewEntrustList/ViewEntrustList';
 import ViewEntrust from './Adiministration/src/ViewEntrust/ViewEntrust';
 import { useState } from 'react';
-
+import MktdptApplication from './Adiministration/src/MktdptApplication/mktdept';
 import { Layout, Menu, Dropdown, Breadcrumb, Space } from 'antd';
 import { DownOutlined, SmileOutlined } from '@ant-design/icons';
 import UserInfoPage from './register_login/pages/UserInfo';
@@ -86,13 +87,13 @@ class Home extends React.Component {
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>资质信息</div>);
             case 'Info3':
                 this.setState({ HeaderMenuIndex: '4' });
-                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>政策法规</div>);
+                return (<MktdptApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></MktdptApplication>);
             case 'Info4':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>业务信息</div>);
             case 'Info5':
                 this.setState({ HeaderMenuIndex: '4' });
-                return (<ViewApplication></ViewApplication>);
+                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>新闻资讯</div>);
             case 'Info6':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<ConfidentialAgreement></ConfidentialAgreement>);
