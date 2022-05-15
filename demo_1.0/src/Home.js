@@ -15,6 +15,8 @@ import UserInfoPage from './register_login/pages/UserInfo';
 import Login from './register_login/pages/Login';
 import RegisterPage from './register_login/pages/Register';
 import ConfidentialAgreement from './Adiministration/src/ConfidentialAgreement/ConfidentialAgreement';
+import ClientApplication from './Adiministration/src/MktContract/ClientApplication';
+import TrusteeApplication from './Adiministration/src/MktContract/TrusteeApplication';
 const { Header, Content, Footer, Sider } = Layout;
 
 
@@ -90,10 +92,10 @@ class Home extends React.Component {
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>资质信息</div>);
             case 'Info3':
                 this.setState({ HeaderMenuIndex: '4' });
-                return (<MktdptApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></MktdptApplication>);
+                return (<ClientApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ClientApplication>);
             case 'Info4':
                 this.setState({ HeaderMenuIndex: '4' });
-                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>业务信息</div>);
+                return (<TrusteeApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TrusteeApplication>);//原 业务信息界面
             case 'Info5':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>新闻资讯</div>);
