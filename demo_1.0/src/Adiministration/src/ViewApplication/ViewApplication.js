@@ -45,7 +45,7 @@ useEffect(() => {
 
 
   const getvalue =(name)=>{
-    if(!FormData.hasOwnProperty("userInfo")){
+    if(!entrustData["formData"].hasOwnProperty("测试部审核委托")){
       return ['软件确认测试'];
     }
     else{
@@ -448,7 +448,7 @@ useEffect(() => {
         <Input style={{maxWidth:500}} disabled defaultValue={entrustData["formData"]["userApplication"]["委托单位信息"]["电话"]}/>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>传真</h3>
-        <Input style={{maxWidth:500}} />
+        <Input style={{maxWidth:500}} disabled defaultValue={entrustData["formData"]["userApplication"]["委托单位信息"]["传真"]}/>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>地址</h3>
         <Input style={{maxWidth:500}} disabled defaultValue={entrustData["formData"]["userApplication"]["委托单位信息"]["地址"]}/>
@@ -467,7 +467,164 @@ useEffect(() => {
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>网址</h3>
         <Input style={{maxWidth:500}} disabled defaultValue={entrustData["formData"]["userApplication"]["委托单位信息"]["网址"]}/>
-      </Form>)
+      {!entrustData["formData"].hasOwnProperty("测试部审核委托")? null:(
+         <div>
+         <h1 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试部审核结果</h1>
+         <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>密级</h2>
+         <Radio.Group  disabled defaultValue={entrustData["formData"]["测试部审核委托"]["密级"]}>
+            <Col span={30} >
+              <Radio value="无密级" style={{ lineHeight: '32px' }} >无密级</Radio>
+            </Col>
+            <Col span={30}>
+              <Radio value="秘密" style={{ lineHeight: '32px' }}>秘密</Radio>
+            </Col>
+            <Col span={30}>
+              <Radio value="机密" style={{ lineHeight: '32px' }}>机密</Radio>
+            </Col>
+          </Radio.Group>
+
+          <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>查杀病毒</h2>
+          <Checkbox.Group  disabled defaultValue={entrustData["formData"]["测试部审核委托"]["查杀病毒"]}>
+            <Col span={30}>
+              <Checkbox value="已完成" style={{ lineHeight: '32px' }}>
+                已完成
+              </Checkbox>
+            </Col>
+            <Checkbox value="未完成" style={{ lineHeight: '32px' }}>
+              其他
+              <Input style={{ padding: 0 }} disabled defaultValue={entrustData["formData"]["测试部审核委托"]["查杀工具"]} />
+            </Checkbox>
+          </Checkbox.Group>
+
+          <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>材料检查</h2>
+            <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试样品</h3>
+            <Checkbox.Group disabled defaultValue={entrustData["formData"]["测试部审核委托"]["材料检查"]["测试样品"]} >
+              <Col span={30}>
+                <Checkbox value="源代码" style={{ lineHeight: '32px' }}>
+                  源代码
+                </Checkbox>
+              </Col>
+              <Col span={30}>
+                <Checkbox value="可执行文件" style={{ lineHeight: '32px' }}>
+                  可执行文件
+                </Checkbox>
+              </Col>
+            </Checkbox.Group>
+
+          <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>需求文档</h3>
+          <Checkbox.Group disabled defaultValue={entrustData["formData"]["测试部审核委托"]["材料检查"]["需求文档"]} >
+            <Col span={30}>
+              <Checkbox value="项目计划任务书" style={{ lineHeight: '32px' }}>
+              项目计划任务书
+              </Checkbox>
+            </Col>
+            <Col span={30}>
+              <Checkbox value="需求分析报告" style={{ lineHeight: '32px' }}>
+                需求分析报告
+              </Checkbox>
+            </Col>
+            <Col span={30}>
+              <Checkbox value="合同" style={{ lineHeight: '32px' }}>
+                合同
+              </Checkbox>
+            </Col>
+          </Checkbox.Group>
+
+          <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>用户文档</h3>
+          <Checkbox.Group disabled defaultValue={entrustData["formData"]["测试部审核委托"]["材料检查"]["用户文档"]} >
+            <Col span={30}>
+              <Checkbox value="用户手册" style={{ lineHeight: '32px' }}>
+              用户手册
+              </Checkbox>
+            </Col>
+            <Col span={30}>
+              <Checkbox value="用户指南" style={{ lineHeight: '32px' }}>
+                用户指南
+              </Checkbox>
+            </Col>
+          </Checkbox.Group>
+
+          <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>操作文档</h3>
+          <Checkbox.Group disabled defaultValue={entrustData["formData"]["测试部审核委托"]["材料检查"]["操作文档"]} >
+            <Col span={30}>
+              <Checkbox value="操作员手册" style={{ lineHeight: '32px' }}>
+              操作员手册
+              </Checkbox>
+            </Col>
+            <Col span={30}>
+              <Checkbox value="安装手册" style={{ lineHeight: '32px' }}>
+              安装手册
+              </Checkbox>
+            </Col>
+            <Col span={30}>
+              <Checkbox value="诊断手册" style={{ lineHeight: '32px' }}>
+              诊断手册
+              </Checkbox>
+            </Col>
+            <Col span={30}>
+              <Checkbox value="支持手册" style={{ lineHeight: '32px' }}>
+              支持手册
+              </Checkbox>
+            </Col>
+          </Checkbox.Group>
+
+          <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>其它</h3>
+          <Input  style={{maxWidth:500}} disabled defaultValue={entrustData["formData"]["测试部审核委托"]["材料检查"]["其它"]}/>
+
+          <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>确认意见</h2>
+          <Radio.Group disabled defaultValue={entrustData["formData"]["测试部审核委托"]["确认意见"]} >
+            <Col span={30} >
+              <Radio value="材料不全" style={{ lineHeight: '32px' }} >测试所需材料不全，未达到受理条件。</Radio>
+            </Col>
+            <Col span={30}>
+              <Radio value="可以测试" style={{ lineHeight: '32px' }}>属依据国家标准或自编非标规范进行的常规检测，有资质、能力和资源满足委托方要求。</Radio>
+            </Col>
+            <Col span={30}>
+              <Radio value="不符合标准或者缺乏设备" style={{ lineHeight: '32px' }}>无国家标准和规范依据，或实验室缺乏检测设备和工具，无法完成检测。</Radio>
+            </Col>
+            <Col span={30}>
+              <Radio value="超出能力范围" style={{ lineHeight: '32px' }}>超出实验室能力和资质范围，无法完成检测。</Radio>
+            </Col>
+          </Radio.Group>
+           </div>
+      )}
+      {!entrustData["formData"].hasOwnProperty("市场部审核委托")? null:(
+        <div>
+        <h1 style={{ fontWeight: 'bolder', marginTop: 30 }}>市场部审核结果</h1>
+        <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>市场部受理意见</h2>
+        <Radio.Group disabled defaultValue={entrustData["formData"]["市场部审核委托"]["市场部受理意见"]} >
+          <Col span={30} >
+            <Radio value="受理" style={{ lineHeight: '32px' }} >受理</Radio>
+          </Col>
+          <Col span={30}>
+            <Radio value="不受理" style={{ lineHeight: '32px' }}>不受理</Radio>
+          </Col>
+          <Col span={30}>
+            <Radio value="需进一步审理" style={{ lineHeight: '32px' }}>需进一步审理</Radio>
+          </Col>
+        </Radio.Group>
+        {(entrustData["formData"]["市场部审核委托"]["市场部受理意见"] === '受理') ? (
+          <div>
+            <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试项目编号</h2>
+            <Input style={{ maxWidth: 500 }} disabled defaultValue={entrustData["formData"]["市场部审核委托"]["测试项目编号"]} />
+            </div>) : null
+        }
+        {(entrustData["formData"]["市场部审核委托"]["市场部受理意见"] === '受理') ? (
+          <div>
+            <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>市场部备注</h2>
+            <Input style={{ maxWidth: 500 }} disabled defaultValue={entrustData["formData"]["市场部审核委托"]["市场部备注"]} />
+            </div>) : null
+        }
+        {(entrustData["formData"]["市场部审核委托"]["市场部受理意见"] === '需进一步审理') ? (
+          <div>
+            <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>进一步审理方向及原因</h2>
+            <Input style={{ maxWidth: 500 }} disabled defaultValue={entrustData["formData"]["市场部审核委托"]["进一步审理方向及原因"]} />
+            </div>) : null
+        }
+        </div>
+      )}
+      </Form>
+      )
   )
 }
 
