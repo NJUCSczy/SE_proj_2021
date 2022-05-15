@@ -28,6 +28,7 @@ function ViewApplication(props){
             return res.json()
         })
         .then(data => {
+          console.log(data)
             if (data != null) {
                 setEntrustData(prev => {
                     const newData = _.cloneDeep(prev)
@@ -35,7 +36,7 @@ function ViewApplication(props){
                     return newData
                 })
             }
-            console.log(data)
+            
         })
 }
 useEffect(() => {
@@ -448,7 +449,7 @@ useEffect(() => {
         <Input style={{maxWidth:500}} disabled defaultValue={entrustData["formData"]["用户申请表"]["委托单位信息"]["电话"]}/>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>传真</h3>
-        <Input style={{maxWidth:500}} disabled defaultValue={entrustData["formData"]["userApplication"]["委托单位信息"]["传真"]}/>
+        <Input style={{maxWidth:500}} disabled defaultValue={entrustData["formData"]["用户申请表"]["委托单位信息"]["传真"]}/>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>地址</h3>
         <Input style={{maxWidth:500}} disabled defaultValue={entrustData["formData"]["用户申请表"]["委托单位信息"]["地址"]}/>
