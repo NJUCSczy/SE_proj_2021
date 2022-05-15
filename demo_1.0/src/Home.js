@@ -85,6 +85,9 @@ class Home extends React.Component {
             case 'MktdptApplication':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<MktdptApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></MktdptApplication>);
+            case 'TadultApplication':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<TadultApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TadultApplication>);
             case 'Info1':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>机构信息</div>);
