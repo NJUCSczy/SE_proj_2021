@@ -7,6 +7,7 @@ import SubmitApplication from './Adiministration/src/SubmitApplication/SubmitApp
 import ViewApplication from './Adiministration/src/ViewApplication/ViewApplication';
 import ViewEntrustList from './Adiministration/src/ViewEntrustList/ViewEntrustList';
 import ViewEntrust from './Adiministration/src/ViewEntrust/ViewEntrust';
+import TadultApplication from './Adiministration/src/TadultApplication/TadultApplication'
 import { useState } from 'react';
 import MktdptApplication from './Adiministration/src/MktdptApplication/mktdept';
 import { Layout, Menu, Dropdown, Breadcrumb, Space } from 'antd';
@@ -93,7 +94,7 @@ class Home extends React.Component {
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>业务信息</div>);
             case 'Info5':
                 this.setState({ HeaderMenuIndex: '4' });
-                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>新闻资讯</div>);
+                return (<TadultApplication></TadultApplication>);
             case 'Info6':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<ConfidentialAgreement></ConfidentialAgreement>);
