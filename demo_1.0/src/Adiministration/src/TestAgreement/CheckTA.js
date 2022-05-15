@@ -54,7 +54,6 @@ const SubmitForm = (_form) => {
         console.log(res)
         if (res.status === 200) {
           alert("提交成功！")
-          //navigate('/yjqtest', { state: { email: formData['email'], password: formData['password'] } })
         }
         return res.json()
       })
@@ -64,27 +63,21 @@ const SubmitForm = (_form) => {
   }
 
   const agree = (values) => {
-    var form=entrustData['formData']
-    if(form===null)
-      return
+    var form={}
     form['测试合同']['用户部分']['接受议价']= "true"
     form['测试合同']['用户部分']['委托结束']  = "false"
     SubmitForm(form)
   };
 
   const reconsider = (values) => {
-    var form=entrustData['formData']
-    if(form===null)
-      return
+    var form={}
     form['测试合同']['用户部分']['接受议价']= "false"
     form['测试合同']['用户部分']['委托结束']  = "false"
     SubmitForm(form)
   };
 
   const end = (values) => {
-    var form=entrustData['formData']
-    if(form===null)
-      return
+    var form={}
     form['测试合同']['用户部分']['接受议价']= "false"
     form['测试合同']['用户部分']['委托结束']  = "true"
     SubmitForm(form)
