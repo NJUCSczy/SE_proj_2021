@@ -42,6 +42,9 @@ function ViewEntrust(props) {
     const MktdptApplication = () => {
         UpdateUserInfo({ PageInfo: { 'id': _state['PageInfo']['id'] } }, GotoPage('MktdptApplication', _state))
     }
+    const TadultApplication = () => {
+        UpdateUserInfo({ PageInfo: { 'id': _state['PageInfo']['id'] } }, GotoPage('TadultApplication', _state))
+    }
 
     return (
         <div style={{ padding: 30 }}>
@@ -49,7 +52,7 @@ function ViewEntrust(props) {
             <h1 style={{ marginTop: 40 }}>测试申请表</h1>
             <h2 style={{ marginLeft: 20 }}>状态:{' '}
                 {(entrustData['formData'] === null) ? null :
-                    entrustData['formData'].hasOwnProperty('userApplication') === false ? "错误" :
+                    entrustData['formData'].hasOwnProperty('用户申请表') === false ? "错误" :
                         "用户已提交申请，等待审核"
                 }
             </h2>
@@ -62,6 +65,7 @@ function ViewEntrust(props) {
             <Button
                 type="primary"
                 style={{ marginLeft: 20 }}
+                onClick={TadultApplication}
             >测试部人员审核</Button>
             <Button
                 type="primary"
