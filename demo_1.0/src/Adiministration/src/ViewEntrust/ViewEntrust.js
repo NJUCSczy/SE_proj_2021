@@ -52,8 +52,11 @@ function ViewEntrust(props) {
     const ClientApplication = () => {
         UpdateUserInfo({ PageInfo: { 'id': _state['PageInfo']['id'] } }, GotoPage('ClientApplication', _state))
     }
-    const ConfidentialAgreement = () => {
-        UpdateUserInfo({ PageInfo: { 'id': _state['PageInfo']['id'] } }, GotoPage('ConfidentialAgreement', _state))
+    const ConfidentialAgreementPartyB = () => {
+        UpdateUserInfo({ PageInfo: { 'id': _state['PageInfo']['id'] } }, GotoPage('ConfidentialAgreementPartyB', _state))
+    }
+    const ConfidentialAgreementPartyA = () => {
+        UpdateUserInfo({ PageInfo: { 'id': _state['PageInfo']['id'] } }, GotoPage('ConfidentialAgreementPartyA', _state))
     }
 
     return (
@@ -125,11 +128,12 @@ function ViewEntrust(props) {
             <Button
                 type="primary"
                 style={{ marginLeft: 20 }}
-                onClick={ConfidentialAgreement}
+                onClick={ConfidentialAgreementPartyB}
             >市场部填写</Button>
             <Button
                 type="primary"
                 style={{ marginLeft: 20 }}
+                onClick={ConfidentialAgreementPartyA}
             >用户填写</Button>
         </div>
     )

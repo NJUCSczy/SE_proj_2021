@@ -15,7 +15,8 @@ import { DownOutlined, SmileOutlined } from '@ant-design/icons';
 import UserInfoPage from './register_login/pages/UserInfo';
 import Login from './register_login/pages/Login';
 import RegisterPage from './register_login/pages/Register';
-import ConfidentialAgreement from './Adiministration/src/ConfidentialAgreement/ConfidentialAgreement';
+import ConfidentialAgreementPartyB from './Adiministration/src/ConfidentialAgreement/ConfidentialAgreementPartyB';
+import ConfidentialAgreementPartyA from './Adiministration/src/ConfidentialAgreement/ConfidentialAgreementPartyA';
 import ClientApplication from './Adiministration/src/MktContract/ClientApplication';
 import TrusteeApplication from './Adiministration/src/MktContract/TrusteeApplication';
 const { Header, Content, Footer, Sider } = Layout;
@@ -94,9 +95,12 @@ class Home extends React.Component {
             case 'ClientApplication':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<ClientApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ClientApplication>);
-            case 'ConfidentialAgreement':
+            case 'ConfidentialAgreementPartyB':
                 this.setState({ HeaderMenuIndex: '4' });
-                return (<ConfidentialAgreement _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ConfidentialAgreement>);
+                return (<ConfidentialAgreementPartyB _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ConfidentialAgreementPartyB>);
+            case 'ConfidentialAgreementPartyA':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<ConfidentialAgreementPartyA _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ConfidentialAgreementPartyA>);
             case 'Info1':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>机构信息</div>);
@@ -114,7 +118,7 @@ class Home extends React.Component {
                 return (<TadultApplication></TadultApplication>);
             case 'Info6':
                 this.setState({ HeaderMenuIndex: '4' });
-                return (<ConfidentialAgreement></ConfidentialAgreement>);
+                return (<ConfidentialAgreementPartyB></ConfidentialAgreementPartyB>);
         }
         return null;
     }
