@@ -57,7 +57,7 @@ function SubmitApplication(props) {
   const onFinishForm = (values) => {
     console.log('Success:', values);
     var form={}
-    form['userApplication']=values
+    form['用户申请表']=values
     form['userID']=userState['userID']
     form['userName']=userState['userName']
     SubmitForm(form)
@@ -65,6 +65,7 @@ function SubmitApplication(props) {
 
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
+    alert('请正确填写！')
   };
 
   return (

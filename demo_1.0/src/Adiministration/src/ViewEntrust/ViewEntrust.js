@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 var _ = require('lodash');
 
 function ViewEntrust(props) {
-    const { UpdateUserInfo, GotoPage,_state } = props;
+    const { UpdateUserInfo, GotoPage, _state } = props;
     const [entrustData, setEntrustData] = useState({ 'formData': null })
     const updateInfo = () => {
         fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
@@ -35,8 +35,12 @@ function ViewEntrust(props) {
     }, []
     )
 
-    const ViewApplication =() => {
-        UpdateUserInfo({PageInfo:{'id':_state['PageInfo']['id']}},GotoPage('ViewApplication',_state))
+    const ViewApplication = () => {
+        UpdateUserInfo({ PageInfo: { 'id': _state['PageInfo']['id'] } }, GotoPage('ViewApplication', _state))
+    }
+
+    const MktdptApplication = () => {
+        UpdateUserInfo({ PageInfo: { 'id': _state['PageInfo']['id'] } }, GotoPage('MktdptApplication', _state))
     }
 
     return (
@@ -54,10 +58,16 @@ function ViewEntrust(props) {
                 style={{ marginLeft: 20 }}
                 onClick={ViewApplication}
             >查看</Button>
+
             <Button
                 type="primary"
                 style={{ marginLeft: 20 }}
-            >编辑</Button>
+            >测试部人员审核</Button>
+            <Button
+                type="primary"
+                style={{ marginLeft: 20 }}
+                onClick={MktdptApplication}
+            >市场部人员审核</Button>
         </div>
     )
 }
