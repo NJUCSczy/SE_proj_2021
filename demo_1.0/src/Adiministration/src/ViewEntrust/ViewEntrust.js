@@ -59,6 +59,12 @@ function ViewEntrust(props) {
         UpdateUserInfo({ PageInfo: { 'id': _state['PageInfo']['id'] } }, GotoPage('ConfidentialAgreementPartyA', _state))
     }
 
+    const gotoTestPage = () => {
+        UpdateUserInfo({PageInfo:{'id':_state['PageInfo']['id']}},GotoPage('Info7',_state))
+    }
+    const checkTestPage = () => {
+        UpdateUserInfo({PageInfo:{'id':_state['PageInfo']['id']}},GotoPage('Info8',_state))
+    }
     return (
         <div style={{ padding: 30 }}>
             <h1>用户名称: {(entrustData['formData'] === null) ? null : entrustData['formData']['userName']}</h1>
@@ -96,10 +102,12 @@ function ViewEntrust(props) {
             <Button
                 type="primary"
                 style={{ marginLeft: 20 }}
+                onClick={gotoTestPage}
             >市场部填写测试合同</Button>
             <Button
                 type="primary"
                 style={{ marginLeft: 20 }}
+                onClick={checkTestPage}
             >用户查看议价</Button>
             <Button
                 type="primary"

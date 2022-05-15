@@ -19,6 +19,8 @@ import ConfidentialAgreementPartyB from './Adiministration/src/ConfidentialAgree
 import ConfidentialAgreementPartyA from './Adiministration/src/ConfidentialAgreement/ConfidentialAgreementPartyA';
 import ClientApplication from './Adiministration/src/MktContract/ClientApplication';
 import TrusteeApplication from './Adiministration/src/MktContract/TrusteeApplication';
+import TestAgreement from './Adiministration/src/TestAgreement/TestAgreement';
+import CheckTA from './Adiministration/src/TestAgreement/CheckTA';
 const { Header, Content, Footer, Sider } = Layout;
 
 
@@ -119,7 +121,13 @@ class Home extends React.Component {
             case 'Info6':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<ConfidentialAgreementPartyB></ConfidentialAgreementPartyB>);
-        }
+            case 'Info7':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<TestAgreement _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestAgreement>);
+            case 'Info8':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<CheckTA _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></CheckTA>);
+            }
         return null;
     }
 
@@ -143,7 +151,9 @@ class Home extends React.Component {
                 { label: (<a onClick={() => { this.GotoPage('Info4', this.state) }}>业务信息</a>), },
                 { label: (<a onClick={() => { this.GotoPage('Info5', this.state) }}>新闻资讯</a>), },
                 { label: (<a onClick={() => { this.GotoPage('Info6', this.state) }}>友情链接</a>), },
-            ]} />} placement="bottom">
+                { label: (<a onClick={() => { this.GotoPage('Info7', this.state) }}>编辑测试合同</a>), },
+                { label: (<a onClick={() => { this.GotoPage('Info8', this.state) }}>查看测试合同</a>), },
+]} />} placement="bottom">
             <a onClick={e => e.preventDefault()}><Space>信息<DownOutlined /></Space></a>
         </Dropdown>)
 
