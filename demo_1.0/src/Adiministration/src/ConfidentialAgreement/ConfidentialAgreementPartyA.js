@@ -101,7 +101,7 @@ function ConfidentialAgreementPartyA(props){
                 //name="username"
                 rules={[{ required: true, message: '请输入委托方' }]}
               >
-              <Input style={{maxWidth:300}} disabled={true} defaultValue={(entrustData['formData'] === null ? 'null' : entrustData['formData']['保密协议']['市场部部分']['username'])}/>
+              <Input style={{maxWidth:300}} disabled={true} defaultValue={(entrustData['formData'] === null ? 'null' : entrustData['formData']['保密协议']['市场部部分']['委托方'])}/>
 
               </Form.Item>
 
@@ -113,7 +113,7 @@ function ConfidentialAgreementPartyA(props){
                 //name="project"
                 rules={[{ required: true, message: '请输入项目名' }]}
               >
-                <Input style={{maxWidth:300}} disabled={true} defaultValue={(entrustData['formData'] === null ? 'null' : entrustData['formData']['保密协议']['市场部部分']['project'])}/>
+                <Input style={{maxWidth:300}} disabled={true} defaultValue={(entrustData['formData'] === null ? 'null' : entrustData['formData']['保密协议']['市场部部分']['项目名'])}/>
               </Form.Item>
 
               <Paragraph>
@@ -161,7 +161,7 @@ function ConfidentialAgreementPartyA(props){
 
               <Form.Item
                 label="甲方"
-                name="FirstParty"
+                name="甲方"
                 rules={[{ required: true, message: '请输入甲方' }]}
               >
                 <Input style={{maxWidth:300}}/>
@@ -169,7 +169,7 @@ function ConfidentialAgreementPartyA(props){
 
               <Form.Item
                 label="法人代表"
-                name="LegalRepresentative"
+                name="法人代表"
                 rules={[{ required: true, message: '请输入法人代表' }]}
               >
                 <Input style={{maxWidth:300}}/>
@@ -178,7 +178,7 @@ function ConfidentialAgreementPartyA(props){
             
              <Form.Item
                 label="日期"
-                name={['date']}
+                name='日期'
                 rules={[{ required: true, message: '请填写日期' }]}
               >
                 <DatePicker />
