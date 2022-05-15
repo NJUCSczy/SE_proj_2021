@@ -14,7 +14,6 @@ function TadultApplication (props){
 
   const { UpdateUserInfo, GotoPage,_state } = props;
   const [formData, setFormData] = useState({})
-  const [entrustData, setEntrustData] = useState({ 'formData': null })
   const { Option } = Select;
   const { TextArea } = Input;
 
@@ -31,18 +30,30 @@ function TadultApplication (props){
 
   const onFinishForm = (values) => {
     console.log('Success:', values);
-    var form={}
-    form['TadultApplication']=values
-    SubmitForm(form)
-  };
-
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+    var form = {}
+    fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'] , {
+      method: "GET",
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(res => {
+        return res.json()
+      })
+      .then(data => {
+        if (data != null) {
+          form = data
+          form['测试部审核委托'] = values
+          SubmitForm(form)
+        }
+        console.log(data)
+      })
   };
 
   const SubmitForm = (_form) => {
-    fetch("http://localhost:8000/test/", {
-      method: "POST",
+    fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'], {
+      method: "PUT",
       headers: {
         'Content-Type': 'application/json'
       },
@@ -50,7 +61,7 @@ function TadultApplication (props){
     })
       .then(res => {
         console.log(res)
-        if (res.status === 201) {
+        if (res.status === 200) {
           alert("提交成功！")
           //navigate('/yjqtest', { state: { email: formData['email'], password: formData['password'] } })
         }
@@ -60,6 +71,11 @@ function TadultApplication (props){
         console.log(data)
       })
   }
+
+  const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo);
+    alert('请正确填写！')
+  };
 
   return(
         <Form
