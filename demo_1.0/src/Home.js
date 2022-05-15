@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import "./Home.css";
 import SubmitApplication from './Adiministration/src/SubmitApplication/SubmitApplication';
-import ViewApplication from './Adiministration/ViewApplication/ViewApplication'
+import ViewApplication from './Adiministration/src/ViewApplication/ViewApplication';
 import ViewEntrustList from './Adiministration/src/ViewEntrustList/ViewEntrustList';
 import ViewEntrust from './Adiministration/src/ViewEntrust/ViewEntrust';
 import { useState } from 'react';
