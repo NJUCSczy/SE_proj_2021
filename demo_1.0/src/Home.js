@@ -88,6 +88,15 @@ class Home extends React.Component {
             case 'TadultApplication':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<TadultApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TadultApplication>);
+            case 'TrusteeApplication':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<TrusteeApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TrusteeApplication>);
+            case 'ClientApplication':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<ClientApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ClientApplication>);
+            case 'ConfidentialAgreement':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<ConfidentialAgreement _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ConfidentialAgreement>);
             case 'Info1':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>机构信息</div>);

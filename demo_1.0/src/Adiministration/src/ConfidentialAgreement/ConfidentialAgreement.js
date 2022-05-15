@@ -14,6 +14,57 @@ var _ = require('lodash');
 var mobile = require('is-mobile');
 
 function ConfidentialAgreement(props){
+  const { UpdateUserInfo, GotoPage, _state } = props;
+
+  const onFinishForm = (values) => {
+    console.log('Success:', values);
+    var form = {}
+    fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
+      method: "GET",
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(res => {
+        return res.json()
+      })
+      .then(data => {
+        if (data != null) {
+          form = data
+          form['保密协议'] = {}
+          form['保密协议']['市场部部分']=values
+          SubmitForm(form)
+        }
+        console.log(data)
+      })
+  };
+
+  const SubmitForm = (_form) => {
+    fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'], {
+      method: "PUT",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(_form)
+    })
+      .then(res => {
+        console.log(res)
+        if (res.status === 200) {
+          alert("提交成功！")
+          //navigate('/yjqtest', { state: { email: formData['email'], password: formData['password'] } })
+        }
+        return res.json()
+      })
+      .then(data => {
+        console.log(data)
+      })
+  }
+
+  const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo);
+    alert('请正确填写！')
+  };
       
         return (
             <Form
