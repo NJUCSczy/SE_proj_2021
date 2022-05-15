@@ -70,6 +70,12 @@
       "password": "$2a$10$SVayZQsuxfwHByyMg4v5quo4TsmnlmSqVbL.aojT.WS8gIHNPo5Xy",
       "username": "gbl",
       "id": 13
+    },
+    {
+      "email": "yk@1",
+      "password": "$2a$10$.VJpVemNiUOG4dTUCSRPz.yyZDQALwNcEJp/c6p8q34xCMWj1hzQy",
+      "username": "yk1234",
+      "id": 14
     }
   ],
   "docs": [],
