@@ -43,7 +43,7 @@ useEffect(() => {
 )
 
 const SubmitForm = (_form) => {
-    fetch("http://localhost:8000/forms/", {
+    fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'], {
       method: "PUT",
       headers: {
         'Content-Type': 'application/json'
@@ -62,27 +62,15 @@ const SubmitForm = (_form) => {
       })
   }
 
-  const agree = (values) => {
-    var form={}
-    form['测试合同']['用户部分']['接受议价']= "true"
-    form['测试合同']['用户部分']['委托结束']  = "false"
-    SubmitForm(form)
-  };
+  const onFinishForm = (values) => {
+      var form=entrustData['formData'];
+      form['测试合同']['用户部分']={}
+      form['测试合同']['用户部分']['接受情况']=values
+      SubmitForm(form)
+  }
 
-  const reconsider = (values) => {
-    var form={}
-    form['测试合同']['用户部分']['接受议价']= "false"
-    form['测试合同']['用户部分']['委托结束']  = "false"
-    SubmitForm(form)
-  };
 
-  const end = (values) => {
-    var form={}
-    form['测试合同']['用户部分']['接受议价']= "false"
-    form['测试合同']['用户部分']['委托结束']  = "true"
-    SubmitForm(form)
-  };
-
+  console.log(entrustData)
     return(
         entrustData['formData'] === null ? null :
         (<Form
@@ -188,9 +176,9 @@ const SubmitForm = (_form) => {
                 <Paragraph>&emsp;本合同未尽事宜由双方协商解决。</Paragraph>
                 <Paragraph>&emsp;本合同的正本一式肆份,双方各执两份,具有同等法律效力。</Paragraph>
                 <Form inline style={{  textAlign: 'center' }}>
-                    <Button  onClick = {agree()}>确认合同</Button>&emsp;
-                    <Button  onClick = {reconsider()}>申请再议</Button>&emsp;
-                    <Button  onClick = {end()}>结束委托</Button>
+                    <Button  onClick = {() => onFinishForm('接受')}>确认合同</Button>&emsp;
+                    <Button  onClick = {() => onFinishForm('再议价')}>申请再议</Button>&emsp;
+                    <Button  onClick = {() => onFinishForm('不接受')}>结束委托</Button>
                 </Form>
       </Form>)
   )

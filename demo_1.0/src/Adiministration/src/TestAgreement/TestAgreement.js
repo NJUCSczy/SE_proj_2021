@@ -73,7 +73,9 @@ function TestAgreement(props){
         var form=entrustData['formData']
         if(form===null)
           return
+        form['测试合同']={}
         form['测试合同']['市场部部分']=values
+        form['测试合同']['议价情况']=null
         SubmitForm(form)
       }
 

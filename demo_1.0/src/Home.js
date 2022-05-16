@@ -103,6 +103,12 @@ class Home extends React.Component {
             case 'ConfidentialAgreementPartyA':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<ConfidentialAgreementPartyA _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ConfidentialAgreementPartyA>);
+            case 'TestAgreement':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<TestAgreement _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestAgreement>);
+            case 'CheckTA':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<CheckTA _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></CheckTA>);
             case 'Info1':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>机构信息</div>);
@@ -127,7 +133,7 @@ class Home extends React.Component {
             case 'Info8':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<CheckTA _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></CheckTA>);
-            }
+        }
         return null;
     }
 
@@ -153,7 +159,7 @@ class Home extends React.Component {
                 { label: (<a onClick={() => { this.GotoPage('Info6', this.state) }}>友情链接</a>), },
                 { label: (<a onClick={() => { this.GotoPage('Info7', this.state) }}>编辑测试合同</a>), },
                 { label: (<a onClick={() => { this.GotoPage('Info8', this.state) }}>查看测试合同</a>), },
-]} />} placement="bottom">
+            ]} />} placement="bottom">
             <a onClick={e => e.preventDefault()}><Space>信息<DownOutlined /></Space></a>
         </Dropdown>)
 
