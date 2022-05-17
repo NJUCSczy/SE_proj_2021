@@ -3,11 +3,12 @@ import React ,{ Fragment }from 'react'
 import { DatePicker, Divider, Form,Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import { useState } from 'react';
 import Paragraph from 'antd/lib/skeleton/Paragraph';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 262cb7d2aafb3d81e178d6016504158ceb5fd552
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
-const formItemLayout = {
-    labelCol: { span: 5 },
-    wrapperCol: { span: 16 },
-  };
+
 function FunctionList(props) {
     const { UpdateUserInfo, GotoPage, _state } = props;
     const [formData, setFormData] = useState({})
@@ -54,7 +55,7 @@ function FunctionList(props) {
         <Form
       name="报价单"
       initialValues={{ remember: true }}
-      style={{ padding: '20px 30px' }}
+      style={{ padding: '20px 30px' } }
       autoComplete="false"
       onFinish={onFinishForm}
       onFinishFailed={onFinishFailed}
@@ -75,20 +76,31 @@ function FunctionList(props) {
         <Input  style={{maxWidth:500}} rules={[{ required: true, message: '请填写版本号' }]}/>
       </Form.Item>
 
-
-    
-      <Form.List name="子功能项目列表" layout='vertical' width={500}>
-        {(fields, { add, remove }) => (
-          <>
+      <Form.List name="功能项目列表" layout='vertical' width={500}>
+          {(fields, {add, remove})=>(<>
             {fields.map(({ key, name, ...restField }) => (
-             <Fragment layout='vertical' key={key} style={{ display: 'flex', marginBottom: 8 }}>
-               <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件功能项目</h5>
-                <Form.Item
+                <Fragment key = {restField.key}>
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件功能</h4>
+                    <Form.Item
                   {...restField}
                   name={[name, '软件功能项目']}
                   rules={[{ required: true, message: '请填写软件功能项目' }]}
                 >
                   <Input style={{maxWidth:500}} placeholder="软件功能项目" />
+                </Form.Item>
+      <Form.List name="子功能项目列表" layout='vertical' width={500}>
+        {(fieldsInside, { add:addInside, remove:removeInside }) => (
+          <>
+            {fieldsInside.map(({ key, name, ...restFieldInside }) => (
+             <Fragment layout='vertical' key={key} style={{ display: 'flex', marginBottom: 8 }}>
+               <h5 style={{ fontWeight: 'bolder', marginTop: 30  }}>软件子功能项目</h5>
+               <>
+                <Form.Item
+                  {...restFieldInside}
+                  name={[name, '软件子功能项目']}
+                  rules={[{ required: true, message: '请填写软件子功能项目' }]}
+                >
+                  <Input style={{maxWidth:500}} placeholder="软件子功能项目" />
                 </Form.Item>
         
                 <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>功能说明</h5>
@@ -100,7 +112,7 @@ function FunctionList(props) {
                   <Input style={{maxWidth:500}} placeholder="功能说明" />
                 </Form.Item>
 
-               
+                </>
                 <Button onClick={() => remove(name)} type='danger'>
                     删除该项目
                 </Button>
@@ -109,13 +121,30 @@ function FunctionList(props) {
             <Form.Item>
               <Button  type="dashed"
               style={{ width:500, marginTop: 30 }}
-               onClick={() => add()} icon={<PlusOutlined />}  >
+               onClick={() => addInside()} icon={<PlusOutlined />}  >
                 添加新项目
               </Button>
             </Form.Item>
           </>
         )}
       </Form.List>
+
+      <Button onClick={() => remove(name)} type='danger'>
+                    删除该功能
+                </Button>
+                </Fragment>       
+            ))}
+      <Form.Item>
+              <Button  type="dashed"
+              style={{ width:500, marginTop: 30 }}
+               onClick={() => add()} icon={<PlusOutlined />}  >
+                添加新功能
+              </Button>
+            </Form.Item>
+           
+      </>)}
+      </Form.List>
+
 
       
 
