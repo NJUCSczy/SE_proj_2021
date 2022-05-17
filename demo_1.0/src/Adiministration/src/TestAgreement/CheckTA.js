@@ -64,8 +64,7 @@ const SubmitForm = (_form) => {
 
   const onFinishForm = (values) => {
       var form=entrustData['formData'];
-      form['测试合同']['议价情况']={}
-      form['测试合同']['议价情况']['接受情况']=values
+      form['报价单']['用户反馈']=values
       SubmitForm(form)
   }
 

@@ -3,10 +3,6 @@ import React ,{ Fragment }from 'react'
 import { DatePicker, Divider, Form,Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import { useState } from 'react';
 import Paragraph from 'antd/lib/skeleton/Paragraph';
-<<<<<<< HEAD
-=======
-
->>>>>>> 262cb7d2aafb3d81e178d6016504158ceb5fd552
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 
 function FunctionList(props) {
@@ -16,15 +12,31 @@ function FunctionList(props) {
     const { TextArea } = Input;
 
     const onFinishForm = (values) => {
-        console.log('Success:', values);
-        var form = {}
-        form['功能列表']=values;
-        SubmitForm(form);
-      };
+      console.log('Success:', values);
+      var form = {}
+      fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
+        method: "GET",
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(res => {
+          return res.json()
+        })
+        .then(data => {
+          if (data != null) {
+            form = data
+            form['委托测试软件功能列表']=values
+            SubmitForm(form)
+          }
+          console.log(data)
+        })
+    };
     
       const SubmitForm = (_form) => {
-        fetch("http://localhost:8000/test/", {
-          method: "POST",
+        fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'], {
+          method: "PUT",
           headers: {
             'Content-Type': 'application/json'
           },
@@ -32,7 +44,7 @@ function FunctionList(props) {
         })
           .then(res => {
             console.log(res)
-            if (res.status === 201) {
+            if (res.status === 200) {
               alert("提交成功！")
               //navigate('/yjqtest', { state: { email: formData['email'], password: formData['password'] } })
             }
@@ -98,7 +110,7 @@ function FunctionList(props) {
                 <Form.Item
                   {...restFieldInside}
                   name={[name, '软件子功能项目']}
-                  rules={[{ required: true, message: '请填写软件子功能项目' }]}
+                  rules={[{ required: false, message: '请填写软件子功能项目' }]}
                 >
                   <Input style={{maxWidth:500}} placeholder="软件子功能项目" />
                 </Form.Item>
@@ -107,7 +119,7 @@ function FunctionList(props) {
                 <Form.Item
                   {...restField}
                   name={[name, '功能说明']}
-                  rules={[{ required: true, message: '请填写功能说明' }]}
+                  rules={[{ required: false, message: '请填写功能说明' }]}
                 >
                   <Input style={{maxWidth:500}} placeholder="功能说明" />
                 </Form.Item>
