@@ -15,9 +15,12 @@ import { DownOutlined, SmileOutlined } from '@ant-design/icons';
 import UserInfoPage from './register_login/pages/UserInfo';
 import Login from './register_login/pages/Login';
 import RegisterPage from './register_login/pages/Register';
-import ConfidentialAgreement from './Adiministration/src/ConfidentialAgreement/ConfidentialAgreement';
+import ConfidentialAgreementPartyB from './Adiministration/src/ConfidentialAgreement/ConfidentialAgreementPartyB';
+import ConfidentialAgreementPartyA from './Adiministration/src/ConfidentialAgreement/ConfidentialAgreementPartyA';
 import ClientApplication from './Adiministration/src/MktContract/ClientApplication';
 import TrusteeApplication from './Adiministration/src/MktContract/TrusteeApplication';
+import TestAgreement from './Adiministration/src/TestAgreement/TestAgreement';
+import CheckTA from './Adiministration/src/TestAgreement/CheckTA';
 const { Header, Content, Footer, Sider } = Layout;
 
 
@@ -88,6 +91,24 @@ class Home extends React.Component {
             case 'TadultApplication':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<TadultApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TadultApplication>);
+            case 'TrusteeApplication':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<TrusteeApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TrusteeApplication>);
+            case 'ClientApplication':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<ClientApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ClientApplication>);
+            case 'ConfidentialAgreementPartyB':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<ConfidentialAgreementPartyB _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ConfidentialAgreementPartyB>);
+            case 'ConfidentialAgreementPartyA':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<ConfidentialAgreementPartyA _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ConfidentialAgreementPartyA>);
+            case 'TestAgreement':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<TestAgreement _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestAgreement>);
+            case 'CheckTA':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<CheckTA _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></CheckTA>);
             case 'Info1':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>机构信息</div>);
@@ -105,7 +126,13 @@ class Home extends React.Component {
                 return (<TadultApplication></TadultApplication>);
             case 'Info6':
                 this.setState({ HeaderMenuIndex: '4' });
-                return (<ConfidentialAgreement></ConfidentialAgreement>);
+                return (<ConfidentialAgreementPartyB></ConfidentialAgreementPartyB>);
+            case 'Info7':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<TestAgreement _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestAgreement>);
+            case 'Info8':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<CheckTA _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></CheckTA>);
         }
         return null;
     }
@@ -130,6 +157,8 @@ class Home extends React.Component {
                 { label: (<a onClick={() => { this.GotoPage('Info4', this.state) }}>业务信息</a>), },
                 { label: (<a onClick={() => { this.GotoPage('Info5', this.state) }}>新闻资讯</a>), },
                 { label: (<a onClick={() => { this.GotoPage('Info6', this.state) }}>友情链接</a>), },
+                { label: (<a onClick={() => { this.GotoPage('Info7', this.state) }}>编辑测试合同</a>), },
+                { label: (<a onClick={() => { this.GotoPage('Info8', this.state) }}>查看测试合同</a>), },
             ]} />} placement="bottom">
             <a onClick={e => e.preventDefault()}><Space>信息<DownOutlined /></Space></a>
         </Dropdown>)

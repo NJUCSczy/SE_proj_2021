@@ -8,6 +8,56 @@ function TrusteeApplication(props) {
     const { Option } = Select;
     const { TextArea } = Input;
 
+    const onFinishForm = (values) => {
+      console.log('Success:', values);
+      var form = {}
+      fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
+        method: "GET",
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(res => {
+          return res.json()
+        })
+        .then(data => {
+          if (data != null) {
+            form = data
+            form['测试合同']['签章'] = {}
+            form['测试合同']['签章']['市场部签章']=values
+            SubmitForm(form)
+          }
+          console.log(data)
+        })
+    };
+  
+    const SubmitForm = (_form) => {
+      fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'], {
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(_form)
+      })
+        .then(res => {
+          console.log(res)
+          if (res.status === 200) {
+            alert("提交成功！")
+            //navigate('/yjqtest', { state: { email: formData['email'], password: formData['password'] } })
+          }
+          return res.json()
+        })
+        .then(data => {
+          console.log(data)
+        })
+    }
+  
+    const onFinishFailed = (errorInfo) => {
+      console.log('Failed:', errorInfo);
+      alert('请正确填写！')
+    };
+
     return(
     <Form
       name="软件测试委托合同签章(受托方)"
@@ -16,7 +66,10 @@ function TrusteeApplication(props) {
       labelCol={{ span: 10, flex: 'auto' }}
       wrapperCol={{ span: 20 }}
       layout='vertical'
-      autoComplete="false">
+      autoComplete="false"
+      onFinish={onFinishForm}
+      onFinishFailed={onFinishFailed}
+      >
      <h1 style={{textAlign:'center',fontSize:30}}>软件测试委托合同签章(受托方)</h1>
 
      <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>单位全称</h3>

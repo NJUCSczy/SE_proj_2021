@@ -2,6 +2,7 @@ import './ViewEntrustList.css'
 import React from 'react';
 import { Table, Tag, Space } from 'antd';
 import { useEffect, useState } from 'react';
+import {getStageByInfo,getStatusInfo} from '../../functions/functions'
 
 var _ = require('lodash');
 
@@ -41,12 +42,7 @@ var _ = require('lodash');
           key: 'status',
           render: (userApplication) => (
             <Space size="middle">
-            {(userApplication['用户申请表'] === undefined ) ? "状态错误":
-            userApplication['测试部审核委托'] === undefined ? "等待测试部审核":
-            userApplication['测试部审核委托']['确认意见'] != '可以测试' ? '被驳回，理由：'+userApplication['测试部审核委托']['确认意见'] :
-            userApplication['市场部审核委托'] === undefined ? '测试部审核通过，等待市场部审核' :
-            userApplication['市场部审核委托']['市场部受理意见'] === '受理' ? '市场部确认受理，测试项目编号：'+userApplication['市场部审核委托']['测试项目编号'] :
-            '市场部：'+userApplication['市场部审核委托']['市场部受理意见']
+            {getStatusInfo(userApplication)
             }
           </Space>
           )

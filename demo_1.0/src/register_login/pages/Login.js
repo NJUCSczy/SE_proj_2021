@@ -48,7 +48,7 @@ function Login(props) {
         }
         else {
           handleChange('Authorization', data.accessToken)
-          var _info={userID:data.user.id,userName:data.user.username,Authorization:data.accessToken};
+          var _info={userIdentity:'user',userID:data.user.id,userName:data.user.username,Authorization:data.accessToken};
           UpdateUserInfo(_info,GotoPage('UserInfo',_info));
         }
       })
