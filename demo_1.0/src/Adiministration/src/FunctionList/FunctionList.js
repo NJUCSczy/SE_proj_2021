@@ -91,25 +91,27 @@ function FunctionList(props) {
       <Form.List name="功能项目列表" layout='vertical' width={500}>
           {(fields, {add, remove})=>(<>
             {fields.map(({ key, name, ...restField }) => (
-                <Fragment key = {restField.key}>
+                <Fragment >
                     <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件功能</h4>
                     <Form.Item
                   {...restField}
-                  name={[name, '软件功能项目']}
+                  
+                  //key={restField.key,'软件功能项目'}
                   rules={[{ required: true, message: '请填写软件功能项目' }]}
                 >
                   <Input style={{maxWidth:500}} placeholder="软件功能项目" />
                 </Form.Item>
-      <Form.List name="子功能项目列表" layout='vertical' width={500}>
+      <Form.List name="子功能项目列表" key={[restField.key, '软件功能项目']} layout='vertical' width={500}>
         {(fieldsInside, { add:addInside, remove:removeInside }) => (
           <>
             {fieldsInside.map(({ key, name, ...restFieldInside }) => (
-             <Fragment layout='vertical' key={key} style={{ display: 'flex', marginBottom: 8 }}>
+             <div name = {[restFieldInside.name,'子功能项目']} key={[restFieldInside.key,'子功能项目']}>
                <h5 style={{ fontWeight: 'bolder', marginTop: 30  }}>软件子功能项目</h5>
-               <>
+               
                 <Form.Item
                   {...restFieldInside}
-                  name={[name, '软件子功能项目']}
+                  key = {[restFieldInside.key,'软件子功能项目']}
+                  
                   rules={[{ required: false, message: '请填写软件子功能项目' }]}
                 >
                   <Input style={{maxWidth:500}} placeholder="软件子功能项目" />
@@ -117,18 +119,18 @@ function FunctionList(props) {
         
                 <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>功能说明</h5>
                 <Form.Item
-                  {...restField}
-                  name={[name, '功能说明']}
+                  {...restFieldInside}
+               
+                  key = {[restFieldInside.key,'功能说明']}
                   rules={[{ required: false, message: '请填写功能说明' }]}
                 >
                   <Input style={{maxWidth:500}} placeholder="功能说明" />
                 </Form.Item>
-
-                </>
-                <Button onClick={() => remove(name)} type='danger'>
+                
+                <Button onClick={() => remove(restFieldInside.name)} type='danger'>
                     删除该项目
                 </Button>
-                </Fragment>
+                </div>
             ))}
             <Form.Item>
               <Button  type="dashed"
@@ -141,7 +143,7 @@ function FunctionList(props) {
         )}
       </Form.List>
 
-      <Button onClick={() => remove(name)} type='danger'>
+      <Button onClick={() => remove(restField.name)} type='danger'>
                     删除该功能
                 </Button>
                 </Fragment>       
