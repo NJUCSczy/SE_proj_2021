@@ -42,14 +42,6 @@ class UserInfoPage extends Component{
         this.props.UpdateUserInfo(emptyUserInfo);
         this.props.GotoPage('Login',emptyUserInfo);
     }
-    fetchItems() {
-        fetch('http://localhost:8000/users')
-        .then(res=>res.json())
-        .then(data=>{
-            console.log(data)
-            //this.setState()
-        })
-    }
     render(){
         const onClick = (e) => {
             console.log('click ', e);
