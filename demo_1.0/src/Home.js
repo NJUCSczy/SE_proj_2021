@@ -21,6 +21,8 @@ import ClientApplication from './Adiministration/src/MktContract/ClientApplicati
 import TrusteeApplication from './Adiministration/src/MktContract/TrusteeApplication';
 import TestAgreement from './Adiministration/src/TestAgreement/TestAgreement';
 import CheckTA from './Adiministration/src/TestAgreement/CheckTA';
+import Quotation from './Adiministration/src/Quotation/Quotation';
+
 const { Header, Content, Footer, Sider } = Layout;
 
 
@@ -111,7 +113,7 @@ class Home extends React.Component {
                 return (<CheckTA _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></CheckTA>);
             case 'Info1':
                 this.setState({ HeaderMenuIndex: '4' });
-                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>机构信息</div>);
+                return (<Quotation _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></Quotation>);
             case 'Info2':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>资质信息</div>);
