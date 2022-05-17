@@ -135,26 +135,26 @@ function ViewEntrust(props) {
                                 status={getStageByInfo(entrustData['formData']) < 6 ? 'wait' :
                                     getStageByInfo(entrustData['formData']) === 6 ? 'process' : 'finish'} />
                             <Step title="用户确认接受议价"
-                                description={getStageByInfo(entrustData['formData']) >= 10 ? "已完成" :
-                                    getStageByInfo(entrustData['formData']) === 7 ? "等待客户确认议价" :
-                                        getStageByInfo(entrustData['formData']) === 8 ? "客户不接受议价" : null}
-                                status={getStageByInfo(entrustData['formData']) >= 10 ? 'finish' :
-                                    getStageByInfo(entrustData['formData']) === 7 ? 'process' :
-                                        getStageByInfo(entrustData['formData']) === 8 ? 'error' : 'wait'} />
+                                description={getStageByInfo(entrustData['formData']) >= 11 ? "已完成" :
+                                    getStageByInfo(entrustData['formData']) === 8 ? "等待客户确认议价" :
+                                        getStageByInfo(entrustData['formData']) === 9 ? "客户不接受议价" : null}
+                                status={getStageByInfo(entrustData['formData']) >= 11 ? 'finish' :
+                                    getStageByInfo(entrustData['formData']) === 8 ? 'process' :
+                                        getStageByInfo(entrustData['formData']) === 9 ? 'error' : 'wait'} />
                             <Step title="市场部填写受托人签章"
-                                description={getStageByInfo(entrustData['formData']) < 10 ? null :
-                                    getStageByInfo(entrustData['formData']) === 10 ? "进行中" : "已完成"
-                                }
-                                status={getStageByInfo(entrustData['formData']) < 10 ? 'wait' :
-                                    getStageByInfo(entrustData['formData']) === 10 ? 'process' : 'finish'
-                                }
-                            />
-                            <Step title="客户填写委托人签章"
                                 description={getStageByInfo(entrustData['formData']) < 11 ? null :
                                     getStageByInfo(entrustData['formData']) === 11 ? "进行中" : "已完成"
                                 }
                                 status={getStageByInfo(entrustData['formData']) < 11 ? 'wait' :
                                     getStageByInfo(entrustData['formData']) === 11 ? 'process' : 'finish'
+                                }
+                            />
+                            <Step title="客户填写委托人签章"
+                                description={getStageByInfo(entrustData['formData']) < 12 ? null :
+                                    getStageByInfo(entrustData['formData']) === 12 ? "进行中" : "已完成"
+                                }
+                                status={getStageByInfo(entrustData['formData']) < 12 ? 'wait' :
+                                    getStageByInfo(entrustData['formData']) === 12 ? 'process' : 'finish'
                                 }
                             />
                         </Steps>
@@ -165,25 +165,25 @@ function ViewEntrust(props) {
                 type="primary"
                 style={{ marginLeft: 20 }}
             >查看</Button>
-            {(getStageByInfo(entrustData['formData']) === 6 || getStageByInfo(entrustData['formData']) === 9) ? (
+            {(getStageByInfo(entrustData['formData']) === 7 || getStageByInfo(entrustData['formData']) === 10) ? (
                 <Button
                     type="primary"
                     style={{ marginLeft: 20 }}
                     onClick={TestAgreement}
                 >市场部发起议价</Button>) : null}
-            {(getStageByInfo(entrustData['formData']) === 7) ? (
+            {(getStageByInfo(entrustData['formData']) === 8) ? (
                 <Button
                     type="primary"
                     style={{ marginLeft: 20 }}
                     onClick={CheckTA}
                 >用户查看议价</Button>) : null}
-            {(getStageByInfo(entrustData['formData']) === 10) ? (
+            {(getStageByInfo(entrustData['formData']) === 9) ? (
                 <Button
                     type="primary"
                     style={{ marginLeft: 20 }}
                     onClick={TrusteeApplication}
                 >市场部填写受托人签章</Button>) : null}
-            {(getStageByInfo(entrustData['formData']) === 11) ? (
+            {(getStageByInfo(entrustData['formData']) === 10) ? (
                 <Button
                     type="primary"
                     style={{ marginLeft: 20 }}
@@ -200,15 +200,15 @@ function ViewEntrust(props) {
                     <p>
                         <Steps direction="vertical">
                             <Step title="测试部填写保密协议"
-                                description={getStageByInfo(entrustData['formData']) < 12 ? null :
-                                    getStageByInfo(entrustData['formData']) === 12 ? "等待测试部填写保密协议" : "已完成"}
-                                status={getStageByInfo(entrustData['formData']) < 12 ? 'wait' :
-                                    getStageByInfo(entrustData['formData']) === 12 ? 'process' : 'finish'} />
-                            <Step title="客户填写保密协议"
                                 description={getStageByInfo(entrustData['formData']) < 13 ? null :
-                                    getStageByInfo(entrustData['formData']) === 13 ? "等待客户填写保密协议" : "已完成"}
+                                    getStageByInfo(entrustData['formData']) === 13 ? "等待测试部填写保密协议" : "已完成"}
                                 status={getStageByInfo(entrustData['formData']) < 13 ? 'wait' :
                                     getStageByInfo(entrustData['formData']) === 13 ? 'process' : 'finish'} />
+                            <Step title="客户填写保密协议"
+                                description={getStageByInfo(entrustData['formData']) < 14 ? null :
+                                    getStageByInfo(entrustData['formData']) === 14 ? "等待客户填写保密协议" : "已完成"}
+                                status={getStageByInfo(entrustData['formData']) < 14 ? 'wait' :
+                                    getStageByInfo(entrustData['formData']) === 14 ? 'process' : 'finish'} />
                         </Steps>
                     </p>
                 </Panel>
@@ -217,13 +217,13 @@ function ViewEntrust(props) {
                 type="primary"
                 style={{ marginLeft: 20 }}
             >查看</Button>
-            {(getStageByInfo(entrustData['formData']) === 12) ? (
+            {(getStageByInfo(entrustData['formData']) === 13) ? (
                 <Button
                     type="primary"
                     style={{ marginLeft: 20 }}
                     onClick={ConfidentialAgreementPartyB}
                 >市场部填写</Button>) : null}
-            {(getStageByInfo(entrustData['formData']) === 13) ? (
+            {(getStageByInfo(entrustData['formData']) === 14) ? (
                 <Button
                     type="primary"
                     style={{ marginLeft: 20 }}
