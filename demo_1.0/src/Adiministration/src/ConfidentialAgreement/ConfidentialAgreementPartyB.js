@@ -84,7 +84,7 @@ function ConfidentialAgreementPartyB(props){
               </Paragraph>
 
               <Form.Item
-                name="username"
+                name="委托方"
                 rules={[{ required: true, message: '请输入委托方' }]}
               >
                 <Input style={{maxWidth:300}}/>
@@ -95,7 +95,7 @@ function ConfidentialAgreementPartyB(props){
               </Paragraph>
 
               <Form.Item
-                name="project"
+                name="项目名"
                 rules={[{ required: true, message: '请输入项目名' }]}
               >
                 <Input style={{maxWidth:300}}/>
@@ -146,7 +146,7 @@ function ConfidentialAgreementPartyB(props){
 
               <Form.Item
                 label="乙方"
-                name="SecondParty"
+                name="乙方"
                 rules={[{ required: true, message: '请输入乙方' }]}
               >
                 <Input style={{maxWidth:300}}/>
@@ -154,7 +154,7 @@ function ConfidentialAgreementPartyB(props){
 
               <Form.Item
                 label="法人代表"
-                name="LegalRepresentative"
+                name="法人代表"
                 rules={[{ required: true, message: '请输入法人代表' }]}
               >
                 <Input style={{maxWidth:300}}/>
@@ -163,7 +163,7 @@ function ConfidentialAgreementPartyB(props){
             
              <Form.Item
                 label="日期"
-                name={['date']}
+                name='日期'
                 rules={[{ required: true, message: '请填写日期' }]}
               >
                 <DatePicker />

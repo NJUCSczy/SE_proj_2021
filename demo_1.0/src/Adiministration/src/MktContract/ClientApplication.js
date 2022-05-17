@@ -148,7 +148,13 @@ function ClientApplication(props) {
       >
         <Input  style={{maxWidth:500}}/>
       </Form.Item>
+      <Form.Item>
+        <Button type="primary" htmlType="submit">
+          提交
+        </Button>
+      </Form.Item>
       </Form>
+
     )
 }
 export default ClientApplication;
