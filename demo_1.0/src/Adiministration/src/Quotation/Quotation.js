@@ -3,7 +3,6 @@ import React ,{ Fragment }from 'react'
 import { DatePicker, Divider, Form,Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import { useState } from 'react';
 import Paragraph from 'antd/lib/skeleton/Paragraph';
-import { Icon } from '@ant-design/compatible';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 const formItemLayout = {
     labelCol: { span: 5 },
