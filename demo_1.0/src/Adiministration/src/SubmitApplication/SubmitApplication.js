@@ -641,10 +641,10 @@ function SubmitApplication(props) {
       >
         <Radio.Group >
           <Col span={30} >
-            <Radio value="光盘" style={{ lineHeight: '32px' }} >光盘</Radio>
+            <Radio value="光盘" style={{ lineHeight: '32px' }} onChange={(e) => setDataByKey('样品和数量-软件介质-其他', false)}>光盘</Radio>
           </Col>
           <Col span={30}>
-            <Radio value="U盘" style={{ lineHeight: '32px' }}>U盘</Radio>
+            <Radio value="U盘" style={{ lineHeight: '32px' } } onChange={(e) => setDataByKey('样品和数量-软件介质-其他', false)}>U盘</Radio>
           </Col>
           <Col span={30}>
           <Radio value="其他" style={{ lineHeight: '32px' }} onChange={(e) => setDataByKey('样品和数量-软件介质-其他', e.target.checked)}>

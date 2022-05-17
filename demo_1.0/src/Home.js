@@ -225,7 +225,7 @@ class Home extends React.Component {
                             {Breadcrumbitems[this.state.BreadcrumbByIndex[3]]}
                             {Breadcrumbitems[this.state.BreadcrumbByIndex[4]]}
                         </Breadcrumb>
-                        <Layout style={{ overflowY: 'scroll', marginBottom: 100, height: '100%' }}>
+                        <Layout onChange={() => {document.body.scrollTop = document.documentElement.scrollTop = 0;}} style={{ overflowY: 'scroll', marginBottom: 100, height: '100%' }}>
                             <div className="site-layout-background" style={{ padding: 0, height: 'fit-content' }}>
                                 {this.state.PageContent}
                             </div>

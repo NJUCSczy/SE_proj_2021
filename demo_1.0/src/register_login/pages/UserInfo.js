@@ -30,51 +30,25 @@ const items = [
     //   getItem('Option 12', '12'),
     // ]),
   ];
-class UserInfoPage extends Component{
-
-    constructor(props) {
-        super(props);
-        const {_state} = props;
-        this.state=_state;
-    }
-    Logout = () => {
+function UserInfoPage(props){
+    const {_state} = props;
+    const Logout = () => {
         var emptyUserInfo={userID:null,userName:null,Authorization:null};
         this.props.UpdateUserInfo(emptyUserInfo);
         this.props.GotoPage('Login',emptyUserInfo);
     }
-    fetchItems() {
-        fetch('http://localhost:8000/users')
-        .then(res=>res.json())
-        .then(data=>{
-            console.log(data)
-            //this.setState()
-        })
-    }
-    render(){
         const onClick = (e) => {
             console.log('click ', e);
           };
         return (
             <div className="container">
             <h1 style={{fontSize: 40, fontWeight: 'bolder', textAlign: 'center'}}>用户信息</h1>
-            <h2>用户名: {this.state.userName}</h2>
-            <h2>用户身份: {(this.state.userIdentity === 'user') ? '普通用户' : ((this.state.userIdentity === 'admin') ? '管理员' : '工作人员')}</h2>
-            <Menu
-                onClick={onClick}
-                style={{
-                    width: 256,
-                }}
-                defaultSelectedKeys={['1']}
-                defaultOpenKeys={['sub1']}
-                mode="inline"
-                
-                // items={this.handleLogin}
-                items={items}
-            />
-            <div style={{textAlign: 'center'}}><Button type="primary" size='large' onClick={this.Logout}>退出登录</Button></div>
+            <h2>用户名: {_state.userName}</h2>
+            <h2>用户身份: {(_state.userIdentity === 'user') ? '普通用户' : ((_state.userIdentity === 'admin') ? '管理员' : '工作人员')}</h2>
+            
+            <div style={{textAlign: 'center'}}><Button type="primary" size='large' onClick={Logout}>退出登录</Button></div>
             </div>
         )
-    }
 }
 
 export default UserInfoPage
