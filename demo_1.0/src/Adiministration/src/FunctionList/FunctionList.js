@@ -3,10 +3,6 @@ import React ,{ Fragment }from 'react'
 import { DatePicker, Divider, Form,Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import { useState } from 'react';
 import Paragraph from 'antd/lib/skeleton/Paragraph';
-<<<<<<< HEAD
-=======
-
->>>>>>> 262cb7d2aafb3d81e178d6016504158ceb5fd552
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 
 function FunctionList(props) {
@@ -84,7 +80,7 @@ function FunctionList(props) {
                     <Form.Item
                   {...restField}
                   
-                  key={restField.key,'fieldKey'}
+                  key={restField.key,'软件功能项目'}
                   rules={[{ required: true, message: '请填写软件功能项目' }]}
                 >
                   <Input style={{maxWidth:500}} placeholder="软件功能项目" />
