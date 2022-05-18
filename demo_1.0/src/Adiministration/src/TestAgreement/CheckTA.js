@@ -64,7 +64,7 @@ const SubmitForm = (_form) => {
 
   const onFinishForm = (values) => {
       var form=entrustData['formData'];
-      form['报价单']['用户反馈']=values
+      form['测试合同']['履行期限接受情况']=values
       SubmitForm(form)
   }
 
@@ -135,7 +135,7 @@ const SubmitForm = (_form) => {
 
                 <h3>四.合同价款</h3>
                 <Form.Item label="本合同软件测试费用为人民币"  labelCol={{ span: 6 }}>
-                    <Input  style={{maxWidth:100}} defaultValue={entrustData["formData"]["测试合同"]["市场部部分"]["合同价款"] } addonAfter="元" disabled/>
+                    <Input  style={{maxWidth:100}} defaultValue={entrustData["formData"]["测试合同"]["报价单"]['基本信息']["总计"] } addonAfter="元" disabled/>
                 </Form.Item>
 
                 <h3>五.测试费用支付方式</h3>
@@ -144,16 +144,16 @@ const SubmitForm = (_form) => {
                 <h3>六.履行的期限</h3>
                 1.本次测试的履行期限为合同生效之日起&emsp;
                 <Form.Item  name = "合同履行期限" noStyle>
-                    <InputNumber  style={{maxWidth:100}} defaultValue={entrustData["formData"]["测试合同"]["市场部部分"]["合同履行期限"] } disabled/>
+                    <InputNumber  style={{maxWidth:100}} defaultValue={entrustData["formData"]["报价单"]["zong"]["合同履行期限"] } disabled/>
                 </Form.Item>
                 &emsp;个自然日内完成
                 <Paragraph>&emsp;2.	经甲乙双方同意，可对测试进度作适当修改，并以修改后的测试进度作为本合同执行的期限。</Paragraph>
                 <Paragraph>&emsp;3.	如受测软件在测试过程中出现的问题，导致继续进行测试会影响整体测试进度,则乙方暂停测试并以书面形式通知甲方进行整改。在整个测试过程中,</Paragraph>
                 <Form.Item label="整改次数限于" labelCol={{ span: 6 }}>
-                    <Input  style={{maxWidth:100}} defaultValue={entrustData["formData"]["测试合同"]["市场部部分"]["整改限制次数"] } addonAfter="次" disabled/>
+                    <Input  style={{maxWidth:100}}  addonAfter="次" disabled/>
                 </Form.Item>
                 <Form.Item label="每次不超过" labelCol={{ span: 6 }} >
-                    <Input  style={{maxWidth:100}} defaultValue={entrustData["formData"]["测试合同"]["市场部部分"]["一次整改限制的天数"] } addonAfter="天" disabled/>
+                    <Input  style={{maxWidth:100}}  addonAfter="天" disabled/>
                 </Form.Item>
                 <Paragraph>&emsp;4.	如因甲方原因，导致测试进度延迟、应由甲方负责,乙方不承担责任。</Paragraph>
                 <Paragraph>&emsp;5.	如因乙方原因,导致测试进度延迟,则甲方可酌情提出赔偿要求,赔偿金额不超过甲方已付金额的50%。双方经协商一致后另行签订书面协议，作为本合同的补充。</Paragraph>

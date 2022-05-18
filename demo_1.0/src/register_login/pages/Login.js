@@ -24,10 +24,39 @@ function Login(props) {
   }
 
   const handleLogin = () => {
-    fetch("http://localhost:8000/login", {
+    /*fetch("http://localhost:8000/login", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        'email': formData['email'],
+        "password": formData['password']
+      })
+    })
+      .then(res => {
+        if (res.status === 200) {
+          //alert("登录成功了耶！")
+          //navigate('/yjqtest', { state: { email: formData['email'], password: formData['password'] } })
+        }
+        return res.json()
+      })
+      .then(data => {
+        console.log(data)
+        if (data.accessToken === undefined) {
+          alert("登录失败！")
+        }
+        else {
+          handleChange('Authorization', data.accessToken)
+          var _info={userIdentity:'user',userID:data.user.id,userName:data.user.username,Authorization:data.accessToken};
+          UpdateUserInfo(_info,GotoPage('UserInfo',_info));
+        }
+      })*/
+
+      fetch("http://42.192.56.231:8000/login", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         'email': formData['email'],

@@ -143,7 +143,7 @@ function ViewEntrust(props) {
                                     entrustData['stage'] === 18 ? '等待市场部起草保密协议' : 
                                     entrustData['stage'] === 19 ? '等待用户签署保密协议' : '已完成'}
                                 status={entrustData['stage'] < 18 ? 'wait' :
-                                entrustData['stage'] >= 20 ? 'process' : 'finish'} />
+                                entrustData['stage'] >= 20 ? 'finish' : 'process'} />
                             <Step title='委托完成'
                                 status={entrustData['stage'] >= 20 ? 'finish' : 'wait'} />
                         </Steps>
@@ -159,13 +159,13 @@ function ViewEntrust(props) {
                         onClick={() => ChangePage('TadultApplication')}>测试部人员审核</Button>);
                     case 3:case 5:case 9:case 14:return null;
                     case 4:case 6:return (<Button type="primary" style={{ marginLeft: 20 }}
-                        onClick={() => ChangePage('MktdptApplication')}>市场部人员审核</Button>);
+                        onClick={() => ChangePage('MktdptApplicationStep1')}>市场部人员审核</Button>);
                     case 7:case 10:return (<Button type="primary" style={{ marginLeft: 20 }}
                         onClick={() => ChangePage('Quotation')}>发起议价</Button>);
                     case 8:return (<Button type="primary" style={{ marginLeft: 20 }}
-                        onClick={() => ChangePage('CheckTA')}>查看议价</Button>);
+                        onClick={() => ChangePage('QuotationFeedback')}>查看议价</Button>);
                     case 11:return (<Button type="primary" style={{ marginLeft: 20 }}
-                        onClick={null}>市场部完成申请表</Button>);
+                        onClick={() => ChangePage('MktdptApplicationStep2')}>市场部完成申请表</Button>);
                     case 12:case 15:return (<Button type="primary" style={{ marginLeft: 20 }}
                         onClick={() => ChangePage('TestAgreement')}>市场部起草测试合同，拟定履行期限</Button>);
                     case 13:return (<Button type="primary" style={{ marginLeft: 20 }}

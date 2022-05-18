@@ -22,7 +22,7 @@ function RegisterPage(props) {
   }
 
   const handleRigister = () => {
-    fetch("http://localhost:8000/register", {
+    /*fetch("http://localhost:8000/register", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -32,6 +32,33 @@ function RegisterPage(props) {
       .then(res => {
         console.log(formData)
         if (res.status === 201) {
+          alert("注册成功！")
+          //navigate('/')
+        }
+        return res.json()
+      })
+      .then(data => {
+        console.log(data)
+        if (data["errorInfo"] != undefined) {
+          alert(data["errorInfo"])
+        }
+        else{
+          GotoPage('Login');
+        }
+      })*/
+
+      fetch("http://42.192.56.231:8000/register", {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json;charset=utf-8'
+        
+      },
+      body: JSON.stringify({ "username": formData['username'], "password": formData['password'], "email": formData['email'] })
+    })
+      .then(res => {
+        console.log(formData)
+        if (res.status === 200) {
           alert("注册成功！")
           //navigate('/')
         }

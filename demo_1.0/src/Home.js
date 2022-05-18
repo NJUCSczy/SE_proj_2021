@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
+import { Layout, Menu, Dropdown, Breadcrumb, Space } from 'antd';
+import { DownOutlined, SmileOutlined } from '@ant-design/icons';
+import { useState } from 'react';
 import "./Home.css";
 
 import SubmitApplication from './Adiministration/src/SubmitApplication/SubmitApplication';
@@ -8,10 +11,8 @@ import ViewApplication from './Adiministration/src/ViewApplication/ViewApplicati
 import ViewEntrustList from './Adiministration/src/ViewEntrustList/ViewEntrustList';
 import ViewEntrust from './Adiministration/src/ViewEntrust/ViewEntrust';
 import TadultApplication from './Adiministration/src/TadultApplication/TadultApplication'
-import { useState } from 'react';
-import MktdptApplication from './Adiministration/src/MktdptApplication/mktdept';
-import { Layout, Menu, Dropdown, Breadcrumb, Space } from 'antd';
-import { DownOutlined, SmileOutlined } from '@ant-design/icons';
+import MktdptApplicationStep1 from './Adiministration/src/MktdptApplication/mktdept1';
+import MktdptApplicationStep2 from './Adiministration/src/MktdptApplication/mktdept2';
 import UserInfoPage from './register_login/pages/UserInfo';
 import Login from './register_login/pages/Login';
 import RegisterPage from './register_login/pages/Register';
@@ -22,7 +23,9 @@ import TrusteeApplication from './Adiministration/src/MktContract/TrusteeApplica
 import TestAgreement from './Adiministration/src/TestAgreement/TestAgreement';
 import CheckTA from './Adiministration/src/TestAgreement/CheckTA';
 import Quotation from './Adiministration/src/Quotation/Quotation';
+import QuotationFeedback from './Adiministration/src/QuotationFeedback/QuotationFeedback';
 import FunctionList from './Adiministration/src/FunctionList/FunctionList';
+
 const { Header, Content, Footer, Sider } = Layout;
 
 
@@ -87,9 +90,12 @@ class Home extends React.Component {
             case 'ViewApplication':
                 this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托', '0', '0', '0'] });
                 return (<ViewApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewApplication>);
-            case 'MktdptApplication':
+            case 'MktdptApplicationStep1':
                 this.setState({ HeaderMenuIndex: '4' });
-                return (<MktdptApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></MktdptApplication>);
+                return (<MktdptApplicationStep1 _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></MktdptApplicationStep1>);
+            case 'MktdptApplicationStep2':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<MktdptApplicationStep2 _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></MktdptApplicationStep2>);
             case 'TadultApplication':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<TadultApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TadultApplication>);
@@ -112,11 +118,14 @@ class Home extends React.Component {
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<CheckTA _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></CheckTA>);
             case 'FunctionList':
-                    this.setState({ HeaderMenuIndex: '4' });
-                    return (<FunctionList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></FunctionList>);
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<FunctionList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></FunctionList>);
             case 'Quotation':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<Quotation _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></Quotation>);
+            case 'QuotationFeedback':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<QuotationFeedback _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></QuotationFeedback>);
 
             case 'Info1':
                 this.setState({ HeaderMenuIndex: '4' });
