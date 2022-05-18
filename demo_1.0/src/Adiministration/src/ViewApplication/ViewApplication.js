@@ -5,6 +5,7 @@ import './ViewApplication.css'
 import TextArea from 'antd/lib/input/TextArea';
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
 import { NoFormStatus } from 'antd/lib/form/context';
+import { getStageByInfo, getStatusInfo } from '../../functions/functions'
 import { useEffect, useState } from 'react';
 import moment from 'moment';
 
@@ -64,6 +65,8 @@ useEffect(() => {
         <h1 style={{textAlign:'center',fontSize:30}}>软件项目委托测试申请书</h1>
 
         <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试类型</h2>
+        <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>{entrustData["formData"]["用户申请表"]["测试类型"].map(item=>(<h3 style={{ fontWeight: 'bolder', marginTop: 10 }} key={item}> {item}</h3>))}</h3>
+        <h4 style={{ fontWeight: 'bolder', marginTop: 10 }}> {entrustData["formData"]["用户申请表"]["测试类型(其他)"]}</h4>
           <Checkbox.Group  defaultValue={entrustData["formData"]["用户申请表"]["测试类型"]} disabled>
           <Col span={30}>
             <Checkbox value="软件确认测试" style={{ lineHeight: '32px' }}>
@@ -88,10 +91,11 @@ useEffect(() => {
         </Checkbox.Group> 
 
         <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件名称</h2>
+        <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>{entrustData["formData"]["用户申请表"]["软件名称"]}</h2>
         <Input  style={{maxWidth:500}} defaultValue={entrustData["formData"]["用户申请表"]["软件名称"]} disabled/>
 
         <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>版本号</h2>
-        <Input  style={{maxWidth:500}} defaultValue={entrustData["formData"]["用户申请表"]["版本号"]} disabled/>
+        <Input  style={{maxWidth:500}}  defaultValue={entrustData["formData"]["用户申请表"]["版本号"]} disabled/>
 
         <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>委托单位(中文)</h2>
         <Input  style={{maxWidth:500}} defaultValue={entrustData["formData"]["用户申请表"]["委托单位(中文)"]} disabled/>
@@ -128,6 +132,8 @@ useEffect(() => {
         <TextArea rows={5} showCount maxLength={300}  style={{maxWidth:700} } defaultValue={entrustData["formData"]["用户申请表"]["主要功能及用途简介(限300字)"]} disabled></TextArea>
 
         <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试依据</h2>
+        <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>{entrustData["formData"]["用户申请表"]["测试依据"].map(item=>(<h3 style={{ fontWeight: 'bolder', marginTop: 30 }} key={item}> {item}</h3>))}</h3>
+        <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}> {entrustData["formData"]["用户申请表"]["测试依据(其他)"]}</h4>
         <Checkbox.Group defaultValue={entrustData["formData"]["用户申请表"]["测试依据"]} disabled>
           <Col span={30}>
             <Checkbox value="GB/T 25000.51-2010" style={{ lineHeight: '32px' }}>
@@ -468,7 +474,7 @@ useEffect(() => {
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>网址</h3>
         <Input style={{maxWidth:500}} disabled defaultValue={entrustData["formData"]["用户申请表"]["委托单位信息"]["网址"]}/>
-      {!entrustData["formData"].hasOwnProperty("测试部审核委托")? null:(
+      {getStageByInfo(entrustData['formData'])<3? null:(
          <div>
          <h1 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试部审核结果</h1>
          <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>密级</h2>
@@ -589,7 +595,7 @@ useEffect(() => {
           </Radio.Group>
            </div>
       )}
-      {!entrustData["formData"].hasOwnProperty("市场部审核委托")? null:(
+      {getStageByInfo(entrustData['formData'])<4? null:(
         <div>
         <h1 style={{ fontWeight: 'bolder', marginTop: 30 }}>市场部审核结果</h1>
         <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>市场部受理意见</h2>
@@ -604,19 +610,19 @@ useEffect(() => {
             <Radio value="需进一步审理" style={{ lineHeight: '32px' }}>需进一步审理</Radio>
           </Col>
         </Radio.Group>
-        {(entrustData["formData"]["市场部审核委托"]["市场部受理意见"] === '受理') ? (
+        {getStageByInfo(entrustData['formData'])>6 ? (
           <div>
             <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试项目编号</h2>
             <Input style={{ maxWidth: 500 }} disabled defaultValue={entrustData["formData"]["市场部审核委托"]["测试项目编号"]} />
             </div>) : null
         }
-        {(entrustData["formData"]["市场部审核委托"]["市场部受理意见"] === '受理') ? (
+        {getStageByInfo(entrustData['formData'])>6 ? (
           <div>
             <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>市场部备注</h2>
             <Input style={{ maxWidth: 500 }} disabled defaultValue={entrustData["formData"]["市场部审核委托"]["市场部备注"]} />
             </div>) : null
         }
-        {(entrustData["formData"]["市场部审核委托"]["市场部受理意见"] === '需进一步审理') ? (
+        {getStageByInfo(entrustData['formData'])===5 ? (
           <div>
             <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>进一步审理方向及原因</h2>
             <Input style={{ maxWidth: 500 }} disabled defaultValue={entrustData["formData"]["市场部审核委托"]["进一步审理方向及原因"]} />

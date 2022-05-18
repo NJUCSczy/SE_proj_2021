@@ -21,6 +21,8 @@ import ClientApplication from './Adiministration/src/MktContract/ClientApplicati
 import TrusteeApplication from './Adiministration/src/MktContract/TrusteeApplication';
 import TestAgreement from './Adiministration/src/TestAgreement/TestAgreement';
 import CheckTA from './Adiministration/src/TestAgreement/CheckTA';
+import ViewCfdtagreement from './Adiministration/src/ViewCfdtagreement/ViewCfdtagreement';
+import ViewSignature from './Adiministration/src/ViewSignature/ViewSignature';
 const { Header, Content, Footer, Sider } = Layout;
 
 
@@ -123,7 +125,7 @@ class Home extends React.Component {
                 return (<TrusteeApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TrusteeApplication>);//原 业务信息界面
             case 'Info5':
                 this.setState({ HeaderMenuIndex: '4' });
-                return (<TadultApplication></TadultApplication>);
+                return (<ViewSignature></ViewSignature>);
             case 'Info6':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<ConfidentialAgreementPartyB></ConfidentialAgreementPartyB>);

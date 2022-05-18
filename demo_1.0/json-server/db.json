@@ -5,6 +5,12 @@
       "password": "$2a$10$z01T4qavacrRv6xSv31lOeKkZdiZrOJmYp1vDvP4gn2Jr8TG0c3um",
       "username": "czy",
       "id": 1
+    },
+    {
+      "email": "gbl@qq.com",
+      "password": "$2a$10$GTvp7lCzqzXGHm.yG2K71eZ.ambszrhfrFyJkVy2mkJtvojr5W3KS",
+      "username": "gbl",
+      "id": 2
     }
   ],
   "docs": [
