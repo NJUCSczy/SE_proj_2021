@@ -24,7 +24,7 @@ function Login(props) {
   }
 
   const handleLogin = () => {
-    /*fetch("http://localhost:8000/login", {
+    fetch("http://localhost:8000/login", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -51,9 +51,9 @@ function Login(props) {
           var _info={userIdentity:'user',userID:data.user.id,userName:data.user.username,Authorization:data.accessToken};
           UpdateUserInfo(_info,GotoPage('UserInfo',_info));
         }
-      })*/
+      })
 
-      fetch("http://42.192.56.231:8000/login", {
+      /*fetch("http://192.168.182.134:8000/login", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
@@ -80,7 +80,7 @@ function Login(props) {
           var _info={userIdentity:'user',userID:data.user.id,userName:data.user.username,Authorization:data.accessToken};
           UpdateUserInfo(_info,GotoPage('UserInfo',_info));
         }
-      })
+      })*/
   }
 
   const updateInfo = () => {

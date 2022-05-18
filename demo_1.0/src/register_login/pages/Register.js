@@ -22,7 +22,7 @@ function RegisterPage(props) {
   }
 
   const handleRigister = () => {
-    /*fetch("http://localhost:8000/register", {
+    fetch("http://localhost:8000/register", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -45,9 +45,9 @@ function RegisterPage(props) {
         else{
           GotoPage('Login');
         }
-      })*/
+      })
 
-      fetch("http://42.192.56.231:8000/register", {
+      /*fetch("http://192.168.182.134:8000/register", {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -72,7 +72,7 @@ function RegisterPage(props) {
         else{
           GotoPage('Login');
         }
-      })
+      })*/
   }
 
   const updateInfo = () => {

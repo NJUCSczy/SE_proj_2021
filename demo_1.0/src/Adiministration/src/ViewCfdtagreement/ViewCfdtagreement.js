@@ -19,7 +19,7 @@ function ViewCfdtagreement(props){
   const [entrustData, setEntrustData] = useState({ 'formData': null })
 
   const updateInfo = () => {
-    fetch("http://localhost:8000/forms"+ _state['PageInfo']['id'] , {
+    fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'] , {
       method: "GET",
       mode: 'cors',
       headers: {

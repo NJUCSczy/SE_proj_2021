@@ -32,7 +32,7 @@ export function getStatusInfo(info,part=null){
     var res='';
     if(part === '软件项目委托测试申请书'){
         if(stage>=11)
-        return '市场部确认受理用户请求,软件项目委托测试申请书已完成'
+        return '已完成'
         else if(stage>=7)
         return '等待市场部完成'
     }

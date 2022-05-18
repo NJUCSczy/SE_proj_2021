@@ -128,6 +128,12 @@ class Home extends React.Component {
             case 'QuotationFeedback':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<QuotationFeedback _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></QuotationFeedback>);
+            case 'ViewCfdtagreement':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<ViewCfdtagreement _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewCfdtagreement>);
+            case 'ViewSignature':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<ViewSignature _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewSignature>);
 
             case 'Info1':
                 this.setState({ HeaderMenuIndex: '4' });

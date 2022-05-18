@@ -79,7 +79,6 @@ function ViewEntrust(props) {
         <div style={{ padding: 30 }}>
             <h1>用户名称: {(entrustData['formData'] === null) ? null : entrustData['formData']['userName']}</h1>
             <h1 style={{ marginLeft: 20 }}>当前状态:{' '}{getStatusInfo(entrustData['formData'])}</h1>
-            <h1 style={{ marginTop: 40 }}>软件项目委托测试申请书</h1>
             <Collapse ghost={true} expandIcon={({ isActive }) => <CaretRightOutlined style={{ paddingTop: 12 }} rotate={isActive ? 90 : 0} />}>
                 <Panel header={<h2>详细信息</h2>} key="1">
                     <p>
@@ -116,13 +115,13 @@ function ViewEntrust(props) {
                                     entrustData['stage'] === 9 ? '用户不接受议价，委托结束' :
                                     entrustData['stage'] === 10 ? '用户申请再议价' :'用户已接受议价'}
                                 status={entrustData['stage'] < 7 ? 'wait' :
-                                entrustData['stage'] === 9 ? 'error' :
-                                entrustData['stage'] >= 11 ? 'finish' :'process'} />
+                                    entrustData['stage'] === 9 ? 'error' :
+                                    entrustData['stage'] >= 11 ? 'finish' :'process'} />
                             <Step title='完成测试申请书'
                                 description={entrustData['stage'] < 11 ? null :
                                     entrustData['stage'] === 11 ? '等待市场部完成测试申请书' : '已完成'}
                                 status={entrustData['stage'] < 11 ? 'wait' :
-                                entrustData['stage'] === 11 ? 'process' : 'finish'} />
+                                    entrustData['stage'] === 11 ? 'process' : 'finish'} />
                             <Step title='确定履行期限'
                                 description={entrustData['stage'] < 12 ? null :
                                     entrustData['stage'] === 12 ? '等待市场部拟写测试合同，并提出履行期限' : 
@@ -130,20 +129,20 @@ function ViewEntrust(props) {
                                     entrustData['stage'] === 14 ? '客户不接受履行期限，委托中止' :
                                     entrustData['stage'] === 15 ? '客户针对履行期限申请再议' :'客户已接受'}
                                 status={entrustData['stage'] < 12 ? 'wait' :
-                                entrustData['stage'] === 14 ? 'error' :
-                                entrustData['stage'] >= 16 ? 'finish' :'process'} />
+                                    entrustData['stage'] === 14 ? 'error' :
+                                    entrustData['stage'] >= 16 ? 'finish' :'process'} />
                             <Step title='完成测试合同'
                                 description={entrustData['stage'] < 16 ? null :
                                     entrustData['stage'] === 16 ? '等待市场部填写测试合同受托人签章' : 
                                     entrustData['stage'] === 17 ? '等待客户填写测试合同委托人签章' : '已完成'}
                                 status={entrustData['stage'] < 16 ? 'wait' :
-                                entrustData['stage'] >= 18 ? 'finish' : 'process'} />
+                                    entrustData['stage'] >= 18 ? 'finish' : 'process'} />
                             <Step title='签署保密协议'
                                 description={entrustData['stage'] < 18 ? null :
                                     entrustData['stage'] === 18 ? '等待市场部起草保密协议' : 
                                     entrustData['stage'] === 19 ? '等待用户签署保密协议' : '已完成'}
                                 status={entrustData['stage'] < 18 ? 'wait' :
-                                entrustData['stage'] >= 20 ? 'finish' : 'process'} />
+                                    entrustData['stage'] >= 20 ? 'finish' : 'process'} />
                             <Step title='委托完成'
                                 status={entrustData['stage'] >= 20 ? 'finish' : 'wait'} />
                         </Steps>
@@ -169,7 +168,7 @@ function ViewEntrust(props) {
                     case 12:case 15:return (<Button type="primary" style={{ marginLeft: 20 }}
                         onClick={() => ChangePage('TestAgreement')}>市场部起草测试合同，拟定履行期限</Button>);
                     case 13:return (<Button type="primary" style={{ marginLeft: 20 }}
-                        onClick={null}>查看履行日期</Button>);
+                        onClick={() => ChangePage('CheckTA')}>查看履行日期</Button>);
                     case 16:return (<Button type="primary" style={{ marginLeft: 20 }}
                         onClick={() => ChangePage('TrusteeApplication')}>市场部填写签章</Button>);
                     case 17:return (<Button type="primary" style={{ marginLeft: 20 }}
@@ -180,7 +179,28 @@ function ViewEntrust(props) {
                         onClick={() => ChangePage('ConfidentialAgreementPartyA')}>客户填写保密协议</Button>);
                 }
             })()}
-
+            <h1 style={{marginTop:60}}>文件列表</h1>
+            {(entrustData['stage']>=12)?
+                (<div>
+                    <h2 style={{ marginTop: 40 }}>软件项目委托测试申请书</h2>
+                    <h2 style={{ marginTop: 40 }}>状态:{" "+getStatusInfo(entrustData['formData'],'软件项目委托测试申请书')}</h2>
+                    <Button type="primary" style={{ marginLeft: 20 }} onClick={() => ChangePage('ViewApplication')}>查看</Button>
+                </div>):null
+            }
+            {(entrustData['stage']>=18)?
+                (<div>
+                    <h2 style={{ marginTop: 40 }}>软件测试委托合同签章</h2>
+                    <h2 style={{ marginTop: 40 }}>状态:{" "+getStatusInfo(entrustData['formData'],'软件委托测试合同')}</h2>
+                    <Button type="primary" style={{ marginLeft: 20 }} onClick={() => ChangePage('ViewSignature')}>查看</Button>
+                </div>):null
+            }
+            {(entrustData['stage']>=20)?
+                (<div>
+                    <h2 style={{ marginTop: 40 }}>保密协议</h2>
+                    <h2 style={{ marginTop: 40 }}>状态:{" "+getStatusInfo(entrustData['formData'],'保密协议')}</h2>
+                    <Button type="primary" style={{ marginLeft: 20 }} onClick={() => ChangePage('ViewCfdtagreement')}>查看</Button>
+                </div>):null
+            }
         </div>
     )
 }
