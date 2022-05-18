@@ -23,6 +23,8 @@ import TestAgreement from './Adiministration/src/TestAgreement/TestAgreement';
 import CheckTA from './Adiministration/src/TestAgreement/CheckTA';
 import ViewCfdtagreement from './Adiministration/src/ViewCfdtagreement/ViewCfdtagreement';
 import ViewSignature from './Adiministration/src/ViewSignature/ViewSignature';
+import Quotation from './Adiministration/src/Quotation/Quotation';
+import FunctionList from './Adiministration/src/FunctionList/FunctionList';
 const { Header, Content, Footer, Sider } = Layout;
 
 
@@ -111,9 +113,16 @@ class Home extends React.Component {
             case 'CheckTA':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<CheckTA _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></CheckTA>);
+            case 'FunctionList':
+                    this.setState({ HeaderMenuIndex: '4' });
+                    return (<FunctionList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></FunctionList>);
+            case 'Quotation':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<Quotation _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></Quotation>);
+
             case 'Info1':
                 this.setState({ HeaderMenuIndex: '4' });
-                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>机构信息</div>);
+                return (<FunctionList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></FunctionList>);
             case 'Info2':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>资质信息</div>);
@@ -227,7 +236,7 @@ class Home extends React.Component {
                             {Breadcrumbitems[this.state.BreadcrumbByIndex[3]]}
                             {Breadcrumbitems[this.state.BreadcrumbByIndex[4]]}
                         </Breadcrumb>
-                        <Layout onChange={() => {document.body.scrollTop = document.documentElement.scrollTop = 0;}} style={{ overflowY: 'scroll', marginBottom: 100, height: '100%' }}>
+                        <Layout onChange={() => { document.body.scrollTop = document.documentElement.scrollTop = 0; }} style={{ overflowY: 'scroll', marginBottom: 100, height: '100%' }}>
                             <div className="site-layout-background" style={{ padding: 0, height: 'fit-content' }}>
                                 {this.state.PageContent}
                             </div>
