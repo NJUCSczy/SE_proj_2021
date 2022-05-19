@@ -4,6 +4,7 @@ import { DatePicker, Divider, Form,Space, Select, InputNumber, Switch, Radio, Sl
 import { useState } from 'react';
 import Paragraph from 'antd/lib/skeleton/Paragraph';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
+import { USE_JSON_SERVER } from '../../functions/functions';
 
 function FunctionList(props) {
     const { UpdateUserInfo, GotoPage, _state } = props;
@@ -13,6 +14,9 @@ function FunctionList(props) {
 
     const onFinishForm = (values) => {
       console.log('Success:', values);
+      if(!USE_JSON_SERVER){
+        return SubmitForm({})
+      }
       var form = {}
       fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
         method: "GET",
@@ -35,6 +39,7 @@ function FunctionList(props) {
     };
     
       const SubmitForm = (_form) => {
+        if(USE_JSON_SERVER){
         fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'], {
           method: "PUT",
           headers: {
@@ -53,6 +58,34 @@ function FunctionList(props) {
           .then(data => {
             console.log(data)
           })
+        }
+        else{
+          fetch("http://42.192.56.231:8000/delegation/"+_state['PageInfo']['id']+"/functionTable", {
+        method: "PUT",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json;charset=utf-8',
+          'accessToken': _state['accessToken'],
+          'tokenType': _state['tokenType'],
+          'usrName': _state['userName'],
+          'usrID': _state['userID'],
+          'usrRole': _state['userRole'],
+          'Authorization': _state['accessToken']
+        },
+        body: JSON.stringify(_form)
+      })
+        .then(res => {
+          console.log(res)
+          if (res.status === 200) {
+            alert("提交成功！")
+            //navigate('/yjqtest', { state: { email: formData['email'], password: formData['password'] } })
+          }
+          return res.json()
+        })
+        .then(data => {
+          console.log(data)
+        })
+        }
       }
     
       const onFinishFailed = (errorInfo) => {

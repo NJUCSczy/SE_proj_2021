@@ -1,4 +1,4 @@
-export const USE_JSON_SERVER=true;
+export const USE_JSON_SERVER=false;
 
 export function getStageByInfo(info){
     if(info===null || info ===undefined)return 0;

@@ -697,20 +697,6 @@ function SubmitApplication(props) {
         </Radio.Group>
       </Form.Item>
 
-      <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>文档资料</h3>
-      <Form.Item name={['样品和数量', '文档资料']} valuePropName="fileList" getValueFromEvent={normFile} noStyle>
-        <Upload.Dragger
-          name="files"
-          action="http://localhost:8000/docs"
-          style={{ maxWidth: 500 }}
-        >
-          <p className="ant-upload-drag-icon">
-            <InboxOutlined />
-          </p>
-          <p className="ant-upload-text">点击或拖拽文件上传</p>
-          <p className="ant-upload-hint">支持单个文件或压缩包</p>
-        </Upload.Dragger>
-      </Form.Item>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 60 }}>提交的样品(硬拷贝资料、硬件)五年保存期满后</h3>
       <Form.Item

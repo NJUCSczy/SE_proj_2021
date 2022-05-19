@@ -27,6 +27,7 @@ import ViewSignature from './Adiministration/src/ViewSignature/ViewSignature';
 import Quotation from './Adiministration/src/Quotation/Quotation';
 import QuotationFeedback from './Adiministration/src/QuotationFeedback/QuotationFeedback';
 import FunctionList from './Adiministration/src/FunctionList/FunctionList';
+import UserUploadFiles from './Adiministration/src/UserUploadFiles/UserUploadFiles';
 
 import { USE_JSON_SERVER } from './Adiministration/functions/functions';
 
@@ -152,7 +153,7 @@ class Home extends React.Component {
                 return (<TrusteeApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TrusteeApplication>);//原 业务信息界面
             case 'Info5':
                 this.setState({ HeaderMenuIndex: '4' });
-                return (<ViewSignature></ViewSignature>);
+                return (<UserUploadFiles _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></UserUploadFiles>);
             case 'Info6':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<ConfidentialAgreementPartyB></ConfidentialAgreementPartyB>);
