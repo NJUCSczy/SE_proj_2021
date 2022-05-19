@@ -91,7 +91,7 @@ function FunctionList(props) {
       <Form.List name="功能项目列表" layout='vertical' width={500}>
           {(fields, {add, remove})=>(<>
             {fields.map(({ key, name, ...restField }) => (
-                <Fragment >
+                <Fragment>
                     <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件功能</h4>
                     <Form.Item
                   {...restField}
@@ -143,7 +143,8 @@ function FunctionList(props) {
         )}
       </Form.List>
 
-      <Button onClick={() => remove(restField.name)} type='danger'>
+      
+      <Button onClick={() => remove(name)} type='danger'>
                     删除该功能
                 </Button>
                 </Fragment>       
