@@ -24,6 +24,8 @@ import TestAgreement from './Adiministration/src/TestAgreement/TestAgreement';
 import CheckTA from './Adiministration/src/TestAgreement/CheckTA';
 import ViewCfdtagreement from './Adiministration/src/ViewCfdtagreement/ViewCfdtagreement';
 import ViewSignature from './Adiministration/src/ViewSignature/ViewSignature';
+import ViewQuotation from './Adiministration/src/ViewQuotation/ViewQuotation';
+import ViewContract from './Adiministration/src/ViewContract/ViewContract';
 import Quotation from './Adiministration/src/Quotation/Quotation';
 import QuotationFeedback from './Adiministration/src/QuotationFeedback/QuotationFeedback';
 import FunctionList from './Adiministration/src/FunctionList/FunctionList';
@@ -152,7 +154,7 @@ class Home extends React.Component {
                 return (<TrusteeApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TrusteeApplication>);//原 业务信息界面
             case 'Info5':
                 this.setState({ HeaderMenuIndex: '4' });
-                return (<ViewSignature></ViewSignature>);
+                return (<ViewContract _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewContract>);
             case 'Info6':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<ConfidentialAgreementPartyB></ConfidentialAgreementPartyB>);

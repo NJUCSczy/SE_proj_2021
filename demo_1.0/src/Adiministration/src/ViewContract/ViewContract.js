@@ -1,16 +1,14 @@
-import isMobile from 'is-mobile';
 import React, { Component } from 'react'
 import { Typography, DatePicker, Form, InputNumber, Button, Input } from 'antd';
-import './TestAgreement.css'
-import TextArea from 'antd/lib/input/TextArea';
-import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
-import { NoFormStatus } from 'antd/lib/form/context';
+import './ViewContract.css'
+import { getStageByInfo, getStatusInfo } from '../../functions/functions'
 import { useEffect, useState } from 'react';
 import moment from 'moment';
-const { Title, Paragraph, Text, Link } = Typography;
-var _ = require('lodash');
 
-function CheckTA(props){
+var _ = require('lodash');
+const { Title, Paragraph, Text, Link } = Typography;
+
+function ViewContract (props) {
   const { UpdateUserInfo, GotoPage,_state } = props;
   const userState = props._state
   const [entrustData, setEntrustData] = useState({ 'formData': null })
@@ -41,67 +39,34 @@ useEffect(() => {
     updateInfo();
 }, []
 )
+return(
+    entrustData['formData'] === null ? null :
+    (<Form
+     style={{padding:"10px 10px 10px 10px"}}
+     name="测试合同"
+    >
+        <h1 style={{ fontWeight: 'bolder', marginTop: 30, textAlign: 'center' }}>软件委托测试合同</h1>
+        {getStageByInfo(entrustData['formData'])<18? null:(
+            <div>
+                <Form.Item label="项目名称" >
+                    <Input  style={{maxWidth:300}} defaultValue={entrustData["formData"]["用户申请表"]["软件名称"]} disabled/>
+                </Form.Item>
 
-const SubmitForm = (_form) => {
-    fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'], {
-      method: "PUT",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(_form)
-    })
-      .then(res => {
-        console.log(res)
-        if (res.status === 200) {
-          alert("提交成功！")
-        }
-        return res.json()
-      })
-      .then(data => {
-        console.log(data)
-      })
-  }
+                <Form.Item label="委托方(甲方)" >
+                    <Input  style={{maxWidth:180}} defaultValue={entrustData["formData"]["用户申请表"]["委托单位(中文)"]} disabled/>
+                </Form.Item>
 
-  const onFinishForm = (values) => {
-      var form=entrustData['formData'];
-      form['测试合同']['履行期限接受情况']=values
-      SubmitForm(form)
-  }
+                <Form.Item label="受托方(乙方)" >
+                    <Input  style={{maxWidth:180}} defaultValue={entrustData["formData"]["测试合同"]["市场部部分"]["trusteename"]} disabled/>
+                </Form.Item>
 
+                <Form.Item label="签订地点" >
+                    <Input  style={{maxWidth:180}} defaultValue={entrustData["formData"]["测试合同"]["市场部部分"]["place"]} disabled/>
+                </Form.Item>
 
-  console.log(entrustData)
-    return(
-        entrustData['formData'] === null ? null :
-        (<Form
-         style={{padding:"10px 10px 10px 10px"}}
-         name="basic"
-         labelCol={{ span: 3 }}
-         wrapperCol={{ span: 16 }}
-         initialValues={{ remember: true }}
-         onFinish={null}
-         onFinishFailed={null}
-         autoComplete="off"
-        >
-            <h2 style={{ fontWeight: 'bolder', marginTop: 30, textAlign: 'center' }}>软件委托测试合同</h2>
-            <Form.Item label="项目名称" >
-                <Input  style={{maxWidth:300}} defaultValue={entrustData["formData"]["用户申请表"]["软件名称"]} disabled/>
-            </Form.Item>
-
-            <Form.Item label="委托方(甲方)" >
-                <Input  style={{maxWidth:180}} defaultValue={entrustData["formData"]["用户申请表"]["委托单位(中文)"]} disabled/>
-            </Form.Item>
-
-            <Form.Item label="受托方(乙方)" >
-                <Input  style={{maxWidth:180}} defaultValue={entrustData["formData"]["测试合同"]["市场部部分"]["trusteename"]} disabled/>
-            </Form.Item>
-
-            <Form.Item label="签订地点" >
-                <Input  style={{maxWidth:180}} defaultValue={entrustData["formData"]["测试合同"]["市场部部分"]["place"]} disabled/>
-            </Form.Item>
-
-            <Form.Item label="签订日期" >
-                <Input  style={{maxWidth:180}} defaultValue={entrustData["formData"]["测试合同"]["市场部部分"]["date"]} disabled/>
-            </Form.Item>
+                <Form.Item label="签订日期" >
+                    <Input  style={{maxWidth:180}} defaultValue={entrustData["formData"]["测试合同"]["市场部部分"]["date"]} disabled/>
+                </Form.Item>
 
                 <Paragraph>
                     &emsp;本合同由作为委托方的<strong>{entrustData["formData"]["用户申请表"]["委托单位(中文)"]}(以下简称"甲方")</strong>与
@@ -174,14 +139,18 @@ const SubmitForm = (_form) => {
                 <Paragraph>&emsp;本合同自双方授权代表签字盖章之日起生效,自受托方的主要义务履行完毕之日起终止。</Paragraph>
                 <Paragraph>&emsp;本合同未尽事宜由双方协商解决。</Paragraph>
                 <Paragraph>&emsp;本合同的正本一式肆份,双方各执两份,具有同等法律效力。</Paragraph>
-                <Form inline style={{  textAlign: 'center' }}>
-                    <Button  onClick = {() => onFinishForm('接受')}>确认合同</Button>&emsp;
-                    <Button  onClick = {() => onFinishForm('申请再议')}>申请再议</Button>&emsp;
-                    <Button  onClick = {() => onFinishForm('不接受')}>结束委托</Button>
-                </Form>
-      </Form>)
-  )
+                {getStageByInfo(entrustData['formData'])<18? null:(
+                    <div>
+                        <h2 style={{ fontWeight: 'bolder', marginTop: 30, textAlign: 'right' }}>用户对履行期限的接受情况:</h2>
+                        <h2 style={{ fontWeight: 'bolder', marginTop: 30, textAlign: 'right' }}>{entrustData["formData"]["测试合同"]["履行期限接受情况"]}</h2>
+                    </div>
+                )}
+            </div>
+        )}
+        
+  </Form>)
+)
 }
 
 
-export default CheckTA
+export default ViewContract
