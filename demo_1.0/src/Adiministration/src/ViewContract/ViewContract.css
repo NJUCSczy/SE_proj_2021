@@ -1,0 +1,5 @@
+@import '~antd/dist/antd.css';
+.register_username{
+	width:250px;
+	margin-bottom:20px;
+}

@@ -634,7 +634,7 @@ function ViewApplication(props) {
             </Radio.Group>
           </div>
         )}
-        {getStageByInfo(entrustData['formData']) < 4 ? null : (
+        {getStageByInfo(entrustData['formData']) < 5 ? null : (
           <div>
             <h1 style={{ fontWeight: 'bolder', marginTop: 30 }}>市场部审核结果</h1>
             <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>市场部受理意见</h2>
@@ -661,7 +661,7 @@ function ViewApplication(props) {
                 <Input style={{ maxWidth: 500 }} disabled defaultValue={entrustData["formData"]["市场部审核委托"]["市场部备注"]} />
               </div>) : null
             }
-            {getStageByInfo(entrustData['formData']) === 5 ? (
+            {getStageByInfo(entrustData['formData']) === 6 ? (
               <div>
                 <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>进一步审理方向及原因</h2>
                 <Input style={{ maxWidth: 500 }} disabled defaultValue={entrustData["formData"]["市场部审核委托"]["进一步审理方向及原因"]} />

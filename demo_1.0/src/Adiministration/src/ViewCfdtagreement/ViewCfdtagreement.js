@@ -51,7 +51,7 @@ function ViewCfdtagreement(props){
       <Form
       name="basic">
         <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件项目委托测试保密协议</h2>
-        {getStageByInfo(entrustData['formData'])<13? null:(
+        {getStageByInfo(entrustData['formData'])<18? null:(
             <div>          
               <Paragraph>
               委托方
@@ -107,7 +107,7 @@ function ViewCfdtagreement(props){
               </Paragraph>
             </div>
         )}
-        {getStageByInfo(entrustData['formData'])<14? null:(
+        {getStageByInfo(entrustData['formData'])<19? null:(
           <div>
             <Form.Item
               label="甲方"
@@ -134,7 +134,7 @@ function ViewCfdtagreement(props){
              </Form.Item>
           </div>
         )}
-        {getStageByInfo(entrustData['formData'])<13? null:(
+        {getStageByInfo(entrustData['formData'])<18? null:(
           <div>
             <Form.Item
               label="乙方"
