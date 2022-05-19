@@ -1,11 +1,12 @@
 import isMobile from 'is-mobile';
 import React, { Component } from 'react'
-import { DatePicker,Divider, Form, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
+import { DatePicker, Divider, Form, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import './SubmitApplication.css'
 import { useState } from 'react';
 import TextArea from 'antd/lib/input/TextArea';
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
 import { NoFormStatus } from 'antd/lib/form/context';
+import { USE_JSON_SERVER } from '../../functions/functions';
 
 var _ = require('lodash');
 var mobile = require('is-mobile');
@@ -27,24 +28,54 @@ function SubmitApplication(props) {
   }
 
   const SubmitForm = (_form) => {
-    fetch("http://localhost:8000/forms/", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(_form)
-    })
-      .then(res => {
-        console.log(res)
-        if (res.status === 201) {
-          alert("提交成功！")
-          //navigate('/yjqtest', { state: { email: formData['email'], password: formData['password'] } })
-        }
-        return res.json()
+    console.log(_form)
+    if (USE_JSON_SERVER) {
+      fetch("http://localhost:8000/forms/", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(_form)
       })
-      .then(data => {
-        console.log(data)
+        .then(res => {
+          console.log(res)
+          if (res.status === 201) {
+            alert("提交成功！")
+            //navigate('/yjqtest', { state: { email: formData['email'], password: formData['password'] } })
+          }
+          return res.json()
+        })
+        .then(data => {
+          console.log(data)
+        })
+    }
+    else {
+      fetch("http://42.192.56.231:8000/delegation/applicationTable", {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json;charset=utf-8',
+          'accessToken': userState['accessToken'],
+          'tokenType': userState['tokenType'],
+          'usrName': userState['userName'],
+          'usrID': userState['userID'],
+          'usrRole': userState['userRole'],
+          'Authorization': userState['accessToken']
+        },
+        body: JSON.stringify(_form)
       })
+        .then(res => {
+          console.log(res)
+          if (res.status === 201) {
+            alert("提交成功！")
+            //navigate('/yjqtest', { state: { email: formData['email'], password: formData['password'] } })
+          }
+          return res.json()
+        })
+        .then(data => {
+          console.log(data)
+        })
+    }
   }
 
   const normFile = (e) => {
@@ -55,12 +86,17 @@ function SubmitApplication(props) {
     return e && e.fileList;
   };
   const onFinishForm = (values) => {
+    var form = {}
     console.log('Success:', values);
-    var form={}
-    form['用户申请表']=values
-    form['userID']=userState['userID']
-    form['userName']=userState['userName']
-    SubmitForm(form)
+    if (USE_JSON_SERVER) {
+      form['用户申请表'] = values
+      form['userID'] = userState['userID']
+      form['userName'] = userState['userName']
+      SubmitForm(form)
+    }else{
+      form['applicationTable'] = values
+      SubmitForm(form)
+    }
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -79,7 +115,7 @@ function SubmitApplication(props) {
       wrapperCol={{ span: 20 }}
       layout='vertical'
       autoComplete="false">
-      <h1 style={{textAlign:'center',fontSize:30}}>软件项目委托测试申请书</h1>
+      <h1 style={{ textAlign: 'center', fontSize: 30 }}>软件项目委托测试申请书</h1>
       <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试类型</h2>
       <Form.Item
         name='测试类型'
@@ -120,7 +156,7 @@ function SubmitApplication(props) {
         rules={[{ required: true, message: '请填写软件名称' }]}
       >
 
-        <Input  style={{maxWidth:500}}/>
+        <Input style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>版本号</h2>
@@ -128,7 +164,7 @@ function SubmitApplication(props) {
         name="版本号"
         rules={[{ required: true, message: '请填写版本号' }]}
       >
-        <Input  style={{maxWidth:500}}/>
+        <Input style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>委托单位(中文)</h2>
@@ -136,7 +172,7 @@ function SubmitApplication(props) {
         name="委托单位(中文)"
         rules={[{ required: true, message: '请填写委托单位名称(中文)' }]}
       >
-        <Input  style={{maxWidth:500}}/>
+        <Input style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>委托单位(英文)</h2>
@@ -144,7 +180,7 @@ function SubmitApplication(props) {
         name="委托单位(英文)"
         rules={[{ required: true, message: '请填写委托单位名称(英文)' }]}
       >
-        <Input  style={{maxWidth:500}}/>
+        <Input style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>开发单位</h2>
@@ -152,7 +188,7 @@ function SubmitApplication(props) {
         name="开发单位"
         rules={[{ required: true, message: '请填写开发单位' }]}
       >
-        <Input  style={{maxWidth:500}}/>
+        <Input style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>单位性质</h2>
@@ -184,7 +220,7 @@ function SubmitApplication(props) {
         name="软件用户对象描述"
         rules={[{ required: true, message: '请填写软件用户对象描述' }]}
       >
-        <TextArea rows={5}  style={{maxWidth:700}}></TextArea>
+        <TextArea rows={5} style={{ maxWidth: 700 }}></TextArea>
       </Form.Item>
 
       <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>主要功能及用途简介(限300字)</h2>
@@ -192,7 +228,7 @@ function SubmitApplication(props) {
         name="主要功能及用途简介(限300字)"
         rules={[{ required: true, message: '请填写主要功能及用途' }]}
       >
-        <TextArea rows={5} showCount maxLength={300}  style={{maxWidth:700}}></TextArea>
+        <TextArea rows={5} showCount maxLength={300} style={{ maxWidth: 700 }}></TextArea>
       </Form.Item>
 
       <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试依据</h2>
@@ -332,25 +368,25 @@ function SubmitApplication(props) {
       >
         <div style={{ fontStyle: 'italic', fontWeight: 'lighter' }}>（以下三项请至少选填一项）</div><br></br>
         <h4 style={{ fontWeight: 'bolder' }}>功能数(到最后一级菜单)</h4>
-        <Form.Item 
-        name={["软件规模", "功能数(到最后一级菜单)"]}
-        rules={[{pattern: new RegExp(/^[1-9]\d*$/, "g"),message:'请正确输入功能数'}]}
+        <Form.Item
+          name={["软件规模", "功能数(到最后一级菜单)"]}
+          rules={[{ pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请正确输入功能数' }]}
         >
-          <Input onChange={(e) => setDataByKey("功能数(到最后一级菜单)", e.target.value)} style={{maxWidth:300}}/>
+          <Input onChange={(e) => setDataByKey("功能数(到最后一级菜单)", e.target.value)} style={{ maxWidth: 300 }} />
         </Form.Item>
         <h4 style={{ fontWeight: 'bolder' }}>功能点数</h4>
-        <Form.Item 
-        name={["软件规模", "功能点数"]}
-        rules={[{pattern: new RegExp(/^[1-9]\d*$/, "g"),message:'请正确输入功能点数'}]}
+        <Form.Item
+          name={["软件规模", "功能点数"]}
+          rules={[{ pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请正确输入功能点数' }]}
         >
-          <Input onChange={(e) => setDataByKey("功能点数", e.target.value)} style={{maxWidth:300}} />
+          <Input onChange={(e) => setDataByKey("功能点数", e.target.value)} style={{ maxWidth: 300 }} />
         </Form.Item>
         <h4 style={{ fontWeight: 'bolder' }}>代码行数(不包括注释行、空行)</h4>
-        <Form.Item 
-        name={["软件规模", "代码行数(不包括注释行、空行)"]}
-        rules={[{pattern: new RegExp(/^[1-9]\d*$/, "g"),message:'请正确输入代码行数'}]}
+        <Form.Item
+          name={["软件规模", "代码行数(不包括注释行、空行)"]}
+          rules={[{ pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请正确输入代码行数' }]}
         >
-          <Input onChange={(e) => setDataByKey("代码行数(不包括注释行、空行)", e.target.value)} style={{maxWidth:300}} />
+          <Input onChange={(e) => setDataByKey("代码行数(不包括注释行、空行)", e.target.value)} style={{ maxWidth: 300 }} />
         </Form.Item>
       </Form.Item>
 
@@ -472,7 +508,7 @@ function SubmitApplication(props) {
                 name={['运行环境', '客户端', '操作系统-Linux版本']}
                 rules={[{ required: (formData['运行环境', '客户端', '操作系统-Linux版本'] === true), message: '请填写Linux版本' }]}
               >
-                <Input  addonBefore="Linux" addonAfter='(版本)' style={{ padding: 0 }} disabled={formData['运行环境-客户端-操作系统-Linux'] != true} />
+                <Input addonBefore="Linux" addonAfter='(版本)' style={{ padding: 0 }} disabled={formData['运行环境-客户端-操作系统-Linux'] != true} />
               </Form.Item>
             </Checkbox>
           </Col>
@@ -494,23 +530,23 @@ function SubmitApplication(props) {
       <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>内存要求</h4>
       <Form.Item
         name={['运行环境', '客户端', '内存要求']}
-        rules={[{ required: true, message: '请填写内存要求' },{pattern: new RegExp(/^[1-9]\d*$/, "g"),message:'请正确输入整数'}]}
+        rules={[{ required: true, message: '请填写内存要求' }, { pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请正确输入整数' }]}
       >
-        <Input addonAfter='MB' style={{maxWidth:300}}/>
+        <Input addonAfter='MB' style={{ maxWidth: 300 }} />
       </Form.Item>
 
       <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>其他要求</h4>
       <Form.Item
         name={['运行环境', '客户端', '其他要求']}
       >
-        <TextArea rows={3}  style={{maxWidth:700}}/>
+        <TextArea rows={3} style={{ maxWidth: 700 }} />
       </Form.Item>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 60 }}>服务器端</h3>
       <h4 style={{ fontWeight: 'bolder', marginTop: 0 }}>硬件</h4>
-      <h5 style={{ fontWeight: 'bolder'}}>架构</h5>
+      <h5 style={{ fontWeight: 'bolder' }}>架构</h5>
       <Form.Item
-        name={['运行环境', '服务器端', '硬件','架构']}
+        name={['运行环境', '服务器端', '硬件', '架构']}
         rules={[{ required: true, message: '请选择架构' }]}
       >
         <Checkbox.Group >
@@ -525,7 +561,7 @@ function SubmitApplication(props) {
               其他
               <Form.Item
                 style={{ paddingLeft: 0 }}
-                name={['运行环境', '服务器端', '硬件','架构-其他']}
+                name={['运行环境', '服务器端', '硬件', '架构-其他']}
                 rules={[{ required: (formData['运行环境-服务器端-硬件-架构-其他'] === true), message: '请填写内容' }]}
               >
                 <Input style={{ padding: 0 }} disabled={formData['运行环境-服务器端-硬件-架构-其他'] != true} />
@@ -537,54 +573,54 @@ function SubmitApplication(props) {
 
       <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>内存要求</h5>
       <Form.Item
-        name={['运行环境', '服务器端', '硬件','内存要求']}
-        rules={[{ required: true, message: '请填写内存要求' },{pattern: new RegExp(/^[1-9]\d*$/, "g"),message:'请输入整数'}]}
+        name={['运行环境', '服务器端', '硬件', '内存要求']}
+        rules={[{ required: true, message: '请填写内存要求' }, { pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请输入整数' }]}
       >
-        <Input addonAfter='MB'  style={{maxWidth:300}}/>
+        <Input addonAfter='MB' style={{ maxWidth: 300 }} />
       </Form.Item>
 
       <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>硬盘要求</h5>
       <Form.Item
-        name={['运行环境', '服务器端', '硬件','硬盘要求']}
-        rules={[{ required: true, message: '请填写硬盘要求' },{pattern: new RegExp(/^[1-9]\d*$/, "g"),message:'请正确输入整数'}]}
+        name={['运行环境', '服务器端', '硬件', '硬盘要求']}
+        rules={[{ required: true, message: '请填写硬盘要求' }, { pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请正确输入整数' }]}
       >
-        <Input addonAfter='MB'  style={{maxWidth:300}}/>
+        <Input addonAfter='MB' style={{ maxWidth: 300 }} />
       </Form.Item>
 
       <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>其他要求</h5>
       <Form.Item
-        name={['运行环境', '服务器端', '硬件','其他要求']}
+        name={['运行环境', '服务器端', '硬件', '其他要求']}
       >
-        <TextArea rows={3}  style={{maxWidth:700}}/>
+        <TextArea rows={3} style={{ maxWidth: 700 }} />
       </Form.Item>
 
       <h4 style={{ fontWeight: 'bolder', marginTop: 60 }}>软件</h4>
       <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>操作系统</h5>
       <Form.Item
-        name={['运行环境', '服务器端', '软件','操作系统']}
+        name={['运行环境', '服务器端', '软件', '操作系统']}
         rules={[{ required: true, message: '请填写操作系统' }]}
       >
-        <Input  style={{maxWidth:500}}/>
+        <Input style={{ maxWidth: 500 }} />
       </Form.Item>
       <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>版本</h5>
       <Form.Item
-        name={['运行环境', '服务器端', '软件','版本']}
+        name={['运行环境', '服务器端', '软件', '版本']}
         rules={[{ required: true, message: '请填写版本' }]}
       >
-        <Input  style={{maxWidth:500}}/>
+        <Input style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>编程语言</h5>
       <Form.Item
-        name={['运行环境', '服务器端', '软件','编程语言']}
+        name={['运行环境', '服务器端', '软件', '编程语言']}
         rules={[{ required: true, message: '请填写编程语言' }]}
       >
-        <Input  style={{maxWidth:500}}/>
+        <Input style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>构架</h5>
       <Form.Item
-        name={['运行环境', '服务器端', '软件','架构']}
+        name={['运行环境', '服务器端', '软件', '架构']}
         rules={[{ required: true, message: '请选择架构' }]}
       >
         <Checkbox.Group >
@@ -604,25 +640,25 @@ function SubmitApplication(props) {
 
       <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>数据库</h5>
       <Form.Item
-        name={['运行环境', '服务器端', '软件','数据库']}
+        name={['运行环境', '服务器端', '软件', '数据库']}
         rules={[{ required: true, message: '请填写数据库' }]}
       >
-        <Input  style={{maxWidth:500}}/>
+        <Input style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>中间件</h5>
       <Form.Item
-        name={['运行环境', '服务器端', '软件','中间件']}
+        name={['运行环境', '服务器端', '软件', '中间件']}
         rules={[{ required: true, message: '请填写中间件' }]}
       >
-        <Input  style={{maxWidth:500}}/>
+        <Input style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>其他支撑软件</h5>
       <Form.Item
-        name={['运行环境', '服务器端', '软件','其他支撑软件']}
+        name={['运行环境', '服务器端', '软件', '其他支撑软件']}
       >
-        <TextArea rows={3}  style={{maxWidth:700}}/>
+        <TextArea rows={3} style={{ maxWidth: 700 }} />
       </Form.Item>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 60 }}>网络环境</h3>
@@ -630,13 +666,13 @@ function SubmitApplication(props) {
         name={['运行环境', '网络环境']}
         rules={[{ required: true, message: '请填写网络环境' }]}
       >
-        <Input  style={{maxWidth:500}}/>
+        <Input style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>样品和数量</h2>
       <h3 style={{ fontWeight: 'bolder', marginTop: 0 }}>软件介质</h3>
       <Form.Item
-        name={['样品和数量','软件介质']}
+        name={['样品和数量', '软件介质']}
         rules={[{ required: true, message: '请选择软件介质' }]}
       >
         <Radio.Group >
@@ -647,7 +683,7 @@ function SubmitApplication(props) {
             <Radio value="U盘" style={{ lineHeight: '32px' }}>U盘</Radio>
           </Col>
           <Col span={30}>
-          <Radio value="其他" style={{ lineHeight: '32px' }} onChange={(e) => setDataByKey('样品和数量-软件介质-其他', e.target.checked)}>
+            <Radio value="其他" style={{ lineHeight: '32px' }} onChange={(e) => setDataByKey('样品和数量-软件介质-其他', e.target.checked)}>
               其他
               <Form.Item
                 style={{ paddingLeft: 0 }}
@@ -662,23 +698,23 @@ function SubmitApplication(props) {
       </Form.Item>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>文档资料</h3>
-        <Form.Item name={['样品和数量', '文档资料']} valuePropName="fileList" getValueFromEvent={normFile} noStyle>
-          <Upload.Dragger 
-          name="files" 
-          action="http://localhost:8000/docs" 
-          style={{maxWidth:500}}
-          >
-            <p className="ant-upload-drag-icon">
-              <InboxOutlined/>
-            </p>
-            <p className="ant-upload-text">点击或拖拽文件上传</p>
-            <p className="ant-upload-hint">支持单个文件或压缩包</p>
-          </Upload.Dragger>
-        </Form.Item>
+      <Form.Item name={['样品和数量', '文档资料']} valuePropName="fileList" getValueFromEvent={normFile} noStyle>
+        <Upload.Dragger
+          name="files"
+          action="http://localhost:8000/docs"
+          style={{ maxWidth: 500 }}
+        >
+          <p className="ant-upload-drag-icon">
+            <InboxOutlined />
+          </p>
+          <p className="ant-upload-text">点击或拖拽文件上传</p>
+          <p className="ant-upload-hint">支持单个文件或压缩包</p>
+        </Upload.Dragger>
+      </Form.Item>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 60 }}>提交的样品(硬拷贝资料、硬件)五年保存期满后</h3>
       <Form.Item
-        name={['样品和数量','提交的样品(硬拷贝资料、硬件)五年保存期满后']}
+        name={['样品和数量', '提交的样品(硬拷贝资料、硬件)五年保存期满后']}
         rules={[{ required: true, message: '请选择期望' }]}
       >
         <Radio.Group >
@@ -703,9 +739,9 @@ function SubmitApplication(props) {
       <h3 style={{ fontWeight: 'bolder', marginTop: 0 }}>电话</h3>
       <Form.Item
         name={['委托单位信息', '电话']}
-        rules={[{ required: true, message: '请填写电话' },{pattern: new RegExp(/^[1-9]\d*$/, "g"),message:'请正确输入电话'}]}
+        rules={[{ required: true, message: '请填写电话' }, { pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请正确输入电话' }]}
       >
-        <Input style={{maxWidth:500}}/>
+        <Input style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>传真</h3>
@@ -713,7 +749,7 @@ function SubmitApplication(props) {
         name={['委托单位信息', '传真']}
         rules={[{ required: true, message: '请填写传真' }]}
       >
-        <Input style={{maxWidth:500}}/>
+        <Input style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>地址</h3>
@@ -721,7 +757,7 @@ function SubmitApplication(props) {
         name={['委托单位信息', '地址']}
         rules={[{ required: true, message: '请填写地址' }]}
       >
-        <Input style={{maxWidth:500}}/>
+        <Input style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>邮编</h3>
@@ -729,7 +765,7 @@ function SubmitApplication(props) {
         name={['委托单位信息', '邮编']}
         rules={[{ required: true, message: '请填写邮编' }]}
       >
-        <Input style={{maxWidth:500}}/>
+        <Input style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>联系人</h3>
@@ -737,15 +773,15 @@ function SubmitApplication(props) {
         name={['委托单位信息', '联系人']}
         rules={[{ required: true, message: '请填写联系人' }]}
       >
-        <Input style={{maxWidth:500}}/>
+        <Input style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>手机</h3>
       <Form.Item
         name={['委托单位信息', '手机']}
-        rules={[{ required: true, message: '请填写手机号' },{pattern: new RegExp(/^[1-9]\d*$/, "g"),message:'请正确输入手机号'}]}
+        rules={[{ required: true, message: '请填写手机号' }, { pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请正确输入手机号' }]}
       >
-        <Input style={{maxWidth:500}}/>
+        <Input style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>E-mail</h3>
@@ -753,7 +789,7 @@ function SubmitApplication(props) {
         name={['委托单位信息', 'E-mail']}
         rules={[{ required: true, message: '请填写E-mail' }]}
       >
-        <Input style={{maxWidth:500}}/>
+        <Input style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>网址</h3>
@@ -761,7 +797,7 @@ function SubmitApplication(props) {
         name={['委托单位信息', '网址']}
         rules={[{ required: true, message: '请填写网址' }]}
       >
-        <Input style={{maxWidth:500}}/>
+        <Input style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <Form.Item>

@@ -5,6 +5,7 @@ import { Button, Dropdown, Steps, Space, Collapse, } from 'antd';
 import { DownOutlined, SmileOutlined, CaretRightOutlined } from '@ant-design/icons';
 import { getStageByInfo, getStatusInfo } from '../../functions/functions'
 import { useEffect, useState } from 'react';
+import { USE_JSON_SERVER } from '../../functions/functions';
 var _ = require('lodash');
 
 const { Panel } = Collapse;
@@ -180,13 +181,11 @@ function ViewEntrust(props) {
                 }
             })()}
             <h1 style={{marginTop:60}}>文件列表</h1>
-            {(entrustData['stage']>=12)?
                 (<div>
                     <h2 style={{ marginTop: 40 }}>软件项目委托测试申请书</h2>
                     <h2 style={{ marginTop: 40 }}>状态:{" "+getStatusInfo(entrustData['formData'],'软件项目委托测试申请书')}</h2>
                     <Button type="primary" style={{ marginLeft: 20 }} onClick={() => ChangePage('ViewApplication')}>查看</Button>
                 </div>):null
-            }
             {(entrustData['stage']>=18)?
                 (<div>
                     <h2 style={{ marginTop: 40 }}>软件测试委托合同签章</h2>

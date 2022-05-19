@@ -28,6 +28,8 @@ import Quotation from './Adiministration/src/Quotation/Quotation';
 import QuotationFeedback from './Adiministration/src/QuotationFeedback/QuotationFeedback';
 import FunctionList from './Adiministration/src/FunctionList/FunctionList';
 
+import { USE_JSON_SERVER } from './Adiministration/functions/functions';
+
 const { Header, Content, Footer, Sider } = Layout;
 
 
@@ -41,9 +43,10 @@ class Home extends React.Component {
         this.state = {
             PageContent: MainPage,
             userID: null,
-            userIdentity: "user",
+            userIdentity: "ROLE_USER",
             userName: null,
-            Authorization: null,
+            accessToken: null,
+            tokenType:null,
             HeaderMenuIndex: '1',
             BreadcrumbByIndex: ['0', '0', '0', '0', '0'],
             PageInfo: { 'id': 0 }
@@ -75,7 +78,7 @@ class Home extends React.Component {
                 this.setState({ HeaderMenuIndex: '2', BreadcrumbByIndex: ['首页', '注册', '0', '0', '0'] });
                 return (<RegisterPage UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage} />);
             case 'SubmitApplication':
-                if (this.state.Authorization === null) {
+                if (this.state.accessToken === null) {
                     alert('请先登录！')
                     return this.GetPageInfo('Login', _state);
                 }
@@ -235,8 +238,8 @@ class Home extends React.Component {
                             key: String(index + 1),
                             label: {
                                 0: (<a onClick={() => { this.GotoPage('MainPage', this.state) }}>首页</a>),
-                                1: (<a onClick={() => { this.state.Authorization === null ? this.GotoPage('Login', this.state) : this.GotoPage('UserInfo', this.state) }}>用户</a>),
-                                2: (this.state.userIdentity == "admin") ? adminFunctionMenu : ((this.state.userIdentity == "user") ? userFunctionMenu : staffFunctionMenu),
+                                1: (<a onClick={() => { this.state.accessToken === null ? this.GotoPage('Login', this.state) : this.GotoPage('UserInfo', this.state) }}>用户</a>),
+                                2: (this.state.userIdentity == "ROLE_ADMIN") ? adminFunctionMenu : ((this.state.userIdentity == "ROLE_USER") ? userFunctionMenu : staffFunctionMenu),
                                 3: infoMenu,
                             }[index],
                         }))}
