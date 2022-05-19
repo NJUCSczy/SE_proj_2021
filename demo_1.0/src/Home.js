@@ -23,6 +23,8 @@ import TestAgreement from './Adiministration/src/TestAgreement/TestAgreement';
 import CheckTA from './Adiministration/src/TestAgreement/CheckTA';
 import Quotation from './Adiministration/src/Quotation/Quotation';
 import FunctionList from './Adiministration/src/FunctionList/FunctionList';
+
+
 const { Header, Content, Footer, Sider } = Layout;
 
 
@@ -118,7 +120,7 @@ class Home extends React.Component {
                 
             case 'Info2':
                 this.setState({ HeaderMenuIndex: '4' });
-                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>资质信息</div>);
+                return (<FunctionList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></FunctionList>);
             case 'Info3':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<ClientApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ClientApplication>);

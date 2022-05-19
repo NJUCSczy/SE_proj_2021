@@ -4,6 +4,7 @@ import { DatePicker, Divider, Form,Space, Select, InputNumber, Switch, Radio, Sl
 import { useState } from 'react';
 import Paragraph from 'antd/lib/skeleton/Paragraph';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
+import FormItem from 'antd/lib/form/FormItem';
 
 function FunctionList(props) {
     const { UpdateUserInfo, GotoPage, _state } = props;
@@ -49,7 +50,7 @@ function FunctionList(props) {
   
     return(
         <Form
-      name="报价单"
+      name="功能列表"
       initialValues={{ remember: true }}
       style={{ padding: '20px 30px' } }
       autoComplete="false"
@@ -60,7 +61,7 @@ function FunctionList(props) {
 
 
          <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件名称</h3>
-     <Form.Item
+     <Form.Item name="软件名称"
       >
         <Input  style={{maxWidth:500} }  rules={[{ required: true, message: '请填写软件名称' }]}/>
       </Form.Item>
@@ -79,46 +80,50 @@ function FunctionList(props) {
                     <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件功能</h4>
                     <Form.Item
                   {...restField}
-                  
-                  key={restField.key,'软件功能项目'}
+                
+                  name={[name,'软件功能项目']}
                   rules={[{ required: true, message: '请填写软件功能项目' }]}
                 >
                   <Input style={{maxWidth:500}} placeholder="软件功能项目" />
                 </Form.Item>
-      <Form.List name="子功能项目列表" key={[restField.key, '软件功能项目']} layout='vertical' width={500}>
+      <Form.List  name={[name, '子功能项目列表']} layout='vertical' width={500} >
         {(fieldsInside, { add:addInside, remove:removeInside }) => (
           <>
             {fieldsInside.map(({ key, name, ...restFieldInside }) => (
-             <div name = {[restFieldInside.name,'子功能项目']} key={[restFieldInside.key,'子功能项目']}>
-               <h5 style={{ fontWeight: 'bolder', marginTop: 30  }}>软件子功能项目</h5>
+             <div>
+               <h5 style={{ fontWeight: 'bolder', padding :'0px 50px' }}>软件子功能项目</h5>
                
                 <Form.Item
                   {...restFieldInside}
-                  key = {[restFieldInside.key,'软件子功能项目']}
-                  
+                  name = {[name,'软件子功能项目']}
+                  style={{ padding :'0px 50px'}}
                   rules={[{ required: true, message: '请填写软件子功能项目' }]}
                 >
-                  <Input style={{maxWidth:500}} placeholder="软件子功能项目" />
+                  <Input style={{maxWidth:450}} placeholder="软件子功能项目" />
                 </Form.Item>
         
-                <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>功能说明</h5>
+                <h5 style={{ fontWeight: 'bolder',padding :'0px 50px', marginTop: 30 }}>功能说明</h5>
                 <Form.Item
                   {...restFieldInside}
-               
-                  key = {[restFieldInside.key,'功能说明']}
+                  style={{ padding :'0px 50px'}}
+                  name = {[name,'功能说明']}
                   rules={[{ required: true, message: '请填写功能说明' }]}
                 >
-                  <Input style={{maxWidth:500}} placeholder="功能说明" />
+                  <Input style={{maxWidth:450}} placeholder="功能说明" />
                 </Form.Item>
-                
-                <Button onClick={() => remove(restFieldInside.name)} type='danger'>
+                <FormItem style={{ padding :'0px 50px'}}>
+                <Button 
+                onClick={() => removeInside(name)} type='danger'>
                     删除该项目
                 </Button>
+                </FormItem>
                 </div>
             ))}
-            <Form.Item>
-              <Button  type="dashed"
-              style={{ width:500, marginTop: 30 }}
+            
+            <Form.Item  style={{ padding :'0px 50px'}}>
+              <Button  type="dashed" 
+              
+              style={{ padding :'0px 50px',width:450}}
                onClick={() => addInside()} icon={<PlusOutlined />}  >
                 添加新项目
               </Button>
@@ -127,7 +132,7 @@ function FunctionList(props) {
         )}
       </Form.List>
 
-      <Button onClick={() => remove(restField.name)} type='danger'>
+      <Button onClick={() => remove(name)} type='danger'>
                     删除该功能
                 </Button>
                 </Fragment>       
