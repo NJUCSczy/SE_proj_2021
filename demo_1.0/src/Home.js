@@ -29,13 +29,8 @@ import ViewContract from './Adiministration/src/ViewContract/ViewContract';
 import Quotation from './Adiministration/src/Quotation/Quotation';
 import QuotationFeedback from './Adiministration/src/QuotationFeedback/QuotationFeedback';
 import FunctionList from './Adiministration/src/FunctionList/FunctionList';
-<<<<<<< HEAD
-
-=======
 import UserUploadFiles from './Adiministration/src/UserUploadFiles/UserUploadFiles';
-
 import { USE_JSON_SERVER } from './Adiministration/functions/functions';
->>>>>>> a2380f6c0b7d8aeee749162463beca6fca5f9a08
 
 const { Header, Content, Footer, Sider } = Layout;
 
