@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
+import { Layout, Menu, Dropdown, Breadcrumb, Space } from 'antd';
+import { DownOutlined, SmileOutlined } from '@ant-design/icons';
+import { useState } from 'react';
 import "./Home.css";
 
 import SubmitApplication from './Adiministration/src/SubmitApplication/SubmitApplication';
@@ -8,10 +11,8 @@ import ViewApplication from './Adiministration/src/ViewApplication/ViewApplicati
 import ViewEntrustList from './Adiministration/src/ViewEntrustList/ViewEntrustList';
 import ViewEntrust from './Adiministration/src/ViewEntrust/ViewEntrust';
 import TadultApplication from './Adiministration/src/TadultApplication/TadultApplication'
-import { useState } from 'react';
-import MktdptApplication from './Adiministration/src/MktdptApplication/mktdept';
-import { Layout, Menu, Dropdown, Breadcrumb, Space } from 'antd';
-import { DownOutlined, SmileOutlined } from '@ant-design/icons';
+import MktdptApplicationStep1 from './Adiministration/src/MktdptApplication/mktdept1';
+import MktdptApplicationStep2 from './Adiministration/src/MktdptApplication/mktdept2';
 import UserInfoPage from './register_login/pages/UserInfo';
 import Login from './register_login/pages/Login';
 import RegisterPage from './register_login/pages/Register';
@@ -21,9 +22,20 @@ import ClientApplication from './Adiministration/src/MktContract/ClientApplicati
 import TrusteeApplication from './Adiministration/src/MktContract/TrusteeApplication';
 import TestAgreement from './Adiministration/src/TestAgreement/TestAgreement';
 import CheckTA from './Adiministration/src/TestAgreement/CheckTA';
+import ViewCfdtagreement from './Adiministration/src/ViewCfdtagreement/ViewCfdtagreement';
+import ViewSignature from './Adiministration/src/ViewSignature/ViewSignature';
+import ViewQuotation from './Adiministration/src/ViewQuotation/ViewQuotation';
+import ViewContract from './Adiministration/src/ViewContract/ViewContract';
 import Quotation from './Adiministration/src/Quotation/Quotation';
+import QuotationFeedback from './Adiministration/src/QuotationFeedback/QuotationFeedback';
 import FunctionList from './Adiministration/src/FunctionList/FunctionList';
+<<<<<<< HEAD
 
+=======
+import UserUploadFiles from './Adiministration/src/UserUploadFiles/UserUploadFiles';
+
+import { USE_JSON_SERVER } from './Adiministration/functions/functions';
+>>>>>>> a2380f6c0b7d8aeee749162463beca6fca5f9a08
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -38,9 +50,10 @@ class Home extends React.Component {
         this.state = {
             PageContent: MainPage,
             userID: null,
-            userIdentity: "user",
+            userIdentity: "ROLE_USER",
             userName: null,
-            Authorization: null,
+            accessToken: null,
+            tokenType:null,
             HeaderMenuIndex: '1',
             BreadcrumbByIndex: ['0', '0', '0', '0', '0'],
             PageInfo: { 'id': 0 }
@@ -72,7 +85,7 @@ class Home extends React.Component {
                 this.setState({ HeaderMenuIndex: '2', BreadcrumbByIndex: ['首页', '注册', '0', '0', '0'] });
                 return (<RegisterPage UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage} />);
             case 'SubmitApplication':
-                if (this.state.Authorization === null) {
+                if (this.state.accessToken === null) {
                     alert('请先登录！')
                     return this.GetPageInfo('Login', _state);
                 }
@@ -89,9 +102,12 @@ class Home extends React.Component {
             case 'ViewApplication':
                 this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托', '0', '0', '0'] });
                 return (<ViewApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewApplication>);
-            case 'MktdptApplication':
+            case 'MktdptApplicationStep1':
                 this.setState({ HeaderMenuIndex: '4' });
-                return (<MktdptApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></MktdptApplication>);
+                return (<MktdptApplicationStep1 _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></MktdptApplicationStep1>);
+            case 'MktdptApplicationStep2':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<MktdptApplicationStep2 _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></MktdptApplicationStep2>);
             case 'TadultApplication':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<TadultApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TadultApplication>);
@@ -113,11 +129,25 @@ class Home extends React.Component {
             case 'CheckTA':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<CheckTA _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></CheckTA>);
+            case 'FunctionList':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<FunctionList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></FunctionList>);
+            case 'Quotation':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<Quotation _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></Quotation>);
+            case 'QuotationFeedback':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<QuotationFeedback _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></QuotationFeedback>);
+            case 'ViewCfdtagreement':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<ViewCfdtagreement _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewCfdtagreement>);
+            case 'ViewSignature':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<ViewSignature _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewSignature>);
+
             case 'Info1':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<FunctionList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></FunctionList>);
-                 
-                
             case 'Info2':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<FunctionList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></FunctionList>);
@@ -129,10 +159,10 @@ class Home extends React.Component {
                 return (<TrusteeApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TrusteeApplication>);//原 业务信息界面
             case 'Info5':
                 this.setState({ HeaderMenuIndex: '4' });
-                return (<TadultApplication></TadultApplication>);
+                return (<ViewContract _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewContract>);
             case 'Info6':
                 this.setState({ HeaderMenuIndex: '4' });
-                return (<ConfidentialAgreementPartyB></ConfidentialAgreementPartyB>);
+                return (<UserUploadFiles _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></UserUploadFiles>);
             case 'Info7':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<TestAgreement _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestAgreement>);
@@ -215,8 +245,8 @@ class Home extends React.Component {
                             key: String(index + 1),
                             label: {
                                 0: (<a onClick={() => { this.GotoPage('MainPage', this.state) }}>首页</a>),
-                                1: (<a onClick={() => { this.state.Authorization === null ? this.GotoPage('Login', this.state) : this.GotoPage('UserInfo', this.state) }}>用户</a>),
-                                2: (this.state.userIdentity == "admin") ? adminFunctionMenu : ((this.state.userIdentity == "user") ? userFunctionMenu : staffFunctionMenu),
+                                1: (<a onClick={() => { this.state.accessToken === null ? this.GotoPage('Login', this.state) : this.GotoPage('UserInfo', this.state) }}>用户</a>),
+                                2: (this.state.userIdentity == "ROLE_ADMIN") ? adminFunctionMenu : ((this.state.userIdentity == "ROLE_USER") ? userFunctionMenu : staffFunctionMenu),
                                 3: infoMenu,
                             }[index],
                         }))}
@@ -231,7 +261,7 @@ class Home extends React.Component {
                             {Breadcrumbitems[this.state.BreadcrumbByIndex[3]]}
                             {Breadcrumbitems[this.state.BreadcrumbByIndex[4]]}
                         </Breadcrumb>
-                        <Layout onChange={() => {document.body.scrollTop = document.documentElement.scrollTop = 0;}} style={{ overflowY: 'scroll', marginBottom: 100, height: '100%' }}>
+                        <Layout onChange={() => { document.body.scrollTop = document.documentElement.scrollTop = 0; }} style={{ overflowY: 'scroll', marginBottom: 100, height: '100%' }}>
                             <div className="site-layout-background" style={{ padding: 0, height: 'fit-content' }}>
                                 {this.state.PageContent}
                             </div>

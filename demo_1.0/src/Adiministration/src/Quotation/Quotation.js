@@ -15,15 +15,33 @@ function Quotation(props) {
     const { TextArea } = Input;
 
     const onFinishForm = (values) => {
-        console.log('Success:', values);
-        var form = {}
-        form['报价单']=values;
-        SubmitForm(form);
-      };
+      console.log('Success:', values);
+      var form = {}
+      fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
+        method: "GET",
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(res => {
+          return res.json()
+        })
+        .then(data => {
+          if (data != null) {
+            form = data
+            form['报价单']={}
+            form['报价单']['基本信息']=values
+            form['报价单']['用户反馈']=null
+            SubmitForm(form)
+          }
+          console.log(data)
+        })
+    };
     
       const SubmitForm = (_form) => {
-        fetch("http://localhost:8000/test/", {
-          method: "POST",
+        fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'], {
+          method: "PUT",
           headers: {
             'Content-Type': 'application/json'
           },
@@ -31,7 +49,7 @@ function Quotation(props) {
         })
           .then(res => {
             console.log(res)
-            if (res.status === 201) {
+            if (res.status === 200) {
               alert("提交成功！")
               //navigate('/yjqtest', { state: { email: formData['email'], password: formData['password'] } })
             }
@@ -148,7 +166,7 @@ function Quotation(props) {
         <Input  style={{maxWidth:500}}/>
       </Form.Item>
 
-      <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>税率（8%）</h4>
+      <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>税率(8%)</h4>
      <Form.Item
         name="税率(8%)"
         rules={[{ required: true, message: '请填写税率' }]}

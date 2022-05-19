@@ -75,7 +75,7 @@ function TestAgreement(props){
           return
         form['测试合同']={}
         form['测试合同']['市场部部分']=values
-        form['测试合同']['议价情况']=null
+        form['测试合同']['履行期限接受情况'] = null
         SubmitForm(form)
       }
 
@@ -154,8 +154,8 @@ function TestAgreement(props){
                 </Paragraph>
 
                 <h3>四.合同价款</h3>
-                <Form.Item label="本合同软件测试费用为人民币"  labelCol={{ span: 6 }} name = "合同价款">
-                    <Input  style={{maxWidth:100}} addonAfter="元"/>
+                <Form.Item label="本合同软件测试费用为人民币"  labelCol={{ span: 6 }}>
+                    <Input  style={{maxWidth:100}} defaultValue={entrustData["formData"]["报价单"]["基本信息"]['总计']} disabled={true} addonAfter="元"/>
                 </Form.Item>
 
                 <h3>五.测试费用支付方式</h3>

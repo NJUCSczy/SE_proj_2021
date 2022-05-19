@@ -13,15 +13,35 @@ function FunctionList(props) {
     const { TextArea } = Input;
 
     const onFinishForm = (values) => {
-        console.log('Success:', values);
-        var form = {}
-        form['功能列表']=values;
-        SubmitForm(form);
-      };
+      console.log('Success:', values);
+      if(!USE_JSON_SERVER){
+        return SubmitForm({})
+      }
+      var form = {}
+      fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
+        method: "GET",
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(res => {
+          return res.json()
+        })
+        .then(data => {
+          if (data != null) {
+            form = data
+            form['委托测试软件功能列表']=values
+            SubmitForm(form)
+          }
+          console.log(data)
+        })
+    };
     
       const SubmitForm = (_form) => {
-        fetch("http://localhost:8000/test/", {
-          method: "POST",
+        if(USE_JSON_SERVER){
+        fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'], {
+          method: "PUT",
           headers: {
             'Content-Type': 'application/json'
           },
@@ -29,7 +49,7 @@ function FunctionList(props) {
         })
           .then(res => {
             console.log(res)
-            if (res.status === 201) {
+            if (res.status === 200) {
               alert("提交成功！")
               //navigate('/yjqtest', { state: { email: formData['email'], password: formData['password'] } })
             }
@@ -38,6 +58,34 @@ function FunctionList(props) {
           .then(data => {
             console.log(data)
           })
+        }
+        else{
+          fetch("http://42.192.56.231:8000/delegation/"+_state['PageInfo']['id']+"/functionTable", {
+        method: "PUT",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json;charset=utf-8',
+          'accessToken': _state['accessToken'],
+          'tokenType': _state['tokenType'],
+          'usrName': _state['userName'],
+          'usrID': _state['userID'],
+          'usrRole': _state['userRole'],
+          'Authorization': _state['accessToken']
+        },
+        body: JSON.stringify(_form)
+      })
+        .then(res => {
+          console.log(res)
+          if (res.status === 200) {
+            alert("提交成功！")
+            //navigate('/yjqtest', { state: { email: formData['email'], password: formData['password'] } })
+          }
+          return res.json()
+        })
+        .then(data => {
+          console.log(data)
+        })
+        }
       }
     
       const onFinishFailed = (errorInfo) => {
@@ -76,7 +124,7 @@ function FunctionList(props) {
       <Form.List name="功能项目列表" layout='vertical' width={500}>
           {(fields, {add, remove})=>(<>
             {fields.map(({ key, name, ...restField }) => (
-                <Fragment >
+                <Fragment>
                     <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件功能</h4>
                     <Form.Item
                   {...restField}

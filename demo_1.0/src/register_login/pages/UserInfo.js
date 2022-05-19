@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button } from 'antd';
 import { Menu } from 'antd';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import { USE_JSON_SERVER } from '../../Adiministration/functions/functions';
 
 
 function getItem(label, key, icon, children, type) {
@@ -33,7 +34,7 @@ const items = [
 function UserInfoPage(props){
     const {_state} = props;
     const Logout = () => {
-        var emptyUserInfo={userID:null,userName:null,Authorization:null};
+        var emptyUserInfo={userID:null,userName:null,accessToken:null};
         this.props.UpdateUserInfo(emptyUserInfo);
         this.props.GotoPage('Login',emptyUserInfo);
     }
@@ -44,7 +45,7 @@ function UserInfoPage(props){
             <div className="container">
             <h1 style={{fontSize: 40, fontWeight: 'bolder', textAlign: 'center'}}>用户信息</h1>
             <h2>用户名: {_state.userName}</h2>
-            <h2>用户身份: {(_state.userIdentity === 'user') ? '普通用户' : ((_state.userIdentity === 'admin') ? '管理员' : '工作人员')}</h2>
+            <h2>用户身份: {(_state.userIdentity === 'ROLE_USER') ? '普通用户' : ((_state.userIdentity === 'ROLE_ADMIN') ? '管理员' : '工作人员')}</h2>
             
             <div style={{textAlign: 'center'}}><Button type="primary" size='large' onClick={Logout}>退出登录</Button></div>
             </div>
