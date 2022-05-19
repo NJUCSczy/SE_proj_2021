@@ -1,3 +1,5 @@
+export const USE_JSON_SERVER=true;
+
 export function getStageByInfo(info){
     if(info===null || info ===undefined)return 0;
     return (
@@ -19,7 +21,7 @@ export function getStageByInfo(info){
     info['测试合同']['履行期限接受情况'] === '不接受' ? 14 : //客户不接受履行期限，委托终止
     info['测试合同']['履行期限接受情况'] === '申请再议' ? 15 : //客户针对履行期限申请再议
     info['测试合同'].hasOwnProperty('签章') === false ? 16 : //客户接受履行期限，等待市场部填写签章受托人部分
-    info['测试合同']['签章'].hasOwnProperty('用户部分') === false ? 17 : //市场部已填写签章受托人部分，等待客户填写签章委托人部分
+    info['测试合同']['签章'].hasOwnProperty('委托人签章') === false ? 17 : //市场部已填写签章受托人部分，等待客户填写签章委托人部分
     info.hasOwnProperty('保密协议') === false ? 18 : //测试合同已完成，等待市场部填写保密协议
     info['保密协议'].hasOwnProperty('用户部分') === false ? 19 : //市场部已填写保密协议，等待客户填写保密协议
     20//委托完成
@@ -32,7 +34,7 @@ export function getStatusInfo(info,part=null){
     var res='';
     if(part === '软件项目委托测试申请书'){
         if(stage>=11)
-        return '市场部确认受理用户请求,软件项目委托测试申请书已完成'
+        return '已完成'
         else if(stage>=7)
         return '等待市场部完成'
     }

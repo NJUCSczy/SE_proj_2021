@@ -166,7 +166,7 @@ function Quotation(props) {
         <Input  style={{maxWidth:500}}/>
       </Form.Item>
 
-      <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>税率（8%）</h4>
+      <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>税率(8%)</h4>
      <Form.Item
         name="税率(8%)"
         rules={[{ required: true, message: '请填写税率' }]}

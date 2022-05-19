@@ -9,7 +9,7 @@ import { NoFormStatus } from 'antd/lib/form/context';
 var _ = require('lodash');
 var mobile = require('is-mobile');
 
-function MktdptApplication(props) {
+function MktdptApplicationStep1(props) {
   const { UpdateUserInfo, GotoPage, _state } = props;
   const [formData, setFormData] = useState({})
   const { Option } = Select;
@@ -103,16 +103,6 @@ function MktdptApplication(props) {
           </Col>
         </Radio.Group>
         </Form.Item>
-        {(formData['是否受理'] === '受理') ? (
-          <div><h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试项目编号</h2>
-            <Form.Item
-              name="测试项目编号"
-              rules={[{ required: true, message: '请填写测试项目编号' }]}
-            >
-              <Input style={{ maxWidth: 500 }} />
-
-            </Form.Item></div>) : null
-        }
       
       {(formData['是否受理'] === '受理') ? (<div><h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>市场部备注</h2>
         <Form.Item
@@ -145,4 +135,4 @@ function MktdptApplication(props) {
   )
 }
 
-export default MktdptApplication;
+export default MktdptApplicationStep1;

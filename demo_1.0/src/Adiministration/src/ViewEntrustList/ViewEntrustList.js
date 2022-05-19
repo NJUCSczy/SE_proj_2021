@@ -2,7 +2,7 @@ import './ViewEntrustList.css'
 import React from 'react';
 import { Table, Tag, Space } from 'antd';
 import { useEffect, useState } from 'react';
-import {getStageByInfo,getStatusInfo} from '../../functions/functions'
+import {getStageByInfo,getStatusInfo,USE_JSON_SERVER} from '../../functions/functions'
 
 var _ = require('lodash');
 
@@ -13,7 +13,7 @@ var _ = require('lodash');
     const columns = [
         {
             title: '编号',
-            dataIndex: 'id',
+            dataIndex: (USE_JSON_SERVER)?'id':'delegationId',
             key: 'id',
             width:100,
             render: (id) => (
@@ -24,16 +24,16 @@ var _ = require('lodash');
           },
         {
           title: '用户',
-          dataIndex: 'userName',
+          dataIndex: (USE_JSON_SERVER)?'userName':'usrBelonged',
           key: 'userName',
         },
         {
           title: '软件名称',
-          dataIndex: "用户申请表",
+          dataIndex: (USE_JSON_SERVER)?'用户申请表':'applicationTable',
           key: '软件名称',
           render: (userApplication) => (
             <Space size="middle">
-            {userApplication["软件名称"]}
+            {userApplication === null?null: userApplication["软件名称"]}
           </Space>
           )
         },
@@ -50,7 +50,7 @@ var _ = require('lodash');
         {
           title: '操作',
           key: 'action',
-          dataIndex: 'id',
+          dataIndex: (USE_JSON_SERVER)?'id':'delegationId',
           textWrap: 'word-break',
           render: (id) => (
             <Space size="middle">
@@ -66,6 +66,7 @@ var _ = require('lodash');
         UpdateUserInfo({PageInfo:{'id':id}},GotoPage('ViewEntrust',_state))
     }
     const updateInfo = () => {
+      if(USE_JSON_SERVER){
         fetch("http://localhost:8000/forms", {
           method: "GET",
           mode: 'cors',
@@ -87,6 +88,35 @@ var _ = require('lodash');
             }
             
           })
+        }
+        else{
+          fetch("http://42.192.56.231:8000/delegations", {
+        method: "GET",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json;charset=utf-8',
+          'accessToken': _state['accessToken'],
+          'tokenType': _state['tokenType'],
+          'usrName': _state['userName'],
+          'usrID': _state['userID'],
+          'usrRole': _state['userRole'],
+          'Authorization': _state['accessToken']
+        },
+      })
+        .then(res => {
+          return res.json()
+        })
+        .then(data => {
+          console.log(data)
+          if (data != null) {
+            setEntrustData(prev => {
+            const newData = _.cloneDeep(prev)
+            newData["formData"] = data
+            return newData
+          })
+        }
+        })
+        }
       }
       
       useEffect(() =>{
