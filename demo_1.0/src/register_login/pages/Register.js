@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from 'react';
-import { Input, Card, Button, Row, Space } from 'antd';
+import { Input, Card, Button, Row, Space,message } from 'antd';
 import './css/register.css';
 import { USE_JSON_SERVER } from '../../Adiministration/functions/functions';
 
@@ -34,17 +34,15 @@ function RegisterPage(props) {
         .then(res => {
           console.log(formData)
           if (res.status === 201) {
-            alert("注册成功！")
-            //navigate('/')
+            message.success({content:'注册成功！',key:"register"})
+          }else{
+            message.error({content:'注册失败',key:"register"})
           }
-          return res.json()
+          return (res.json(),res.status)
         })
-        .then(data => {
+        .then((data,status) => {
           console.log(data)
-          if (data["errorInfo"] != undefined) {
-            alert(data["errorInfo"])
-          }
-          else {
+          if (status===201) {
             GotoPage('Login');
           }
         })
@@ -61,17 +59,15 @@ function RegisterPage(props) {
         .then(res => {
           console.log(formData)
           if (res.status === 200) {
-            alert("注册成功！")
-            //navigate('/')
+            message.success({content:'注册成功！',key:"register"})
+          }else{
+            message.error({content:'注册失败',key:"register"})
           }
-          return res.json()
+          return (res.json(),res.status)
         })
-        .then(data => {
+        .then((data,status) => {
           console.log(data)
-          if (data["errorInfo"] != undefined) {
-            alert(data["errorInfo"])
-          }
-          else {
+          if (status==200) {
             GotoPage('Login');
           }
         })

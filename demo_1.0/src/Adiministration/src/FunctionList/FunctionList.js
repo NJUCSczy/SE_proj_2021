@@ -1,6 +1,6 @@
 import React ,{ Fragment }from 'react'
 
-import { DatePicker, Divider, Form,Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
+import { message, Divider, Form,Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import { useState } from 'react';
 import Paragraph from 'antd/lib/skeleton/Paragraph';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
@@ -15,7 +15,7 @@ function FunctionList(props) {
     const onFinishForm = (values) => {
       console.log('Success:', values);
       if(!USE_JSON_SERVER){
-        return SubmitForm({})
+        return SubmitForm(values)
       }
       var form = {}
       fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
@@ -50,8 +50,11 @@ function FunctionList(props) {
           .then(res => {
             console.log(res)
             if (res.status === 200) {
-              alert("提交成功！")
-              //navigate('/yjqtest', { state: { email: formData['email'], password: formData['password'] } })
+              message.success({content:"提交成功！",key:"upload"})
+              GotoPage("ViewEntrust",_state)
+            }
+            else{
+              message.error({content:"提交失败！",key:"upload"})
             }
             return res.json()
           })
@@ -61,7 +64,7 @@ function FunctionList(props) {
         }
         else{
           fetch("http://42.192.56.231:8000/delegation/"+_state['PageInfo']['id']+"/functionTable", {
-        method: "PUT",
+        method: "POST",
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json;charset=utf-8',
@@ -77,8 +80,11 @@ function FunctionList(props) {
         .then(res => {
           console.log(res)
           if (res.status === 200) {
-            alert("提交成功！")
-            //navigate('/yjqtest', { state: { email: formData['email'], password: formData['password'] } })
+            message.success({content:"提交成功！",key:"upload"})
+            GotoPage("ViewEntrust",_state)
+          }
+          else{
+            message.error({content:"提交失败！",key:"upload"})
           }
           return res.json()
         })
@@ -92,11 +98,7 @@ function FunctionList(props) {
         console.log('Failed:', errorInfo);
         alert('请正确填写！')
       };
-  
-   
-
-
-  
+ 
     return(
         <Form
       name="功能列表"

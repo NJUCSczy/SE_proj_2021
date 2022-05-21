@@ -1,11 +1,12 @@
 import isMobile from 'is-mobile';
 import React, { Component } from 'react'
-import { Typography, DatePicker, Form, InputNumber, Button, Input, Col, Radio } from 'antd';
+import { message, Typography, DatePicker, Form, InputNumber, Button, Input, Col, Radio } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
 import { NoFormStatus } from 'antd/lib/form/context';
 import { useEffect, useState } from 'react';
 import moment from 'moment';
+import ViewQuotation from '../ViewQuotation/ViewQuotation';
 const { Title, Paragraph, Text, Link } = Typography;
 var _ = require('lodash');
 
@@ -62,7 +63,11 @@ function QuotationFeedback(props) {
             .then(res => {
                 console.log(res)
                 if (res.status === 200) {
-                    alert("提交成功！")
+                    message.success({ content: "提交成功！", key: "upload" })
+                    GotoPage("ViewEntrust", _state)
+                }
+                else {
+                    message.error({ content: "提交失败！", key: "upload" })
                 }
                 return res.json()
             })
@@ -84,7 +89,8 @@ function QuotationFeedback(props) {
     };
 
     return (
-        <div><h2>这里是报价表</h2>
+        <div>
+            <ViewQuotation _state={_state} UpdateUserInfo={UpdateUserInfo} GotoPage={GotoPage}></ViewQuotation>
             <Form
                 initialValues={{ remember: true }}
                 style={{ padding: '20px 30px' }}

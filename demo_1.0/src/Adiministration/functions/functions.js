@@ -28,8 +28,38 @@ export function getStageByInfo(info){
     );
 }
 
+export function getStageByDelegationState(state){
+    switch(state){
+        case 'ERROR':return -1;//错误状态
+        case 'UPLOAD_FUNCTION_TABLE':return 0;//已经填写申请表，等待功能表
+        case 'UPLOAD_FILES':return 1;//已经填写功能表，等待文件
+        case 'AUDIT_TEST_APARTMENT':return 2;//已经上传文件，等待测试部审核
+        case 'AUDIT_TEST_DEPARTMENT_DENIED':return 3;//测试部拒绝S
+        case 'AUDIT_MARKET_APARTMENT':return 4;//测试部审核通过，等待市场部审核
+        case 'AUDIT_MARKET_APARTMENT_DENIED':return 5;//市场部拒绝
+        case 'AUDIT_MARKET_APARTMENT_FURTHER':return 6;//市场部进一步审理
+        case 'QUOTATION_MARKET':return 7;//市场部审理通过，等待议价
+        case 'QUOTATION_USER':return 8;//用户评估议价
+        case 'QUOTATION_USER_DENIED':return 9;//用户拒绝价格
+        case 'QUOTATION_USER_APPLICATION':return 10;//用户申请再次议价
+        case 'TEST_MARKET_APPLICATION':return 11;//用户接受议价，等待市场部完成测试申请表
+        case 'TEST_MARKET_CONTRACT':return 12;//市场部完成测试申请表，等待市场部完成合同
+        default:return -1;
+    }
+}
+
 export function getStatusInfo(info,part=null){  
     var stage=getStageByInfo(info);
+    return getDescriptionByStage(stage,part);
+}
+
+export function getStatusByDelegationState(state,part=null){
+    var stage=getStageByDelegationState(state);
+    //console.log(stage,part)
+    return getDescriptionByStage(stage,part);
+}
+
+function getDescriptionByStage(stage,part){
     if(stage<0)return null;
     var res='';
     if(part === '软件项目委托测试申请书'){
@@ -55,6 +85,12 @@ export function getStatusInfo(info,part=null){
             return '用户已签署保密协议，委托完成'
         else if(stage<19)
             return '尚未创建'
+    }
+    else if(part === '报价单'){
+        if(stage>=11)
+            return '已签订'
+        else
+            return '等待用户回复'
     }
     switch(stage){
         case -1:res='状态错误';break;

@@ -30,6 +30,7 @@ import Quotation from './Adiministration/src/Quotation/Quotation';
 import QuotationFeedback from './Adiministration/src/QuotationFeedback/QuotationFeedback';
 import FunctionList from './Adiministration/src/FunctionList/FunctionList';
 import UserUploadFiles from './Adiministration/src/UserUploadFiles/UserUploadFiles';
+import ViewUserFiles from './Adiministration/src/ViewUserFiles/ViewUserFiles';
 import { USE_JSON_SERVER } from './Adiministration/functions/functions';
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -45,7 +46,7 @@ class Home extends React.Component {
         this.state = {
             PageContent: MainPage,
             userID: null,
-            userIdentity: "ROLE_USER",
+            userRole: "ROLE_USER",
             userName: null,
             accessToken: null,
             tokenType:null,
@@ -139,6 +140,15 @@ class Home extends React.Component {
             case 'ViewSignature':
                 this.setState({ HeaderMenuIndex: '4' });
                 return (<ViewSignature _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewSignature>);
+            case 'ViewQuotation':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<ViewQuotation _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewQuotation>);
+            case 'UserUploadFiles':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<UserUploadFiles _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></UserUploadFiles>);
+            case 'ViewUserFiles':
+                this.setState({ HeaderMenuIndex: '4' });
+                return (<ViewUserFiles _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewUserFiles>);
 
             case 'Info1':
                 this.setState({ HeaderMenuIndex: '4' });
@@ -241,7 +251,7 @@ class Home extends React.Component {
                             label: {
                                 0: (<a onClick={() => { this.GotoPage('MainPage', this.state) }}>首页</a>),
                                 1: (<a onClick={() => { this.state.accessToken === null ? this.GotoPage('Login', this.state) : this.GotoPage('UserInfo', this.state) }}>用户</a>),
-                                2: (this.state.userIdentity == "ROLE_ADMIN") ? adminFunctionMenu : ((this.state.userIdentity == "ROLE_USER") ? userFunctionMenu : staffFunctionMenu),
+                                2: (this.state.userRole == "ROLE_ADMIN") ? adminFunctionMenu : ((this.state.userRole == "ROLE_USER") ? userFunctionMenu : staffFunctionMenu),
                                 3: infoMenu,
                             }[index],
                         }))}

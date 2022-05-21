@@ -3,7 +3,7 @@ import HomeLayout from '../layouts/HomeLayout';
 import FormItem from '../components/FormItem';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { Input, Card, Button, Row, Space } from 'antd';
+import { Input, Card, Button, Row, Space,message } from 'antd';
 import './css/register.css';
 import { USE_JSON_SERVER } from '../../Adiministration/functions/functions';
 
@@ -38,19 +38,18 @@ function Login(props) {
       })
         .then(res => {
           if (res.status === 200) {
-            //alert("登录成功了耶！")
-            //navigate('/yjqtest', { state: { email: formData['email'], password: formData['password'] } })
+            message.success({content:'登陆成功！',key:"login"})
+          }else{
+            message.error({content:'登陆失败',key:"login"})
           }
+
           return res.json()
         })
         .then(data => {
           console.log(data)
-          if (data.accessToken === undefined) {
-            alert("登录失败！")
-          }
-          else {
+          if (data.accessToken != undefined) {
             handleChange('accessToken', data.accessToken)
-            var _info = { userIdentity: 'user', userID: data.user.id, userName: data.user.username, accessToken: data.accessToken };
+            var _info = { userRole: 'ROLE_USER', userID: data.user.id, userName: data.user.username, accessToken: data.accessToken };
             UpdateUserInfo(_info, GotoPage('UserInfo', _info));
           }
         })
@@ -69,19 +68,17 @@ function Login(props) {
       })
         .then(res => {
           if (res.status === 200) {
-            //alert("登录成功了耶！")
-            //navigate('/yjqtest', { state: { email: formData['email'], password: formData['password'] } })
+            message.success({content:'登陆成功！',key:"login"})
+          }else{
+            message.error({content:'登陆失败',key:"login"})
           }
           return res.json()
         })
         .then(data => {
           console.log(data)
-          if (data.accessToken === undefined) {
-            alert("登录失败！")
-          }
-          else {
+          if (data.accessToken != undefined) {
             handleChange('accessToken', data['accessToken'])
-            var _info = { userIdentity: data['roles'][0], userID: data['id'], userName: data['username'], accessToken: data['accessToken'],tokenType:data['tokenType'] };
+            var _info = { userRole: data['roles'][0], userID: data['id'], userName: data['username'], accessToken: data['accessToken'],tokenType:data['tokenType'] };
             UpdateUserInfo(_info, GotoPage('UserInfo', _info));
           }
         })

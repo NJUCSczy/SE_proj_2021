@@ -2,7 +2,7 @@ import './ViewEntrustList.css'
 import React from 'react';
 import { Table, Tag, Space } from 'antd';
 import { useEffect, useState } from 'react';
-import { getStageByInfo, getStatusInfo, USE_JSON_SERVER } from '../../functions/functions'
+import { getStageByInfo, getStatusInfo,getStageByDelegationState,getStatusByDelegationState, USE_JSON_SERVER } from '../../functions/functions'
 
 var _ = require('lodash');
 
@@ -41,10 +41,15 @@ function ViewEntrustList(props) {
       title: '状态',
       key: 'status',
       render: (userApplication) => (
-        <Space size="middle">
+        USE_JSON_SERVER?
+        (<Space size="middle">
           {getStatusInfo(userApplication)
           }
-        </Space>
+        </Space>):(
+          <Space size="middle">
+          {getStatusByDelegationState(userApplication['state'])
+          }
+        </Space>)
       )
     },
     {
