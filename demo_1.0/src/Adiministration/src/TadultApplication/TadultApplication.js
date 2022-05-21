@@ -1,18 +1,19 @@
 import isMobile from 'is-mobile';
 import React, { Component } from 'react'
-import { message,DatePicker,Divider, Form, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
+import { message, DatePicker, Divider, Form, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import './TadultApplication.css'
 import TextArea from 'antd/lib/input/TextArea';
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
 import { NoFormStatus } from 'antd/lib/form/context';
 import { useEffect, useState } from 'react';
 import moment from 'moment';
+import { USE_JSON_SERVER } from '../../functions/functions';
 
 var _ = require('lodash');
 
-function TadultApplication (props){
+function TadultApplication(props) {
 
-  const { UpdateUserInfo, GotoPage,_state } = props;
+  const { UpdateUserInfo, GotoPage, _state } = props;
   const [formData, setFormData] = useState({})
   const { Option } = Select;
   const { TextArea } = Input;
@@ -20,18 +21,21 @@ function TadultApplication (props){
 
   const setDataByKey = (key, val) => {
     setFormData(prev => {
-        const newFormData = _.cloneDeep(prev)
-        newFormData[key] = val;
-        console.log(newFormData)
-        return newFormData;
-      })
+      const newFormData = _.cloneDeep(prev)
+      newFormData[key] = val;
+      console.log(newFormData)
+      return newFormData;
+    })
 
   }
 
   const onFinishForm = (values) => {
     console.log('Success:', values);
+    if (!USE_JSON_SERVER) {
+      return SubmitForm(values);
+    }
     var form = {}
-    fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'] , {
+    fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
       method: "GET",
       mode: 'cors',
       headers: {
@@ -52,27 +56,59 @@ function TadultApplication (props){
   };
 
   const SubmitForm = (_form) => {
-    fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'], {
-      method: "PUT",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(_form)
-    })
-      .then(res => {
-        console.log(res)
-        if (res.status === 200) {
-          message.success({content:"提交成功！",key:"upload"})
-          GotoPage("ViewEntrust",_state)
-        }
-        else{
-          message.error({content:"提交失败！",key:"upload"})
-        }
-        return res.json()
+    if (USE_JSON_SERVER) {
+      fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(_form)
       })
-      .then(data => {
-        console.log(data)
+        .then(res => {
+          console.log(res)
+          if (res.status === 200) {
+            message.success({ content: "提交成功！", key: "upload" })
+            GotoPage("ViewEntrust", _state)
+          }
+          else {
+            message.error({ content: "提交失败！", key: "upload" })
+          }
+          return res.json()
+        })
+        .then(data => {
+          console.log(data)
+        })
+    }
+    else {
+      fetch("http://42.192.56.231:8000/audit/delegation/test/" + _state['PageInfo']['id'], {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json;charset=utf-8',
+          'accessToken': _state['accessToken'],
+          'tokenType': _state['tokenType'],
+          'usrName': _state['userName'],
+          'usrID': _state['userID'],
+          'usrRole': _state['userRole'],
+          'Authorization': _state['accessToken']
+        },
+        body: JSON.stringify(_form)
       })
+        .then(res => {
+          console.log(res)
+          if (res.status === 200) {
+            message.success({ content: "提交成功！", key: "upload" })
+            GotoPage("ViewEntrust", _state)
+          }
+          else {
+            message.error({ content: "提交失败！", key: "upload" })
+          }
+          return res.json()
+        })
+        .then(data => {
+          console.log(data)
+        })
+    }
   }
 
   const onFinishFailed = (errorInfo) => {
@@ -80,21 +116,21 @@ function TadultApplication (props){
     alert('请正确填写！')
   };
 
-  return(
-        <Form
-        name="软件项目委托测试申请书(测试部)"
-        initialValues={{ remember: true }}
-        onFinish={onFinishForm}
-        onFinishFailed={onFinishFailed}
-        style={{ padding: '20px 30px' }}
-        labelCol={{ span: 10, flex: 'auto' }}
-        wrapperCol={{ span: 20 }}
-        layout='vertical'
-        autoComplete="false">
-            
-        <h1 style={{textAlign:'center',fontSize:30}}>软件项目委托测试申请书(测试部)</h1>
+  return (
+    <Form
+      name="软件项目委托测试申请书(测试部)"
+      initialValues={{ remember: true }}
+      onFinish={onFinishForm}
+      onFinishFailed={onFinishFailed}
+      style={{ padding: '20px 30px' }}
+      labelCol={{ span: 10, flex: 'auto' }}
+      wrapperCol={{ span: 20 }}
+      layout='vertical'
+      autoComplete="false">
 
-        <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>密级</h2>
+      <h1 style={{ textAlign: 'center', fontSize: 30 }}>软件项目委托测试申请书(测试部)</h1>
+
+      <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>密级</h2>
       <Form.Item
         name="密级"
         rules={[{ required: true, message: '请选择密级' }]}
@@ -137,7 +173,7 @@ function TadultApplication (props){
       </Form.Item>
 
       <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>材料检查</h2>
-        <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试样品</h3>
+      <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试样品</h3>
       <Form.Item
         name={['材料检查', '测试样品']}
         rules={[{ required: true, message: '请选择测试样品' }]}
@@ -164,7 +200,7 @@ function TadultApplication (props){
         <Checkbox.Group >
           <Col span={30}>
             <Checkbox value="项目计划任务书" style={{ lineHeight: '32px' }}>
-            项目计划任务书
+              项目计划任务书
             </Checkbox>
           </Col>
           <Col span={30}>
@@ -188,7 +224,7 @@ function TadultApplication (props){
         <Checkbox.Group >
           <Col span={30}>
             <Checkbox value="用户手册" style={{ lineHeight: '32px' }}>
-            用户手册
+              用户手册
             </Checkbox>
           </Col>
           <Col span={30}>
@@ -207,35 +243,35 @@ function TadultApplication (props){
         <Checkbox.Group >
           <Col span={30}>
             <Checkbox value="操作员手册" style={{ lineHeight: '32px' }}>
-            操作员手册
+              操作员手册
             </Checkbox>
           </Col>
           <Col span={30}>
             <Checkbox value="安装手册" style={{ lineHeight: '32px' }}>
-            安装手册
+              安装手册
             </Checkbox>
           </Col>
           <Col span={30}>
             <Checkbox value="诊断手册" style={{ lineHeight: '32px' }}>
-            诊断手册
+              诊断手册
             </Checkbox>
           </Col>
           <Col span={30}>
             <Checkbox value="支持手册" style={{ lineHeight: '32px' }}>
-            支持手册
+              支持手册
             </Checkbox>
           </Col>
         </Checkbox.Group>
       </Form.Item>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>其它</h3>
-      <Form.Item 
+      <Form.Item
         name={["材料检查", "其它"]}
-        >
-          <Input  style={{maxWidth:500}}/>
-        </Form.Item>
+      >
+        <Input style={{ maxWidth: 500 }} />
+      </Form.Item>
 
-        <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>确认意见</h2>
+      <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>确认意见</h2>
       <Form.Item
         name="确认意见"
         rules={[{ required: true, message: '请确认意见' }]}
@@ -262,7 +298,7 @@ function TadultApplication (props){
         </Button>
       </Form.Item>
 
-        </Form>
+    </Form>
   )
 
 }

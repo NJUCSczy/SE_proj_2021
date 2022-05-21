@@ -5,6 +5,7 @@ import { useState } from 'react';
 import TextArea from 'antd/lib/input/TextArea';
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
 import { NoFormStatus } from 'antd/lib/form/context';
+import { USE_JSON_SERVER } from '../../functions/functions';
 
 var _ = require('lodash');
 var mobile = require('is-mobile');
@@ -33,6 +34,16 @@ function MktdptApplicationStep1(props) {
   const onFinishForm = (values) => {
     console.log('Success:', values);
     var form = {}
+    if(!USE_JSON_SERVER){
+      form['result']=values['市场部受理意见']
+      if(values.hasOwnProperty('市场部备注')){
+        form['info']=values['市场部备注']
+      }
+      else if(values.hasOwnProperty('进一步审理方向及原因')){
+        form['info']=values['进一步审理方向及原因']
+      }
+      return SubmitForm(form)
+    }
     fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
       method: "GET",
       mode: 'cors',
@@ -54,6 +65,7 @@ function MktdptApplicationStep1(props) {
   };
 
   const SubmitForm = (_form) => {
+    if(USE_JSON_SERVER){
     fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'], {
       method: "PUT",
       headers: {
@@ -75,6 +87,37 @@ function MktdptApplicationStep1(props) {
       .then(data => {
         console.log(data)
       })
+    }
+    else{
+      fetch("http://42.192.56.231:8000/audit/delegation/market/" + _state['PageInfo']['id'], {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json;charset=utf-8',
+          'accessToken': _state['accessToken'],
+          'tokenType': _state['tokenType'],
+          'usrName': _state['userName'],
+          'usrID': _state['userID'],
+          'usrRole': _state['userRole'],
+          'Authorization': _state['accessToken']
+        },
+        body: JSON.stringify(_form)
+      })
+        .then(res => {
+          console.log(res)
+          if (res.status === 200) {
+            message.success({ content: "提交成功！", key: "upload" })
+            GotoPage("ViewEntrust", _state)
+          }
+          else {
+            message.error({ content: "提交失败！", key: "upload" })
+          }
+          return res.json()
+        })
+        .then(data => {
+          console.log(data)
+        })
+    }
   }
 
   const onFinishFailed = (errorInfo) => {
@@ -96,7 +139,7 @@ function MktdptApplicationStep1(props) {
       >
         <Radio.Group >
           <Col span={30} >
-            <Radio value="受理" style={{ lineHeight: '32px' }} onClick={() => setDataByKey('是否受理', '受理')}>受理</Radio>
+            <Radio value={USE_JSON_SERVER?"受理":"可以测试"} style={{ lineHeight: '32px' }} onClick={() => setDataByKey('是否受理', '受理')}>受理</Radio>
           </Col>
           <Col span={30}>
             <Radio value="不受理" style={{ lineHeight: '32px' }} onClick={() => setDataByKey('是否受理', '不受理')}>不受理</Radio>

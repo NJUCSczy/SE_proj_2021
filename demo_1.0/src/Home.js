@@ -49,7 +49,7 @@ class Home extends React.Component {
             userRole: "ROLE_USER",
             userName: null,
             accessToken: null,
-            tokenType:null,
+            tokenType: null,
             HeaderMenuIndex: '1',
             BreadcrumbByIndex: ['0', '0', '0', '0', '0'],
             PageInfo: { 'id': 0 }
@@ -71,6 +71,7 @@ class Home extends React.Component {
             case 'MainPage':
                 this.setState({ HeaderMenuIndex: '1', BreadcrumbByIndex: ['0', '0', '0', '0', '0'] });
                 return MainPage;
+                
             case 'UserInfo':
                 this.setState({ HeaderMenuIndex: '2', BreadcrumbByIndex: ['首页', '用户信息', '0', '0', '0'] });
                 return (<UserInfoPage _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage} />);
@@ -89,91 +90,86 @@ class Home extends React.Component {
                     this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '提交申请', '0', '0', '0'] });
                     return (<SubmitApplication _state={_state} GotoPage={this.GotoPage} />);
                 }
-            case 'ViewEntrustList':
-                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托', '0', '0', '0'] });
-                return (<ViewEntrustList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewEntrustList>);
-            case 'ViewEntrust':
-                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托', '0', '0', '0'] });
-                return (<ViewEntrust _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewEntrust>);
-            case 'ViewApplication':
-                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托', '0', '0', '0'] });
-                return (<ViewApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewApplication>);
-            case 'MktdptApplicationStep1':
-                this.setState({ HeaderMenuIndex: '4' });
-                return (<MktdptApplicationStep1 _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></MktdptApplicationStep1>);
-            case 'MktdptApplicationStep2':
-                this.setState({ HeaderMenuIndex: '4' });
-                return (<MktdptApplicationStep2 _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></MktdptApplicationStep2>);
-            case 'TadultApplication':
-                this.setState({ HeaderMenuIndex: '4' });
-                return (<TadultApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TadultApplication>);
-            case 'TrusteeApplication':
-                this.setState({ HeaderMenuIndex: '4' });
-                return (<TrusteeApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TrusteeApplication>);
-            case 'ClientApplication':
-                this.setState({ HeaderMenuIndex: '4' });
-                return (<ClientApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ClientApplication>);
-            case 'ConfidentialAgreementPartyB':
-                this.setState({ HeaderMenuIndex: '4' });
-                return (<ConfidentialAgreementPartyB _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ConfidentialAgreementPartyB>);
-            case 'ConfidentialAgreementPartyA':
-                this.setState({ HeaderMenuIndex: '4' });
-                return (<ConfidentialAgreementPartyA _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ConfidentialAgreementPartyA>);
-            case 'TestAgreement':
-                this.setState({ HeaderMenuIndex: '4' });
-                return (<TestAgreement _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestAgreement>);
-            case 'CheckTA':
-                this.setState({ HeaderMenuIndex: '4' });
-                return (<CheckTA _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></CheckTA>);
             case 'FunctionList':
-                this.setState({ HeaderMenuIndex: '4' });
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '上传软件功能列表', '0'] });
                 return (<FunctionList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></FunctionList>);
+            case 'UserUploadFiles':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '上传文档资料', '0'] });
+                return (<UserUploadFiles _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></UserUploadFiles>);
+            case 'TadultApplication':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '测试部审核委托', '0'] });
+                return (<TadultApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TadultApplication>);
+            case 'MktdptApplicationStep1':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '市场部审核委托', '0'] });
+                return (<MktdptApplicationStep1 _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></MktdptApplicationStep1>);
             case 'Quotation':
-                this.setState({ HeaderMenuIndex: '4' });
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '市场部报价', '0'] });
                 return (<Quotation _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></Quotation>);
             case 'QuotationFeedback':
-                this.setState({ HeaderMenuIndex: '4' });
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '回复报价', '0'] });
                 return (<QuotationFeedback _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></QuotationFeedback>);
-            case 'ViewCfdtagreement':
-                this.setState({ HeaderMenuIndex: '4' });
-                return (<ViewCfdtagreement _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewCfdtagreement>);
-            case 'ViewSignature':
-                this.setState({ HeaderMenuIndex: '4' });
-                return (<ViewSignature _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewSignature>);
-            case 'ViewQuotation':
-                this.setState({ HeaderMenuIndex: '4' });
-                return (<ViewQuotation _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewQuotation>);
-            case 'UserUploadFiles':
-                this.setState({ HeaderMenuIndex: '4' });
-                return (<UserUploadFiles _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></UserUploadFiles>);
+            case 'MktdptApplicationStep2':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '市场部生成项目编号', '0'] });
+                return (<MktdptApplicationStep2 _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></MktdptApplicationStep2>);
+            case 'TestAgreement':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '起草测试合同', '0'] });
+                return (<TestAgreement _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestAgreement>);
+            case 'CheckTA':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '确认履行期限', '0'] });
+                return (<CheckTA _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></CheckTA>);
+            case 'TrusteeApplication':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '签章受托人部分', '0'] });
+                return (<TrusteeApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TrusteeApplication>);
+            case 'ClientApplication':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '签章委托人部分', '0'] });
+                return (<ClientApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ClientApplication>);
+            case 'ConfidentialAgreementPartyB':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '受托人保密协议', '0'] });
+                return (<ConfidentialAgreementPartyB _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ConfidentialAgreementPartyB>);
+            case 'ConfidentialAgreementPartyA':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '委托人保密协议', '0'] });
+                return (<ConfidentialAgreementPartyA _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ConfidentialAgreementPartyA>);
+
+            case 'ViewEntrustList':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '0', '0', '0'] });
+                return (<ViewEntrustList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewEntrustList>);
+            case 'ViewEntrust':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '0', '0'] });
+                return (<ViewEntrust _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewEntrust>);
+            case 'ViewApplication':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '查看测试申请书', '0'] });
+                return (<ViewApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewApplication>);
             case 'ViewUserFiles':
-                this.setState({ HeaderMenuIndex: '4' });
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '查看文档资料', '0'] });
                 return (<ViewUserFiles _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewUserFiles>);
+            case 'ViewQuotation':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '查看报价单', '0'] });
+                return (<ViewQuotation _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewQuotation>);
+            case 'ViewSignature':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '查看测试合同', '0'] });
+                return (<ViewSignature _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewSignature>);
+            case 'ViewCfdtagreement':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '查看保密协议', '0'] });
+                return (<ViewCfdtagreement _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewCfdtagreement>);
 
             case 'Info1':
-                this.setState({ HeaderMenuIndex: '4' });
-                return (<FunctionList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></FunctionList>);
+                this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','机构信息','0','0','0'] });
+                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>机构信息</div>);
             case 'Info2':
-                this.setState({ HeaderMenuIndex: '4' });
-                return (<FunctionList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></FunctionList>);
+                this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','资质信息','0','0','0'] });
+                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>资质信息</div>);
             case 'Info3':
-                this.setState({ HeaderMenuIndex: '4' });
-                return (<ClientApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ClientApplication>);
+                this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','政策法规','0','0','0'] });
+                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>政策法规</div>);
             case 'Info4':
-                this.setState({ HeaderMenuIndex: '4' });
-                return (<TrusteeApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TrusteeApplication>);//原 业务信息界面
+                this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','业务信息','0','0','0'] });
+                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>业务信息</div>);
             case 'Info5':
-                this.setState({ HeaderMenuIndex: '4' });
-                return (<ViewContract _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewContract>);
+                this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','新闻资讯','0','0','0'] });
+                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>新闻资讯</div>);
             case 'Info6':
-                this.setState({ HeaderMenuIndex: '4' });
-                return (<UserUploadFiles _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></UserUploadFiles>);
-            case 'Info7':
-                this.setState({ HeaderMenuIndex: '4' });
-                return (<TestAgreement _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestAgreement>);
-            case 'Info8':
-                this.setState({ HeaderMenuIndex: '4' });
-                return (<CheckTA _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></CheckTA>);
+                this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','友情链接','0','0','0'] });
+                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>友情链接</div>);
         }
         return null;
     }
@@ -182,9 +178,6 @@ class Home extends React.Component {
         this.setState(info, callback);
         console.log(this.state);
     }
-
-
-
 
     render() {
         var mobile = require('is-mobile');
@@ -198,8 +191,6 @@ class Home extends React.Component {
                 { label: (<a onClick={() => { this.GotoPage('Info4', this.state) }}>业务信息</a>), },
                 { label: (<a onClick={() => { this.GotoPage('Info5', this.state) }}>新闻资讯</a>), },
                 { label: (<a onClick={() => { this.GotoPage('Info6', this.state) }}>友情链接</a>), },
-                { label: (<a onClick={() => { this.GotoPage('Info7', this.state) }}>编辑测试合同</a>), },
-                { label: (<a onClick={() => { this.GotoPage('Info8', this.state) }}>查看测试合同</a>), },
             ]} />} placement="bottom">
             <a onClick={e => e.preventDefault()}><Space>信息<DownOutlined /></Space></a>
         </Dropdown>)
@@ -211,7 +202,35 @@ class Home extends React.Component {
             "登录": <Breadcrumb.Item><a onClick={() => { this.GotoPage('Login', this.state) }}>登录</a></Breadcrumb.Item>,
             "注册": <Breadcrumb.Item><a onClick={() => { this.GotoPage('Register', this.state) }}>注册</a></Breadcrumb.Item>,
             "提交申请": <Breadcrumb.Item><a onClick={() => { this.GotoPage('SubmitApplication', this.state) }}>提交申请</a></Breadcrumb.Item>,
-            "查看委托": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a></Breadcrumb.Item>,
+            "上传软件功能列表": <Breadcrumb.Item><a onClick={() => { this.GotoPage('FunctionList', this.state) }}>上传软件功能列表</a></Breadcrumb.Item>,
+            "上传文档资料": <Breadcrumb.Item><a onClick={() => { this.GotoPage('UserUploadFiles', this.state) }}>上传文档资料</a></Breadcrumb.Item>,
+            "测试部审核委托": <Breadcrumb.Item><a onClick={() => { this.GotoPage('TadultApplication', this.state) }}>测试部审核委托</a></Breadcrumb.Item>,
+            "市场部审核委托": <Breadcrumb.Item><a onClick={() => { this.GotoPage('MktdptApplicationStep1', this.state) }}>市场部审核委托</a></Breadcrumb.Item>,
+            "市场部报价": <Breadcrumb.Item><a onClick={() => { this.GotoPage('Quotation', this.state) }}>市场部报价</a></Breadcrumb.Item>,
+            "回复报价": <Breadcrumb.Item><a onClick={() => { this.GotoPage('QuotationFeedback', this.state) }}>回复报价</a></Breadcrumb.Item>,
+            "市场部生成项目编号": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewEntrust', this.state) }}>市场部生成项目编号</a></Breadcrumb.Item>,
+            "起草测试合同": <Breadcrumb.Item><a onClick={() => { this.GotoPage('TestAgreement', this.state) }}>起草测试合同</a></Breadcrumb.Item>,
+            "确认履行期限": <Breadcrumb.Item><a onClick={() => { this.GotoPage('CheckTA', this.state) }}>确认履行期限</a></Breadcrumb.Item>,
+            "签章受托人部分": <Breadcrumb.Item><a onClick={() => { this.GotoPage('TrusteeApplication', this.state) }}>签章受托人部分</a></Breadcrumb.Item>,
+            "签章委托人部分": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ClientApplication', this.state) }}>签章委托人部分</a></Breadcrumb.Item>,
+            "受托人保密协议": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ConfidentialAgreementPartyB', this.state) }}>受托人保密协议</a></Breadcrumb.Item>,
+            "委托人保密协议": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ConfidentialAgreementPartyA', this.state) }}>委托人保密协议</a></Breadcrumb.Item>,
+            
+            "查看委托列表": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托列表</a></Breadcrumb.Item>,
+            "查看委托": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewEntrust', this.state) }}>查看委托</a></Breadcrumb.Item>,
+            "查看测试申请书": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewApplication', this.state) }}>查看测试申请书</a></Breadcrumb.Item>,
+            "查看功能列表": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewApplication', this.state) }}>查看功能列表</a></Breadcrumb.Item>,
+            "查看文档资料": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewUserFiles', this.state) }}>查看文档资料</a></Breadcrumb.Item>,
+            "查看报价单": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewQuotation', this.state) }}>查看报价单</a></Breadcrumb.Item>,
+            "查看测试合同": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewSignature', this.state) }}>查看测试合同</a></Breadcrumb.Item>,
+            "查看保密协议": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewCfdtagreement', this.state) }}>查看保密协议</a></Breadcrumb.Item>,
+
+            "机构信息": <Breadcrumb.Item><a onClick={() => { this.GotoPage('Info1', this.state) }}>机构信息</a></Breadcrumb.Item>,
+            "资质信息": <Breadcrumb.Item><a onClick={() => { this.GotoPage('Info2', this.state) }}>资质信息</a></Breadcrumb.Item>,
+            "政策法规": <Breadcrumb.Item><a onClick={() => { this.GotoPage('Info3', this.state) }}>政策法规</a></Breadcrumb.Item>,
+            "业务信息": <Breadcrumb.Item><a onClick={() => { this.GotoPage('Info4', this.state) }}>业务信息</a></Breadcrumb.Item>,
+            "新闻资讯": <Breadcrumb.Item><a onClick={() => { this.GotoPage('Info5', this.state) }}>新闻资讯</a></Breadcrumb.Item>,
+            "友情链接": <Breadcrumb.Item><a onClick={() => { this.GotoPage('Info6', this.state) }}>友情链接</a></Breadcrumb.Item>,
         };
 
         const userFunctionMenu = (<Dropdown overlay={<Menu

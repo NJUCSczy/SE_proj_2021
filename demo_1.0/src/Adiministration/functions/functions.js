@@ -1,4 +1,4 @@
-export const USE_JSON_SERVER=true;
+export const USE_JSON_SERVER=false;
 
 export function getStageByInfo(info){
     if(info===null || info ===undefined)return 0;
@@ -34,7 +34,7 @@ export function getStageByDelegationState(state){
         case 'UPLOAD_FUNCTION_TABLE':return 0;//已经填写申请表，等待功能表
         case 'UPLOAD_FILES':return 1;//已经填写功能表，等待文件
         case 'AUDIT_TEST_APARTMENT':return 2;//已经上传文件，等待测试部审核
-        case 'AUDIT_TEST_DEPARTMENT_DENIED':return 3;//测试部拒绝S
+        case 'AUDIT_TEST_DEPARTMENT_DENIED':return 3;//测试部拒绝
         case 'AUDIT_MARKET_APARTMENT':return 4;//测试部审核通过，等待市场部审核
         case 'AUDIT_MARKET_APARTMENT_DENIED':return 5;//市场部拒绝
         case 'AUDIT_MARKET_APARTMENT_FURTHER':return 6;//市场部进一步审理

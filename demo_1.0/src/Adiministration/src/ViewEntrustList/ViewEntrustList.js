@@ -1,6 +1,6 @@
 import './ViewEntrustList.css'
 import React from 'react';
-import { Table, Tag, Space } from 'antd';
+import { Table, Tag, Space, message } from 'antd';
 import { useEffect, useState } from 'react';
 import { getStageByInfo, getStatusInfo,getStageByDelegationState,getStatusByDelegationState, USE_JSON_SERVER } from '../../functions/functions'
 
@@ -109,6 +109,13 @@ function ViewEntrustList(props) {
         },
       })
         .then(res => {
+          if(res.status === 200){
+            message.success({content:"获取委托信息成功",key:"getEntrustList",duration:2})
+          }
+          else{
+            alert("请先登录！")
+            GotoPage("Login",_state)
+          }
           return res.json()
         })
         .then(data => {
