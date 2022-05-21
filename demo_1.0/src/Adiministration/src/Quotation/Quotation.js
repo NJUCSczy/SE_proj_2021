@@ -93,8 +93,6 @@ function Quotation(props) {
       >
         <Input  style={{maxWidth:500}}/>
       </Form.Item>
-      <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>以下金额单位： 元</h4>
-
 
       <Form.List name="项目列表" layout='vertical' width={500}>
         {(fields, { add, remove }) => (
@@ -160,7 +158,7 @@ function Quotation(props) {
           </>
         )}
       </Form.List>
-
+      <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>以下金额单位： 元</h3>
       <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>小计</h4>
      <Form.Item
         name="小计"

@@ -5,6 +5,11 @@
       "password": "$2a$10$z01T4qavacrRv6xSv31lOeKkZdiZrOJmYp1vDvP4gn2Jr8TG0c3um",
       "username": "czy",
       "id": 1
+    },
+    {
+      "email": "1@yjq",
+      "password": "$2a$10$KqE.j6wfGxUPbW4ZKW0GaeYqvKseXNOL9zzGOJfOgVjyvcIFZK5PC",
+      "id": 2
     }
   ],
   "docs": [
@@ -100,9 +105,22 @@
       "userName": "czy",
       "id": 1,
       "委托测试软件功能列表": {
+        "软件名称": "sfsf",
         "版本号": "dgdzg",
         "功能项目列表": [
-          null
+          {
+            "软件功能项目": "项目1",
+            "子功能项目列表": [
+              {
+                "软件子功能项目": "子项目1",
+                "功能说明": "说明1"
+              },
+              {
+                "软件子功能项目": "子项目2",
+                "功能说明": "说明2"
+              }
+            ]
+          }
         ]
       },
       "测试部审核委托": {

@@ -56,7 +56,6 @@ useEffect(() => {
           <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>账号:4301011309001041656</h4>
           <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件名称</h4>
           <Input  style={{maxWidth:500}} disabled defaultValue={entrustData['formData']['报价单']['基本信息']['软件名称']}/>
-          <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>以下金额单位： 元</h4>
           <Form.List name="项目列表" layout='vertical' width={500}>
                 {(fields, { add, remove }) => (
                 <>
@@ -106,6 +105,7 @@ useEffect(() => {
                 </>
                 )}
             </Form.List>
+            <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>以下金额单位： 元</h3>
             <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>小计</h4>
             <Input  style={{maxWidth:500}} disabled defaultValue={entrustData['formData']['报价单']['基本信息']['小计']}/>
 

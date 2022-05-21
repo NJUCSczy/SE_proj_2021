@@ -23,9 +23,12 @@ import TrusteeApplication from './Adiministration/src/MktContract/TrusteeApplica
 import TestAgreement from './Adiministration/src/TestAgreement/TestAgreement';
 import CheckTA from './Adiministration/src/TestAgreement/CheckTA';
 import ViewCfdtagreement from './Adiministration/src/ViewCfdtagreement/ViewCfdtagreement';
+import ViewContract from './Adiministration/src/ViewContract/ViewContract';
+import ViewFunction from './Adiministration/src/ViewFunction/ViewFunction';
 import ViewSignature from './Adiministration/src/ViewSignature/ViewSignature';
 import ViewQuotation from './Adiministration/src/ViewQuotation/ViewQuotation';
-import ViewContract from './Adiministration/src/ViewContract/ViewContract';
+
+
 import Quotation from './Adiministration/src/Quotation/Quotation';
 import QuotationFeedback from './Adiministration/src/QuotationFeedback/QuotationFeedback';
 import FunctionList from './Adiministration/src/FunctionList/FunctionList';
@@ -130,15 +133,24 @@ class Home extends React.Component {
                 this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '委托人保密协议', '0'] });
                 return (<ConfidentialAgreementPartyA _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ConfidentialAgreementPartyA>);
 
-            case 'ViewEntrustList':
-                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '0', '0', '0'] });
-                return (<ViewEntrustList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewEntrustList>);
-            case 'ViewEntrust':
-                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '0', '0'] });
-                return (<ViewEntrust _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewEntrust>);
             case 'ViewApplication':
                 this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '查看测试申请书', '0'] });
                 return (<ViewApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewApplication>);
+            case 'ViewCfdtagreement':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '查看保密协议', '0'] });
+                return (<ViewCfdtagreement _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewCfdtagreement>);
+            case 'ViewContract':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '查看测试申请书', '0'] });
+                return (<ViewContract _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewContract>);
+            case 'ViewEntrust':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '0', '0'] });
+                return (<ViewEntrust _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewEntrust>);
+            case 'ViewEntrustList':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '0', '0', '0'] });
+                return (<ViewEntrustList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewEntrustList>);
+            case 'ViewFunction':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '查看功能列表', '0'] });
+                return (<ViewFunction _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewFunction>);
             case 'ViewUserFiles':
                 this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '查看文档资料', '0'] });
                 return (<ViewUserFiles _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewUserFiles>);
@@ -148,9 +160,6 @@ class Home extends React.Component {
             case 'ViewSignature':
                 this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '查看测试合同', '0'] });
                 return (<ViewSignature _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewSignature>);
-            case 'ViewCfdtagreement':
-                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '查看保密协议', '0'] });
-                return (<ViewCfdtagreement _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewCfdtagreement>);
 
             case 'Info1':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','机构信息','0','0','0'] });
@@ -215,7 +224,7 @@ class Home extends React.Component {
             "签章委托人部分": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ClientApplication', this.state) }}>签章委托人部分</a></Breadcrumb.Item>,
             "受托人保密协议": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ConfidentialAgreementPartyB', this.state) }}>受托人保密协议</a></Breadcrumb.Item>,
             "委托人保密协议": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ConfidentialAgreementPartyA', this.state) }}>委托人保密协议</a></Breadcrumb.Item>,
-            
+
             "查看委托列表": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托列表</a></Breadcrumb.Item>,
             "查看委托": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewEntrust', this.state) }}>查看委托</a></Breadcrumb.Item>,
             "查看测试申请书": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewApplication', this.state) }}>查看测试申请书</a></Breadcrumb.Item>,

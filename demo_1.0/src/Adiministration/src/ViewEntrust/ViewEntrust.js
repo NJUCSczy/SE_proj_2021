@@ -186,11 +186,20 @@ function ViewEntrust(props) {
             <h1 style={{ marginTop: 60 }}>文件列表</h1>
             <div>
                 <h2 style={{ marginTop: 40 }}>软件项目委托测试申请书</h2>
-                <h3 style={{ marginTop: 20 }}>状态:{" "}{ USE_JSON_SERVER? 
+                <h3 style={{ marginTop: 20 }}>状态:{" "}{ USE_JSON_SERVER?
                 getStatusInfo(entrustData['formData'], '软件项目委托测试申请书'):
                 getStatusByDelegationState(entrustData['formData']['state'],'软件项目委托测试申请书')}</h3>
                 <Button type="primary" style={{ marginLeft: 20 }} onClick={() => ChangePage('ViewApplication')}>查看</Button>
             </div>
+            {(entrustData['stage'] >= 1) ?
+                (            <div>
+                    <h2 style={{ marginTop: 40 }}>委托测试软件功能列表</h2>
+                    <h3 style={{ marginTop: 20 }}>状态:{" "}{ USE_JSON_SERVER?
+                    getStatusInfo(entrustData['formData'], '委托测试软件功能列表'):
+                    getStatusByDelegationState(entrustData['formData']['state'],'委托测试软件功能列表')}</h3>
+                    <Button type="primary" style={{ marginLeft: 20 }} onClick={() => ChangePage('ViewFunction')}>查看</Button>
+                </div>) : null
+            }
             {(entrustData['stage'] >= 2 && !USE_JSON_SERVER) ?
                 (<div>
                     <h2 style={{ marginTop: 40 }}>文档资料</h2>
@@ -200,7 +209,7 @@ function ViewEntrust(props) {
             {(entrustData['stage'] >= 8) ?
                 (<div>
                     <h2 style={{ marginTop: 40 }}>报价单</h2>
-                    <h3 style={{ marginTop: 20 }}>状态:{" "}{USE_JSON_SERVER? 
+                    <h3 style={{ marginTop: 20 }}>状态:{" "}{USE_JSON_SERVER?
                     getStatusInfo(entrustData['formData'], '报价单'):
                     getStatusByDelegationState(entrustData['formData']['state'],'报价单')}</h3>
                     <Button type="primary" style={{ marginLeft: 20 }} onClick={() => ChangePage('ViewQuotation')}>查看</Button>
@@ -209,7 +218,7 @@ function ViewEntrust(props) {
             {(entrustData['stage'] >= 18) ?
                 (<div>
                     <h2 style={{ marginTop: 40 }}>软件测试委托合同签章</h2>
-                    <h3 style={{ marginTop: 20 }}>状态:{" "}{USE_JSON_SERVER? 
+                    <h3 style={{ marginTop: 20 }}>状态:{" "}{USE_JSON_SERVER?
                     getStatusInfo(entrustData['formData'], '软件委托测试合同'):
                     getStatusByDelegationState(entrustData['formData']['state'],'软件委托测试合同')}</h3>
                     <Button type="primary" style={{ marginLeft: 20 }} onClick={() => ChangePage('ViewSignature')}>查看</Button>
@@ -218,13 +227,13 @@ function ViewEntrust(props) {
             {(entrustData['stage'] >= 20) ?
                 (<div>
                     <h2 style={{ marginTop: 40 }}>保密协议</h2>
-                    <h3 style={{ marginTop: 20 }}>状态:{" "}{USE_JSON_SERVER? 
+                    <h3 style={{ marginTop: 20 }}>状态:{" "}{USE_JSON_SERVER?
                     getStatusInfo(entrustData['formData'], '保密协议'):
                     getStatusByDelegationState(entrustData['formData']['state'],'保密协议')}</h3>
                     <Button type="primary" style={{ marginLeft: 20 }} onClick={() => ChangePage('ViewCfdtagreement')}>查看</Button>
                 </div>) : null
             }
-            
+
         </div>)
     )
 }
