@@ -46,7 +46,7 @@ return(
      name="测试合同"
     >
         <h1 style={{ fontWeight: 'bolder', marginTop: 30, textAlign: 'center' }}>软件委托测试合同</h1>
-        {getStageByInfo(entrustData['formData'])<18? null:(
+        {getStageByInfo(entrustData['formData'])<13? null:(
             <div>
                 <Form.Item label="项目名称" >
                     <Input  style={{maxWidth:300}} defaultValue={entrustData["formData"]["用户申请表"]["软件名称"]} disabled/>
@@ -139,7 +139,7 @@ return(
                 <Paragraph>&emsp;本合同自双方授权代表签字盖章之日起生效,自受托方的主要义务履行完毕之日起终止。</Paragraph>
                 <Paragraph>&emsp;本合同未尽事宜由双方协商解决。</Paragraph>
                 <Paragraph>&emsp;本合同的正本一式肆份,双方各执两份,具有同等法律效力。</Paragraph>
-                {getStageByInfo(entrustData['formData'])<18? null:(
+                {getStageByInfo(entrustData['formData'])<14? null:(
                     <div>
                         <h2 style={{ fontWeight: 'bolder', marginTop: 30, textAlign: 'right' }}>用户对履行期限的接受情况:</h2>
                         <h2 style={{ fontWeight: 'bolder', marginTop: 30, textAlign: 'right' }}>{entrustData["formData"]["测试合同"]["履行期限接受情况"]}</h2>
