@@ -38,9 +38,9 @@ function Login(props) {
       })
         .then(res => {
           if (res.status === 200) {
-            message.success({content:'登陆成功！',key:"login"})
+            message.success({content:'登陆成功！',key:"login",duration:2})
           }else{
-            message.error({content:'登陆失败',key:"login"})
+            message.error({content:'登陆失败',key:"login",duration:2})
           }
 
           return res.json()
