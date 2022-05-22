@@ -1,18 +1,19 @@
 import isMobile from 'is-mobile';
 import React, { Component } from 'react'
-import { DatePicker, Divider, Form, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
+import { message,DatePicker, Divider, Form, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import './SubmitApplication.css'
 import { useState } from 'react';
 import TextArea from 'antd/lib/input/TextArea';
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
 import { NoFormStatus } from 'antd/lib/form/context';
-import { USE_JSON_SERVER } from '../../functions/functions';
+import { USE_JSON_SERVER,REMOTE_SERVER } from '../../functions/functions';
 
 var _ = require('lodash');
 var mobile = require('is-mobile');
 
 function SubmitApplication(props) {
   const userState = props._state
+  const { UpdateUserInfo, GotoPage, _state } = props;
   const [formData, setFormData] = useState({})
   const { Option } = Select;
   const { TextArea } = Input;
@@ -40,8 +41,11 @@ function SubmitApplication(props) {
         .then(res => {
           console.log(res)
           if (res.status === 201) {
-            alert("提交成功！")
-            //navigate('/yjqtest', { state: { email: formData['email'], password: formData['password'] } })
+            message.success({content:"提交成功！",key:"upload"})
+            GotoPage("ViewEntrustList",_state)
+          }
+          else{
+            message.error({content:"提交失败！",key:"upload"})
           }
           return res.json()
         })
@@ -50,7 +54,7 @@ function SubmitApplication(props) {
         })
     }
     else {
-      fetch("http://42.192.56.231:8000/delegation/applicationTable", {
+      fetch(REMOTE_SERVER+"/delegation/applicationTable", {
         method: "POST",
         headers: {
           'Accept': 'application/json',
@@ -67,8 +71,11 @@ function SubmitApplication(props) {
         .then(res => {
           console.log(res)
           if (res.status === 201) {
-            alert("提交成功！")
-            //navigate('/yjqtest', { state: { email: formData['email'], password: formData['password'] } })
+            message.success({content:"提交成功！",key:"upload"})
+            GotoPage("ViewEntrustList",_state)
+          }
+          else{
+            message.error({content:"提交失败！",key:"upload"})
           }
           return res.json()
         })

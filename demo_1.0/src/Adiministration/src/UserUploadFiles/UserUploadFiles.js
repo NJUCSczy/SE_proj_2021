@@ -1,18 +1,19 @@
 import isMobile from 'is-mobile';
 import React, { Component } from 'react'
-import { DatePicker, Divider, Form, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
+import { message, Button, Upload, Form } from 'antd';
 import { useState } from 'react';
 import TextArea from 'antd/lib/input/TextArea';
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
 import { NoFormStatus } from 'antd/lib/form/context';
-import { USE_JSON_SERVER } from '../../functions/functions';
+import { USE_JSON_SERVER,REMOTE_SERVER } from '../../functions/functions';
 
 var _ = require('lodash');
 var mobile = require('is-mobile');
 
 function UserUploadFiles(props) {
     const { UpdateUserInfo, GotoPage, _state } = props;
-    const [formData, setFormData] = useState({})
+    const [formData, setFormData] = useState({'用户文档':[],'需求文档':[],'操作文档':[]})
+    
 
     const setDataByKey = (key, val) => {
         setFormData(prev => {
@@ -25,17 +26,15 @@ function UserUploadFiles(props) {
     }
 
     const OnFinishForm = (values) => {
-        console.log(values)
-        const _form = {
-            'usrManual': values['用户文档']['fileList'][0],
-            'installationManual': values['需求文档']['fileList'][0],
-            'operationManual': values['操作文档']['fileList'][0]
-        }
-        fetch("http://42.192.56.231:8000/delegation/" + _state['PageInfo']['id'] + "/files", {
+        message.loading({content:"上传中",key:"upload"})
+        const res=new FormData();
+        res.append('usrManual',values['用户文档']['file']);
+        res.append('installationManual',values['需求文档']['file']);
+        res.append('operationManual',values['操作文档']['file']);
+        fetch(REMOTE_SERVER+"/delegation/" + _state['PageInfo']['id'] + "/files", {
             method: "POST",
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json;charset=utf-8',
+                'credentials': 'same-origin',
                 'accessToken': _state['accessToken'],
                 'tokenType': _state['tokenType'],
                 'usrName': _state['userName'],
@@ -43,13 +42,16 @@ function UserUploadFiles(props) {
                 'usrRole': _state['userRole'],
                 'Authorization': _state['accessToken']
             },
-            body: JSON.stringify(_form)
+            body: res
         })
             .then(res => {
                 console.log(res)
                 if (res.status === 201) {
-                    alert("提交成功！")
-                    //navigate('/yjqtest', { state: { email: formData['email'], password: formData['password'] } })
+                    message.success({content:"上传成功！",key:"upload"})
+                    GotoPage("ViewEntrust",_state)
+                }
+                else{
+                    message.error({content:"上传失败！",key:"upload"})
                 }
                 return res.json()
             })

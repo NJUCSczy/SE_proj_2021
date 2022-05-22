@@ -1,8 +1,8 @@
 import './ViewEntrustList.css'
 import React from 'react';
-import { Table, Tag, Space } from 'antd';
+import { Table, Tag, Space, message } from 'antd';
 import { useEffect, useState } from 'react';
-import { getStageByInfo, getStatusInfo, USE_JSON_SERVER } from '../../functions/functions'
+import { getStageByInfo, getStatusInfo,getStageByDelegationState,getStatusByDelegationState, USE_JSON_SERVER,REMOTE_SERVER } from '../../functions/functions'
 
 var _ = require('lodash');
 
@@ -41,10 +41,15 @@ function ViewEntrustList(props) {
       title: '状态',
       key: 'status',
       render: (userApplication) => (
-        <Space size="middle">
+        USE_JSON_SERVER?
+        (<Space size="middle">
           {getStatusInfo(userApplication)
           }
-        </Space>
+        </Space>):(
+          <Space size="middle">
+          {getStatusByDelegationState(userApplication['state'])
+          }
+        </Space>)
       )
     },
     {
@@ -90,7 +95,7 @@ function ViewEntrustList(props) {
         })
     }
     else {
-      fetch("http://42.192.56.231:8000/delegations", {
+      fetch(REMOTE_SERVER+"/delegations", {
         method: "GET",
         headers: {
           'Accept': 'application/json',
@@ -104,6 +109,10 @@ function ViewEntrustList(props) {
         },
       })
         .then(res => {
+          if(res.status === 200){
+            message.success({content:"获取委托信息成功",key:"getEntrustList",duration:2})
+          }
+          
           return res.json()
         })
         .then(data => {
@@ -126,6 +135,9 @@ function ViewEntrustList(props) {
 
   return (
     <Table
+    style={{marginLeft:20,marginRight:20}}
+    pagination={{pageSize:8}}
+    loading={entrustData['formData']===null}
       columns={columns}
       dataSource={entrustData['formData']}
       rowKey="id"

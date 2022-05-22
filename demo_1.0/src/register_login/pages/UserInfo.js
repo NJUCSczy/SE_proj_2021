@@ -45,7 +45,7 @@ function UserInfoPage(props){
             <div className="container">
             <h1 style={{fontSize: 40, fontWeight: 'bolder', textAlign: 'center'}}>用户信息</h1>
             <h2>用户名: {_state.userName}</h2>
-            <h2>用户身份: {(_state.userIdentity === 'ROLE_USER') ? '普通用户' : ((_state.userIdentity === 'ROLE_ADMIN') ? '管理员' : '工作人员')}</h2>
+            <h2>用户身份: {(_state.userRole === 'ROLE_USER') ? '普通用户' : ((_state.userRole === 'ROLE_ADMIN') ? '管理员' : '工作人员')}</h2>
             
             <div style={{textAlign: 'center'}}><Button type="primary" size='large' onClick={Logout}>退出登录</Button></div>
             </div>
