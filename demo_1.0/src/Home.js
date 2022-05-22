@@ -228,7 +228,7 @@ class Home extends React.Component {
             "查看委托列表": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托列表</a></Breadcrumb.Item>,
             "查看委托": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewEntrust', this.state) }}>查看委托</a></Breadcrumb.Item>,
             "查看测试申请书": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewApplication', this.state) }}>查看测试申请书</a></Breadcrumb.Item>,
-            "查看功能列表": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewApplication', this.state) }}>查看功能列表</a></Breadcrumb.Item>,
+            "查看功能列表": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewFunction', this.state) }}>查看功能列表</a></Breadcrumb.Item>,
             "查看文档资料": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewUserFiles', this.state) }}>查看文档资料</a></Breadcrumb.Item>,
             "查看报价单": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewQuotation', this.state) }}>查看报价单</a></Breadcrumb.Item>,
             "查看测试合同": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewSignature', this.state) }}>查看测试合同</a></Breadcrumb.Item>,

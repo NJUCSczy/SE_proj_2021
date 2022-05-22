@@ -94,6 +94,4 @@ useEffect(() => {
   )
 }
 
-
-
 export default ViewFunction
