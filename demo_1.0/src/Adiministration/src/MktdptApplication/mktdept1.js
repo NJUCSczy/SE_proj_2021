@@ -5,7 +5,7 @@ import { useState } from 'react';
 import TextArea from 'antd/lib/input/TextArea';
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
 import { NoFormStatus } from 'antd/lib/form/context';
-import { USE_JSON_SERVER } from '../../functions/functions';
+import { USE_JSON_SERVER,REMOTE_SERVER } from '../../functions/functions';
 
 var _ = require('lodash');
 var mobile = require('is-mobile');
@@ -89,7 +89,7 @@ function MktdptApplicationStep1(props) {
       })
     }
     else{
-      fetch("http://42.192.56.231:8000/audit/delegation/market/" + _state['PageInfo']['id'], {
+      fetch(REMOTE_SERVER+"/audit/delegation/market/" + _state['PageInfo']['id'], {
         method: "POST",
         headers: {
           'Accept': 'application/json',

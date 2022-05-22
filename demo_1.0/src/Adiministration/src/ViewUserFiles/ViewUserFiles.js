@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Tooltip, Input,Select } from 'antd';
-import { getStageByInfo, getStatusInfo, } from '../../functions/functions'
+import { getStageByInfo, getStatusInfo,REMOTE_SERVER } from '../../functions/functions'
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ function ViewUserFiles(props) {
     const { TextArea } = Input;
 
     const updateInfo = () => {
-        fetch("http://42.192.56.231:8000/delegation/" + _state['PageInfo']['id'] + "/files", {
+        fetch(REMOTE_SERVER+"/delegation/" + _state['PageInfo']['id'] + "/files", {
             method: "GET",
             mode: 'cors',
             headers: {

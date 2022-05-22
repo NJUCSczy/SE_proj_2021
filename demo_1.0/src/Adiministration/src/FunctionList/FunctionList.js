@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Paragraph from 'antd/lib/skeleton/Paragraph';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import FormItem from 'antd/lib/form/FormItem';
-import { USE_JSON_SERVER } from '../../functions/functions';
+import { USE_JSON_SERVER,REMOTE_SERVER } from '../../functions/functions';
 function FunctionList(props) {
     const { UpdateUserInfo, GotoPage, _state } = props;
     const [formData, setFormData] = useState({})
@@ -63,7 +63,7 @@ function FunctionList(props) {
           })
         }
         else{
-          fetch("http://42.192.56.231:8000/delegation/"+_state['PageInfo']['id']+"/functionTable", {
+          fetch(REMOTE_SERVER+"/delegation/"+_state['PageInfo']['id']+"/functionTable", {
         method: "POST",
         headers: {
           'Accept': 'application/json',

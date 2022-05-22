@@ -5,7 +5,7 @@ import { useState } from 'react';
 import TextArea from 'antd/lib/input/TextArea';
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
 import { NoFormStatus } from 'antd/lib/form/context';
-import { USE_JSON_SERVER } from '../../functions/functions';
+import { USE_JSON_SERVER,REMOTE_SERVER } from '../../functions/functions';
 
 var _ = require('lodash');
 var mobile = require('is-mobile');
@@ -31,7 +31,7 @@ function UserUploadFiles(props) {
         res.append('usrManual',values['用户文档']['file']);
         res.append('installationManual',values['需求文档']['file']);
         res.append('operationManual',values['操作文档']['file']);
-        fetch("http://42.192.56.231:8000/delegation/" + _state['PageInfo']['id'] + "/files", {
+        fetch(REMOTE_SERVER+"/delegation/" + _state['PageInfo']['id'] + "/files", {
             method: "POST",
             headers: {
                 'credentials': 'same-origin',

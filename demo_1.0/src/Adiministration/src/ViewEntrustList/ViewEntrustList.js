@@ -2,7 +2,7 @@ import './ViewEntrustList.css'
 import React from 'react';
 import { Table, Tag, Space, message } from 'antd';
 import { useEffect, useState } from 'react';
-import { getStageByInfo, getStatusInfo,getStageByDelegationState,getStatusByDelegationState, USE_JSON_SERVER } from '../../functions/functions'
+import { getStageByInfo, getStatusInfo,getStageByDelegationState,getStatusByDelegationState, USE_JSON_SERVER,REMOTE_SERVER } from '../../functions/functions'
 
 var _ = require('lodash');
 
@@ -95,7 +95,7 @@ function ViewEntrustList(props) {
         })
     }
     else {
-      fetch("http://42.192.56.231:8000/delegations", {
+      fetch(REMOTE_SERVER+"/delegations", {
         method: "GET",
         headers: {
           'Accept': 'application/json',

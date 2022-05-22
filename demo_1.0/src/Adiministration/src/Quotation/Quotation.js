@@ -4,7 +4,7 @@ import { message, DatePicker, Divider, Form, Space, Select, InputNumber, Switch,
 import { useState } from 'react';
 import Paragraph from 'antd/lib/skeleton/Paragraph';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
-import { USE_JSON_SERVER } from '../../functions/functions';
+import { USE_JSON_SERVER,REMOTE_SERVER } from '../../functions/functions';
 const formItemLayout = {
   labelCol: { span: 5 },
   wrapperCol: { span: 16 },
@@ -41,7 +41,7 @@ function Quotation(props) {
         })
     }
     else {
-      fetch("http://42.192.56.231:8000/delegation/" + _state['PageInfo']['id'], {
+      fetch(REMOTE_SERVER+"/delegation/" + _state['PageInfo']['id'], {
         method: "GET",
         headers: {
           'Accept': 'application/json',
@@ -100,7 +100,7 @@ function Quotation(props) {
         })
     }
     else {
-      fetch("http://42.192.56.231:8000/offer/delegation/" + _state['PageInfo']['id'], {
+      fetch(REMOTE_SERVER+"/offer/delegation/" + _state['PageInfo']['id'], {
         method: firstTime ? "POST" : "PUT",
         headers: {
           'Accept': 'application/json',

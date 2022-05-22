@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import moment from 'moment';
 import Paragraph from 'antd/lib/skeleton/Paragraph';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
-import { USE_JSON_SERVER } from '../../functions/functions';
+import { USE_JSON_SERVER,REMOTE_SERVER } from '../../functions/functions';
 
 var _ = require('lodash');
 
@@ -42,7 +42,7 @@ function ViewQuotation(props) {
                 })
         }
         else {
-            fetch("http://42.192.56.231:8000/delegation/" + _state['PageInfo']['id'], {
+            fetch(REMOTE_SERVER+"/delegation/" + _state['PageInfo']['id'], {
                 method: "GET",
                 headers: {
                     'Accept': 'application/json',

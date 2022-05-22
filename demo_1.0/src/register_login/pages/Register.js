@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useState } from 'react';
 import { Input, Card, Button, Row, Space,message } from 'antd';
 import './css/register.css';
-import { USE_JSON_SERVER } from '../../Adiministration/functions/functions';
+import { USE_JSON_SERVER ,REMOTE_SERVER} from '../../Adiministration/functions/functions';
 
 
 var _ = require('lodash');
@@ -48,7 +48,7 @@ function RegisterPage(props) {
         })
     }
     else {
-      fetch("http://42.192.56.231:8000/register", {
+      fetch(REMOTE_SERVER+"/register", {
         method: "POST",
         headers: {
           'Accept': 'application/json',

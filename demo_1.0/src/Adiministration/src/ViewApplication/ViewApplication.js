@@ -8,7 +8,7 @@ import { NoFormStatus } from 'antd/lib/form/context';
 import { getStageByInfo, getStatusInfo } from '../../functions/functions'
 import { useEffect, useState } from 'react';
 import moment from 'moment';
-import { USE_JSON_SERVER } from '../../functions/functions';
+import { USE_JSON_SERVER,REMOTE_SERVER } from '../../functions/functions';
 
 var _ = require('lodash');
 
@@ -46,7 +46,7 @@ function ViewApplication(props) {
         })
     }
     else {
-      fetch("http://42.192.56.231:8000/delegation/" + _state['PageInfo']['id'], {
+      fetch(REMOTE_SERVER+"/delegation/" + _state['PageInfo']['id'], {
         method: "GET",
         mode: 'cors',
         headers: {

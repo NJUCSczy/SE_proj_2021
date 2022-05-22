@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Input, Card, Button, Row, Space,message } from 'antd';
 import './css/register.css';
-import { USE_JSON_SERVER } from '../../Adiministration/functions/functions';
+import { USE_JSON_SERVER,REMOTE_SERVER } from '../../Adiministration/functions/functions';
 
 var _ = require('lodash');
 
@@ -55,7 +55,7 @@ function Login(props) {
         })
     }
     else {
-      fetch("http://42.192.56.231:8000/login", {
+      fetch(REMOTE_SERVER+"/login", {
         method: "POST",
         headers: {
           'Accept': 'application/json',

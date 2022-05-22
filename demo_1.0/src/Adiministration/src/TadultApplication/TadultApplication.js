@@ -7,7 +7,7 @@ import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
 import { NoFormStatus } from 'antd/lib/form/context';
 import { useEffect, useState } from 'react';
 import moment from 'moment';
-import { USE_JSON_SERVER } from '../../functions/functions';
+import { USE_JSON_SERVER,REMOTE_SERVER } from '../../functions/functions';
 
 var _ = require('lodash');
 
@@ -80,7 +80,7 @@ function TadultApplication(props) {
         })
     }
     else {
-      fetch("http://42.192.56.231:8000/audit/delegation/test/" + _state['PageInfo']['id'], {
+      fetch(REMOTE_SERVER+"/audit/delegation/test/" + _state['PageInfo']['id'], {
         method: "POST",
         headers: {
           'Accept': 'application/json',
