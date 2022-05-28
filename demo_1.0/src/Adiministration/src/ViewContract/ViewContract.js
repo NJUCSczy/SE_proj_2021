@@ -1,110 +1,71 @@
-import isMobile from 'is-mobile';
 import React, { Component } from 'react'
-import { message, Typography, DatePicker, Form, InputNumber, Button, Input } from 'antd';
-import './TestAgreement.css'
-import TextArea from 'antd/lib/input/TextArea';
-import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
-import { NoFormStatus } from 'antd/lib/form/context';
+import { Typography, DatePicker, Form, InputNumber, Button, Input } from 'antd';
+import './ViewContract.css'
+import { getStageByInfo, getStatusInfo } from '../../functions/functions'
 import { useEffect, useState } from 'react';
 import moment from 'moment';
-const { Title, Paragraph, Text, Link } = Typography;
+
 var _ = require('lodash');
+const { Title, Paragraph, Text, Link } = Typography;
 
-function CheckTA(props) {
-    const { UpdateUserInfo, GotoPage, _state } = props;
-    const userState = props._state
-    const [entrustData, setEntrustData] = useState({ 'formData': null })
+function ViewContract (props) {
+  const { UpdateUserInfo, GotoPage,_state } = props;
+  const userState = props._state
+  const [entrustData, setEntrustData] = useState({ 'formData': null })
 
-    const updateInfo = () => {
-        fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
-            method: "GET",
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+  const updateInfo = () => {
+    fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
+        method: "GET",
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(res => {
+            return res.json()
         })
-            .then(res => {
-                return res.json()
-            })
-            .then(data => {
-                if (data != null) {
-                    setEntrustData(prev => {
-                        const newData = _.cloneDeep(prev)
-                        newData["formData"] = data
-                        return newData
-                    })
-                }
-                console.log(data)
-            })
-    }
-    useEffect(() => {
-        updateInfo();
-    }, []
-    )
-
-    const SubmitForm = (_form) => {
-        fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
-            method: "PUT",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(_form)
+        .then(data => {
+            if (data != null) {
+                setEntrustData(prev => {
+                    const newData = _.cloneDeep(prev)
+                    newData["formData"] = data
+                    return newData
+                })
+            }
+            console.log(data)
         })
-            .then(res => {
-                console.log(res)
-                if (res.status === 200) {
-                    message.success({ content: "提交成功！", key: "upload" })
-                    GotoPage("ViewEntrust", _state)
-                }
-                else {
-                    message.error({ content: "提交失败！", key: "upload" })
-                }
-                return res.json()
-            })
-            .then(data => {
-                console.log(data)
-            })
-    }
-
-    const onFinishForm = (values) => {
-        var form = entrustData['formData'];
-        form['测试合同']['履行期限接受情况'] = values
-        SubmitForm(form)
-    }
-
-
-    console.log(entrustData)
-    return (
-        entrustData['formData'] === null ? null :
-            (<Form
-                style={{ padding: "10px 10px 10px 10px" }}
-                name="basic"
-                labelCol={{ span: 3 }}
-                wrapperCol={{ span: 16 }}
-                initialValues={{ remember: true }}
-                onFinish={null}
-                onFinishFailed={null}
-                autoComplete="off"
-            >
-                <h2 style={{ fontWeight: 'bolder', marginTop: 30, textAlign: 'center' }}>软件委托测试合同</h2>
+}
+useEffect(() => {
+    updateInfo();
+}, []
+)
+return(
+    entrustData['formData'] === null ? null :
+    (<Form
+     style={{padding:"10px 10px 10px 10px"}}
+     name="测试合同"
+    >
+        <h1 style={{ fontWeight: 'bolder', marginTop: 30, textAlign: 'center' }}>软件委托测试合同</h1>
+        {getStageByInfo(entrustData['formData'])<13? null:(
+            <div>
                 <Form.Item label="项目名称" >
-                    <Input style={{ maxWidth: 300 }} defaultValue={entrustData["formData"]["用户申请表"]["软件名称"]} disabled />
+                    <Input  style={{maxWidth:300}} defaultValue={entrustData["formData"]["用户申请表"]["软件名称"]} disabled/>
                 </Form.Item>
 
                 <Form.Item label="委托方(甲方)" >
-                    <Input style={{ maxWidth: 180 }} defaultValue={entrustData["formData"]["用户申请表"]["委托单位(中文)"]} disabled />
+                    <Input  style={{maxWidth:180}} defaultValue={entrustData["formData"]["用户申请表"]["委托单位(中文)"]} disabled/>
                 </Form.Item>
 
                 <Form.Item label="受托方(乙方)" >
-                    <Input style={{ maxWidth: 180 }} defaultValue={entrustData["formData"]["测试合同"]["市场部部分"]["trusteename"]} disabled />
+                    <Input  style={{maxWidth:180}} defaultValue={entrustData["formData"]["测试合同"]["市场部部分"]["trusteename"]} disabled/>
                 </Form.Item>
 
                 <Form.Item label="签订地点" >
-                    <Input style={{ maxWidth: 180 }} defaultValue={entrustData["formData"]["测试合同"]["市场部部分"]["place"]} disabled />
+                    <Input  style={{maxWidth:180}} defaultValue={entrustData["formData"]["测试合同"]["市场部部分"]["place"]} disabled/>
                 </Form.Item>
 
                 <Form.Item label="签订日期" >
-                    <Input style={{ maxWidth: 180 }} defaultValue={entrustData["formData"]["测试合同"]["市场部部分"]["date"]} disabled />
+                    <Input  style={{maxWidth:180}} defaultValue={entrustData["formData"]["测试合同"]["市场部部分"]["date"]} disabled/>
                 </Form.Item>
 
                 <Paragraph>
@@ -138,8 +99,8 @@ function CheckTA(props) {
                 </Paragraph>
 
                 <h3>四.合同价款</h3>
-                <Form.Item label="本合同软件测试费用为人民币" labelCol={{ span: 6 }}>
-                    <Input style={{ maxWidth: 100 }} defaultValue={entrustData["formData"]["报价单"]['基本信息']["总计"]} addonAfter="元" disabled />
+                <Form.Item label="本合同软件测试费用为人民币"  labelCol={{ span: 6 }}>
+                    <Input  style={{maxWidth:100}} defaultValue={entrustData["formData"]["报价单"]['基本信息']["总计"] } addonAfter="元" disabled/>
                 </Form.Item>
 
                 <h3>五.测试费用支付方式</h3>
@@ -147,17 +108,17 @@ function CheckTA(props) {
 
                 <h3>六.履行的期限</h3>
                 1.本次测试的履行期限为合同生效之日起&emsp;
-                <Form.Item name="合同履行期限" noStyle>
-                    <InputNumber style={{ maxWidth: 100 }} defaultValue={entrustData["formData"]["测试合同"]['市场部部分']["合同履行期限"]} disabled />
+                <Form.Item  name = "合同履行期限" noStyle>
+                    <InputNumber  style={{maxWidth:100}} defaultValue={entrustData["formData"]["测试合同"]['市场部部分']["合同履行期限"] } disabled/>
                 </Form.Item>
                 &emsp;个自然日内完成
                 <Paragraph>&emsp;2.	经甲乙双方同意，可对测试进度作适当修改，并以修改后的测试进度作为本合同执行的期限。</Paragraph>
                 <Paragraph>&emsp;3.	如受测软件在测试过程中出现的问题，导致继续进行测试会影响整体测试进度,则乙方暂停测试并以书面形式通知甲方进行整改。在整个测试过程中,</Paragraph>
                 <Form.Item label="整改次数限于" labelCol={{ span: 6 }}>
-                    <Input style={{ maxWidth: 100 }} addonAfter="次" defaultValue={entrustData["formData"]["测试合同"]['市场部部分']["整改限制次数"]} disabled />
+                    <Input  style={{maxWidth:100}}  addonAfter="次" defaultValue={entrustData["formData"]["测试合同"]['市场部部分']["整改限制次数"]} disabled/>
                 </Form.Item>
                 <Form.Item label="每次不超过" labelCol={{ span: 6 }} >
-                    <Input style={{ maxWidth: 100 }} addonAfter="天" defaultValue={entrustData["formData"]["测试合同"]['市场部部分']["一次整改限制的天数"]} disabled />
+                    <Input  style={{maxWidth:100}}  addonAfter="天" defaultValue={entrustData["formData"]["测试合同"]['市场部部分']["一次整改限制的天数"]} disabled/>
                 </Form.Item>
                 <Paragraph>&emsp;4.	如因甲方原因，导致测试进度延迟、应由甲方负责,乙方不承担责任。</Paragraph>
                 <Paragraph>&emsp;5.	如因乙方原因,导致测试进度延迟,则甲方可酌情提出赔偿要求,赔偿金额不超过甲方已付金额的50%。双方经协商一致后另行签订书面协议，作为本合同的补充。</Paragraph>
@@ -178,14 +139,18 @@ function CheckTA(props) {
                 <Paragraph>&emsp;本合同自双方授权代表签字盖章之日起生效,自受托方的主要义务履行完毕之日起终止。</Paragraph>
                 <Paragraph>&emsp;本合同未尽事宜由双方协商解决。</Paragraph>
                 <Paragraph>&emsp;本合同的正本一式肆份,双方各执两份,具有同等法律效力。</Paragraph>
-                <Form inline style={{ textAlign: 'center' }}>
-                    <Button onClick={() => onFinishForm('接受')}>确认合同</Button>&emsp;
-                    <Button onClick={() => onFinishForm('申请再议')}>申请再议</Button>&emsp;
-                    <Button onClick={() => onFinishForm('不接受')}>结束委托</Button>
-                </Form>
-            </Form>)
-    )
+                {getStageByInfo(entrustData['formData'])<14? null:(
+                    <div>
+                        <h2 style={{ fontWeight: 'bolder', marginTop: 30, textAlign: 'right' }}>用户对履行期限的接受情况:</h2>
+                        <h2 style={{ fontWeight: 'bolder', marginTop: 30, textAlign: 'right' }}>{entrustData["formData"]["测试合同"]["履行期限接受情况"]}</h2>
+                    </div>
+                )}
+            </div>
+        )}
+        
+  </Form>)
+)
 }
 
 
-export default CheckTA
+export default ViewContract

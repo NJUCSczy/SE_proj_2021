@@ -1,8 +1,9 @@
 import React from 'react';
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from 'react';
-import {Input,Card,Button,Row, Space } from 'antd';
+import { Input, Card, Button, Row, Space,message } from 'antd';
 import './css/register.css';
+import { USE_JSON_SERVER ,REMOTE_SERVER} from '../../Adiministration/functions/functions';
 
 
 var _ = require('lodash');
@@ -22,30 +23,55 @@ function RegisterPage(props) {
   }
 
   const handleRigister = () => {
-    fetch("http://localhost:8000/register", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ 'username': formData['username'], "password": formData['password'], "email": formData['email'] })
-    })
-      .then(res => {
-        console.log(formData)
-        if (res.status === 201) {
-          alert("注册成功！")
-          //navigate('/')
-        }
-        return res.json()
+    if (USE_JSON_SERVER) {
+      fetch("http://localhost:8000/register", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ 'username': formData['username'], "password": formData['password'], "email": formData['email'] })
       })
-      .then(data => {
-        console.log(data)
-        if (data["errorInfo"] != undefined) {
-          alert(data["errorInfo"])
-        }
-        else{
-          GotoPage('Login');
-        }
+        .then(res => {
+          console.log(formData)
+          if (res.status === 201) {
+            message.success({content:'注册成功！',key:"register"})
+          }else{
+            message.error({content:'注册失败',key:"register"})
+          }
+          return (res.json(),res.status)
+        })
+        .then((data,status) => {
+          console.log(data)
+          if (status===201) {
+            GotoPage('Login');
+          }
+        })
+    }
+    else {
+      fetch(REMOTE_SERVER+"/register", {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify({ "username": formData['username'], "password": formData['password'], "email": formData['email'] })
       })
+        .then(res => {
+          console.log(formData)
+          if (res.status === 200) {
+            message.success({content:'注册成功！',key:"register"})
+          }else{
+            message.error({content:'注册失败',key:"register"})
+          }
+          return (res.json(),res.status)
+        })
+        .then((data,status) => {
+          console.log(data)
+          if (status==200) {
+            GotoPage('Login');
+          }
+        })
+    }
   }
 
   const updateInfo = () => {
@@ -100,7 +126,7 @@ function RegisterPage(props) {
           <br />
           <Button className="register_btn" onClick={handleRigister}>注册</Button>{" "}
           <Button className="register_btn" onClick={updateInfo}>查看</Button>{" "}
-          <Button onClick={() => {GotoPage('Login')}} className="register_btn" > 转到登录</Button>
+          <Button onClick={() => { GotoPage('Login') }} className="register_btn" > 转到登录</Button>
         </Card>
       </Row>
 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @startuml
 start
 #LightPink:repeat:测试人员填写《软件测试方案》;
@@ -25,4 +26,33 @@ repeat while (测试报告是否通过) is (否) not (是)
 #LightGreen:生成正式测试报告并
 由市场部人员签发;
 stop
+=======
+@startuml
+start
+#LightPink:repeat:测试人员填写《软件测试方案》;
+:质量部人员审核测试方案
+并填写《测试方案评审表》;
+backward:测试人员根据评审\n表完善测试方案;
+repeat while (测试方案是否通过) is (否) not (是)
+#LightGreen:测试人员搭建测试
+环境并实施测试;
+:测试人员根据测试情
+况填写《测试用例》
+《软件测试记录》;
+#LightSkyBlue:\t测试人员填写
+《软件测试问题清单》;
+:测试人员对软件文档测试
+并填写《软件文档评审表》;
+#lightPink:repeat:测试人员编制测试报告\n并填写《软件测试报告》;
+:质量部人员填写
+《测试报告检查表》;
+backward:测试人员完善\n测试报告;
+repeat while (测试报告是否通过) is (否) not (是)
+:市场部人员填写
+《软件项目委托测
+试工作检查表》;
+#LightGreen:生成正式测试报告并
+由市场部人员签发;
+stop
+>>>>>>> 13fb3b6d69d96e485dbfc75cb949eb7040ca7bd8
 @enduml

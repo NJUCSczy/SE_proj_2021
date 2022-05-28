@@ -1,6 +1,6 @@
 import isMobile from 'is-mobile';
 import React, { Component } from 'react'
-import { DatePicker,Divider, Form, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
+import { message,DatePicker,Divider, Form, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import './ConfidentialAgreementPartyA.css'
 import { useState,useEffect } from 'react';
 import TextArea from 'antd/lib/input/TextArea';
@@ -52,8 +52,11 @@ function ConfidentialAgreementPartyA(props){
       .then(res => {
         console.log(res)
         if (res.status === 200) {
-          alert("提交成功！")
-          //navigate('/yjqtest', { state: { email: formData['email'], password: formData['password'] } })
+          message.success({content:"提交成功！",key:"upload"})
+          GotoPage("ViewEntrust",_state)
+        }
+        else{
+          message.error({content:"提交失败！",key:"upload"})
         }
         return res.json()
       })
@@ -80,7 +83,7 @@ function ConfidentialAgreementPartyA(props){
   };
       
         return (
-          entrustData['formData'] === null ? 'null' :(
+          entrustData['formData'] === null ? null :(
             <Form
               style={{padding:"10px 10px 10px 10px"}}
               name="basic"
