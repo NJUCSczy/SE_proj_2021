@@ -1,6 +1,6 @@
 import isMobile from 'is-mobile';
 import React, { Component } from 'react'
-import { DatePicker, Divider, Form, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
+import { Descriptions,DatePicker, Divider, Form, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import './ViewApplication.css'
 import TextArea from 'antd/lib/input/TextArea';
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
@@ -101,6 +101,7 @@ function ViewApplication(props) {
     entrustData['formData'] === null ? null :
       (<Form
         name="软件项目委托测试申请书">
+        
         <h1 style={{ textAlign: 'center', fontSize: 30 }}>软件项目委托测试申请书</h1>
 
         <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试类型</h2>
