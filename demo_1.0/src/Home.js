@@ -38,7 +38,7 @@ import { USE_JSON_SERVER } from './Adiministration/functions/functions';
 
 const { Header, Content, Footer, Sider } = Layout;
 
-
+const mobile = require('is-mobile');
 
 const MainPage = (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>首页</div>);
 
@@ -189,10 +189,10 @@ class Home extends React.Component {
     }
 
     render() {
-        var mobile = require('is-mobile');
+        
 
 
-        const infoMenu = (<Dropdown overlay={<Menu
+        const infoMenu = (<div id='home_headers_infos'><Dropdown  overlay={<Menu 
             items={[
                 { label: (<a onClick={() => { this.GotoPage('Info1', this.state) }}>机构信息</a>), },
                 { label: (<a onClick={() => { this.GotoPage('Info2', this.state) }}>资质信息</a>), },
@@ -201,8 +201,8 @@ class Home extends React.Component {
                 { label: (<a onClick={() => { this.GotoPage('Info5', this.state) }}>新闻资讯</a>), },
                 { label: (<a onClick={() => { this.GotoPage('Info6', this.state) }}>友情链接</a>), },
             ]} />} placement="bottom">
-            <a onClick={e => e.preventDefault()}><Space>信息<DownOutlined /></Space></a>
-        </Dropdown>)
+            <a onClick={e => e.preventDefault()}><Space style={{color:'white'}}>信息<DownOutlined /></Space></a>
+        </Dropdown></div>)
 
         const Breadcrumbitems = {
             0: null,
@@ -242,19 +242,19 @@ class Home extends React.Component {
             "友情链接": <Breadcrumb.Item><a onClick={() => { this.GotoPage('Info6', this.state) }}>友情链接</a></Breadcrumb.Item>,
         };
 
-        const userFunctionMenu = (<Dropdown overlay={<Menu
+        const userFunctionMenu = (<Dropdown id="home_headers_functions" overlay={<Menu
             items={[
                 { label: (<a onClick={() => { this.GotoPage('SubmitApplication', this.state) }}>提交申请</a>), },
                 { label: (<a onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
             ]} />} placement="bottom">
-            <a onClick={e => e.preventDefault()}><Space>操作<DownOutlined /></Space></a>
+            <a onClick={e => e.preventDefault()}><Space style={{color:'white'}}>操作<DownOutlined /></Space></a>
         </Dropdown>)
 
         const staffFunctionMenu = (<Dropdown overlay={<Menu
             items={[
                 { label: (<a onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
             ]} />} placement="bottom">
-            <a onClick={e => e.preventDefault()}><Space>操作<DownOutlined /></Space></a>
+            <a onClick={e => e.preventDefault()}><Space style={{color:'white'}}>操作<DownOutlined /></Space></a>
         </Dropdown>)
 
         const adminFunctionMenu = (<Dropdown overlay={<Menu
@@ -262,7 +262,7 @@ class Home extends React.Component {
                 { label: (<a onClick={() => { this.GotoPage('SubmitApplication', this.state) }}>提交申请</a>), },
                 { label: (<a onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
             ]} />} placement="bottom">
-            <a onClick={e => e.preventDefault()}><Space>操作<DownOutlined /></Space></a>
+            <a onClick={e => e.preventDefault()}><Space style={{color:'white'}}>操作<DownOutlined /></Space></a>
         </Dropdown>)
 
         return (
@@ -277,8 +277,8 @@ class Home extends React.Component {
                         items={new Array(4).fill(null).map((_, index) => ({
                             key: String(index + 1),
                             label: {
-                                0: (<a onClick={() => { this.GotoPage('MainPage', this.state) }}>首页</a>),
-                                1: (<a onClick={() => { this.state.accessToken === null ? this.GotoPage('Login', this.state) : this.GotoPage('UserInfo', this.state) }}>用户</a>),
+                                0: (<a id="home_headers_mainpage" onClick={() => { this.GotoPage('MainPage', this.state) }}><Space style={{color:'white'}}>首页</Space></a>),
+                                1: (<a id="home_headers_user" onClick={() => { this.state.accessToken === null ? this.GotoPage('Login', this.state) : this.GotoPage('UserInfo', this.state) }}><Space style={{color:'white'}}>用户</Space></a>),
                                 2: (this.state.userRole == "ROLE_ADMIN") ? adminFunctionMenu : ((this.state.userRole == "ROLE_USER") ? userFunctionMenu : staffFunctionMenu),
                                 3: infoMenu,
                             }[index],
@@ -286,7 +286,7 @@ class Home extends React.Component {
                     />
                 </Header>
                 <Layout style={{ overflowY: 'hidden' }}>
-                    <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64, marginBottom: 70 }}>
+                    <Content className="site-layout" style={{ padding: mobile()?'0 10px':'0 50px', marginTop: 64, marginBottom: 70 }}>
                         <Breadcrumb style={{ margin: '16px 0' }}>
                             {Breadcrumbitems[this.state.BreadcrumbByIndex[0]]}
                             {Breadcrumbitems[this.state.BreadcrumbByIndex[1]]}

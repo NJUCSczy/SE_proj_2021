@@ -1,4 +1,5 @@
 import React ,{ Fragment }from 'react'
+import isMobile from 'is-mobile';
 
 import {DatePicker, message, Divider,Tag,Table, Form,Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import { useState } from 'react';
@@ -13,6 +14,7 @@ function CheckList(props) {
     const [formData, setFormData] = useState({})
     const { Option } = Select;
     const { TextArea } = Input;
+    const mobile = require('is-mobile');
 
    
 
@@ -24,13 +26,13 @@ interface DataType {
 }
 
 const columns: ColumnsType<DataType> = [
-  {
+  /*{
     title: '序号',
     dataIndex: 'key',
     key: 'key',
     width:50,
     render: text => <span>{text}</span>,
-  },
+  },*/
   {
     title: '检查内容',
     dataIndex: 'name',
@@ -134,7 +136,7 @@ const data: DataType[] = [
     return( <Form
         name="测试报告检查表"
         initialValues={{ remember: true }}
-        style={{ padding: '20px 30px' }}
+        style={{ padding: mobile()?'20px 5px': '20px 30px' }}
         labelCol={{ span: 10, flex: 'auto' }}
         wrapperCol={{ span: 20 }}
         layout='vertical'
