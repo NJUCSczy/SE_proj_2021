@@ -28,7 +28,7 @@ import ViewFunction from './Adiministration/src/ViewFunction/ViewFunction';
 import ViewSignature from './Adiministration/src/ViewSignature/ViewSignature';
 import ViewQuotation from './Adiministration/src/ViewQuotation/ViewQuotation';
 
-
+import CheckList from './Adiministration/src/CheckList/CheckList';
 import Quotation from './Adiministration/src/Quotation/Quotation';
 import QuotationFeedback from './Adiministration/src/QuotationFeedback/QuotationFeedback';
 import FunctionList from './Adiministration/src/FunctionList/FunctionList';
@@ -163,7 +163,7 @@ class Home extends React.Component {
 
             case 'Info1':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','机构信息','0','0','0'] });
-                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>机构信息</div>);
+                return (<CheckList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></CheckList>);
             case 'Info2':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','资质信息','0','0','0'] });
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>资质信息</div>);

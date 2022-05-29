@@ -112,6 +112,13 @@ function ViewEntrustList(props) {
           if(res.status === 200){
             message.success({content:"获取委托信息成功",key:"getEntrustList",duration:2})
           }
+          else if(res.status === 401){
+            alert("请先登录！")
+            GotoPage("Login",_state)
+          }
+          else{
+            message.error({content:"获取委托信息失败",key:"getEntrustList",duration:2})
+          }
           
           return res.json()
         })
@@ -137,7 +144,6 @@ function ViewEntrustList(props) {
     <Table
     style={{marginLeft:20,marginRight:20}}
     pagination={{pageSize:8}}
-    loading={entrustData['formData']===null}
       columns={columns}
       dataSource={entrustData['formData']}
       rowKey="id"
