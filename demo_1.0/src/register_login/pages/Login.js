@@ -123,21 +123,21 @@ function Login(props) {
       <Row justify="center" align="middle" className="register_ground" style={{ backgroundImage: "url(" + require("./images/westWorld1.jpeg") + ")" }}>
         <Card justify="center" title="用户登录" className="register_card">
           <br />
-          <Input placeholder="请输入邮箱" className="register_email"
+          <Input id="login_input_email" placeholder="请输入邮箱" className="register_email"
             onChange={(e) => { handleChange("email", e.target.value) }} />
           <br />
           <br />
-          <Input placeholder="请输入账号" className="register_username"
+          <Input id="login_input_username" placeholder="请输入账号" className="register_username"
             onChange={(e) => { handleChange("username", e.target.value) }} />
           <br />
           <br />
-          <Input.Password className="register_password" placeholder="请输入密码"
+          <Input.Password id="login_input_password" className="register_password" placeholder="请输入密码"
             onChange={(e) => { handleChange("password", e.target.value) }} />
           <br />
           <br />
-          <Button className="register_btn" onClick={handleLogin}>登录</Button>{" "}
+          <Button id="login_button" className="register_btn" onClick={handleLogin}>登录</Button>{" "}
           <Button className="register_btn" onClick={updateInfo}>查看</Button>{" "}
-          <Button onClick={() => { GotoPage('Register') }} className="register_btn" > 立即注册</Button>
+          <Button id="goto_register_button" onClick={() => { GotoPage('Register') }} className="register_btn" > 立即注册</Button>
         </Card>
       </Row>
     </div>

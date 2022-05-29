@@ -135,21 +135,21 @@ function SubmitApplication(props) {
       >
         <Checkbox.Group >
           <Col span={30}>
-            <Checkbox value="软件确认测试" style={{ lineHeight: '32px' }}>
+            <Checkbox id="测试类型_软件确认测试" value="软件确认测试" style={{ lineHeight: '32px' }}>
               软件确认测试
             </Checkbox>
           </Col>
           <Col span={30}>
-            <Checkbox value="成果/技术鉴定测试" style={{ lineHeight: '32px' }}>
+            <Checkbox id="测试类型_成果/技术鉴定测试" value="成果/技术鉴定测试" style={{ lineHeight: '32px' }}>
               成果/技术鉴定测试
             </Checkbox>
           </Col>
           <Col span={30}>
-            <Checkbox value="专项资金验收测试" style={{ lineHeight: '32px' }}>
+            <Checkbox id="测试类型_专项资金验收测试" value="专项资金验收测试" style={{ lineHeight: '32px' }}>
               专项资金验收测试
             </Checkbox>
           </Col>
-          <Checkbox value="其他" style={{ lineHeight: '32px' }} onChange={(e) => setDataByKey('测试类型(其他)', e.target.checked)}>
+          <Checkbox id="测试类型_其他" value="其他" style={{ lineHeight: '32px' }} onChange={(e) => setDataByKey('测试类型(其他)', e.target.checked)}>
             其他
           </Checkbox>
           <Form.Item
@@ -157,7 +157,7 @@ function SubmitApplication(props) {
             name="测试类型(其他)"
             rules={[{ required: (formData['测试类型(其他)'] === true), message: '请填写其他测试类型名称！' }]}
           >
-            <Input style={{ padding: 0 }} disabled={formData['测试类型(其他)'] != true} />
+            <Input id="测试类型(其他)" style={{ padding: 0 }} disabled={formData['测试类型(其他)'] != true} />
           </Form.Item>
         </Checkbox.Group>
       </Form.Item>
@@ -169,7 +169,7 @@ function SubmitApplication(props) {
         rules={[{ required: true, message: '请填写软件名称' }]}
       >
 
-        <Input style={{ maxWidth: 500 }} bordered={true}/>
+        <Input id="软件名称" style={{ maxWidth: 500 }} bordered={true}/>
       </Form.Item>
       </Descriptions.Item>
 
@@ -181,7 +181,7 @@ function SubmitApplication(props) {
         rules={[{ required: true, message: '请填写版本号' }]}
       >
 
-        <Input style={{ maxWidth: 500 }} bordered={true}/>
+        <Input id="版本号" style={{ maxWidth: 500 }} bordered={true}/>
       </Form.Item>
       </Descriptions.Item>
 
@@ -190,7 +190,7 @@ function SubmitApplication(props) {
         name="委托单位(中文)"
         rules={[{ required: true, message: '请填写委托单位名称(中文)' }]}
       >
-        <Input style={{ maxWidth: 500 }} />
+        <Input id="委托单位(中文)" style={{ maxWidth: 500 }} />
       </Form.Item>
       </Descriptions.Item>
 
@@ -199,7 +199,7 @@ function SubmitApplication(props) {
         name="委托单位(英文)"
         rules={[{ required: true, message: '请填写委托单位名称(英文)' }]}
       >
-        <Input style={{ maxWidth: 500 }} />
+        <Input id="委托单位(英文)" style={{ maxWidth: 500 }} />
       </Form.Item>
       </Descriptions.Item>
 
@@ -208,7 +208,7 @@ function SubmitApplication(props) {
         name="开发单位"
         rules={[{ required: true, message: '请填写开发单位' }]}
       >
-        <Input style={{ maxWidth: 500 }} />
+        <Input id="开发单位" style={{ maxWidth: 500 }} />
       </Form.Item>
       </Descriptions.Item>
 
@@ -219,20 +219,20 @@ function SubmitApplication(props) {
       >
         <Radio.Group >
           <Col span={30} >
-            <Radio value="内资企业" style={{ lineHeight: '32px' }} >内资企业</Radio>
+            <Radio id="单位性质_内资企业" value="内资企业" style={{ lineHeight: '32px' }} >内资企业</Radio>
           </Col>
           <Col span={30}>
-            <Radio value="外(合)资企业" style={{ lineHeight: '32px' }}>外(合)资企业</Radio>
+            <Radio id="单位性质_外(合)资企业" value="外(合)资企业" style={{ lineHeight: '32px' }}>外(合)资企业</Radio>
           </Col>
           <Col span={30}>
-            <Radio value="港澳台(合)资企业" style={{ lineHeight: '32px' }}>港澳台(合)资企业</Radio>
+            <Radio id="单位性质_港澳台(合)资企业" value="港澳台(合)资企业" style={{ lineHeight: '32px' }}>港澳台(合)资企业</Radio>
           </Col>
           <Col span={30}>
-            <Radio value="科研院校" style={{ lineHeight: '32px' }}>科研院校</Radio></Col>
+            <Radio id="单位性质_科研院校" value="科研院校" style={{ lineHeight: '32px' }}>科研院校</Radio></Col>
           <Col span={30}>
-            <Radio value="政府事业团体" style={{ lineHeight: '32px' }}>政府事业团体</Radio></Col>
+            <Radio id="单位性质_政府事业团体" value="政府事业团体" style={{ lineHeight: '32px' }}>政府事业团体</Radio></Col>
           <Col span={30}>
-            <Radio value="其他" style={{ lineHeight: '32px' }}>其他</Radio></Col>
+            <Radio id="单位性质_其他" value="其他" style={{ lineHeight: '32px' }}>其他</Radio></Col>
         </Radio.Group>
       </Form.Item>
       </Descriptions.Item>
@@ -242,7 +242,7 @@ function SubmitApplication(props) {
         name="软件用户对象描述"
         rules={[{ required: true, message: '请填写软件用户对象描述' }]}
       >
-        <TextArea rows={5} style={{ maxWidth: 700 }}></TextArea>
+        <TextArea id="软件用户对象描述" rows={5} style={{ maxWidth: 700 }}></TextArea>
       </Form.Item>
       </Descriptions.Item>
 
@@ -251,7 +251,7 @@ function SubmitApplication(props) {
         name="主要功能及用途简介(限300字)"
         rules={[{ required: true, message: '请填写主要功能及用途' }]}
       >
-        <TextArea rows={5} showCount maxLength={300} style={{ maxWidth: 700 }}></TextArea>
+        <TextArea id="主要功能及用途简介" rows={5} showCount maxLength={300} style={{ maxWidth: 700 }}></TextArea>
       </Form.Item>
       </Descriptions.Item>
 
@@ -262,26 +262,26 @@ function SubmitApplication(props) {
       >
         <Checkbox.Group >
           <Col span={30}>
-            <Checkbox value="GB/T 25000.51-2010" style={{ lineHeight: '32px' }}>
+            <Checkbox id="测试依据_GB/T 25000.51-2010" value="GB/T 25000.51-2010" style={{ lineHeight: '32px' }}>
               GB/T 25000.51-2010
             </Checkbox>
           </Col>
           <Col span={30}>
-            <Checkbox value="GB/T 16260.1-2006" style={{ lineHeight: '32px' }}>
+            <Checkbox id="测试依据_GB/T 16260.1-2006" value="GB/T 16260.1-2006" style={{ lineHeight: '32px' }}>
               GB/T 16260.1-2006
             </Checkbox>
           </Col>
           <Col span={30}>
-            <Checkbox value="NST-03-WI12-2011" style={{ lineHeight: '32px' }}>
+            <Checkbox id="测试依据_NST-03-WI12-2011" value="NST-03-WI12-2011" style={{ lineHeight: '32px' }}>
               NST-03-WI12-2011
             </Checkbox>
           </Col>
           <Col span={30}>
-            <Checkbox value="NST-03-WI13-2011" style={{ lineHeight: '32px' }}>
+            <Checkbox id="测试依据_NST-03-WI13-2011" value="NST-03-WI13-2011" style={{ lineHeight: '32px' }}>
               NST-03-WI13-2011
             </Checkbox>
           </Col>
-          <Checkbox value="其他" style={{ lineHeight: '32px' }} onChange={(e) => setDataByKey('测试依据(其他)', e.target.checked)}>
+          <Checkbox id="测试依据_其他" value="其他" style={{ lineHeight: '32px' }} onChange={(e) => setDataByKey('测试依据(其他)', e.target.checked)}>
             其他
           </Checkbox>
           <Form.Item
@@ -289,7 +289,7 @@ function SubmitApplication(props) {
             name="测试依据(其他)"
             rules={[{ required: (formData['测试依据(其他)'] === true), message: '请输入其他测试依据名称！' }]}
           >
-            <Input style={{ padding: 0 }} disabled={formData['测试依据(其他)'] != true} />
+            <Input id="测试依据(其他)" style={{ padding: 0 }} disabled={formData['测试依据(其他)'] != true} />
           </Form.Item>
         </Checkbox.Group>
       </Form.Item>
@@ -302,66 +302,66 @@ function SubmitApplication(props) {
       >
         <Checkbox.Group >
           <Col span={30}>
-            <Checkbox value="功能性" style={{ lineHeight: '32px' }}>
+            <Checkbox id="需要测试的技术指标_功能性" value="功能性" style={{ lineHeight: '32px' }}>
               功能性
             </Checkbox>
           </Col>
           <Col span={30}>
-            <Checkbox value="可靠性" style={{ lineHeight: '32px' }}>
+            <Checkbox id="需要测试的技术指标_可靠性" value="可靠性" style={{ lineHeight: '32px' }}>
               可靠性
             </Checkbox>
           </Col>
           <Col span={30}>
-            <Checkbox value="易用性" style={{ lineHeight: '32px' }}>
+            <Checkbox id="需要测试的技术指标_易用性" value="易用性" style={{ lineHeight: '32px' }}>
               易用性
             </Checkbox>
           </Col>
           <Col span={30}>
-            <Checkbox value="效率" style={{ lineHeight: '32px' }}>
+            <Checkbox id="需要测试的技术指标_效率" value="效率" style={{ lineHeight: '32px' }}>
               效率
             </Checkbox>
           </Col>
           <Col span={30}>
-            <Checkbox value="可维护性" style={{ lineHeight: '32px' }}>
+            <Checkbox id="需要测试的技术指标_可维护性" value="可维护性" style={{ lineHeight: '32px' }}>
               可维护性
             </Checkbox>
           </Col>
           <Col span={30}>
-            <Checkbox value="可移植性" style={{ lineHeight: '32px' }}>
+            <Checkbox id="需要测试的技术指标_可移植性" value="可移植性" style={{ lineHeight: '32px' }}>
               可移植性
             </Checkbox>
           </Col>
           <Col span={30}>
-            <Checkbox value="代码覆盖度" style={{ lineHeight: '32px' }}>
+            <Checkbox id="需要测试的技术指标_代码覆盖度" value="代码覆盖度" style={{ lineHeight: '32px' }}>
               代码覆盖度
             </Checkbox>
           </Col>
           <Col span={30}>
-            <Checkbox value="缺陷检测率" style={{ lineHeight: '32px' }}>
+            <Checkbox id="需要测试的技术指标_缺陷检测率" value="缺陷检测率" style={{ lineHeight: '32px' }}>
               缺陷检测率
             </Checkbox>
           </Col>
           <Col span={30}>
-            <Checkbox value="代码风格符合度" style={{ lineHeight: '32px' }}>
+            <Checkbox id="需要测试的技术指标_代码风格符合度" value="代码风格符合度" style={{ lineHeight: '32px' }}>
               代码风格符合度
             </Checkbox>
           </Col>
           <Col span={30}>
-            <Checkbox value="代码不符合项检测率" style={{ lineHeight: '32px' }}>
+            <Checkbox id="需要测试的技术指标_代码不符合项检测率" value="代码不符合项检测率" style={{ lineHeight: '32px' }}>
               代码不符合项检测率
             </Checkbox>
           </Col>
           <Col span={30}>
-            <Checkbox value="产品说明要求" style={{ lineHeight: '32px' }}>
+            <Checkbox id="需要测试的技术指标_产品说明要求" value="产品说明要求" style={{ lineHeight: '32px' }}>
               产品说明要求
             </Checkbox>
           </Col>
           <Col span={30}>
-            <Checkbox value="用户文档集要求" style={{ lineHeight: '32px' }}>
+            <Checkbox id="需要测试的技术指标_用户文档集要求" value="用户文档集要求" style={{ lineHeight: '32px' }}>
               用户文档集要求
             </Checkbox>
           </Col>
-          <Checkbox value="其他" style={{ lineHeight: '32px' }} onChange={(e) => setDataByKey('需要测试的技术指标(其他)', e.target.checked)}>
+          <Checkbox id="需要测试的技术指标_其他" value="其他" style={{ lineHeight: '32px' }} onChange={(e) => setDataByKey('需要测试的技术指标(其他)', e.target.checked)}>
             其他
           </Checkbox>
           <Form.Item
@@ -369,7 +369,7 @@ function SubmitApplication(props) {
             name="需要测试的技术指标(其他)"
             rules={[{ required: (formData['需要测试的技术指标(其他)'] === true), message: '请输入其他测试依据名称！' }]}
           >
-            <Input style={{ padding: 0 }} disabled={formData['需要测试的技术指标(其他)'] != true} />
+            <Input id="需要测试的技术指标(其他)" style={{ padding: 0 }} disabled={formData['需要测试的技术指标(其他)'] != true} />
           </Form.Item>
         </Checkbox.Group>
       </Form.Item>
@@ -406,7 +406,7 @@ function SubmitApplication(props) {
           name={["软件规模", "功能数(到最后一级菜单)"]}
           rules={[{ pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请正确输入功能数' }]}
         >
-          <Input onChange={(e) => setDataByKey("功能数(到最后一级菜单)", e.target.value)} style={{ maxWidth: 300 }} />
+          <Input id="软件规模_功能数" onChange={(e) => setDataByKey("功能数(到最后一级菜单)", e.target.value)} style={{ maxWidth: 300 }} />
         </Form.Item>
         </Descriptions.Item>
 
@@ -415,7 +415,7 @@ function SubmitApplication(props) {
           name={["软件规模", "功能点数"]}
           rules={[{ pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请正确输入功能点数' }]}
         >
-          <Input onChange={(e) => setDataByKey("功能点数", e.target.value)} style={{ maxWidth: 300 }} />
+          <Input id="软件规模_功能点数" onChange={(e) => setDataByKey("功能点数", e.target.value)} style={{ maxWidth: 300 }} />
         </Form.Item>
         </Descriptions.Item>
 
@@ -424,7 +424,7 @@ function SubmitApplication(props) {
           name={["软件规模", "代码行数(不包括注释行、空行)"]}
           rules={[{ pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请正确输入代码行数' }]}
         >
-          <Input onChange={(e) => setDataByKey("代码行数(不包括注释行、空行)", e.target.value)} style={{ maxWidth: 300 }} />
+          <Input id="软件规模_代码行数" onChange={(e) => setDataByKey("代码行数(不包括注释行、空行)", e.target.value)} style={{ maxWidth: 300 }} />
         </Form.Item>
         </Descriptions.Item>
         </Descriptions>
@@ -447,88 +447,88 @@ function SubmitApplication(props) {
           <Descriptions  column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }} bordered>
             <Descriptions.Item label="系统软件" style={{ fontWeight: 'bolder', marginTop: 10 }}>
             <Col span={30} >
-              <Radio value="系统软件-操作系统" style={{ lineHeight: '32px' }} >操作系统</Radio>
+              <Radio id="软件类型_系统软件_操作系统" value="系统软件-操作系统" style={{ lineHeight: '32px' }} >操作系统</Radio>
             </Col>
             <Col span={30}>
-              <Radio value="系统软件-中文处理系统" style={{ lineHeight: '32px' }}>中文处理系统</Radio>
+              <Radio id="软件类型_系统软件_中文处理系统" value="系统软件-中文处理系统" style={{ lineHeight: '32px' }}>中文处理系统</Radio>
             </Col>
             <Col span={30}>
-              <Radio value="系统软件-网络系统" style={{ lineHeight: '32px' }}>网络系统</Radio>
+              <Radio id="软件类型_系统软件_网络系统" value="系统软件-网络系统" style={{ lineHeight: '32px' }}>网络系统</Radio>
             </Col>
             <Col span={30}>
-              <Radio value="系统软件-嵌入式操作系统" style={{ lineHeight: '32px' }}>嵌入式操作系统</Radio>
+              <Radio id="软件类型_系统软件_嵌入式操作系统" value="系统软件-嵌入式操作系统" style={{ lineHeight: '32px' }}>嵌入式操作系统</Radio>
             </Col>
             <Col span={30}>
-              <Radio value="系统软件-其他" style={{ lineHeight: '32px' }}>其他</Radio>
+              <Radio id="软件类型_系统软件_其他" value="系统软件-其他" style={{ lineHeight: '32px' }}>其他</Radio>
             </Col>
             </Descriptions.Item>
 
             <Descriptions.Item label="支持软件" style={{ fontWeight: 'bolder', marginTop: 10 }}>
             <Col span={30} >
-              <Radio value="支持软件-程序设计语言" style={{ lineHeight: '32px' }} >程序设计语言</Radio>
+              <Radio id="软件类型_支持软件_程序设计语言" value="支持软件-程序设计语言" style={{ lineHeight: '32px' }} >程序设计语言</Radio>
             </Col>
             <Col span={30}>
-              <Radio value="支持软件-数据库系统设计" style={{ lineHeight: '32px' }}>数据库系统设计</Radio>
+              <Radio id="软件类型_支持软件_数据库系统设计" value="支持软件-数据库系统设计" style={{ lineHeight: '32px' }}>数据库系统设计</Radio>
             </Col>
             <Col span={30}>
-              <Radio value="支持软件-工具软件" style={{ lineHeight: '32px' }}>工具软件</Radio>
+              <Radio id="软件类型_支持软件_工具软件" value="支持软件-工具软件" style={{ lineHeight: '32px' }}>工具软件</Radio>
             </Col>
             <Col span={30}>
-              <Radio value="支持软件-网络通信软件" style={{ lineHeight: '32px' }}>网络通信软件</Radio>
+              <Radio id="软件类型_支持软件_网络通信软件" value="支持软件-网络通信软件" style={{ lineHeight: '32px' }}>网络通信软件</Radio>
             </Col>
             <Col span={30}>
-              <Radio value="支持软件-中间件" style={{ lineHeight: '32px' }}>中间件</Radio>
+              <Radio id="软件类型_支持软件_中间件" value="支持软件-中间件" style={{ lineHeight: '32px' }}>中间件</Radio>
             </Col>
             <Col span={30}>
-              <Radio value="支持软件-其他" style={{ lineHeight: '32px' }}>其他</Radio>
+              <Radio id="软件类型_支持软件_其他" value="支持软件-其他" style={{ lineHeight: '32px' }}>其他</Radio>
             </Col>
             </Descriptions.Item>
 
             <Descriptions.Item label="应用软件" style={{ fontWeight: 'bolder', marginTop: 10 }}>
             <Col span={30} >
-              <Radio value="应用软件-行业管理软件" style={{ lineHeight: '32px' }} >行业管理软件</Radio>
+              <Radio id="软件类型_应用软件_行业管理软件" value="应用软件-行业管理软件" style={{ lineHeight: '32px' }} >行业管理软件</Radio>
             </Col>
             <Col span={30}>
-              <Radio value="应用软件-办公软件" style={{ lineHeight: '32px' }}>办公软件</Radio>
+              <Radio id="软件类型_应用软件_办公软件" value="应用软件-办公软件" style={{ lineHeight: '32px' }}>办公软件</Radio>
             </Col>
             <Col span={30}>
-              <Radio value="应用软件-模式识别软件" style={{ lineHeight: '32px' }}>模式识别软件</Radio>
+              <Radio id="软件类型_应用软件_模式识别软件" value="应用软件-模式识别软件" style={{ lineHeight: '32px' }}>模式识别软件</Radio>
             </Col>
             <Col span={30}>
-              <Radio value="应用软件-图形图像软件" style={{ lineHeight: '32px' }}>图形图像软件</Radio>
+              <Radio id="软件类型_应用软件_图形图像软件" value="应用软件-图形图像软件" style={{ lineHeight: '32px' }}>图形图像软件</Radio>
             </Col>
             <Col span={30}>
-              <Radio value="应用软件-控制软件" style={{ lineHeight: '32px' }}>控制软件</Radio>
+              <Radio id="软件类型_应用软件_控制软件" value="应用软件-控制软件" style={{ lineHeight: '32px' }}>控制软件</Radio>
             </Col>
             <Col span={30}>
-              <Radio value="应用软件-网络应用软件" style={{ lineHeight: '32px' }}>网络应用软件</Radio>
+              <Radio id="软件类型_应用软件_网络应用软件" value="应用软件-网络应用软件" style={{ lineHeight: '32px' }}>网络应用软件</Radio>
             </Col>
             <Col span={30}>
-              <Radio value="应用软件-信息管理软件" style={{ lineHeight: '32px' }}>信息管理软件</Radio>
+              <Radio id="软件类型_应用软件_信息管理软件" value="应用软件-信息管理软件" style={{ lineHeight: '32px' }}>信息管理软件</Radio>
             </Col>
             <Col span={30}>
-              <Radio value="应用软件-数据库管理应用软件" style={{ lineHeight: '32px' }}>数据库管理应用软件</Radio>
+              <Radio id="软件类型_应用软件_数据库管理应用软件" value="应用软件-数据库管理应用软件" style={{ lineHeight: '32px' }}>数据库管理应用软件</Radio>
             </Col>
             <Col span={30}>
-              <Radio value="应用软件-安全与保密软件" style={{ lineHeight: '32px' }}>安全与保密软件</Radio>
+              <Radio id="软件类型_应用软件_安全与保密软件" value="应用软件-安全与保密软件" style={{ lineHeight: '32px' }}>安全与保密软件</Radio>
             </Col>
             <Col span={30}>
-              <Radio value="应用软件-嵌入式应用软件" style={{ lineHeight: '32px' }}>嵌入式应用软件</Radio>
+              <Radio id="软件类型_应用软件_嵌入式应用软件" value="应用软件-嵌入式应用软件" style={{ lineHeight: '32px' }}>嵌入式应用软件</Radio>
             </Col>
             <Col span={30}>
-              <Radio value="应用软件-教育软件" style={{ lineHeight: '32px' }}>教育软件</Radio>
+              <Radio id="软件类型_应用软件_教育软件" value="应用软件-教育软件" style={{ lineHeight: '32px' }}>教育软件</Radio>
             </Col>
             <Col span={30}>
-              <Radio value="应用软件-游戏软件" style={{ lineHeight: '32px' }}>游戏软件</Radio>
+              <Radio id="软件类型_应用软件_游戏软件" value="应用软件-游戏软件" style={{ lineHeight: '32px' }}>游戏软件</Radio>
             </Col>
             <Col span={30}>
-              <Radio value="应用软件-其他" style={{ lineHeight: '32px' }}>其他</Radio>
+              <Radio id="软件类型_应用软件_其他" value="应用软件-其他" style={{ lineHeight: '32px' }}>其他</Radio>
             </Col>
             </Descriptions.Item>
 
             <Descriptions.Item label="其他" style={{ fontWeight: 'bolder', marginTop: 10 }}>
             <Col span={30} >
-              <Radio value="其他-其他" style={{ lineHeight: '32px' }} >其他</Radio>
+              <Radio id="软件类型_其他_其他" value="其他-其他" style={{ lineHeight: '32px' }} >其他</Radio>
             </Col>
             </Descriptions.Item>
           </Descriptions>
@@ -558,24 +558,24 @@ function SubmitApplication(props) {
             >
               <Checkbox.Group >
                 <Col span={30}>
-                  <Checkbox value="Windows" style={{ lineHeight: '32px' }} onChange={(e) => setDataByKey('运行环境-客户端-操作系统-Windows', e.target.checked)}>
+                  <Checkbox id="运行环境_客户端_操作系统_Windows" value="Windows" style={{ lineHeight: '32px' }} onChange={(e) => setDataByKey('运行环境-客户端-操作系统-Windows', e.target.checked)}>
                     <Form.Item
                       style={{ paddingLeft: 0 }}
                       name={['运行环境', '客户端', '操作系统-Windows版本']}
                       rules={[{ required: (formData['运行环境-客户端-操作系统-Windows'] === true), message: '请填写Windows版本' }]}
                     >
-                      <Input addonBefore='Windows' addonAfter='(版本)' style={{ padding: 0 }} disabled={formData['运行环境-客户端-操作系统-Windows'] != true} />
+                      <Input id="运行环境_客户端_操作系统_Windows版本" addonBefore='Windows' addonAfter='(版本)' style={{ padding: 0 }} disabled={formData['运行环境-客户端-操作系统-Windows'] != true} />
                     </Form.Item>
                   </Checkbox>
                 </Col>
                 <Col span={30}>
-                  <Checkbox value="Linux" style={{ lineHeight: '32px' }} onChange={(e) => setDataByKey('运行环境-客户端-操作系统-Linux', e.target.checked)}>
+                  <Checkbox id="运行环境_客户端_操作系统_Linux" value="Linux" style={{ lineHeight: '32px' }} onChange={(e) => setDataByKey('运行环境-客户端-操作系统-Linux', e.target.checked)}>
                     <Form.Item
                       style={{ paddingLeft: 0 }}
                       name={['运行环境', '客户端', '操作系统-Linux版本']}
                       rules={[{ required: (formData['运行环境', '客户端', '操作系统-Linux版本'] === true), message: '请填写Linux版本' }]}
                     >
-                      <Input addonBefore="Linux" addonAfter='(版本)' style={{ padding: 0 }} disabled={formData['运行环境-客户端-操作系统-Linux'] != true} />
+                      <Input id="运行环境_客户端_操作系统_Linux版本" addonBefore="Linux" addonAfter='(版本)' style={{ padding: 0 }} disabled={formData['运行环境-客户端-操作系统-Linux'] != true} />
                     </Form.Item>
                   </Checkbox>
                 </Col>
@@ -600,7 +600,7 @@ function SubmitApplication(props) {
               name={['运行环境', '客户端', '内存要求']}
               rules={[{ required: true, message: '请填写内存要求' }, { pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请正确输入整数' }]}
             >
-              <Input addonAfter='MB' style={{ maxWidth: 300 }} />
+              <Input id="运行环境_客户端_内存要求" addonAfter='MB' style={{ maxWidth: 300 }} />
             </Form.Item>
             </Descriptions.Item>
 
@@ -608,7 +608,7 @@ function SubmitApplication(props) {
             <Form.Item
               name={['运行环境', '客户端', '其他要求']}
             >
-              <TextArea rows={3} style={{ maxWidth: 700 }} />
+              <TextArea id="运行环境_客户端_其他要求" rows={3} style={{ maxWidth: 700 }} />
             </Form.Item>
             </Descriptions.Item>
           </Descriptions>
@@ -632,20 +632,20 @@ function SubmitApplication(props) {
                   >
                     <Checkbox.Group >
                       <Col span={30}>
-                        <Checkbox value="PC服务器" style={{ lineHeight: '32px' }} >PC服务器</Checkbox>
+                        <Checkbox id="运行环境_服务器端_硬件_架构_PC服务器" value="PC服务器" style={{ lineHeight: '32px' }} >PC服务器</Checkbox>
                       </Col>
                       <Col span={30}>
-                        <Checkbox value="UNIX/Linux服务器" style={{ lineHeight: '32px' }} >UNIX/Linux服务器</Checkbox>
+                        <Checkbox id="运行环境_服务器端_硬件_架构_UNIX/Linux服务器" value="UNIX/Linux服务器" style={{ lineHeight: '32px' }} >UNIX/Linux服务器</Checkbox>
                       </Col>
                       <Col span={30}>
-                        <Checkbox value="其他" style={{ lineHeight: '32px' }} onChange={(e) => setDataByKey('运行环境-服务器端-硬件-架构-其他', e.target.checked)}>
+                        <Checkbox id="运行环境_服务器端_硬件_架构_其他" value="其他" style={{ lineHeight: '32px' }} onChange={(e) => setDataByKey('运行环境-服务器端-硬件-架构-其他', e.target.checked)}>
                           其他
                           <Form.Item
                             style={{ paddingLeft: 0 }}
                             name={['运行环境', '服务器端', '硬件', '架构-其他']}
                             rules={[{ required: (formData['运行环境-服务器端-硬件-架构-其他'] === true), message: '请填写内容' }]}
                           >
-                            <Input style={{ padding: 0 }} disabled={formData['运行环境-服务器端-硬件-架构-其他'] != true} />
+                            <Input id="运行环境_服务器端_硬件_架构(其他)" style={{ padding: 0 }} disabled={formData['运行环境-服务器端-硬件-架构-其他'] != true} />
                           </Form.Item>
                         </Checkbox>
                       </Col>
@@ -658,7 +658,7 @@ function SubmitApplication(props) {
                   name={['运行环境', '服务器端', '硬件', '内存要求']}
                   rules={[{ required: true, message: '请填写内存要求' }, { pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请输入整数' }]}
                 >
-                  <Input addonAfter='MB' style={{ maxWidth: 300 }} />
+                  <Input id="运行环境_服务器端_硬件_内存要求" addonAfter='MB' style={{ maxWidth: 300 }} />
                 </Form.Item>
                 </Descriptions.Item>
 
@@ -667,7 +667,7 @@ function SubmitApplication(props) {
                   name={['运行环境', '服务器端', '硬件', '硬盘要求']}
                   rules={[{ required: true, message: '请填写硬盘要求' }, { pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请正确输入整数' }]}
                 >
-                  <Input addonAfter='MB' style={{ maxWidth: 300 }} />
+                  <Input id="运行环境_服务器端_硬件_硬盘要求" addonAfter='MB' style={{ maxWidth: 300 }} />
                 </Form.Item>
                 </Descriptions.Item>
 
@@ -675,7 +675,7 @@ function SubmitApplication(props) {
                 <Form.Item
                   name={['运行环境', '服务器端', '硬件', '其他要求']}
                 >
-                  <TextArea rows={3} style={{ maxWidth: 700 }} />
+                  <TextArea id="运行环境_服务器端_硬件_其他要求" rows={3} style={{ maxWidth: 700 }} />
                 </Form.Item>
                 </Descriptions.Item>
 
@@ -696,7 +696,7 @@ function SubmitApplication(props) {
                   name={['运行环境', '服务器端', '软件', '操作系统']}
                   rules={[{ required: true, message: '请填写操作系统' }]}
                 >
-                  <Input style={{ maxWidth: 500 }} />
+                  <Input id="运行环境_服务器端_软件_操作系统" style={{ maxWidth: 500 }} />
                 </Form.Item>
                 </Descriptions.Item>
 
@@ -705,7 +705,7 @@ function SubmitApplication(props) {
                   name={['运行环境', '服务器端', '软件', '版本']}
                   rules={[{ required: true, message: '请填写版本' }]}
                 >
-                  <Input style={{ maxWidth: 500 }} />
+                  <Input id="运行环境_服务器端_软件_版本" style={{ maxWidth: 500 }} />
                 </Form.Item>
                 </Descriptions.Item>
 
@@ -714,7 +714,7 @@ function SubmitApplication(props) {
                   name={['运行环境', '服务器端', '软件', '编程语言']}
                   rules={[{ required: true, message: '请填写编程语言' }]}
                 >
-                  <Input style={{ maxWidth: 500 }} />
+                  <Input id="运行环境_服务器端_软件_编程语言" style={{ maxWidth: 500 }} />
                 </Form.Item>
                 </Descriptions.Item>
 
@@ -725,13 +725,13 @@ function SubmitApplication(props) {
                 >
                   <Checkbox.Group >
                     <Col span={30}>
-                      <Checkbox value="C/S" style={{ lineHeight: '32px' }} >C/S</Checkbox>
+                      <Checkbox id="运行环境_服务器端_软件_架构_C/S" value="C/S" style={{ lineHeight: '32px' }} >C/S</Checkbox>
                     </Col>
                     <Col span={30}>
-                      <Checkbox value="B/S" style={{ lineHeight: '32px' }} >B/S</Checkbox>
+                      <Checkbox id="运行环境_服务器端_软件_架构_B/S" value="B/S" style={{ lineHeight: '32px' }} >B/S</Checkbox>
                     </Col>
                     <Col span={30}>
-                      <Checkbox value="其他" style={{ lineHeight: '32px' }} >
+                      <Checkbox id="运行环境_服务器端_软件_架构_其他" value="其他" style={{ lineHeight: '32px' }} >
                         其他
                       </Checkbox>
                     </Col>
@@ -744,7 +744,7 @@ function SubmitApplication(props) {
                   name={['运行环境', '服务器端', '软件', '数据库']}
                   rules={[{ required: true, message: '请填写数据库' }]}
                 >
-                  <Input style={{ maxWidth: 500 }} />
+                  <Input id="运行环境_服务器端_软件_数据库" style={{ maxWidth: 500 }} />
                 </Form.Item>
                 </Descriptions.Item>
 
@@ -753,7 +753,7 @@ function SubmitApplication(props) {
                   name={['运行环境', '服务器端', '软件', '中间件']}
                   rules={[{ required: true, message: '请填写中间件' }]}
                 >
-                  <Input style={{ maxWidth: 500 }} />
+                  <Input id="运行环境_服务器端_软件_中间件" style={{ maxWidth: 500 }} />
                 </Form.Item>
                 </Descriptions.Item>
 
@@ -761,7 +761,7 @@ function SubmitApplication(props) {
                 <Form.Item
                   name={['运行环境', '服务器端', '软件', '其他支撑软件']}
                 >
-                  <TextArea rows={3} style={{ maxWidth: 700 }} />
+                  <TextArea id="运行环境_服务器端_软件_其他支撑软件" rows={3} style={{ maxWidth: 700 }} />
                 </Form.Item>
                 </Descriptions.Item>
 
@@ -782,7 +782,7 @@ function SubmitApplication(props) {
         name={['运行环境', '网络环境']}
         rules={[{ required: true, message: '请填写网络环境' }]}
       >
-        <Input style={{ maxWidth: 500 }} />
+        <Input id="运行环境_网络环境" style={{ maxWidth: 500 }} />
       </Form.Item>
       </Descriptions.Item>
     </Descriptions>
@@ -799,20 +799,20 @@ function SubmitApplication(props) {
       >
         <Radio.Group >
           <Col span={30} >
-            <Radio value="光盘" style={{ lineHeight: '32px' }} >光盘</Radio>
+            <Radio id="样品和数量_软件介质_光盘" value="光盘" style={{ lineHeight: '32px' }} >光盘</Radio>
           </Col>
           <Col span={30}>
-            <Radio value="U盘" style={{ lineHeight: '32px' }}>U盘</Radio>
+            <Radio id="样品和数量_软件介质_U盘" value="U盘" style={{ lineHeight: '32px' }}>U盘</Radio>
           </Col>
           <Col span={30}>
-            <Radio value="其他" style={{ lineHeight: '32px' }} onChange={(e) => setDataByKey('样品和数量-软件介质-其他', e.target.checked)}>
+            <Radio id="样品和数量_软件介质_其他" value="其他" style={{ lineHeight: '32px' }} onChange={(e) => setDataByKey('样品和数量-软件介质-其他', e.target.checked)}>
               其他
               <Form.Item
                 style={{ paddingLeft: 0 }}
                 name={['样品和数量', '软件介质(其他)']}
                 rules={[{ required: (formData['样品和数量-软件介质-其他'] === true), message: '请填写内容' }]}
               >
-                <Input style={{ padding: 0 }} disabled={formData['样品和数量-软件介质-其他'] != true} />
+                <Input id="样品和数量_软件介质(其他)" style={{ padding: 0 }} disabled={formData['样品和数量-软件介质-其他'] != true} />
               </Form.Item>
             </Radio>
           </Col>
@@ -827,10 +827,10 @@ function SubmitApplication(props) {
       >
         <Radio.Group >
           <Col span={30} >
-            <Radio value="由本实验室销毁 " style={{ lineHeight: '32px' }} >由本实验室销毁 </Radio>
+            <Radio id="样品和数量_提交的样品_由本实验室销毁" value="由本实验室销毁 " style={{ lineHeight: '32px' }} >由本实验室销毁 </Radio>
           </Col>
           <Col span={30}>
-            <Radio value="退还给我们" style={{ lineHeight: '32px' }}>退还给我们</Radio>
+            <Radio id="样品和数量_提交的样品_退还给我们" value="退还给我们" style={{ lineHeight: '32px' }}>退还给我们</Radio>
           </Col>
         </Radio.Group>
       </Form.Item>
@@ -845,7 +845,7 @@ function SubmitApplication(props) {
         name={['希望测试完成时间']}
         rules={[{ required: true, message: '请填写希望测试完成的时间' }]}
       >
-        <DatePicker />
+        <DatePicker id="希望测试完成时间" />
       </Form.Item>
 
     <Descriptions
@@ -858,7 +858,7 @@ function SubmitApplication(props) {
           name={['委托单位信息', '电话']}
           rules={[{ required: true, message: '请填写电话' }, { pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请正确输入电话' }]}
         >
-          <Input style={{ maxWidth: 500 }} />
+          <Input id="委托单位信息_电话" style={{ maxWidth: 500 }} />
         </Form.Item>
       </Descriptions.Item>
 
@@ -867,7 +867,7 @@ function SubmitApplication(props) {
           name={['委托单位信息', '传真']}
           rules={[{ required: true, message: '请填写传真' }]}
         >
-          <Input style={{ maxWidth: 500 }} />
+          <Input id="委托单位信息_传真" style={{ maxWidth: 500 }} />
         </Form.Item>
       </Descriptions.Item>
 
@@ -876,7 +876,7 @@ function SubmitApplication(props) {
           name={['委托单位信息', '地址']}
           rules={[{ required: true, message: '请填写地址' }]}
         >
-          <Input style={{ maxWidth: 500 }} />
+          <Input id="委托单位信息_地址" style={{ maxWidth: 500 }} />
         </Form.Item>
       </Descriptions.Item>
 
@@ -885,7 +885,7 @@ function SubmitApplication(props) {
           name={['委托单位信息', '邮编']}
           rules={[{ required: true, message: '请填写邮编' }]}
         >
-          <Input style={{ maxWidth: 500 }} />
+          <Input id="委托单位信息_邮编" style={{ maxWidth: 500 }} />
         </Form.Item>
       </Descriptions.Item>
 
@@ -894,7 +894,7 @@ function SubmitApplication(props) {
           name={['委托单位信息', '联系人']}
           rules={[{ required: true, message: '请填写联系人' }]}
         >
-          <Input style={{ maxWidth: 500 }} />
+          <Input id="委托单位信息_联系人" style={{ maxWidth: 500 }} />
         </Form.Item>
       </Descriptions.Item>
 
@@ -903,7 +903,7 @@ function SubmitApplication(props) {
           name={['委托单位信息', '手机']}
           rules={[{ required: true, message: '请填写手机号' }, { pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请正确输入手机号' }]}
         >
-          <Input style={{ maxWidth: 500 }} />
+          <Input id="委托单位信息_手机" style={{ maxWidth: 500 }} />
         </Form.Item>
       </Descriptions.Item>
 
@@ -912,7 +912,7 @@ function SubmitApplication(props) {
           name={['委托单位信息', 'E-mail']}
           rules={[{ required: true, message: '请填写E-mail' }]}
         >
-          <Input style={{ maxWidth: 500 }} />
+          <Input id="委托单位信息_email" style={{ maxWidth: 500 }} />
         </Form.Item>
       </Descriptions.Item>
 
@@ -921,14 +921,14 @@ function SubmitApplication(props) {
           name={['委托单位信息', '网址']}
           rules={[{ required: true, message: '请填写网址' }]}
         >
-          <Input style={{ maxWidth: 500 }} />
+          <Input id="委托单位信息_网址" style={{ maxWidth: 500 }} />
         </Form.Item>
       </Descriptions.Item>
 
     </Descriptions>
 
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <Button id="提交用户申请表" type="primary" htmlType="submit">
           提交
         </Button>
       </Form.Item>

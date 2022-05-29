@@ -242,25 +242,25 @@ class Home extends React.Component {
             "友情链接": <Breadcrumb.Item><a onClick={() => { this.GotoPage('Info6', this.state) }}>友情链接</a></Breadcrumb.Item>,
         };
 
-        const userFunctionMenu = (<Dropdown id="home_headers_functions" overlay={<Menu
+        const userFunctionMenu = (<Dropdown overlay={<Menu
             items={[
-                { label: (<a onClick={() => { this.GotoPage('SubmitApplication', this.state) }}>提交申请</a>), },
-                { label: (<a onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
+                { label: (<a id="home_headers_functions_submit_application" onClick={() => { this.GotoPage('SubmitApplication', this.state) }}>提交申请</a>), },
+                { label: (<a id="home_headers_functions_view_application" onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
             ]} />} placement="bottom">
-            <a onClick={e => e.preventDefault()}><Space style={{color:'white'}}>操作<DownOutlined /></Space></a>
+            <a id="home_headers_functions" onClick={e => e.preventDefault()}><Space style={{color:'white'}}>操作<DownOutlined /></Space></a>
         </Dropdown>)
 
         const staffFunctionMenu = (<Dropdown overlay={<Menu
             items={[
-                { label: (<a onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
+                { label: (<a id="home_headers_functions_view_application" onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
             ]} />} placement="bottom">
             <a onClick={e => e.preventDefault()}><Space style={{color:'white'}}>操作<DownOutlined /></Space></a>
         </Dropdown>)
 
         const adminFunctionMenu = (<Dropdown overlay={<Menu
             items={[
-                { label: (<a onClick={() => { this.GotoPage('SubmitApplication', this.state) }}>提交申请</a>), },
-                { label: (<a onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
+                { label: (<a id="home_headers_functions_submit_application" onClick={() => { this.GotoPage('SubmitApplication', this.state) }}>提交申请</a>), },
+                { label: (<a id="home_headers_functions_view_application" onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
             ]} />} placement="bottom">
             <a onClick={e => e.preventDefault()}><Space style={{color:'white'}}>操作<DownOutlined /></Space></a>
         </Dropdown>)
