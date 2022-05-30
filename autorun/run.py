@@ -5,8 +5,8 @@ from selenium import webdriver
 options=webdriver.ChromeOptions()
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 browser=webdriver.Chrome(options=options)
-#browser.get('http://localhost:3000')
-browser.get('file:///F:/Learning/SE_proj/SE_proj_2021/demo_1.0/build/index.html#')
+browser.get('http://localhost:3000')
+#browser.get('file:///F:/Learning/SE_proj/SE_proj_2021/demo_1.0/build/index.html#')
 
 #%%
 #登录
