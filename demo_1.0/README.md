@@ -1,38 +1,38 @@
 # 界面跳转
 ## 文件结构
-总文件夹　　  
+总文件夹  
 　　|——package.json  
 　　|——public  
 　　|——src  
-　　　　|——Home.js //主界面   
+　　　　|——Home.js //主界面  
 　　　　|——Home.css  
-　　　　|——index.js    
-　　　　|——index.css    
-　　　　|——register_login //用户登录注册部分 
-　　　　　　　|——components
-　　　　　　　|——layouts  
-　　　　　　　|——pages 
+　　　　|——index.js  
+　　　　|——index.css  
+　　　　|——register_login //用户登录注册部分  
+　　　　　　|——components  
+　　　　　　　　|——layouts  
+　　　　　　　　|——pages  
 　　　　　　　|——utils  
-　　　　|——UserActions //用户功能界面
-　　　　　　　|——actions  
-　　　　　　　      |——DelegationPart //委托部分  
-　　　　　　　            |——SubmitApplication.js  
-　　　　　　　            |——... 
-　　　　　　　      |——ContractPart //合同部分  
-　　　　　　　            |——MktContract.js  
-　　　　　　　            |——... 
-　　　　　　　      |——TestPart //测试部分  
-　　　　　　　            |——CheckList.js  
-　　　　　　　            |——... 
-　　　　　　　      |——ViewPart //回显部分  
-　　　　　　　            |——ViewEntrustList.js 
-　　　　　　　            |——ViewEntrust.js  
-　　　　　　　            |——... 
-　　　　　　　|——functions
-　　　　　　　      |——function.js //部分函数 
+　　　　|——UserActions //用户功能界面  
+　　　　　　|——actions  
+　　　　　　|——DelegationPart //委托部分  
+　　　　　　　　|——SubmitApplication.js  
+　　　　　　　　|——...  
+　　　　　　|——ContractPart //合同部分  
+　　　　　　　　|——MktContract.js  
+　　　　　　　　|——...  
+　　　　　　|——TestPart //测试部分  
+　　　　　　　　|——CheckList.js  
+　　　　　　　　|——...  
+　　　　　　|——ViewPart //回显部分  
+　　　　　　　　|——ViewEntrustList.js  
+　　　　　　　  |——ViewEntrust.js  
+　　　　　　　  |——...  
+　　　　|——functions  
+　　　　　　|——function.js //部分函数  
 　　　　|——...  
-　　|——__tests__  //单元测试部分
-　　　　|——test_1.py
+　　|——\_\_tests\_\_    //单元测试部分  
+　　　　|——test_1.py  
 　　　　|——...
 ## 操作方式
 若未安装json-server,则执行如下指令
