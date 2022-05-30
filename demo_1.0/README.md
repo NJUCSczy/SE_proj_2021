@@ -8,19 +8,32 @@
 　　　　|——Home.css  
 　　　　|——index.js    
 　　　　|——index.css    
-　　　　|——User //用户登录界面   
-　　　　　　　|——mycode  
-　　　　　　　|——src  
-　　　　　　　　　|——User.js  
-　　　　　　　　　|——User.css  
-　　　　　　　　　|——...  
-　　　　|——Adiministration //委托申请提交界面  
-　　　　　　　|——Administration.js  
-　　　　　　　|——Form.js  
-　　　　　　　|——Table2.js  
-　　　　　　　|——Table.js    
- 
+　　　　|——register_login //用户登录注册部分 
+　　　　　　　|——components
+　　　　　　　|——layouts  
+　　　　　　　|——pages 
+　　　　　　　|——utils  
+　　　　|——UserActions //用户功能界面
+　　　　　　　|——actions  
+　　　　　　　      |——DelegationPart //委托部分  
+　　　　　　　            |——SubmitApplication.js  
+　　　　　　　            |——... 
+　　　　　　　      |——ContractPart //合同部分  
+　　　　　　　            |——MktContract.js  
+　　　　　　　            |——... 
+　　　　　　　      |——TestPart //测试部分  
+　　　　　　　            |——CheckList.js  
+　　　　　　　            |——... 
+　　　　　　　      |——ViewPart //回显部分  
+　　　　　　　            |——ViewEntrustList.js 
+　　　　　　　            |——ViewEntrust.js  
+　　　　　　　            |——... 
+　　　　　　　|——functions
+　　　　　　　      |——function.js //部分函数 
 　　　　|——...  
+　　|——__tests__  //单元测试部分
+　　　　|——test_1.py
+　　　　|——...
 ## 操作方式
 若未安装json-server,则执行如下指令
 ```
