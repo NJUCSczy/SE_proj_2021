@@ -6,6 +6,7 @@ module.exports = {
                 {
                     name:"委托部分",
                     components: 'src/UserActions/actions/DelegationPart/**/*.js',
+                    contents:'src/UserActions/actions/DelegationPart/**/*.md',
                 },
                 {
                     name:"合同部分",
@@ -26,6 +27,6 @@ module.exports = {
             name: '用户信息部分',
             components: 'src/register_login/**/*.js',
         }
-    ]
-
+    ],
+    
 };
