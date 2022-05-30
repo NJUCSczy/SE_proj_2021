@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useState } from 'react';
 import { Input, Card, Button, Row, Space,message } from 'antd';
 import './css/register.css';
-import { USE_JSON_SERVER ,REMOTE_SERVER} from '../../Adiministration/functions/functions';
+import { USE_JSON_SERVER ,REMOTE_SERVER} from '../../UserActions/functions/functions';
 
 
 var _ = require('lodash');

@@ -6,35 +6,35 @@ import { DownOutlined, SmileOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import "./Home.css";
 
-import SubmitApplication from './Adiministration/src/SubmitApplication/SubmitApplication';
-import ViewApplication from './Adiministration/src/ViewApplication/ViewApplication';
-import ViewEntrustList from './Adiministration/src/ViewEntrustList/ViewEntrustList';
-import ViewEntrust from './Adiministration/src/ViewEntrust/ViewEntrust';
-import TadultApplication from './Adiministration/src/TadultApplication/TadultApplication'
-import MktdptApplicationStep1 from './Adiministration/src/MktdptApplication/mktdept1';
-import MktdptApplicationStep2 from './Adiministration/src/MktdptApplication/mktdept2';
+import SubmitApplication from './UserActions/actions/DelegationPart/SubmitApplication/SubmitApplication';
+import ViewApplication from './UserActions/actions/ViewFilesPart/ViewApplication/ViewApplication';
+import ViewEntrustList from './UserActions/actions/ViewFilesPart/ViewEntrustList/ViewEntrustList';
+import ViewEntrust from './UserActions/actions/ViewFilesPart/ViewEntrust/ViewEntrust';
+import TadultApplication from './UserActions/actions/DelegationPart/TadultApplication/TadultApplication'
+import MktdptApplicationStep1 from './UserActions/actions/DelegationPart/MktdptApplication/mktdept1';
+import MktdptApplicationStep2 from './UserActions/actions/DelegationPart/MktdptApplication/mktdept2';
 import UserInfoPage from './register_login/pages/UserInfo';
 import Login from './register_login/pages/Login';
 import RegisterPage from './register_login/pages/Register';
-import ConfidentialAgreementPartyB from './Adiministration/src/ConfidentialAgreement/ConfidentialAgreementPartyB';
-import ConfidentialAgreementPartyA from './Adiministration/src/ConfidentialAgreement/ConfidentialAgreementPartyA';
-import ClientApplication from './Adiministration/src/MktContract/ClientApplication';
-import TrusteeApplication from './Adiministration/src/MktContract/TrusteeApplication';
-import TestAgreement from './Adiministration/src/TestAgreement/TestAgreement';
-import CheckTA from './Adiministration/src/TestAgreement/CheckTA';
-import ViewCfdtagreement from './Adiministration/src/ViewCfdtagreement/ViewCfdtagreement';
-import ViewContract from './Adiministration/src/ViewContract/ViewContract';
-import ViewFunction from './Adiministration/src/ViewFunction/ViewFunction';
-import ViewSignature from './Adiministration/src/ViewSignature/ViewSignature';
-import ViewQuotation from './Adiministration/src/ViewQuotation/ViewQuotation';
+import ConfidentialAgreementPartyB from './UserActions/actions/ContractPart/ConfidentialAgreement/ConfidentialAgreementPartyB';
+import ConfidentialAgreementPartyA from './UserActions/actions/ContractPart/ConfidentialAgreement/ConfidentialAgreementPartyA';
+import ClientApplication from './UserActions/actions/ContractPart/MktContract/ClientApplication';
+import TrusteeApplication from './UserActions/actions/ContractPart/MktContract/TrusteeApplication';
+import TestAgreement from './UserActions/actions/ContractPart/TestAgreement/TestAgreement';
+import CheckTA from './UserActions/actions/ContractPart/TestAgreement/CheckTA';
+import ViewCfdtagreement from './UserActions/actions/ViewFilesPart/ViewCfdtagreement/ViewCfdtagreement';
+import ViewContract from './UserActions/actions/ViewFilesPart/ViewContract/ViewContract';
+import ViewFunction from './UserActions/actions/ViewFilesPart/ViewFunction/ViewFunction';
+import ViewSignature from './UserActions/actions/ViewFilesPart/ViewSignature/ViewSignature';
+import ViewQuotation from './UserActions/actions/ViewFilesPart/ViewQuotation/ViewQuotation';
 
-import CheckList from './Adiministration/src/CheckList/CheckList';
-import Quotation from './Adiministration/src/Quotation/Quotation';
-import QuotationFeedback from './Adiministration/src/QuotationFeedback/QuotationFeedback';
-import FunctionList from './Adiministration/src/FunctionList/FunctionList';
-import UserUploadFiles from './Adiministration/src/UserUploadFiles/UserUploadFiles';
-import ViewUserFiles from './Adiministration/src/ViewUserFiles/ViewUserFiles';
-import { USE_JSON_SERVER } from './Adiministration/functions/functions';
+import CheckList from './UserActions/actions/TestPart/CheckList/CheckList';
+import Quotation from './UserActions/actions/DelegationPart/Quotation/Quotation';
+import QuotationFeedback from './UserActions/actions/DelegationPart/QuotationFeedback/QuotationFeedback';
+import FunctionList from './UserActions/actions/DelegationPart/FunctionList/FunctionList';
+import UserUploadFiles from './UserActions/actions/DelegationPart/UserUploadFiles/UserUploadFiles';
+import ViewUserFiles from './UserActions/actions/ViewFilesPart/ViewUserFiles/ViewUserFiles';
+import { USE_JSON_SERVER } from './UserActions/functions/functions';
 
 const { Header, Content, Footer, Sider } = Layout;
 

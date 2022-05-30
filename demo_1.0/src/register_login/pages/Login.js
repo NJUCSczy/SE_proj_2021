@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Input, Card, Button, Row, Space,message } from 'antd';
 import './css/register.css';
-import { USE_JSON_SERVER,REMOTE_SERVER } from '../../Adiministration/functions/functions';
+import { USE_JSON_SERVER,REMOTE_SERVER } from '../../UserActions/functions/functions';
 
 var _ = require('lodash');
 
