@@ -76,6 +76,11 @@ npm run styleguide:build
 ```  
 <br>  
 
+__examples编写方法：__  
+在相应的js文件夹同级目录下，创建同名的md文件  
+(例如，在SubmitApplication.js同级目录下创建名为SubmitApplication.md文件)  
+随后编写此md文件，即可进行样例展示。具体书写规范参考：[SubmitApplication.md](./src/UserActions/actions/DelegationPart/SubmitApplication/SubmitApplication.md) 
+
 样例参考(后续会更新)  
 [SubmitApplication.js](./src/UserActions/actions/DelegationPart/SubmitApplication/SubmitApplication.js)  
 <br>
@@ -83,7 +88,6 @@ npm run styleguide:build
 [react-styleguidist教程](https://react-styleguidist.js.org/docs/getting-started)  
 <br>  
 
-注：暂时未使用md文件来生成样例
 
 ## TODO List
 *  1、各自完成文档书写

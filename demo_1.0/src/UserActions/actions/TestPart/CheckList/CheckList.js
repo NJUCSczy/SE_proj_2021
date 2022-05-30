@@ -8,7 +8,7 @@ import { MinusCircleOutlined, PlusOutlined,CloseOutlined, CheckOutlined } from '
 
 import FormItem from 'antd/lib/form/FormItem';
 import { USE_JSON_SERVER,REMOTE_SERVER } from '../../../functions/functions';
-import type { ColumnsType } from 'antd/lib/table';
+//import type { ColumnsType } from 'antd/lib/table';
 function CheckList(props) {
     const { UpdateUserInfo, GotoPage, _state } = props;
     const [formData, setFormData] = useState({})
@@ -17,7 +17,7 @@ function CheckList(props) {
     const mobile = require('is-mobile');
 
    
-
+/*
 interface DataType {
   key: number;
   name: string;
@@ -32,7 +32,7 @@ const columns: ColumnsType<DataType> = [
     key: 'key',
     width:50,
     render: text => <span>{text}</span>,
-  },*/
+  },
   {
     title: '检查内容',
     dataIndex: 'name',
@@ -131,9 +131,9 @@ const data: DataType[] = [
       content: '语句是否通顺，是否准确描述用户的文档。',
     },
   ];
+*/
 
-
-    return( <Form
+    return(/* <Form
         name="测试报告检查表"
         initialValues={{ remember: true }}
         style={{ padding: mobile()?'20px 5px': '20px 30px' }}
@@ -171,7 +171,7 @@ const data: DataType[] = [
         <DatePicker />
       </Form.Item>
       </Form.Item>
-        </Form>
+        </Form>*/null
     )
 
 
