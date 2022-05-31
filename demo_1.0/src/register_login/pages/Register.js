@@ -12,7 +12,7 @@ function RegisterPage(props) {
   const { UpdateUserInfo, GotoPage } = props;
   const [formData, setFormData] = useState({})
   var [userInfo, setUserInfo] = useState({})
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const handleChange = (type, value) => {
     setFormData(prev => {
@@ -91,7 +91,7 @@ function RegisterPage(props) {
         }
         else if (res.status === 201) {
           alert("读取成功！")
-          navigate('/')
+          //navigate('/')
         }
         return res.json()
       })

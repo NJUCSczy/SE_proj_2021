@@ -1,7 +1,7 @@
-import { render, screen } from '@testing-library/react';
-import Home from './Home';
+import renderer from 'react-test-renderer';
+import Home from '../src/Home';
 
 test('renders learn react link', () => {
-  render(<Home />);
-  expect(1===1)
+    const component = renderer.create(<Home/>,);
+
 });

@@ -14,7 +14,7 @@ function Login(props) {
 
   const [formData, setFormData] = useState({})
   var [userInfo, setUserInfo] = useState({})
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const handleChange = (type, value) => {
     setFormData(prev => {
