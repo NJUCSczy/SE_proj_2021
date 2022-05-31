@@ -1,4 +1,4 @@
-import {Route, Redirect} from "react-router-dom";
+import {Route, Navigate} from "react-router-dom";
 import {Component} from "react";
 // 定义鉴权函数
 let authenticate = () => {
@@ -16,7 +16,7 @@ const PrivateRoute = ({component: Component, ...rest}) => {
             {...rest}
             // 进行重新渲染
             render={(props) => authenticate() ? <Component {...props}/> :
-                <Redirect to={{
+                <Navigate to={{
                     pathname: '/', // 指定重定向的路径
                     state: {from: props.location} // 将重定向的路径放入页面的地址栏
                 }}/>

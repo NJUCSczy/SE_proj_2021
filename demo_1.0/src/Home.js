@@ -6,44 +6,40 @@ import { DownOutlined, SmileOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import "./Home.css";
 
-import SubmitApplication from './Adiministration/src/SubmitApplication/SubmitApplication';
-import ViewApplication from './Adiministration/src/ViewApplication/ViewApplication';
-import ViewEntrustList from './Adiministration/src/ViewEntrustList/ViewEntrustList';
-import ViewEntrust from './Adiministration/src/ViewEntrust/ViewEntrust';
-import TadultApplication from './Adiministration/src/TadultApplication/TadultApplication'
-import MktdptApplicationStep1 from './Adiministration/src/MktdptApplication/mktdept1';
-import MktdptApplicationStep2 from './Adiministration/src/MktdptApplication/mktdept2';
+import SubmitApplication from './UserActions/actions/DelegationPart/SubmitApplication/SubmitApplication';
+import ViewApplication from './UserActions/actions/ViewFilesPart/ViewApplication/ViewApplication';
+import ViewEntrustList from './UserActions/actions/ViewFilesPart/ViewEntrustList/ViewEntrustList';
+import ViewEntrust from './UserActions/actions/ViewFilesPart/ViewEntrust/ViewEntrust';
+import TadultApplication from './UserActions/actions/DelegationPart/TadultApplication/TadultApplication'
+import MktdptApplicationStep1 from './UserActions/actions/DelegationPart/MktdptApplication/mktdept1';
+import MktdptApplicationStep2 from './UserActions/actions/DelegationPart/MktdptApplication/mktdept2';
 import UserInfoPage from './register_login/pages/UserInfo';
 import Login from './register_login/pages/Login';
 import RegisterPage from './register_login/pages/Register';
-import ConfidentialAgreementPartyB from './Adiministration/src/ConfidentialAgreement/ConfidentialAgreementPartyB';
-import ConfidentialAgreementPartyA from './Adiministration/src/ConfidentialAgreement/ConfidentialAgreementPartyA';
-import ClientApplication from './Adiministration/src/MktContract/ClientApplication';
-import TrusteeApplication from './Adiministration/src/MktContract/TrusteeApplication';
-import TestAgreement from './Adiministration/src/TestAgreement/TestAgreement';
-import CheckTA from './Adiministration/src/TestAgreement/CheckTA';
-import ViewCfdtagreement from './Adiministration/src/ViewCfdtagreement/ViewCfdtagreement';
-import ViewContract from './Adiministration/src/ViewContract/ViewContract';
-import ViewFunction from './Adiministration/src/ViewFunction/ViewFunction';
-import ViewSignature from './Adiministration/src/ViewSignature/ViewSignature';
-import ViewQuotation from './Adiministration/src/ViewQuotation/ViewQuotation';
-import TestPlan from './Adiministration/src/TestPlan/TestPlan';
-import TestReport from './Adiministration/src/TestReport/TestReport';
-import TestCase from './Adiministration/src/TestCase/TestCase';
-import TestRecord from './Adiministration/src/TestRecord/TestRecord';
+import ConfidentialAgreementPartyB from './UserActions/actions/ContractPart/ConfidentialAgreement/ConfidentialAgreementPartyB';
+import ConfidentialAgreementPartyA from './UserActions/actions/ContractPart/ConfidentialAgreement/ConfidentialAgreementPartyA';
+import ClientApplication from './UserActions/actions/ContractPart/MktContract/ClientApplication';
+import TrusteeApplication from './UserActions/actions/ContractPart/MktContract/TrusteeApplication';
+import TestAgreement from './UserActions/actions/ContractPart/TestAgreement/TestAgreement';
+import CheckTA from './UserActions/actions/ContractPart/TestAgreement/CheckTA';
+import ViewCfdtagreement from './UserActions/actions/ViewFilesPart/ViewCfdtagreement/ViewCfdtagreement';
+import ViewContract from './UserActions/actions/ViewFilesPart/ViewContract/ViewContract';
+import ViewFunction from './UserActions/actions/ViewFilesPart/ViewFunction/ViewFunction';
+import ViewSignature from './UserActions/actions/ViewFilesPart/ViewSignature/ViewSignature';
+import ViewQuotation from './UserActions/actions/ViewFilesPart/ViewQuotation/ViewQuotation';
 
-import CheckList from './Adiministration/src/CheckList/CheckList';
-import Quotation from './Adiministration/src/Quotation/Quotation';
-import QuotationFeedback from './Adiministration/src/QuotationFeedback/QuotationFeedback';
-import FunctionList from './Adiministration/src/FunctionList/FunctionList';
-import UserUploadFiles from './Adiministration/src/UserUploadFiles/UserUploadFiles';
-import ViewUserFiles from './Adiministration/src/ViewUserFiles/ViewUserFiles';
-import { USE_JSON_SERVER } from './Adiministration/functions/functions';
+import CheckList from './UserActions/actions/TestPart/CheckList/CheckList';
+import Quotation from './UserActions/actions/DelegationPart/Quotation/Quotation';
+import QuotationFeedback from './UserActions/actions/DelegationPart/QuotationFeedback/QuotationFeedback';
+import FunctionList from './UserActions/actions/DelegationPart/FunctionList/FunctionList';
+import UserUploadFiles from './UserActions/actions/DelegationPart/UserUploadFiles/UserUploadFiles';
+import ViewUserFiles from './UserActions/actions/ViewFilesPart/ViewUserFiles/ViewUserFiles';
+import { USE_JSON_SERVER } from './UserActions/functions/functions';
 
 
 const { Header, Content, Footer, Sider } = Layout;
 
-
+const mobile = require('is-mobile');
 
 const MainPage = (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>首页</div>);
 
@@ -194,10 +190,10 @@ class Home extends React.Component {
     }
 
     render() {
-        var mobile = require('is-mobile');
+        
 
 
-        const infoMenu = (<Dropdown overlay={<Menu
+        const infoMenu = (<div id='home_headers_infos'><Dropdown  overlay={<Menu 
             items={[
                 { label: (<a onClick={() => { this.GotoPage('Info1', this.state) }}>机构信息</a>), },
                 { label: (<a onClick={() => { this.GotoPage('Info2', this.state) }}>资质信息</a>), },
@@ -206,8 +202,8 @@ class Home extends React.Component {
                 { label: (<a onClick={() => { this.GotoPage('Info5', this.state) }}>新闻资讯</a>), },
                 { label: (<a onClick={() => { this.GotoPage('Info6', this.state) }}>友情链接</a>), },
             ]} />} placement="bottom">
-            <a onClick={e => e.preventDefault()}><Space>信息<DownOutlined /></Space></a>
-        </Dropdown>)
+            <a onClick={e => e.preventDefault()}><Space style={{color:'white'}}>信息<DownOutlined /></Space></a>
+        </Dropdown></div>)
 
         const Breadcrumbitems = {
             0: null,
@@ -249,25 +245,25 @@ class Home extends React.Component {
 
         const userFunctionMenu = (<Dropdown overlay={<Menu
             items={[
-                { label: (<a onClick={() => { this.GotoPage('SubmitApplication', this.state) }}>提交申请</a>), },
-                { label: (<a onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
+                { label: (<a id="home_headers_functions_submit_application" onClick={() => { this.GotoPage('SubmitApplication', this.state) }}>提交申请</a>), },
+                { label: (<a id="home_headers_functions_view_application" onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
             ]} />} placement="bottom">
-            <a onClick={e => e.preventDefault()}><Space>操作<DownOutlined /></Space></a>
+            <a id="home_headers_functions" onClick={e => e.preventDefault()}><Space style={{color:'white'}}>操作<DownOutlined /></Space></a>
         </Dropdown>)
 
         const staffFunctionMenu = (<Dropdown overlay={<Menu
             items={[
-                { label: (<a onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
+                { label: (<a id="home_headers_functions_view_application" onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
             ]} />} placement="bottom">
-            <a onClick={e => e.preventDefault()}><Space>操作<DownOutlined /></Space></a>
+            <a onClick={e => e.preventDefault()}><Space style={{color:'white'}}>操作<DownOutlined /></Space></a>
         </Dropdown>)
 
         const adminFunctionMenu = (<Dropdown overlay={<Menu
             items={[
-                { label: (<a onClick={() => { this.GotoPage('SubmitApplication', this.state) }}>提交申请</a>), },
-                { label: (<a onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
+                { label: (<a id="home_headers_functions_submit_application" onClick={() => { this.GotoPage('SubmitApplication', this.state) }}>提交申请</a>), },
+                { label: (<a id="home_headers_functions_view_application" onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
             ]} />} placement="bottom">
-            <a onClick={e => e.preventDefault()}><Space>操作<DownOutlined /></Space></a>
+            <a onClick={e => e.preventDefault()}><Space style={{color:'white'}}>操作<DownOutlined /></Space></a>
         </Dropdown>)
 
         return (
@@ -282,8 +278,8 @@ class Home extends React.Component {
                         items={new Array(4).fill(null).map((_, index) => ({
                             key: String(index + 1),
                             label: {
-                                0: (<a onClick={() => { this.GotoPage('MainPage', this.state) }}>首页</a>),
-                                1: (<a onClick={() => { this.state.accessToken === null ? this.GotoPage('Login', this.state) : this.GotoPage('UserInfo', this.state) }}>用户</a>),
+                                0: (<a id="home_headers_mainpage" onClick={() => { this.GotoPage('MainPage', this.state) }}><Space style={{color:'white'}}>首页</Space></a>),
+                                1: (<a id="home_headers_user" onClick={() => { this.state.accessToken === null ? this.GotoPage('Login', this.state) : this.GotoPage('UserInfo', this.state) }}><Space style={{color:'white'}}>用户</Space></a>),
                                 2: (this.state.userRole == "ROLE_ADMIN") ? adminFunctionMenu : ((this.state.userRole == "ROLE_USER") ? userFunctionMenu : staffFunctionMenu),
                                 3: infoMenu,
                             }[index],
@@ -291,7 +287,7 @@ class Home extends React.Component {
                     />
                 </Header>
                 <Layout style={{ overflowY: 'hidden' }}>
-                    <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64, marginBottom: 70 }}>
+                    <Content className="site-layout" style={{ padding: mobile()?'0 10px':'0 50px', marginTop: 64, marginBottom: 70 }}>
                         <Breadcrumb style={{ margin: '16px 0' }}>
                             {Breadcrumbitems[this.state.BreadcrumbByIndex[0]]}
                             {Breadcrumbitems[this.state.BreadcrumbByIndex[1]]}
