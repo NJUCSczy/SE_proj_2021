@@ -27,7 +27,8 @@ import ViewContract from './Adiministration/src/ViewContract/ViewContract';
 import ViewFunction from './Adiministration/src/ViewFunction/ViewFunction';
 import ViewSignature from './Adiministration/src/ViewSignature/ViewSignature';
 import ViewQuotation from './Adiministration/src/ViewQuotation/ViewQuotation';
-
+import QuestionList from './Adiministration/src/QuestionList/QuestionList';
+import TestCheckList from './Adiministration/src/TestCheckList/TestCheckList';
 import CheckList from './Adiministration/src/CheckList/CheckList';
 import Quotation from './Adiministration/src/Quotation/Quotation';
 import QuotationFeedback from './Adiministration/src/QuotationFeedback/QuotationFeedback';
@@ -169,16 +170,16 @@ class Home extends React.Component {
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>资质信息</div>);
             case 'Info3':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','政策法规','0','0','0'] });
-                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>政策法规</div>);
+                return (<QuestionList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></QuestionList>);
             case 'Info4':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','业务信息','0','0','0'] });
-                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>业务信息</div>);
+                return (<Quotation></Quotation>);
             case 'Info5':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','新闻资讯','0','0','0'] });
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>新闻资讯</div>);
             case 'Info6':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','友情链接','0','0','0'] });
-                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>友情链接</div>);
+                return (<TestCheckList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestCheckList>);
         }
         return null;
     }
