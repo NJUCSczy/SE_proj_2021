@@ -16,7 +16,6 @@ var _ = require('lodash');
 function UserEditor() {
   const [formData, setFormData] = useState({})
   var [userInfo, setUserInfo] = useState({})
-  const navigate = useNavigate();
 
   const handleChange = (type, value) => {
     setFormData(prev => {
@@ -38,7 +37,6 @@ function UserEditor() {
         console.log(formData)
         if (res.status === 201) {
           alert("注册成功！")
-          navigate('/')
         }
         return res.json()
       })

@@ -1,0 +1,416 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders learn react link 1`] = `
+<section
+  className="ant-layout"
+  style={
+    Object {
+      "overflow": "hidden",
+    }
+  }
+>
+  <header
+    className="ant-layout-header"
+    style={
+      Object {
+        "paddingLeft": "50px",
+        "paddingRight": "50px",
+        "position": "fixed",
+        "width": "100%",
+        "zIndex": 1,
+      }
+    }
+  >
+    <ul
+      className="ant-menu-overflow ant-menu ant-menu-root ant-menu-horizontal ant-menu-dark"
+      data-menu-list={true}
+      onKeyDown={[Function]}
+      role="menu"
+      style={
+        Object {
+          "margin": 0,
+          "paddingInlineStart": 0,
+        }
+      }
+      tabIndex={0}
+    >
+      <li
+        className="ant-menu-overflow-item ant-menu-item ant-menu-item-selected ant-menu-item-only-child"
+        data-menu-id={null}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={
+          Object {
+            "height": undefined,
+            "opacity": 1,
+            "order": 0,
+            "overflowY": undefined,
+            "pointerEvents": undefined,
+            "position": undefined,
+          }
+        }
+        tabIndex={-1}
+      >
+        <span
+          className="ant-menu-title-content"
+        >
+          <a
+            id="home_headers_mainpage"
+            onClick={[Function]}
+          >
+            <div
+              className="ant-space ant-space-horizontal ant-space-align-center"
+              style={
+                Object {
+                  "color": "white",
+                }
+              }
+            >
+              <div
+                className="ant-space-item"
+                style={Object {}}
+              >
+                首页
+              </div>
+            </div>
+          </a>
+        </span>
+      </li>
+      <li
+        className="ant-menu-overflow-item ant-menu-item ant-menu-item-only-child"
+        data-menu-id={null}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={
+          Object {
+            "height": undefined,
+            "opacity": 1,
+            "order": 1,
+            "overflowY": undefined,
+            "pointerEvents": undefined,
+            "position": undefined,
+          }
+        }
+        tabIndex={-1}
+      >
+        <span
+          className="ant-menu-title-content"
+        >
+          <a
+            id="home_headers_user"
+            onClick={[Function]}
+          >
+            <div
+              className="ant-space ant-space-horizontal ant-space-align-center"
+              style={
+                Object {
+                  "color": "white",
+                }
+              }
+            >
+              <div
+                className="ant-space-item"
+                style={Object {}}
+              >
+                用户
+              </div>
+            </div>
+          </a>
+        </span>
+      </li>
+      <li
+        className="ant-menu-overflow-item ant-menu-item ant-menu-item-only-child"
+        data-menu-id={null}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={
+          Object {
+            "height": undefined,
+            "opacity": 1,
+            "order": 2,
+            "overflowY": undefined,
+            "pointerEvents": undefined,
+            "position": undefined,
+          }
+        }
+        tabIndex={-1}
+      >
+        <span
+          className="ant-menu-title-content"
+        >
+          <a
+            className="ant-dropdown-trigger"
+            id="home_headers_functions"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <div
+              className="ant-space ant-space-horizontal ant-space-align-center"
+              style={
+                Object {
+                  "color": "white",
+                }
+              }
+            >
+              <div
+                className="ant-space-item"
+                style={
+                  Object {
+                    "marginRight": 8,
+                  }
+                }
+              >
+                操作
+              </div>
+              <div
+                className="ant-space-item"
+                style={Object {}}
+              >
+                <span
+                  aria-label="down"
+                  className="anticon anticon-down"
+                  role="img"
+                >
+                  <svg
+                    aria-hidden="true"
+                    data-icon="down"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <path
+                      d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                    />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </a>
+        </span>
+      </li>
+      <li
+        className="ant-menu-overflow-item ant-menu-item ant-menu-item-only-child"
+        data-menu-id={null}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="menuitem"
+        style={
+          Object {
+            "height": undefined,
+            "opacity": 1,
+            "order": 3,
+            "overflowY": undefined,
+            "pointerEvents": undefined,
+            "position": undefined,
+          }
+        }
+        tabIndex={-1}
+      >
+        <span
+          className="ant-menu-title-content"
+        >
+          <div
+            id="home_headers_infos"
+          >
+            <a
+              className="ant-dropdown-trigger"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+            >
+              <div
+                className="ant-space ant-space-horizontal ant-space-align-center"
+                style={
+                  Object {
+                    "color": "white",
+                  }
+                }
+              >
+                <div
+                  className="ant-space-item"
+                  style={
+                    Object {
+                      "marginRight": 8,
+                    }
+                  }
+                >
+                  信息
+                </div>
+                <div
+                  className="ant-space-item"
+                  style={Object {}}
+                >
+                  <span
+                    aria-label="down"
+                    className="anticon anticon-down"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="down"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <path
+                        d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </span>
+      </li>
+      <li
+        aria-hidden={true}
+        className="ant-menu-overflow-item ant-menu-overflow-item-rest ant-menu-submenu ant-menu-submenu-horizontal"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="none"
+        style={
+          Object {
+            "height": 0,
+            "opacity": 0,
+            "order": 9007199254740991,
+            "overflowY": "hidden",
+            "pointerEvents": "none",
+            "position": "absolute",
+          }
+        }
+      >
+        <div
+          aria-controls={null}
+          aria-expanded={false}
+          aria-haspopup={true}
+          className="ant-menu-submenu-title"
+          data-menu-id={null}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          role="menuitem"
+          style={null}
+          tabIndex={-1}
+          title={null}
+        >
+          <span
+            aria-label="ellipsis"
+            className="anticon anticon-ellipsis"
+            role="img"
+          >
+            <svg
+              aria-hidden="true"
+              data-icon="ellipsis"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"
+              />
+            </svg>
+          </span>
+          <i
+            className="ant-menu-submenu-arrow"
+          />
+        </div>
+      </li>
+    </ul>
+    <div
+      aria-hidden={true}
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+    />
+  </header>
+  <section
+    className="ant-layout"
+    style={
+      Object {
+        "overflowY": "hidden",
+      }
+    }
+  >
+    <main
+      className="ant-layout-content site-layout"
+      style={
+        Object {
+          "marginBottom": 70,
+          "marginTop": 64,
+          "padding": "0 50px",
+        }
+      }
+    >
+      <nav
+        className="ant-breadcrumb"
+        style={
+          Object {
+            "margin": "16px 0",
+          }
+        }
+      >
+        <ol />
+      </nav>
+      <section
+        className="ant-layout"
+        onChange={[Function]}
+        style={
+          Object {
+            "height": "100%",
+            "marginBottom": 100,
+            "overflowY": "scroll",
+          }
+        }
+      >
+        <div
+          className="site-layout-background"
+          style={
+            Object {
+              "height": "fit-content",
+              "padding": 0,
+            }
+          }
+        >
+          <div
+            className="site-layout-background"
+            style={
+              Object {
+                "minHeight": 380,
+                "padding": 24,
+              }
+            }
+          >
+            首页
+          </div>
+        </div>
+      </section>
+    </main>
+  </section>
+</section>
+`;
