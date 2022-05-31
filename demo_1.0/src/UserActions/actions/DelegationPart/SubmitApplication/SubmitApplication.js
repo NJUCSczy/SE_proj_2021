@@ -8,12 +8,18 @@ import TextArea from 'antd/lib/input/TextArea';
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
 import { NoFormStatus } from 'antd/lib/form/context';
 import { USE_JSON_SERVER,REMOTE_SERVER } from '../../../functions/functions';
+import { attachTypeApi } from 'antd/lib/message';
 
 var _ = require('lodash');
 var mobile = require('is-mobile');
 
 /**
- * 用户提交申请表的界面
+ * 用户提交申请表的界面，采用自适应布局，包含单选、多选、输入框等多种表单组件   
+ * 
+ * 在用户完成填写且必填项全部完成后，可以点击提交   
+ * 
+ * 提交后的表单会发送给后端 
+ * 
  */
 function SubmitApplication(props) {
   const userState = props._state
@@ -952,3 +958,4 @@ SubmitApplication.propTypes={
     /** 切换界面方法 */
     GotoPage:PropTypes.func
 }
+

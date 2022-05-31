@@ -82,11 +82,6 @@ module.exports = {
             name: '用户信息部分',
             components: 'src/register_login/**/*.js',
         },
-        {
-            name:'test',
-            components: 'src/UserActions/actions/DelegationPart/FunctionList/FunctionList.js',
-            contents:'src/test.example.md'
-        }
     ],
-    
+    title: "SEE Document",
 };
