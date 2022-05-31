@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 import "./Home.css"
 import { findDOMNode } from 'react-dom';
-import SubmitApplication from './Adiministration/src/SubmitApplication/SubmitApplication';
+import SubmitApplication from './UserActions/actions/DelegationPart/SubmitApplication/SubmitApplication';
 import {HashRouter as Router, Route, Routes} from 'react-router-dom';
 import Home from './Home';
 import View from './register_login/View';

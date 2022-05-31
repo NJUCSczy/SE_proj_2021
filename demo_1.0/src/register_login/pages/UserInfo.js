@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Button } from 'antd';
 import { Menu } from 'antd';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
-import { USE_JSON_SERVER } from '../../Adiministration/functions/functions';
+import { USE_JSON_SERVER } from '../../UserActions/functions/functions';
 
 
 function getItem(label, key, icon, children, type) {
