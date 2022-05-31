@@ -27,7 +27,7 @@ import ViewContract from './UserActions/actions/ViewFilesPart/ViewContract/ViewC
 import ViewFunction from './UserActions/actions/ViewFilesPart/ViewFunction/ViewFunction';
 import ViewSignature from './UserActions/actions/ViewFilesPart/ViewSignature/ViewSignature';
 import ViewQuotation from './UserActions/actions/ViewFilesPart/ViewQuotation/ViewQuotation';
-import TestRecord from './UserActions/actions/TestPart/TestRecord/TestRecord'
+
 
 import CheckList from './UserActions/actions/TestPart/CheckList/CheckList';
 import Quotation from './UserActions/actions/DelegationPart/Quotation/Quotation';
@@ -35,6 +35,9 @@ import QuotationFeedback from './UserActions/actions/DelegationPart/QuotationFee
 import FunctionList from './UserActions/actions/DelegationPart/FunctionList/FunctionList';
 import UserUploadFiles from './UserActions/actions/DelegationPart/UserUploadFiles/UserUploadFiles';
 import ViewUserFiles from './UserActions/actions/ViewFilesPart/ViewUserFiles/ViewUserFiles';
+import QuestionList from './UserActions/actions/TestPart/QuestionList/QuestionList';
+import TestCheckList from './UserActions/actions/TestPart/TestCheckList/TestCheckList';
+import TestRecord from './UserActions/actions/TestPart/TestRecord/TestRecord';
 import { USE_JSON_SERVER } from './UserActions/functions/functions';
 
 
@@ -171,16 +174,16 @@ class Home extends React.Component {
                 return (<TestRecord></TestRecord>);
             case 'Info3':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','政策法规','0','0','0'] });
-                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>政策法规</div>);
+                return (<QuestionList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></QuestionList>);
             case 'Info4':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','业务信息','0','0','0'] });
-                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>业务信息</div>);
+                return (<Quotation></Quotation>);
             case 'Info5':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','新闻资讯','0','0','0'] });
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>新闻资讯</div>);
             case 'Info6':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','友情链接','0','0','0'] });
-                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>友情链接</div>);
+                return (<TestCheckList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestCheckList>);
         }
         return null;
     }
