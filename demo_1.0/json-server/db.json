@@ -16,6 +16,12 @@
       "password": "$2a$10$H7zg9C7cLZdw6C.UH39M0OxSGDN8NBDFmBwbifxo3BQlXCjmjoinK",
       "username": "gbl",
       "id": 3
+    },
+    {
+      "email": "xl@qq.com",
+      "password": "$2a$10$IqFTOeFHTzB7f3o9YsWaZermHDwpzDn37COL480Q3mIGsNILhpniG",
+      "username": "xl",
+      "id": 4
     }
   ],
   "docs": [

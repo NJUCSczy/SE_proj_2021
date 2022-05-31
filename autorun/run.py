@@ -91,3 +91,23 @@ browser.find_element_by_id("提交用户申请表").click()
 #关闭
 browser.quit()
 # %%
+#测试记录
+browser.find_element_by_id("添加新软件测试记录").click()
+browser.find_element_by_id("测试分类").send_keys("安全测试1")
+browser.find_element_by_id("序号").send_keys("1")
+browser.find_element_by_id("测试用例设计说明").send_keys("安全测试2")
+browser.find_element_by_id("与本测试用例有关的规约说明").send_keys("安全测试3")
+browser.find_element_by_id("前提条件").send_keys("安全测试4")
+browser.find_element_by_id("测试用例执行过程").send_keys("安全测试5")
+browser.find_element_by_id("预期的结果").send_keys("正常")
+browser.find_element_by_id("测试用例设计者").send_keys("徐林")
+browser.find_element_by_id("实际结果").send_keys("不正常")
+browser.find_element_by_id("是否与预期结果一致").send_keys("否")
+browser.find_element_by_id("相关的BUG编号").send_keys("2")
+browser.find_element_by_id("用例执行者").send_keys("徐林")
+browser.find_element_by_id("执行测试时间").click()
+sleep(0.5)
+browser.find_element_by_class_name("ant-picker-today-btn").click()
+browser.find_element_by_id("确认人").send_keys("徐林")
+
+# %%

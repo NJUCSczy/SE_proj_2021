@@ -27,6 +27,7 @@ import ViewContract from './UserActions/actions/ViewFilesPart/ViewContract/ViewC
 import ViewFunction from './UserActions/actions/ViewFilesPart/ViewFunction/ViewFunction';
 import ViewSignature from './UserActions/actions/ViewFilesPart/ViewSignature/ViewSignature';
 import ViewQuotation from './UserActions/actions/ViewFilesPart/ViewQuotation/ViewQuotation';
+import TestRecord from './UserActions/actions/TestPart/TestRecord/TestRecord'
 
 import CheckList from './UserActions/actions/TestPart/CheckList/CheckList';
 import Quotation from './UserActions/actions/DelegationPart/Quotation/Quotation';

@@ -17,6 +17,9 @@ var mobile = require('is-mobile');
 
 function TestReport(props){
     const { UpdateUserInfo, GotoPage, _state } = props;
+    const OnFinish = (values) => {
+      console.log(values)
+    }
 
       return(
         <Form
@@ -26,6 +29,7 @@ function TestReport(props){
           wrapperCol={{ span: 16 }}
           initialValues={{ remember: true }}
           autoComplete="off"
+          onFinish={OnFinish}
         >
 
           <h1 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试报告</h1>

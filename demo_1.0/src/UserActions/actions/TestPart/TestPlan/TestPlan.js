@@ -15,6 +15,9 @@ var mobile = require('is-mobile');
 
 function TestPlan(props){
     const { UpdateUserInfo, GotoPage, _state } = props;
+    const OnFinish = (values) => {
+      console.log(values)
+    }
 
       return(
         <Form
@@ -24,6 +27,7 @@ function TestPlan(props){
           wrapperCol={{ span: 16 }}
           initialValues={{ remember: true }}
           autoComplete="off"
+          onFinish={OnFinish}
         >
 
           <h1 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件测试方案</h1>
