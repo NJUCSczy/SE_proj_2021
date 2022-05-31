@@ -27,6 +27,10 @@ import ViewContract from './Adiministration/src/ViewContract/ViewContract';
 import ViewFunction from './Adiministration/src/ViewFunction/ViewFunction';
 import ViewSignature from './Adiministration/src/ViewSignature/ViewSignature';
 import ViewQuotation from './Adiministration/src/ViewQuotation/ViewQuotation';
+import TestPlan from './Adiministration/src/TestPlan/TestPlan';
+import TestReport from './Adiministration/src/TestReport/TestReport';
+import TestCase from './Adiministration/src/TestCase/TestCase';
+import TestRecord from './Adiministration/src/TestRecord/TestRecord';
 
 import CheckList from './Adiministration/src/CheckList/CheckList';
 import Quotation from './Adiministration/src/Quotation/Quotation';
@@ -35,6 +39,7 @@ import FunctionList from './Adiministration/src/FunctionList/FunctionList';
 import UserUploadFiles from './Adiministration/src/UserUploadFiles/UserUploadFiles';
 import ViewUserFiles from './Adiministration/src/ViewUserFiles/ViewUserFiles';
 import { USE_JSON_SERVER } from './Adiministration/functions/functions';
+
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -166,7 +171,7 @@ class Home extends React.Component {
                 return (<CheckList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></CheckList>);
             case 'Info2':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','资质信息','0','0','0'] });
-                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>资质信息</div>);
+                return (<TestRecord></TestRecord>);
             case 'Info3':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','政策法规','0','0','0'] });
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>政策法规</div>);
