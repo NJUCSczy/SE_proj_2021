@@ -16,7 +16,9 @@ var mobile = require('is-mobile');
 
 function TestRecord(props){
     const { UpdateUserInfo, GotoPage, _state } = props;
-
+    const OnFinishForm = (values) => {
+      console.log(values)
+    }
     return(
         <Form
           style={{padding:"10px 10px 10px 10px"}}
@@ -25,6 +27,7 @@ function TestRecord(props){
           wrapperCol={{ span: 16 }}
           initialValues={{ remember: true }}
           autoComplete="off"
+          onFinish={OnFinishForm}
         >
 
           <h1 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件测试记录(电子记录)</h1>

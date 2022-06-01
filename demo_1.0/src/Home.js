@@ -38,6 +38,11 @@ import ViewUserFiles from './UserActions/actions/ViewFilesPart/ViewUserFiles/Vie
 import QuestionList from './UserActions/actions/TestPart/QuestionList/QuestionList';
 import TestCheckList from './UserActions/actions/TestPart/TestCheckList/TestCheckList';
 import TestRecord from './UserActions/actions/TestPart/TestRecord/TestRecord';
+import TestPlan from './UserActions/actions/TestPart/TestPlan/TestPlan';
+import TestReport from './UserActions/actions/TestPart/TestReport/TestReport';
+import TestCase from './UserActions/actions/TestPart/TestCase/TestCase';
+
+
 import { USE_JSON_SERVER } from './UserActions/functions/functions';
 
 
@@ -168,16 +173,16 @@ class Home extends React.Component {
 
             case 'Info1':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','机构信息','0','0','0'] });
-                return (<CheckList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></CheckList>);
+                return (<TestPlan _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestPlan>);
             case 'Info2':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','资质信息','0','0','0'] });
                 return (<TestRecord></TestRecord>);
             case 'Info3':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','政策法规','0','0','0'] });
-                return (<QuestionList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></QuestionList>);
+                return (<TestCase _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestCase>);
             case 'Info4':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','业务信息','0','0','0'] });
-                return (<Quotation></Quotation>);
+                return (<TestRecord _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestRecord>);
             case 'Info5':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','新闻资讯','0','0','0'] });
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>新闻资讯</div>);
