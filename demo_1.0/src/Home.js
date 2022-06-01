@@ -39,6 +39,7 @@ import QuestionList from './UserActions/actions/TestPart/QuestionList/QuestionLi
 import TestCheckList from './UserActions/actions/TestPart/TestCheckList/TestCheckList';
 import TestRecord from './UserActions/actions/TestPart/TestRecord/TestRecord';
 import { USE_JSON_SERVER } from './UserActions/functions/functions';
+import TestPlan from './UserActions/actions/TestPart/TestPlan/TestPlan';
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -171,7 +172,7 @@ class Home extends React.Component {
                 return (<CheckList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></CheckList>);
             case 'Info2':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','资质信息','0','0','0'] });
-                return (<TestRecord></TestRecord>);
+                return (<TestPlan></TestPlan>);
             case 'Info3':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','政策法规','0','0','0'] });
                 return (<QuestionList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></QuestionList>);
