@@ -44,6 +44,7 @@ import TestCase from './UserActions/actions/TestPart/TestCase/TestCase';
 
 
 import { USE_JSON_SERVER } from './UserActions/functions/functions';
+import TestPlan from './UserActions/actions/TestPart/TestPlan/TestPlan';
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -176,7 +177,7 @@ class Home extends React.Component {
                 return (<TestPlan _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestPlan>);
             case 'Info2':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','资质信息','0','0','0'] });
-                return (<TestRecord></TestRecord>);
+                return (<TestPlan></TestPlan>);
             case 'Info3':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','政策法规','0','0','0'] });
                 return (<TestCase _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestCase>);
