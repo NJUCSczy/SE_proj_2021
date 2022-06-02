@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react'
-
+import {React } from 'react'
+import {Fragment} from 'react'
+import PropTypes from 'prop-types';
 import { message, DatePicker, Divider, Form, Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import { useState } from 'react';
 import { Table, Tag } from 'antd';
@@ -7,9 +8,10 @@ import Paragraph from 'antd/lib/skeleton/Paragraph';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { USE_JSON_SERVER,REMOTE_SERVER } from '../../../functions/functions';
 
-// const { Column, ColumnGroup } = Table;
+const { Column, ColumnGroup } = Table;
+
 const sharedOnCell = (_, index) => {
-  if (index === 1||index === 8) {
+  if (index === 0||index === 8||index===10) {
     return {
       colSpan: 0,
     };
@@ -17,33 +19,9 @@ const sharedOnCell = (_, index) => {
 
   return {};
 };
+var _ = require('lodash');
 
-const colomns =[
-  {
-    title:'工作(项目)流程',
-    dataIndex:'process',
-    onCell: (_, index) => ({
-      colSpan: index === 0||8||10 ? 3 : 1,
-    }),
-  },
-  {
-    title:'可预见问题及注意事项',
-    dataIndex:'caution',
-    onCell:sharedOnCell,
-  },
-  {
-    title:'确认',
-    dataIndex:'confirm',
-    onCell:sharedOnCell,
-    width:100,
-    render: (_, record) => (
-        <>
-        <Switch checkedChildren="正确" unCheckedChildren="有误" defaultChecked />
-        <br />
-        </>
-    ),
-  }
-]
+
 
 const data=[
   {
@@ -141,6 +119,87 @@ const data=[
     process:'7、实施测试',
     caution:'2、对文档的测试：要从完整性、正确性、一致性、易理解性、易浏览性和外观质量六个方面，对用户文档进行评审。'
   },
+  {
+    key:'20',
+    process:'7、实施测试',
+    caution:'3、对测试过程观察到的结果进行如实记录，对发现的问题整理成问题清单；'
+  },
+  {
+    key:'21',
+    process:'8、编制测试报告',
+    caution:'1、根据《软件项目委托测试报告编制作业指导书》和测试结果编制测试报告。'
+  },
+  {
+    key:'22',
+    process:'8、编制测试报告',
+    caution:'2、检查测试报告，并填写《报告检查表》。'
+  },
+  {
+    key:'23',
+    process:'8、编制测试报告',
+    caution:'3、测试报告的编码请参阅《测试报告编码规则》，'
+  },
+  {
+    key:'24',
+    process:'8、编制测试报告',
+    caution:'4、报告审查：在分发报告前，应按实验室质量管理程序对报告进行严格审查。'
+  },
+  {
+    key:'25',
+    process:'9、评测资料归档',
+    caution:'1、委托测试的软件产品及测试相关文件、原始记录等能够随时复现测试过程所需的材料，也同测试报告一并交由实验室资料室的材料管理员归档，以作为日后对测试结果产生异议时进行复核或仲裁的依据。上述材料由实验室保存三年后，委托方可凭样品接收单取回或由实验室进行销毁。'
+  },
+  {
+    key:'26',
+    process:'9、评测资料归档',
+    caution:'2、归档资料同时填写《软件项目委托测试资料清单》，打印《软件委托测试资料标签》并编号号码，贴于档案盒制定位置。'
+  },
+  {
+    key:'27',
+    process:'9、评测资料归档',
+    caution:'3、该检查表与本次软件委托测试归档资料一同归档，与《软件项目委托测试资料目录》、《软件项目委托测试试资料清单》一起，作为软件委托测试测试工作的检查、资料查询的主要依据。'
+  },
+  {
+    key:'28',
+    process:'10、附件目录',
+    caution:'1、《软件项目委托测试工作流程》'
+  },
+  {
+    key:'29',
+    process:'10、附件目录',
+    caution:'2、《需提供的书面文档》'
+  },
+  {
+    key:'30',
+    process:'10、附件目录',
+    caution:'3、《软件项目委托测试报告编制作业指导书》'
+  },
+  {
+    key:'31',
+    process:'10、附件目录',
+    caution:'4、《报告检查表》'
+  },
+  {
+    key:'32',
+    process:'10、附件目录',
+    caution:'5、《测试报告编码规则》'
+  },
+  {
+    key:'33',
+    process:'10、附件目录',
+    caution:'6、《软件委托测试资料清单》'
+  },
+  {
+    key:'34',
+    process:'10、附件目录',
+    caution:'7、《软件委托测试资料标签》'
+  },
+  {
+    key:'35',
+    process:'10、附件目录',
+    caution:'8、《软件委托测试资料目录》'
+  },
+
 ]
 
 const formItemLayout = {
@@ -149,10 +208,110 @@ const formItemLayout = {
 };
 function TestCheckList(props) {
   const { UpdateUserInfo, GotoPage, _state } = props;
-  const [formData, setFormData] = useState({})
+  
   const { Option } = Select;
   const { TextArea } = Input;
-  const [formValue,setFormValue]=React.useState(0);
+
+  const [formData, setFormData] = useState({})
+  const setDataByKey = (key, val) => {
+    setFormData(prev => {
+      const newFormData = _.cloneDeep(prev)
+      newFormData[key] = val;
+      console.log(newFormData)
+      return newFormData;
+    })
+
+  }
+
+  const columns =[
+    {
+      title:'工作(项目)流程',
+      dataIndex:'process',
+      // ellipsis:true,
+      // onCell: (_, index) => ({
+      //   colSpan: index === 0||8||10 ? 3 : 1,
+      // }),
+      onCell: (_,index) => {
+        if(index===0||index===8||index===10){
+          return{
+            colSpan:3,
+          };
+        }
+        if(index === 1||index===17||index===24){
+          return {
+            rowSpan: 3,
+          };
+        }
+        if(index === 11){
+          return {
+            rowSpan: 5,
+          };
+        }
+        if(index === 27){
+          return {
+            rowSpan: 8,
+          };
+        }
+        if(index === 20){
+          return {
+            rowSpan: 4,
+          };
+        }
+        if(index === 4||index === 6){
+          return {
+            rowSpan: 2,
+          };
+        }
+        if(index === 2||index === 3||index === 5||index === 7||index === 12||index === 13||
+          index === 14||index === 15||index === 18||index === 19||index === 22||index === 21||
+          index === 23||index===25||index === 26||index>27){
+          return {
+            rowSpan:0,
+          };
+        }
+        
+      },
+    },
+    {
+      title:'可预见问题及注意事项',
+      dataIndex:'caution',
+      // ellipsis:true,
+      onCell:(_,index) =>{
+        if (index === 0||index === 8||index===10) {
+          return {
+            colSpan: 0,
+          };
+        }
+        if(index>=27){
+          return {
+            colSpan: 2,
+          };
+        }
+      },
+    },
+    {
+      title:'确认',
+      dataIndex:'confirm',
+      onCell:(_,index) =>{
+        if (index === 0||index === 8||index===10||index>=27) {
+          return {
+            colSpan: 0,
+          };
+        }
+      },
+      render: (_, record,index) => (
+
+        <Form.Item name={'tableItem_'+index} initialValue={false}>
+          <Switch checkedChildren="是" unCheckedChildren="否" defaultChecked={false}/>
+          
+        
+        </Form.Item>
+          // <br />
+      ),
+    }
+  ]
+  
+  
   const onFinishForm = (values) => {
     console.log('Success:', values);
     var form = {}
@@ -170,7 +329,7 @@ function TestCheckList(props) {
         .then(data => {
           if (data != null) {
             form = data
-            form['软件测试问题清单'] = values
+            form['软件项目委托测试工作检查表'] = values
             SubmitForm(form)
           }
           console.log(data)
@@ -266,10 +425,6 @@ function TestCheckList(props) {
         })
     }
   }
-  const increase =() =>{
-    formValue+=1;
-    return formValue;
-  }
 
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
@@ -287,106 +442,81 @@ function TestCheckList(props) {
 
 
   return (
-    <Form
-      name="软件测试问题清单"
-      initialValues={{ remember: true }}
-      style={{ padding: '20px 30px' }}
-      autoComplete="false"
-      onFinish={onFinishForm}
-      onFinishFailed={onFinishFailed}
-    >
-      <h1 style={{ textAlign: 'center', fontSize: 30 }}>软件项目委托测试工作检查表</h1>
-      <Form.List name="项目列表" layout='vertical' width={500}>
-        {(fields, { add, remove }) => (
-          <>
-            {fields.map(({ key, name, ...restField }) => (
-              <Fragment layout='vertical' key={key} style={{ display: 'flex', marginBottom: 8 }}>
-                <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件名称</h5>
-                <Form.Item
-                  {...restField}
-                  name={[name, '软件名称']}
-                  rules={[{ required: true, message: '请填写软件名称' }]}
-                >
-                  <Input style={{ maxWidth: 500 }} placeholder="软件名称" />
-                </Form.Item>
+    <>
+      <Form
+        name="软件项目委托测试工作检查表"
+        initialValues={{ remember: true }}
+        style={{ padding: '20px 30px' }}
+        autoComplete="false"
+        onFinish={onFinishForm}
+        onFinishFailed={onFinishFailed}
+      >
+        <h1 style={{ textAlign: 'center', fontSize: 30 }}>软件项目委托测试工作检查表</h1>
 
-                <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>版本号</h5>
-                <Form.Item
-                  {...restField}
-                  name={[name, '版本号']}
-                  rules={[{ required: true, message: '请填写版本号' }]}
-                >
-                  <Input style={{ maxWidth: 500 }} placeholder="版本号" />
-                </Form.Item>
+        <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件名称</h5>
+        <Form.Item
+          name='软件名称'
+          rules={[{ required: true, message: '请填写软件名称' }]}
+        >
+          <Input style={{ maxWidth: 500 }} placeholder="软件名称" />
+        </Form.Item>
 
-                <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>申报单位</h5>
-                <Form.Item
-                  {...restField}
-                  name={[name, '申报单位']}
-                  rules={[{ required: true, message: '请填写申报单位' }]}
-                >
-                  <Input style={{ maxWidth: 500 }} placeholder="申报单位" />
-                </Form.Item>
-                <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>起始时间</h5>
-                <Form.Item name={[name, '起始时间']} {...config}>
-                  <DatePicker />
-                </Form.Item>
-                <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>预计完成时间</h5>
-                <Form.Item name={[name, '预计完成时间']} {...config}>
-                  <DatePicker />
-                </Form.Item>
+        <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>版本号</h5>
+        <Form.Item
+          
+          name='版本号'
+          rules={[{ required: true, message: '请填写版本号' }]}
+        >
+          <Input style={{ maxWidth: 500 }} placeholder="版本号" />
+        </Form.Item>
 
-                <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>主测人</h5>
-                <Form.Item
-                  {...restField}
-                  name={[name, '主测人']}
-                  rules={[{ required: true, message: '请填写主测人' }]}
-                >
-                  <Input style={{ maxWidth: 150 }} placeholder="主测人" />
-                </Form.Item>
-                <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>实际完成时间</h5>
-                <Form.Item name={[name, '实际完成时间']} {...config}>
-                  <DatePicker />
-                </Form.Item>
+        <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>申报单位</h5>
+        <Form.Item
+          name='申报单位'
+          rules={[{ required: true, message: '请填写申报单位' }]}
+        >
+          <Input style={{ maxWidth: 500 }} placeholder="申报单位" />
+        </Form.Item>
 
-                <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>发现缺陷用例及具体操作路径（要具体）</h5>
-                <Form.Item
-                  {...restField}
-                  name={[name, '发现缺陷用例及具体操作路径（要具体）']}
-                  rules={[{ required: true, message: '请填写发现缺陷用例及具体操作路径' }]}
-                >
-                  <Input.TextArea style={{ maxWidth: 500 }} placeholder="发现缺陷用例及具体操作路径（要具体）" />
-                </Form.Item>
+        <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>起始时间</h5>
+        <Form.Item name='起始时间' {...config}>
+          <DatePicker />
+        </Form.Item>
 
-                <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>关联用例</h5>
-                <Form.Item
-                  {...restField}
-                  name={[name, '关联用例']}
-                  rules={[{ required: true, message: '请填写关联用例' }]}
-                >
-                  <Input style={{ maxWidth: 500 }} placeholder="关联用例" />
-                </Form.Item>
+        <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>预计完成时间</h5>
+        <Form.Item name='预计完成时间' {...config}>
+          <DatePicker />
+        </Form.Item>
 
-                <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>发现时间</h5>
-                
-                <Form.Item name={[name, '时间']} label="DatePicker" {...config}>
-                  <DatePicker />
-                </Form.Item>
-              </Fragment>
-            ))}
-            
-          </>
-        )}
-      </Form.List>
-      
+        <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>主测人</h5>
+        <Form.Item
+          name='主测人'
+          rules={[{ required: true, message: '请填写主测人' }]}
+        >
+          <Input style={{ maxWidth: 150 }} placeholder="主测人" />
+        </Form.Item>
 
-      <Form.Item>
+        <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>实际完成时间</h5>
+        <Form.Item name='实际完成时间' {...config}>
+          <DatePicker />
+        </Form.Item>
+
+        <Form.Item name='表项' >
+          <Table columns={columns} dataSource={data} pagination={{pageSize:40}} bordered/>
+        </Form.Item>
+        
         <Button type="primary" htmlType="submit">
           提交
         </Button>
-      </Form.Item>
+      </Form>
 
-    </Form>
+      {/* <Table columns={columns} dataSource={data} pagination={{pageSize:40}} bordered/>
+        <Button type="primary" htmlType="submit">
+          提交
+        </Button>
+       */}
+    </>
+    
   )
 
 

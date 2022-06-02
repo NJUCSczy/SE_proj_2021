@@ -37,6 +37,9 @@ import ViewUserFiles from './UserActions/actions/ViewFilesPart/ViewUserFiles/Vie
 import QuestionList from './UserActions/actions/TestPart/QuestionList/QuestionList';
 import TestCheckList from './UserActions/actions/TestPart/TestCheckList/TestCheckList';
 import TestRecord from './UserActions/actions/TestPart/TestRecord/TestRecord';
+import TestScenarioReviewForm from './UserActions/actions/TestPart/TestScenarioReviewForm/TestScenarioReviewForm';
+import SoftwareDocumentReviewForm from './UserActions/actions/TestPart/SoftwareDocumentReviewForm/SoftwareDocumentReviewForm';
+
 import { USE_JSON_SERVER } from './UserActions/functions/functions';
 
 
@@ -173,16 +176,16 @@ class Home extends React.Component {
                 return (<TestRecord></TestRecord>);
             case 'Info3':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','政策法规','0','0','0'] });
-                return (<QuestionList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></QuestionList>);
+                return (<QuestionList></QuestionList>);
             case 'Info4':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','业务信息','0','0','0'] });
-                return (<Quotation></Quotation>);
+                return (<TestScenarioReviewForm></TestScenarioReviewForm>);
             case 'Info5':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','新闻资讯','0','0','0'] });
-                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>新闻资讯</div>);
+                return (<SoftwareDocumentReviewForm></SoftwareDocumentReviewForm>);
             case 'Info6':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','友情链接','0','0','0'] });
-                return (<TestCheckList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestCheckList>);
+                return (<TestCheckList></TestCheckList>);
         }
         return null;
     }
