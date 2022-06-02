@@ -1,10 +1,10 @@
 import isMobile from 'is-mobile';
-import React, { Component } from 'react'
-import { message, DatePicker,Divider, Form, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
+import React, { Component, Fragment } from 'react'
+import { message, DatePicker,TimePicker,Divider, Form, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import './TestPlan.css'
 import { useState } from 'react';
 import TextArea from 'antd/lib/input/TextArea';
-import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
+import { UploadOutlined, InboxOutlined, MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { NoFormStatus } from 'antd/lib/form/context';
 import { Typography } from 'antd';
 
@@ -15,6 +15,9 @@ var mobile = require('is-mobile');
 
 function TestPlan(props){
     const { UpdateUserInfo, GotoPage, _state } = props;
+    const OnFinish = (values) => {
+      console.log(values)
+    }
 
       return(
         <Form
@@ -24,6 +27,7 @@ function TestPlan(props){
           wrapperCol={{ span: 16 }}
           initialValues={{ remember: true }}
           autoComplete="off"
+          onFinish={OnFinish}
         >
 
           <h1 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件测试方案</h1>
@@ -38,45 +42,71 @@ function TestPlan(props){
         
           <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>文档修改记录</h2>
 
-          <Form.Item
-            label="版本号"
-            name="版本号"
-            rules={[{ required: true, message: '请输入版本号' }]}
-          >
-            <Input style={{maxWidth:200}}/>
-          </Form.Item>
+          <Form.List name="文档修改记录" layout='vertical' width={500}>
+            {(fields, { add, remove }) => (
+              <>
+                {fields.map(({ key, name, ...restField }) => (
+                  <Fragment layout='vertical' key={key} style={{ display: 'flex', marginBottom: 8 }}>
+                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>版本号</h5>
+                    <Form.Item
+                      {...restField}
+                      name={[name, '版本号']}
+                      rules={[{ required: true, message: '请填写版本号' }]}
+                    >
+                      <Input style={{ maxWidth: 500 }} placeholder="版本号" />
+                    </Form.Item>
 
-          <Form.Item
-            label="日期"
-            name="日期"
-            rules={[{ required: true, message: '请输入日期' }]}
-          >
-            <Input style={{maxWidth:200}}/>
-          </Form.Item>
+                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>日期</h5>
+                    <Form.Item
+                      {...restField}
+                      name={[name, '日期']}
+                      rules={[{ required: true, message: '请填写日期' }]}
+                    >
+                      <DatePicker placeholder="日期" />
+                    </Form.Item>
 
-          <Form.Item
-            label="A-添加，M-修改，D-删除"
-            name="AMD"
-            rules={[{ required: true, message: '请输入AMD' }]}
-            >
-            <Input style={{maxWidth:200}}/>
-          </Form.Item>
+                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>A-添加，M-修改，D-删除</h5>
+                    <Form.Item
+                      {...restField}
+                      name={[name, 'AMD']}
+                      rules={[{ required: true, message: '请填写AMD' }]}
+                    >
+                      <Input style={{ maxWidth: 500 }} placeholder="A-添加，M-修改，D-删除" />
+                    </Form.Item>                
 
-          <Form.Item
-            label="修订者"
-            name="修订者"
-            rules={[{ required: true, message: '请输入修订者' }]}
-          >
-            <Input style={{maxWidth:200}}/>
-          </Form.Item>
+                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>修订者</h5>
+                    <Form.Item
+                      {...restField}
+                      name={[name, '修订者']}
+                      rules={[{ required: true, message: '请填写修订者' }]}
+                    >
+                      <Input style={{ maxWidth: 500 }} placeholder="修订者" />
+                    </Form.Item>
 
-          <Form.Item
-            label="说明"
-            name="说明"
-            rules={[{ required: true, message: '请输入说明' }]}
-          >
-            <Input style={{maxWidth:200}}/>
-          </Form.Item>
+                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>说明</h5>
+                    <Form.Item
+                      {...restField}
+                      name={[name, '说明']}
+                      rules={[{ required: true, message: '请填写说明' }]}
+                    >
+                      <Input.TextArea placeholder="说明" />
+                    </Form.Item>
+
+                    <Button onClick={() => remove(name)} type='danger'>
+                      删除该文档修改记录
+                    </Button>
+                  </Fragment>
+                ))}
+                <Form.Item>
+                  <Button type="dashed"
+                    style={{ width: 500, marginTop: 30 }}
+                    onClick={() => add()} icon={<PlusOutlined />}  >
+                    添加新文档修改记录
+                  </Button>
+                </Form.Item>
+              </>
+            )}
+          </Form.List>
 
           <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>1.引言</h2>
 

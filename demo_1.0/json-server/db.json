@@ -16,6 +16,18 @@
       "password": "$2a$10$4pEmeMKHonCHVvIl8MwG3eYRPiTxIpy7pG16QP02aV8Ip40SG99Xm",
       "username": "yk1234",
       "id": 3
+    },
+    {
+      "email": "gbl@qq.com",
+      "password": "$2a$10$jokAkZKZ57kNceW6FHmi7.2IPAqbuxkv6cFZGAhujNLS/dkx3lrba",
+      "username": "gbl",
+      "id": 4
+    },
+    {
+      "email": "xl@qq.com",
+      "password": "$2a$10$IqFTOeFHTzB7f3o9YsWaZermHDwpzDn37COL480Q3mIGsNILhpniG",
+      "username": "xl",
+      "id": 5
     }
   ],
   "docs": [
@@ -107,152 +119,80 @@
       },
       "userID": 1,
       "userName": "czy",
-      "id": 1,
-      "软件项目委托测试工作检查表": {
-        "软件名称": "2",
-        "版本号": "2",
-        "申报单位": "1",
-        "起始时间": "2022-06-29T14:32:21.963Z",
-        "预计完成时间": "2022-06-02T14:32:22.991Z",
-        "主测人": "4",
-        "实际完成时间": "2022-06-21T14:32:26.903Z",
-        "tableItem_1": true,
-        "tableItem_2": false,
-        "tableItem_3": true,
-        "tableItem_4": false,
-        "tableItem_5": false,
-        "tableItem_6": false,
-        "tableItem_7": false,
-        "tableItem_9": false,
-        "tableItem_11": false,
-        "tableItem_12": false,
-        "tableItem_13": false,
-        "tableItem_14": false,
-        "tableItem_15": false,
-        "tableItem_16": false,
-        "tableItem_17": false,
-        "tableItem_18": false,
-        "tableItem_19": false,
-        "tableItem_20": false,
-        "tableItem_21": false,
-        "tableItem_22": false,
-        "tableItem_23": false,
-        "tableItem_24": false,
-        "tableItem_25": false,
-        "tableItem_26": false
+      "id": 1
+    },
+    {
+      "用户申请表": {
+        "测试类型": [
+          "软件确认测试"
+        ],
+        "软件名称": "12",
+        "版本号": "32",
+        "委托单位(中文)": "123",
+        "委托单位(英文)": "21",
+        "开发单位": "123",
+        "单位性质": "科研院校",
+        "软件用户对象描述": "321",
+        "主要功能及用途简介(限300字)": "32",
+        "测试依据": [
+          "GB/T 25000.51-2010"
+        ],
+        "需要测试的技术指标": [
+          "可靠性"
+        ],
+        "软件规模": {
+          "功能数(到最后一级菜单)": "12"
+        },
+        "软件类型": "应用软件-模式识别软件",
+        "运行环境": {
+          "客户端": {
+            "操作系统-Windows版本": "32",
+            "操作系统": [
+              "Windows"
+            ],
+            "内存要求": "32",
+            "其他要求": "21"
+          },
+          "服务器端": {
+            "硬件": {
+              "架构": [
+                "UNIX/Linux服务器"
+              ],
+              "内存要求": "23",
+              "硬盘要求": "23",
+              "其他要求": "23"
+            },
+            "软件": {
+              "操作系统": "12",
+              "版本": "32",
+              "编程语言": "32",
+              "架构": "B/S",
+              "数据库": "32",
+              "中间件": "23",
+              "其他支撑软件": "21"
+            }
+          },
+          "网络环境": "32"
+        },
+        "样品和数量": {
+          "软件介质": "光盘",
+          "提交的样品(硬拷贝资料、硬件)五年保存期满后": "由本实验室销毁 "
+        },
+        "希望测试完成时间": "2022-05-12T13:33:56.057Z",
+        "委托单位信息": {
+          "电话": "321",
+          "传真": "12",
+          "地址": "12",
+          "邮编": "12",
+          "联系人": "21",
+          "手机": "12",
+          "E-mail": "12",
+          "网址": "12"
+        }
       },
-      "软件文档评审表": {
-        "软件名称": "h",
-        "版本号": "h",
-        "评审人": "h",
-        "评审完成时间": "2022-06-21T18:11:18.874Z",
-        "检查人": "d",
-        "result_1": "1",
-        "description_1": "2",
-        "result_2": "3",
-        "description_2": "4",
-        "result_3": "",
-        "description_3": "",
-        "result_4": "",
-        "description_4": "",
-        "result_5": "",
-        "description_5": "",
-        "result_6": "",
-        "description_6": "",
-        "result_7": "",
-        "description_7": "",
-        "result_8": "",
-        "description_8": "",
-        "result_9": "",
-        "description_9": "",
-        "result_10": "",
-        "description_10": "",
-        "result_11": "",
-        "description_11": "",
-        "result_12": "",
-        "description_12": "",
-        "result_13": "",
-        "description_13": "",
-        "result_14": "",
-        "description_14": "",
-        "result_16": "",
-        "description_16": "",
-        "result_17": "",
-        "description_17": "",
-        "result_18": "",
-        "description_18": "",
-        "result_19": "",
-        "description_19": "",
-        "result_20": "",
-        "description_20": "",
-        "result_21": "",
-        "description_21": "",
-        "result_22": "",
-        "description_22": "",
-        "result_23": "",
-        "description_23": "",
-        "result_24": "",
-        "description_24": "",
-        "result_25": "",
-        "description_25": "",
-        "result_26": "",
-        "description_26": "",
-        "result_27": "",
-        "description_27": "",
-        "result_28": "",
-        "description_28": "",
-        "result_29": "",
-        "description_29": "",
-        "result_30": "",
-        "description_30": "",
-        "result_31": "",
-        "description_31": "",
-        "result_32": "",
-        "description_32": "",
-        "result_33": "",
-        "description_33": "",
-        "result_34": "",
-        "description_34": "",
-        "result_35": "",
-        "description_35": ""
-      },
-      "测试方案评审表": {
-        "软件名称": "1",
-        "版本号": "2",
-        "项目编号": "3",
-        "测试类别": "4",
-        "pass_0": true,
-        "fail_reason_0": "adsf",
-        "pass_1": false,
-        "fail_reason_1": "",
-        "pass_2": true,
-        "fail_reason_2": "daf",
-        "pass_3": false,
-        "fail_reason_3": "",
-        "pass_4": false,
-        "fail_reason_4": "",
-        "pass_5": false,
-        "fail_reason_5": "",
-        "pass_6": false,
-        "fail_reason_6": "",
-        "pass_7": false,
-        "fail_reason_7": "",
-        "opinion_0": "f",
-        "sign_0": "d",
-        "date_0": "d",
-        "opinion_1": "f",
-        "sign_1": "e",
-        "date_1": "e",
-        "opinion_2": "",
-        "sign_2": "",
-        "date_2": "",
-        "opinion_3": "",
-        "sign_3": "",
-        "date_3": "",
-        "opinion_4": "",
-        "sign_4": "",
-        "date_4": ""
-      }
+      "userID": 4,
+      "userName": "gbl",
+      "id": 2
     }
   ],
   "test": []
