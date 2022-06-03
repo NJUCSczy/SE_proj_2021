@@ -28,6 +28,7 @@ import ViewFunction from './UserActions/actions/ViewFilesPart/ViewFunction/ViewF
 import ViewSignature from './UserActions/actions/ViewFilesPart/ViewSignature/ViewSignature';
 import ViewQuotation from './UserActions/actions/ViewFilesPart/ViewQuotation/ViewQuotation';
 
+
 import CheckList from './UserActions/actions/TestPart/CheckList/CheckList';
 import Quotation from './UserActions/actions/DelegationPart/Quotation/Quotation';
 import QuotationFeedback from './UserActions/actions/DelegationPart/QuotationFeedback/QuotationFeedback';
@@ -37,7 +38,18 @@ import ViewUserFiles from './UserActions/actions/ViewFilesPart/ViewUserFiles/Vie
 import QuestionList from './UserActions/actions/TestPart/QuestionList/QuestionList';
 import TestCheckList from './UserActions/actions/TestPart/TestCheckList/TestCheckList';
 import TestRecord from './UserActions/actions/TestPart/TestRecord/TestRecord';
+<<<<<<< HEAD
+import TestScenarioReviewForm from './UserActions/actions/TestPart/TestScenarioReviewForm/TestScenarioReviewForm';
+import SoftwareDocumentReviewForm from './UserActions/actions/TestPart/SoftwareDocumentReviewForm/SoftwareDocumentReviewForm';
+=======
+import TestPlan from './UserActions/actions/TestPart/TestPlan/TestPlan';
+import TestReport from './UserActions/actions/TestPart/TestReport/TestReport';
+import TestCase from './UserActions/actions/TestPart/TestCase/TestCase';
+
+>>>>>>> 689fc64def5d594e41832f9c59210a42dd8d0dab
+
 import { USE_JSON_SERVER } from './UserActions/functions/functions';
+import TestPlan from './UserActions/actions/TestPart/TestPlan/TestPlan';
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -167,22 +179,29 @@ class Home extends React.Component {
 
             case 'Info1':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','机构信息','0','0','0'] });
-                return (<CheckList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></CheckList>);
+                return (<TestPlan _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestPlan>);
             case 'Info2':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','资质信息','0','0','0'] });
-                return (<TestRecord></TestRecord>);
+                return (<TestPlan></TestPlan>);
             case 'Info3':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','政策法规','0','0','0'] });
-                return (<QuestionList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></QuestionList>);
+<<<<<<< HEAD
+                return (<QuestionList></QuestionList>);
             case 'Info4':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','业务信息','0','0','0'] });
-                return (<Quotation></Quotation>);
+                return (<TestScenarioReviewForm></TestScenarioReviewForm>);
+=======
+                return (<TestCase _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestCase>);
+            case 'Info4':
+                this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','业务信息','0','0','0'] });
+                return (<TestRecord _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestRecord>);
+>>>>>>> 689fc64def5d594e41832f9c59210a42dd8d0dab
             case 'Info5':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','新闻资讯','0','0','0'] });
-                return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>新闻资讯</div>);
+                return (<SoftwareDocumentReviewForm></SoftwareDocumentReviewForm>);
             case 'Info6':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','友情链接','0','0','0'] });
-                return (<TestCheckList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestCheckList>);
+                return (<TestCheckList></TestCheckList>);
         }
         return null;
     }
