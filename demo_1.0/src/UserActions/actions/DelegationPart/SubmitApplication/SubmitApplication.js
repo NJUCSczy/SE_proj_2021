@@ -249,13 +249,13 @@ function SubmitApplication(props) {
         name="单位性质"
         rules={[{ required: true, message: '请选择单位性质' }]}
       >
-        <Select style={{ width: 160 }}>
-          <Option value="内资企业" style={{ lineHeight: '32px' }}>内资企业</Option>
-          <Option value="外(合)资企业" style={{ lineHeight: '32px' }}>外(合)资企业</Option>
-          <Option value="港澳台(合)资企业" style={{ lineHeight: '32px' }}>港澳台(合)资企业</Option>
-          <Option value="科研院校" style={{ lineHeight: '32px' }}>科研院校</Option>
-          <Option value="政府事业团体" style={{ lineHeight: '32px' }}>政府事业团队</Option>
-          <Option value="其他" style={{ lineHeight: '32px' }}>其他</Option>
+        <Select id="单位性质_下拉栏" style={{ width: 160 }}>
+          <Option id="单位性质_内资企业" value="内资企业" style={{ lineHeight: '32px' }}>内资企业</Option>
+          <Option id="单位性质_外(合)资企业" value="外(合)资企业" style={{ lineHeight: '32px' }}>外(合)资企业</Option>
+          <Option id="单位性质_港澳台(合)资企业" value="港澳台(合)资企业" style={{ lineHeight: '32px' }}>港澳台(合)资企业</Option>
+          <Option id="单位性质_科研院校" value="科研院校" style={{ lineHeight: '32px' }}>科研院校</Option>
+          <Option id="单位性质_政府事业团体" value="政府事业团体" style={{ lineHeight: '32px' }}>政府事业团队</Option>
+          <Option id="单位性质_其他" value="其他" style={{ lineHeight: '32px' }}>其他</Option>
         </Select>
 
       </Form.Item>
@@ -298,12 +298,12 @@ function SubmitApplication(props) {
         name='测试依据'
         rules={[{ required: true, message: '请选择测试依据' }]}
       >
-        <Select mode="multiple" allowClear style={{ width: 160 }} onChange={(e) => {test(e,'测试依据(其他)')}}>
-        <Option value="GB/T 25000.51-2010" style={{ lineHeight: '32px' }}>GB/T 25000.51-2010</Option>
-        <Option value="GB/T 16260.1-2006" style={{ lineHeight: '32px' }}>GB/T 16260.1-2006</Option>
-        <Option value="NST-03-WI12-2011" style={{ lineHeight: '32px' }}>NST-03-WI12-2011</Option>
-        <Option value="NST-03-WI13-2011" style={{ lineHeight: '32px' }}>NST-03-WI13-2011</Option>
-        <Option value="其他" style={{ lineHeight: '32px' }}>其他</Option>
+        <Select id="测试依据_下拉栏" mode="multiple" allowClear style={{ width: 160 }} onChange={(e) => {test(e,'测试依据(其他)')}}>
+        <Option id="测试依据_GB/T 25000.51-2010" value="GB/T 25000.51-2010" style={{ lineHeight: '32px' }}>GB/T 25000.51-2010</Option>
+        <Option id="测试依据_GB/T 16260.1-2006" value="GB/T 16260.1-2006" style={{ lineHeight: '32px' }}>GB/T 16260.1-2006</Option>
+        <Option id="测试依据_NST-03-WI12-2011" value="NST-03-WI12-2011" style={{ lineHeight: '32px' }}>NST-03-WI12-2011</Option>
+        <Option id="测试依据_NST-03-WI13-2011" value="NST-03-WI13-2011" style={{ lineHeight: '32px' }}>NST-03-WI13-2011</Option>
+        <Option id="测试依据_其他" value="其他" style={{ lineHeight: '32px' }}>其他</Option>
         </Select>
         
         </Form.Item>
@@ -313,7 +313,7 @@ function SubmitApplication(props) {
           rules={[{ required: (formData['测试依据(其他)'] === true), message: '请输入其他测试依据名称！' }]}
         >
           {formData['测试依据(其他)'] != true? null:(
-           <Input style={{ padding: 0 }} disabled={formData['测试依据(其他)'] != true} />
+           <Input id="测试依据(其他)" style={{ padding: 0 }} disabled={formData['测试依据(其他)'] != true} />
           )}
         </Form.Item>
       </Descriptions.Item>
@@ -323,20 +323,20 @@ function SubmitApplication(props) {
         name='需要测试的技术指标'
         rules={[{ required: true, message: '请填写需要测试的技术指标' }]}
       >
-        <Select mode="multiple" allowClear style={{ width: 160 }} onChange={(e) => {test(e,'需要测试的技术指标(其他)')}}>
-          <Option value="功能性" style={{ lineHeight: '32px' }}>功能性</Option>
-          <Option value="可靠性" style={{ lineHeight: '32px' }}>可靠性</Option>
-          <Option value="易用性" style={{ lineHeight: '32px' }}>易用性</Option>
-          <Option value="效率" style={{ lineHeight: '32px' }}>效率</Option>
-          <Option value="可维护性" style={{ lineHeight: '32px' }}>可维护性</Option>
-          <Option value="可移植性" style={{ lineHeight: '32px' }}>可移植性</Option>
-          <Option value="代码覆盖度" style={{ lineHeight: '32px' }}>代码覆盖度</Option>
-          <Option value="缺陷检测率" style={{ lineHeight: '32px' }}>缺陷检测率</Option>
-          <Option value="代码风格符合度" style={{ lineHeight: '32px' }}>代码风格符合度</Option>
-          <Option value="代码不符合项检测率" style={{ lineHeight: '32px' }}>代码不符合项检测率</Option>
-          <Option value="产品说明要求" style={{ lineHeight: '32px' }}>产品说明要求</Option>
-          <Option value="用户文档集要求" style={{ lineHeight: '32px' }}>用户文档集要求</Option>
-          <Option value="其他" style={{ lineHeight: '32px' }}>其他</Option>
+        <Select id="需要测试的技术指标_下拉栏" mode="multiple" allowClear style={{ width: 160 }} onChange={(e) => {test(e,'需要测试的技术指标(其他)')}}>
+          <Option id="需要测试的技术指标_功能性" value="功能性" style={{ lineHeight: '32px' }}>功能性</Option>
+          <Option id="需要测试的技术指标_可靠性" value="可靠性" style={{ lineHeight: '32px' }}>可靠性</Option>
+          <Option id="需要测试的技术指标_易用性" value="易用性" style={{ lineHeight: '32px' }}>易用性</Option>
+          <Option id="需要测试的技术指标_效率" value="效率" style={{ lineHeight: '32px' }}>效率</Option>
+          <Option id="需要测试的技术指标_可维护性" value="可维护性" style={{ lineHeight: '32px' }}>可维护性</Option>
+          <Option id="需要测试的技术指标_可移植性" value="可移植性" style={{ lineHeight: '32px' }}>可移植性</Option>
+          <Option id="需要测试的技术指标_代码覆盖度" value="代码覆盖度" style={{ lineHeight: '32px' }}>代码覆盖度</Option>
+          <Option id="需要测试的技术指标_缺陷检测率" value="缺陷检测率" style={{ lineHeight: '32px' }}>缺陷检测率</Option>
+          <Option id="需要测试的技术指标_代码风格符合度" value="代码风格符合度" style={{ lineHeight: '32px' }}>代码风格符合度</Option>
+          <Option id="需要测试的技术指标_代码不符合项检测率" value="代码不符合项检测率" style={{ lineHeight: '32px' }}>代码不符合项检测率</Option>
+          <Option id="需要测试的技术指标_产品说明要求" value="产品说明要求" style={{ lineHeight: '32px' }}>产品说明要求</Option>
+          <Option id="需要测试的技术指标_用户文档集要求" value="用户文档集要求" style={{ lineHeight: '32px' }}>用户文档集要求</Option>
+          <Option id="需要测试的技术指标_其他" value="其他" style={{ lineHeight: '32px' }}>其他</Option>
         </Select>
       </Form.Item>
       <Form.Item
@@ -345,7 +345,7 @@ function SubmitApplication(props) {
         rules={[{ required: (formData['需要测试的技术指标(其他)'] === true), message: '请输入其他测试依据名称！' }]}
       >
         {formData['需要测试的技术指标(其他)'] != true? null:(
-           <Input style={{ padding: 0 }} disabled={formData['需要测试的技术指标(其他)'] != true} />
+           <Input id="需要测试的技术指标(其他)" style={{ padding: 0 }} disabled={formData['需要测试的技术指标(其他)'] != true} />
         )}
       </Form.Item>
       </Descriptions.Item>
@@ -405,60 +405,60 @@ function SubmitApplication(props) {
     column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
     layout='vertical'>
       <Descriptions.Item label="软件类型(单选)">
-      <Select style={{ width: 160 }} onChange={choosetype}>
-        <Option value="系统软件" style={{ lineHeight: '48px' }} >系统软件</Option>
-        <Option value="支持软件" style={{ lineHeight: '48px' }} >支持软件</Option>
-        <Option value="应用软件" style={{ lineHeight: '48px' }} >应用软件</Option>
-        <Option value="其他" style={{ lineHeight: '48px' }} >其他</Option>
+      <Select id="软件类型_下拉栏1" style={{ width: 160 }} onChange={choosetype}>
+        <Option id="软件类型_系统软件" value="系统软件" style={{ lineHeight: '48px' }} >系统软件</Option>
+        <Option id="软件类型_支持软件" value="支持软件" style={{ lineHeight: '48px' }} >支持软件</Option>
+        <Option id="软件类型_应用软件" value="应用软件" style={{ lineHeight: '48px' }} >应用软件</Option>
+        <Option id="软件类型_其他" value="其他" style={{ lineHeight: '48px' }} >其他</Option>
         </Select>
       <Form.Item
         name="软件类型"
         rules={[{ required: true, message: '请选择软件类型' }]}
       >
         
-        <Select style={{ width: 160 }}>
+        <Select  id="软件类型_下拉栏2" style={{ width: 160 }}>
           {testData["系统软件"]===true?(
           <>
-          <Option value="系统软件-操作系统" style={{ lineHeight: '32px' }} >操作系统</Option>
-            <Option value="系统软件-中文处理系统" style={{ lineHeight: '32px' }}>中文处理系统</Option>
-            <Option value="系统软件-网络系统" style={{ lineHeight: '32px' }}>网络系统</Option>
-            <Option value="系统软件-嵌入式操作系统" style={{ lineHeight: '32px' }}>嵌入式操作系统</Option>
-            <Option value="系统软件-其他" style={{ lineHeight: '32px' }}>其他</Option>
+          <Option id="软件类型_系统软件_操作系统" value="系统软件-操作系统" style={{ lineHeight: '32px' }} >操作系统</Option>
+            <Option id="软件类型_系统软件_中文处理系统" value="系统软件-中文处理系统" style={{ lineHeight: '32px' }}>中文处理系统</Option>
+            <Option id="软件类型_系统软件_网络系统" value="系统软件-网络系统" style={{ lineHeight: '32px' }}>网络系统</Option>
+            <Option id="软件类型_系统软件_嵌入式操作系统" value="系统软件-嵌入式操作系统" style={{ lineHeight: '32px' }}>嵌入式操作系统</Option>
+            <Option id="软件类型_系统软件_其他" value="系统软件-其他" style={{ lineHeight: '32px' }}>其他</Option>
           </>
           ):null}
 
           {testData["支持软件"]===true?(
           <>
-          <Option value="支持软件-程序设计语言" style={{ lineHeight: '32px' }} >程序设计语言</Option>
-          <Option value="支持软件-数据库系统设计" style={{ lineHeight: '32px' }}>数据库系统设计</Option>
-          <Option value="支持软件-工具软件" style={{ lineHeight: '32px' }}>工具软件</Option>
-          <Option value="支持软件-网络通信软件" style={{ lineHeight: '32px' }}>网络通信软件</Option>
-          <Option value="支持软件-中间件" style={{ lineHeight: '32px' }}>中间件</Option>
-          <Option value="支持软件-其他" style={{ lineHeight: '32px' }}>其他</Option>
+          <Option id="软件类型_支持软件_程序设计语言" value="支持软件-程序设计语言" style={{ lineHeight: '32px' }} >程序设计语言</Option>
+          <Option id="软件类型_支持软件_数据库系统设计" value="支持软件-数据库系统设计" style={{ lineHeight: '32px' }}>数据库系统设计</Option>
+          <Option id="软件类型_支持软件_工具软件" value="支持软件-工具软件" style={{ lineHeight: '32px' }}>工具软件</Option>
+          <Option id="软件类型_支持软件_网络通信软件" value="支持软件-网络通信软件" style={{ lineHeight: '32px' }}>网络通信软件</Option>
+          <Option id="软件类型_支持软件_中间件" value="支持软件-中间件" style={{ lineHeight: '32px' }}>中间件</Option>
+          <Option id="软件类型_支持软件_其他" value="支持软件-其他" style={{ lineHeight: '32px' }}>其他</Option>
           </>
           ):null}
 
           {testData["应用软件"]===true?(
           <>
-          <Option value="应用软件-行业管理软件" style={{ lineHeight: '32px' }} >行业管理软件</Option>
-          <Option value="应用软件-办公软件" style={{ lineHeight: '32px' }}>办公软件</Option>
-          <Option value="应用软件-模式识别软件" style={{ lineHeight: '32px' }}>模式识别软件</Option>
-          <Option value="应用软件-图形图像软件" style={{ lineHeight: '32px' }}>图形图像软件</Option>
-          <Option value="应用软件-控制软件" style={{ lineHeight: '32px' }}>控制软件</Option>
-          <Option value="应用软件-网络应用软件" style={{ lineHeight: '32px' }}>网络应用软件</Option>
-          <Option value="应用软件-信息管理软件" style={{ lineHeight: '32px' }}>信息管理软件</Option>
-          <Option value="应用软件-数据库管理应用软件" style={{ lineHeight: '32px' }}>数据库管理应用软件</Option>
-          <Option value="应用软件-安全与保密软件" style={{ lineHeight: '32px' }}>安全与保密软件</Option>
-          <Option value="应用软件-嵌入式应用软件" style={{ lineHeight: '32px' }}>嵌入式应用软件</Option>
-          <Option value="应用软件-教育软件" style={{ lineHeight: '32px' }}>教育软件</Option>
-          <Option value="应用软件-游戏软件" style={{ lineHeight: '32px' }}>游戏软件</Option>
-          <Option value="应用软件-其他" style={{ lineHeight: '32px' }}>其他</Option>
+          <Option id="软件类型_应用软件_行业管理软件" value="应用软件-行业管理软件" style={{ lineHeight: '32px' }} >行业管理软件</Option>
+          <Option id="软件类型_应用软件_办公软件" value="应用软件-办公软件" style={{ lineHeight: '32px' }}>办公软件</Option>
+          <Option id="软件类型_应用软件_模式识别软件" value="应用软件-模式识别软件" style={{ lineHeight: '32px' }}>模式识别软件</Option>
+          <Option id="软件类型_应用软件_图形图像软件" value="应用软件-图形图像软件" style={{ lineHeight: '32px' }}>图形图像软件</Option>
+          <Option id="软件类型_应用软件_控制软件" value="应用软件-控制软件" style={{ lineHeight: '32px' }}>控制软件</Option>
+          <Option id="软件类型_应用软件_网络应用软件" value="应用软件-网络应用软件" style={{ lineHeight: '32px' }}>网络应用软件</Option>
+          <Option id="软件类型_应用软件_信息管理软件" value="应用软件-信息管理软件" style={{ lineHeight: '32px' }}>信息管理软件</Option>
+          <Option id="软件类型_应用软件_数据库管理应用软件" value="应用软件-数据库管理应用软件" style={{ lineHeight: '32px' }}>数据库管理应用软件</Option>
+          <Option id="软件类型_应用软件_安全与保密软件" value="应用软件-安全与保密软件" style={{ lineHeight: '32px' }}>安全与保密软件</Option>
+          <Option id="软件类型_应用软件_嵌入式应用软件" value="应用软件-嵌入式应用软件" style={{ lineHeight: '32px' }}>嵌入式应用软件</Option>
+          <Option id="软件类型_应用软件_教育软件" value="应用软件-教育软件" style={{ lineHeight: '32px' }}>教育软件</Option>
+          <Option id="软件类型_应用软件_游戏软件" value="应用软件-游戏软件" style={{ lineHeight: '32px' }}>游戏软件</Option>
+          <Option id="软件类型_应用软件_其他" value="应用软件-其他" style={{ lineHeight: '32px' }}>其他</Option>
           </>
           ):null}
 
           {testData["其他"]===true?(
           <>
-          <Option value="其他-其他" style={{ lineHeight: '32px' }} >其他</Option>
+          <Option id="软件类型_其他_其他" value="其他-其他" style={{ lineHeight: '32px' }} >其他</Option>
           </>
           ):null}         
         </Select>
@@ -559,10 +559,10 @@ function SubmitApplication(props) {
                     name={['运行环境', '服务器端', '硬件', '架构']}
                     rules={[{ required: true, message: '请选择架构' }]}
                   >
-                    <Select  mode="multiple" allowClear style={{ width: 160 }} onChange={(e) => {test(e,'运行环境-服务器端-硬件-架构-其他')}}>
-                      <Option value="PC服务器" style={{ lineHeight: '32px' }} >PC服务器</Option>
-                      <Option value="UNIX/Linux服务器" style={{ lineHeight: '32px' }} >UNIX/Linux服务器</Option>
-                      <Option value="其他" style={{ lineHeight: '32px' }}>其他</Option>
+                    <Select id="运行环境_服务器端_硬件_架构_下拉栏"  mode="multiple" allowClear style={{ width: 160 }} onChange={(e) => {test(e,'运行环境-服务器端-硬件-架构-其他')}}>
+                      <Option id="运行环境_服务器端_硬件_架构_PC服务器" value="PC服务器" style={{ lineHeight: '32px' }} >PC服务器</Option>
+                      <Option id="运行环境_服务器端_硬件_架构_UNIX/Linux服务器" value="UNIX/Linux服务器" style={{ lineHeight: '32px' }} >UNIX/Linux服务器</Option>
+                      <Option id="运行环境_服务器端_硬件_架构_其他" value="其他" style={{ lineHeight: '32px' }}>其他</Option>
                     </Select>
                   </Form.Item>
                   <Form.Item
@@ -571,7 +571,7 @@ function SubmitApplication(props) {
                     rules={[{ required: (formData['运行环境-服务器端-硬件-架构-其他'] === true), message: '请填写内容' }]}
                   >
                     {formData['运行环境-服务器端-硬件-架构-其他'] != true? null:(
-                      <Input style={{ padding: 0 }} disabled={formData['运行环境-服务器端-硬件-架构-其他'] != true} />
+                      <Input id="运行环境_服务器端_硬件_架构_其他" style={{ padding: 0 }} disabled={formData['运行环境-服务器端-硬件-架构-其他'] != true} />
                     )}
                   </Form.Item>
                 </Descriptions.Item>
@@ -652,10 +652,10 @@ function SubmitApplication(props) {
                   name={['运行环境', '服务器端', '软件', '架构']}
                   rules={[{ required: true, message: '请选择架构' }]}
                 >
-                  <Select style={{ width: 80 }}>
-                    <Option value="C/S" style={{ lineHeight: '32px' }} >C/S</Option>
-                    <Option value="B/S" style={{ lineHeight: '32px' }} >B/S</Option>
-                    <Option value="其他" style={{ lineHeight: '32px' }} >其他</Option>
+                  <Select id="运行环境_服务器端_软件_架构_下拉栏" mode="multiple" allowClear style={{ width: 80 }}>
+                    <Option id="运行环境_服务器端_软件_架构_C/S" value="C/S" style={{ lineHeight: '32px' }} >C/S</Option>
+                    <Option id="运行环境_服务器端_软件_架构_B/S" value="B/S" style={{ lineHeight: '32px' }} >B/S</Option>
+                    <Option id="运行环境_服务器端_软件_架构_其他" value="其他" style={{ lineHeight: '32px' }} >其他</Option>
                   </Select>
                 </Form.Item>
                 </Descriptions.Item>
@@ -771,7 +771,7 @@ function SubmitApplication(props) {
       name={['希望测试完成时间']}
       rules={[{ required: true, message: '请填写希望测试完成的时间' }]}
     >
-      <DatePicker />
+      <DatePicker id="希望测试完成时间" />
     </Form.Item>
 
     <Divider />
