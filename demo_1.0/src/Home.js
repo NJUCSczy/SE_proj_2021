@@ -46,7 +46,6 @@ import TestCase from './UserActions/actions/TestPart/TestCase/TestCase';
 
 
 import { USE_JSON_SERVER } from './UserActions/functions/functions';
-import TestPlan from './UserActions/actions/TestPart/TestPlan/TestPlan';
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -182,17 +181,10 @@ class Home extends React.Component {
                 return (<TestPlan></TestPlan>);
             case 'Info3':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','政策法规','0','0','0'] });
-<<<<<<< HEAD
-                return (<QuestionList></QuestionList>);
-            case 'Info4':
-                this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','业务信息','0','0','0'] });
-                return (<TestScenarioReviewForm></TestScenarioReviewForm>);
-=======
                 return (<TestCase _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestCase>);
             case 'Info4':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','业务信息','0','0','0'] });
                 return (<TestRecord _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestRecord>);
->>>>>>> 689fc64def5d594e41832f9c59210a42dd8d0dab
             case 'Info5':
                 this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','新闻资讯','0','0','0'] });
                 return (<SoftwareDocumentReviewForm></SoftwareDocumentReviewForm>);
