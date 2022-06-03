@@ -29,10 +29,12 @@ browser.find_element_by_id("home_headers_functions_submit_application").click()
 
 #%%
 #自动填写用户申请表
+browser.find_element_by_id("测试类型_下拉栏").click()
 browser.find_element_by_id("测试类型_软件确认测试").click()
 browser.find_element_by_id("测试类型_其他").click()
 browser.find_element_by_id("测试类型(其他)").send_keys("某个类型")
 browser.find_element_by_id("软件名称").send_keys("测试软件(自动)")
+#%%
 browser.find_element_by_id("版本号").send_keys("1.0.0")
 browser.find_element_by_id("委托单位(中文)").send_keys("南京大学软件测试中心")
 browser.find_element_by_id("委托单位(英文)").send_keys("NJU SE test center")

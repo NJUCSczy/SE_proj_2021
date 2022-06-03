@@ -173,11 +173,11 @@ function SubmitApplication(props) {
         name='测试类型'
         rules={[{ required: true, message: '请选择测试类型' }]}
       >
-        <Select  mode="multiple" allowClear style={{ width: 160 }} onChange={(e) => {test(e,'测试类型(其他)')}}>
-          <Option value="软件确认测试" style={{ lineHeight: '32px' }}>软件确认测试</Option>
-          <Option value="成果/技术鉴定测试" style={{ lineHeight: '32px' }}>成果/技术鉴定测试</Option>
-          <Option value="专项资金验收测试" style={{ lineHeight: '32px' }}>专项资金验收测试</Option>
-          <Option value="其他" style={{ lineHeight: '32px' }} >其他</Option>
+        <Select id="测试类型_下拉栏" mode="multiple" allowClear style={{ width: 160 }} onChange={(e) => {test(e,'测试类型(其他)')}}>
+          <Option id="测试类型_软件确认测试" value="软件确认测试" style={{ lineHeight: '32px' }}>软件确认测试</Option>
+          <Option id="测试类型_成果/技术鉴定测试" value="成果/技术鉴定测试" style={{ lineHeight: '32px' }}>成果/技术鉴定测试</Option>
+          <Option id="测试类型_专项资金验收测试" value="专项资金验收测试" style={{ lineHeight: '32px' }}>专项资金验收测试</Option>
+          <Option id="测试类型_其他" value="其他" style={{ lineHeight: '32px' }} >其他</Option>
           
         </Select>
         
@@ -188,14 +188,14 @@ function SubmitApplication(props) {
         rules={[{ required: (formData['测试类型(其他)'] === true), message: '请填写其他测试类型名称！' }]}
       >
         {formData['测试类型(其他)'] != true? null:(
-           <Input style={{ padding: 0 }} disabled={formData['测试类型(其他)'] != true} />
+           <Input id="测试类型(其他)" style={{ padding: 0 }} disabled={formData['测试类型(其他)'] != true} />
         )}
         
       </Form.Item>
       
       </Descriptions.Item>
 
-      <Descriptions.Item label="软件名称" style={{ fontWeight: 'bolder', marginTop: 10 }}>
+      <Descriptions.Item label="软件名称"  style={{ fontWeight: 'bolder', marginTop: 10 }} span={2}>
       <Form.Item
         name="软件名称"
         rules={[{ required: true, message: '请填写软件名称' }]}
