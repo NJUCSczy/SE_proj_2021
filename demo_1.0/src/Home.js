@@ -38,15 +38,12 @@ import ViewUserFiles from './UserActions/actions/ViewFilesPart/ViewUserFiles/Vie
 import QuestionList from './UserActions/actions/TestPart/QuestionList/QuestionList';
 import TestCheckList from './UserActions/actions/TestPart/TestCheckList/TestCheckList';
 import TestRecord from './UserActions/actions/TestPart/TestRecord/TestRecord';
-<<<<<<< HEAD
 import TestScenarioReviewForm from './UserActions/actions/TestPart/TestScenarioReviewForm/TestScenarioReviewForm';
 import SoftwareDocumentReviewForm from './UserActions/actions/TestPart/SoftwareDocumentReviewForm/SoftwareDocumentReviewForm';
-=======
 import TestPlan from './UserActions/actions/TestPart/TestPlan/TestPlan';
 import TestReport from './UserActions/actions/TestPart/TestReport/TestReport';
 import TestCase from './UserActions/actions/TestPart/TestCase/TestCase';
 
->>>>>>> 689fc64def5d594e41832f9c59210a42dd8d0dab
 
 import { USE_JSON_SERVER } from './UserActions/functions/functions';
 import TestPlan from './UserActions/actions/TestPart/TestPlan/TestPlan';
