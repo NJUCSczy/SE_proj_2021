@@ -1,5 +1,5 @@
-#表格进行响应式布局及相关优化
-##使用antd自带的description来进行响应式布局的实现
+# 表格进行响应式布局及相关优化
+## 使用antd自带的description来进行响应式布局的实现
 - 在对antd的引用中加上对description的相关引用
   ```
   import { Descriptions } from 'antd';
