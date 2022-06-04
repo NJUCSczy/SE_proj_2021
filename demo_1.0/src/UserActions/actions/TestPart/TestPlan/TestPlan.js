@@ -7,6 +7,7 @@ import TextArea from 'antd/lib/input/TextArea';
 import { UploadOutlined, InboxOutlined, MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { NoFormStatus } from 'antd/lib/form/context';
 import { Typography } from 'antd';
+import { USE_JSON_SERVER,REMOTE_SERVER } from '../../../functions/functions';
 
 const { Title, Paragraph, Text, Link } = Typography;
 
@@ -15,9 +16,94 @@ var mobile = require('is-mobile');
 
 function TestPlan(props){
     const { UpdateUserInfo, GotoPage, _state } = props;
-    const OnFinish = (values) => {
-      console.log(values)
-    }
+
+    const onFinishForm = (values) => {
+      console.log('Success:', values);
+      if(!USE_JSON_SERVER){
+        return SubmitForm(values)
+      }
+      var form = {}
+      fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
+        method: "GET",
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(res => {
+          return res.json()
+        })
+        .then(data => {
+          if (data != null) {
+            form = data
+            form['软件测试方案']=values
+            SubmitForm(form)
+          }
+          console.log(data)
+        })
+    };
+
+      const SubmitForm = (_form) => {
+        if(USE_JSON_SERVER){
+        fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'], {
+          method: "PUT",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(_form)
+        })
+          .then(res => {
+            console.log(res)
+            if (res.status === 200) {
+              message.success({content:"提交成功！",key:"upload"})
+              GotoPage("ViewEntrust",_state)
+            }
+            else{
+              message.error({content:"提交失败！",key:"upload"})
+            }
+            return res.json()
+          })
+          .then(data => {
+            console.log(data)
+          })
+        }
+        else{
+          fetch(REMOTE_SERVER+"/delegations/"+_state['PageInfo']['id']+"/test-scheme", {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json;charset=utf-8',
+          'accessToken': _state['accessToken'],
+          'tokenType': _state['tokenType'],
+          'usrName': _state['userName'],
+          'usrID': _state['userID'],
+          'usrRole': _state['userRole'],
+          'Authorization': _state['accessToken']
+        },
+        body: JSON.stringify(_form)
+      })
+        .then(res => {
+          console.log(res)
+          if (res.status === 200) {
+            message.success({content:"提交成功！",key:"upload"})
+            GotoPage("ViewEntrust",_state)
+          }
+          else{
+            message.error({content:"提交失败！",key:"upload"})
+          }
+          return res.json()
+        })
+        .then(data => {
+          console.log(data)
+        })
+        }
+      }
+
+      const onFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo);
+        alert('请正确填写！')
+      };
+
 
       return(
         <Form
@@ -27,7 +113,8 @@ function TestPlan(props){
           wrapperCol={{ span: 16 }}
           initialValues={{ remember: true }}
           autoComplete="off"
-          onFinish={OnFinish}
+          onFinish={onFinishForm}
+          onFinishFailed={onFinishFailed}
         >
 
           <h1 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件测试方案</h1>
@@ -257,7 +344,7 @@ function TestPlan(props){
 
           <Form.Item
             label="制定测试计划工作量"
-            name="制定测试计划工作量"
+            name={["测试进度表","制定测试计划","工作量"]}
             rules={[{ required: true, message: '请输入制定测试计划工作量' }]}
           >
             <Input style={{maxWidth:200}}/>
@@ -265,7 +352,7 @@ function TestPlan(props){
 
           <Form.Item
             label="制定测试计划开始时间"
-            name="制定测试计划开始时间"
+            name={["测试进度表","制定测试计划","开始时间"]}
             rules={[{ required: true, message: '请输入制定测试计划开始时间' }]}
           >
             <DatePicker />
@@ -273,7 +360,7 @@ function TestPlan(props){
 
           <Form.Item
             label="制定测试计划结束时间"
-            name="制定测试计划结束时间"
+            name={["测试进度表","制定测试计划","结束时间"]}
             rules={[{ required: true, message: '请输入制定测试计划结束时间' }]}
           >
             <DatePicker />
@@ -282,7 +369,7 @@ function TestPlan(props){
 
           <Form.Item
             label="设计测试工作量"
-            name="设计测试工作量"
+            name={["测试进度表","设计测试","工作量"]}
             rules={[{ required: true, message: '请输入设计测试工作量' }]}
           >
             <Input style={{maxWidth:200}}/>
@@ -290,7 +377,7 @@ function TestPlan(props){
 
           <Form.Item
             label="设计测试开始时间"
-            name="设计测试开始时间"
+            name={["测试进度表","设计测试","开始时间"]}
             rules={[{ required: true, message: '请输入设计测试开始时间' }]}
           >
             <DatePicker />
@@ -298,7 +385,7 @@ function TestPlan(props){
 
           <Form.Item
             label="制定设计测试结束时间"
-            name="制定设计测试结束时间"
+            name={["测试进度表","设计测试","结束时间"]}
             rules={[{ required: true, message: '请输入设计测试结束时间' }]}
           >
             <DatePicker />
@@ -307,7 +394,7 @@ function TestPlan(props){
 
           <Form.Item
             label="执行测试工作量"
-            name="执行测试工作量"
+            name={["测试进度表","执行测试","工作量"]}
             rules={[{ required: true, message: '请输入执行测试工作量' }]}
           >
             <Input style={{maxWidth:200}}/>
@@ -315,7 +402,7 @@ function TestPlan(props){
 
           <Form.Item
             label="执行测试开始时间"
-            name="执行测试开始时间"
+            name={["测试进度表","执行测试","开始时间"]}
             rules={[{ required: true, message: '请输入执行测试开始时间' }]}
           >
             <DatePicker />
@@ -323,7 +410,7 @@ function TestPlan(props){
 
           <Form.Item
             label="执行设计测试结束时间"
-            name="执行设计测试结束时间"
+            name={["测试进度表","执行测试","结束时间"]}
             rules={[{ required: true, message: '请输入执行测试结束时间' }]}
           >
             <DatePicker />
@@ -332,7 +419,7 @@ function TestPlan(props){
 
           <Form.Item
             label="评估测试工作量"
-            name="评估测试工作量"
+            name={["测试进度表","评估测试","工作量"]}
             rules={[{ required: true, message: '请输入评估测试工作量' }]}
           >
             <Input style={{maxWidth:200}}/>
@@ -340,7 +427,7 @@ function TestPlan(props){
 
           <Form.Item
             label="评估测试开始时间"
-            name="评估测试开始时间"
+            name={["测试进度表","评估测试","开始时间"]}
             rules={[{ required: true, message: '请输入评估测试开始时间' }]}
           >
             <DatePicker />
@@ -348,7 +435,7 @@ function TestPlan(props){
 
           <Form.Item
             label="评估设计测试结束时间"
-            name="评估设计测试结束时间"
+            name={["测试进度表","评估测试","结束时间"]}
             rules={[{ required: true, message: '请输入评估测试结束时间' }]}
           >
             <DatePicker />

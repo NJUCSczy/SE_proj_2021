@@ -6,35 +6,28 @@ import { DownOutlined, SmileOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import "./Home.css";
 
-import SubmitApplication from './UserActions/actions/DelegationPart/SubmitApplication/SubmitApplication';
-import ViewApplication from './UserActions/actions/ViewFilesPart/ViewApplication/ViewApplication';
-import ViewEntrustList from './UserActions/actions/ViewFilesPart/ViewEntrustList/ViewEntrustList';
-import ViewEntrust from './UserActions/actions/ViewFilesPart/ViewEntrust/ViewEntrust';
-import TadultApplication from './UserActions/actions/DelegationPart/TadultApplication/TadultApplication'
-import MktdptApplicationStep1 from './UserActions/actions/DelegationPart/MktdptApplication/mktdept1';
-import MktdptApplicationStep2 from './UserActions/actions/DelegationPart/MktdptApplication/mktdept2';
 import UserInfoPage from './register_login/pages/UserInfo';
 import Login from './register_login/pages/Login';
 import RegisterPage from './register_login/pages/Register';
+
+import SubmitApplication from './UserActions/actions/DelegationPart/SubmitApplication/SubmitApplication';
+import FunctionList from './UserActions/actions/DelegationPart/FunctionList/FunctionList';
+import UserUploadFiles from './UserActions/actions/DelegationPart/UserUploadFiles/UserUploadFiles';
+import UserUploadSample from './UserActions/actions/DelegationPart/UserUploadSample/UserUploadSample';
+import MktdptApplicationStep1 from './UserActions/actions/DelegationPart/MktdptApplication/mktdept1';
+import MktdptApplicationStep2 from './UserActions/actions/DelegationPart/MktdptApplication/mktdept2';
+import TadultApplication from './UserActions/actions/DelegationPart/TadultApplication/TadultApplication'
+import Quotation from './UserActions/actions/DelegationPart/Quotation/Quotation';
+import QuotationFeedback from './UserActions/actions/DelegationPart/QuotationFeedback/QuotationFeedback';
+
 import ConfidentialAgreementPartyB from './UserActions/actions/ContractPart/ConfidentialAgreement/ConfidentialAgreementPartyB';
 import ConfidentialAgreementPartyA from './UserActions/actions/ContractPart/ConfidentialAgreement/ConfidentialAgreementPartyA';
 import ClientApplication from './UserActions/actions/ContractPart/MktContract/ClientApplication';
 import TrusteeApplication from './UserActions/actions/ContractPart/MktContract/TrusteeApplication';
 import TestAgreement from './UserActions/actions/ContractPart/TestAgreement/TestAgreement';
 import CheckTA from './UserActions/actions/ContractPart/TestAgreement/CheckTA';
-import ViewCfdtagreement from './UserActions/actions/ViewFilesPart/ViewCfdtagreement/ViewCfdtagreement';
-import ViewContract from './UserActions/actions/ViewFilesPart/ViewContract/ViewContract';
-import ViewFunction from './UserActions/actions/ViewFilesPart/ViewFunction/ViewFunction';
-import ViewSignature from './UserActions/actions/ViewFilesPart/ViewSignature/ViewSignature';
-import ViewQuotation from './UserActions/actions/ViewFilesPart/ViewQuotation/ViewQuotation';
-
 
 import CheckList from './UserActions/actions/TestPart/CheckList/CheckList';
-import Quotation from './UserActions/actions/DelegationPart/Quotation/Quotation';
-import QuotationFeedback from './UserActions/actions/DelegationPart/QuotationFeedback/QuotationFeedback';
-import FunctionList from './UserActions/actions/DelegationPart/FunctionList/FunctionList';
-import UserUploadFiles from './UserActions/actions/DelegationPart/UserUploadFiles/UserUploadFiles';
-import ViewUserFiles from './UserActions/actions/ViewFilesPart/ViewUserFiles/ViewUserFiles';
 import QuestionList from './UserActions/actions/TestPart/QuestionList/QuestionList';
 import TestCheckList from './UserActions/actions/TestPart/TestCheckList/TestCheckList';
 import TestRecord from './UserActions/actions/TestPart/TestRecord/TestRecord';
@@ -42,9 +35,18 @@ import TestPlan from './UserActions/actions/TestPart/TestPlan/TestPlan';
 import TestReport from './UserActions/actions/TestPart/TestReport/TestReport';
 import TestCase from './UserActions/actions/TestPart/TestCase/TestCase';
 
+import ViewEntrust from './UserActions/actions/ViewFilesPart/ViewEntrust/ViewEntrust';
+import ViewUserFiles from './UserActions/actions/ViewFilesPart/ViewUserFiles/ViewUserFiles';
+import ViewApplication from './UserActions/actions/ViewFilesPart/ViewApplication/ViewApplication';
+import ViewEntrustList from './UserActions/actions/ViewFilesPart/ViewEntrustList/ViewEntrustList';
+import ViewCfdtagreement from './UserActions/actions/ViewFilesPart/ViewCfdtagreement/ViewCfdtagreement';
+import ViewContract from './UserActions/actions/ViewFilesPart/ViewContract/ViewContract';
+import ViewFunction from './UserActions/actions/ViewFilesPart/ViewFunction/ViewFunction';
+import ViewSignature from './UserActions/actions/ViewFilesPart/ViewSignature/ViewSignature';
+import ViewQuotation from './UserActions/actions/ViewFilesPart/ViewQuotation/ViewQuotation';
+
 
 import { USE_JSON_SERVER } from './UserActions/functions/functions';
-import TestPlan from './UserActions/actions/TestPart/TestPlan/TestPlan';
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -85,7 +87,7 @@ class Home extends React.Component {
             case 'MainPage':
                 this.setState({ HeaderMenuIndex: '1', BreadcrumbByIndex: ['0', '0', '0', '0', '0'] });
                 return MainPage;
-                
+
             case 'UserInfo':
                 this.setState({ HeaderMenuIndex: '2', BreadcrumbByIndex: ['首页', '用户信息', '0', '0', '0'] });
                 return (<UserInfoPage _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage} />);
@@ -110,6 +112,9 @@ class Home extends React.Component {
             case 'UserUploadFiles':
                 this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '上传文档资料', '0'] });
                 return (<UserUploadFiles _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></UserUploadFiles>);
+            case 'UserUploadSample':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '上传文档资料', '0'] });
+                return (<UserUploadSample _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></UserUploadSample>);
             case 'TadultApplication':
                 this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '测试部审核委托', '0'] });
                 return (<TadultApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TadultApplication>);
@@ -173,23 +178,23 @@ class Home extends React.Component {
                 return (<ViewSignature _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewSignature>);
 
             case 'Info1':
-                this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','机构信息','0','0','0'] });
+                this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '机构信息', '0', '0', '0'] });
                 return (<TestPlan _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestPlan>);
             case 'Info2':
-                this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','资质信息','0','0','0'] });
+                this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '资质信息', '0', '0', '0'] });
                 return (<TestPlan></TestPlan>);
             case 'Info3':
-                this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','政策法规','0','0','0'] });
+                this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '政策法规', '0', '0', '0'] });
                 return (<TestCase _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestCase>);
             case 'Info4':
-                this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','业务信息','0','0','0'] });
+                this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '业务信息', '0', '0', '0'] });
                 return (<TestRecord _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestRecord>);
             case 'Info5':
-                this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','新闻资讯','0','0','0'] });
+                this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '新闻资讯', '0', '0', '0'] });
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>新闻资讯</div>);
             case 'Info6':
-                this.setState({ HeaderMenuIndex: '4',BreadcrumbByIndex: ['首页','友情链接','0','0','0'] });
-                return (<TestCheckList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestCheckList>);
+                this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '友情链接', '0', '0', '0'] });
+                return (<UserUploadSample _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></UserUploadSample>);
         }
         return null;
     }
@@ -200,10 +205,10 @@ class Home extends React.Component {
     }
 
     render() {
-        
 
 
-        const infoMenu = (<div id='home_headers_infos'><Dropdown  overlay={<Menu 
+
+        const infoMenu = (<div id='home_headers_infos'><Dropdown overlay={<Menu
             items={[
                 { label: (<a onClick={() => { this.GotoPage('Info1', this.state) }}>机构信息</a>), },
                 { label: (<a onClick={() => { this.GotoPage('Info2', this.state) }}>资质信息</a>), },
@@ -212,7 +217,7 @@ class Home extends React.Component {
                 { label: (<a onClick={() => { this.GotoPage('Info5', this.state) }}>新闻资讯</a>), },
                 { label: (<a onClick={() => { this.GotoPage('Info6', this.state) }}>友情链接</a>), },
             ]} />} placement="bottom">
-            <a onClick={e => e.preventDefault()}><Space style={{color:'white'}}>信息<DownOutlined /></Space></a>
+            <a onClick={e => e.preventDefault()}><Space style={{ color: 'white' }}>信息<DownOutlined /></Space></a>
         </Dropdown></div>)
 
         const Breadcrumbitems = {
@@ -258,14 +263,14 @@ class Home extends React.Component {
                 { label: (<a id="home_headers_functions_submit_application" onClick={() => { this.GotoPage('SubmitApplication', this.state) }}>提交申请</a>), },
                 { label: (<a id="home_headers_functions_view_application" onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
             ]} />} placement="bottom">
-            <a id="home_headers_functions" onClick={e => e.preventDefault()}><Space style={{color:'white'}}>操作<DownOutlined /></Space></a>
+            <a id="home_headers_functions" onClick={e => e.preventDefault()}><Space style={{ color: 'white' }}>操作<DownOutlined /></Space></a>
         </Dropdown>)
 
         const staffFunctionMenu = (<Dropdown overlay={<Menu
             items={[
                 { label: (<a id="home_headers_functions_view_application" onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
             ]} />} placement="bottom">
-            <a onClick={e => e.preventDefault()}><Space style={{color:'white'}}>操作<DownOutlined /></Space></a>
+            <a onClick={e => e.preventDefault()}><Space style={{ color: 'white' }}>操作<DownOutlined /></Space></a>
         </Dropdown>)
 
         const adminFunctionMenu = (<Dropdown overlay={<Menu
@@ -273,7 +278,7 @@ class Home extends React.Component {
                 { label: (<a id="home_headers_functions_submit_application" onClick={() => { this.GotoPage('SubmitApplication', this.state) }}>提交申请</a>), },
                 { label: (<a id="home_headers_functions_view_application" onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
             ]} />} placement="bottom">
-            <a onClick={e => e.preventDefault()}><Space style={{color:'white'}}>操作<DownOutlined /></Space></a>
+            <a onClick={e => e.preventDefault()}><Space style={{ color: 'white' }}>操作<DownOutlined /></Space></a>
         </Dropdown>)
 
         return (
@@ -288,8 +293,8 @@ class Home extends React.Component {
                         items={new Array(4).fill(null).map((_, index) => ({
                             key: String(index + 1),
                             label: {
-                                0: (<a id="home_headers_mainpage" onClick={() => { this.GotoPage('MainPage', this.state) }}><Space style={{color:'white'}}>首页</Space></a>),
-                                1: (<a id="home_headers_user" onClick={() => { this.state.accessToken === null ? this.GotoPage('Login', this.state) : this.GotoPage('UserInfo', this.state) }}><Space style={{color:'white'}}>用户</Space></a>),
+                                0: (<a id="home_headers_mainpage" onClick={() => { this.GotoPage('MainPage', this.state) }}><Space style={{ color: 'white' }}>首页</Space></a>),
+                                1: (<a id="home_headers_user" onClick={() => { this.state.accessToken === null ? this.GotoPage('Login', this.state) : this.GotoPage('UserInfo', this.state) }}><Space style={{ color: 'white' }}>用户</Space></a>),
                                 2: (this.state.userRole == "ROLE_ADMIN") ? adminFunctionMenu : ((this.state.userRole == "ROLE_USER") ? userFunctionMenu : staffFunctionMenu),
                                 3: infoMenu,
                             }[index],
@@ -297,7 +302,7 @@ class Home extends React.Component {
                     />
                 </Header>
                 <Layout style={{ overflowY: 'hidden' }}>
-                    <Content className="site-layout" style={{ padding: mobile()?'0 10px':'0 50px', marginTop: 64, marginBottom: 70 }}>
+                    <Content className="site-layout" style={{ padding: mobile() ? '0 10px' : '0 50px', marginTop: 64, marginBottom: 70 }}>
                         <Breadcrumb style={{ margin: '16px 0' }}>
                             {Breadcrumbitems[this.state.BreadcrumbByIndex[0]]}
                             {Breadcrumbitems[this.state.BreadcrumbByIndex[1]]}

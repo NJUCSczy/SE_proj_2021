@@ -51,7 +51,7 @@ function ViewCfdtagreement(props){
       <Form
       name="basic">
         <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件项目委托测试保密协议</h2>
-        {getStageByInfo(entrustData['formData'])<19? null:(
+        {getStageByInfo(entrustData['formData'])<21? null:(
             <div>          
               <Paragraph>
               委托方

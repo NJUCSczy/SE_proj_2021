@@ -46,7 +46,7 @@ return(
      name="测试合同"
     >
         <h1 style={{ fontWeight: 'bolder', marginTop: 30, textAlign: 'center' }}>软件委托测试合同</h1>
-        {getStageByInfo(entrustData['formData'])<13? null:(
+        {getStageByInfo(entrustData['formData'])<19? null:(
             <div>
                 <Form.Item label="项目名称" >
                     <Input  style={{maxWidth:300}} defaultValue={entrustData["formData"]["用户申请表"]["软件名称"]} disabled/>

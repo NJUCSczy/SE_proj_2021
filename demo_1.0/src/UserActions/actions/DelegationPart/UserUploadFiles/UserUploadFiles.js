@@ -65,7 +65,7 @@ function UserUploadFiles(props) {
 
     return (
         <Form
-            name="软件项目委托测试申请书"
+            name="软件文档"
             initialValues={{ remember: true }}
             onFinish={OnFinishForm}
             onFinishFailed={null}
@@ -74,7 +74,7 @@ function UserUploadFiles(props) {
             wrapperCol={{ span: 20 }}
             layout='vertical'
             autoComplete="false">
-            <h1>用户文件上传</h1>
+            <h1>上传软件文档</h1>
             <h2>需求文档</h2>
             <Form.Item
                 name="需求文档"

@@ -469,10 +469,7 @@ function ViewApplication(props) {
             <Radio value="U盘" style={{ lineHeight: '32px' }}>U盘</Radio>
           </Col>
           <Col span={30}>
-            <Radio value="其他" style={{ lineHeight: '32px' }} >
-              其他
-              <Input style={{ padding: 0 }} disabled defaultValue={entrustData['form1']["样品和数量"]["软件介质(其他)"]} />
-            </Radio>
+            <Radio value="在线上传" style={{ lineHeight: '32px' }} >在线上传</Radio>
           </Col>
         </Radio.Group>
 
@@ -513,7 +510,7 @@ function ViewApplication(props) {
 
         <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>网址</h3>
         <Input style={{ maxWidth: 500 }} disabled defaultValue={entrustData['form1']["委托单位信息"]["网址"]} />
-        {getStageByInfo(entrustData['formData']) < 3 ? null : (
+        {getStageByInfo(entrustData['formData']) < 5 ? null : (
           <div>
             <h1 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试部审核结果</h1>
             <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>密级</h2>
@@ -634,7 +631,7 @@ function ViewApplication(props) {
             </Radio.Group>
           </div>
         )}
-        {getStageByInfo(entrustData['formData']) < 5 ? null : (
+        {getStageByInfo(entrustData['formData']) < 8 ? null : (
           <div>
             <h1 style={{ fontWeight: 'bolder', marginTop: 30 }}>市场部审核结果</h1>
             <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>市场部受理意见</h2>
