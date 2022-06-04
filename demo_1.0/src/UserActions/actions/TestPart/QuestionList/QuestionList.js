@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react'
-
+import {React, Fragment } from 'react'
+import PropTypes from 'prop-types';
 import { message, DatePicker, Divider, Form, Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import { useState } from 'react';
 import Paragraph from 'antd/lib/skeleton/Paragraph';
@@ -9,12 +9,20 @@ const formItemLayout = {
   labelCol: { span: 5 },
   wrapperCol: { span: 16 },
 };
+/**
+ * 1
+ * 
+ * 2
+ * 
+ * 3
+ * 
+ */
 function QuestionList(props) {
   const { UpdateUserInfo, GotoPage, _state } = props;
   const [formData, setFormData] = useState({})
   const { Option } = Select;
   const { TextArea } = Input;
-  const [formValue,setFormValue]=React.useState(0);
+  const [formValue,setFormValue]=useState(0);
   const onFinishForm = (values) => {
     console.log('Success:', values);
     var form = {}
@@ -281,139 +289,12 @@ function QuestionList(props) {
 }
 export default QuestionList;
 
-
-
-// import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
-// import { Button, Form, Input, Space } from 'antd';
-
-// const QuestionList = () => {
-//   const onFinish = (values) => {
-//     console.log('Received values of form:', values);
-//   };
-
-//   return (
-//     <Form name="dynamic_form_nest_item" onFinish={onFinish} autoComplete="off">
-//       <Form.List name="users" layout='vertical'>
-//         {(fields, { add, remove }) => (
-//           <>
-//             {fields.map(({ key, name, ...restField }) => (
-//               <Space
-//                 key={key}
-//                 style={{
-//                   display: 'flex',
-//                   marginBottom: 8,
-//                 }}
-//                 align="baseline"
-//               >
-//                 <Form.Item
-//                   {...restField}
-//                   name={[name, 'number']}
-//                   label='序号'
-//                   rules={[
-//                     {
-//                       required: true,
-//                       message: '请输入序号',
-//                     },
-//                   ]}
-//                 >
-//                   <Input placeholder="序号" />
-//                 </Form.Item>
-//                 <Form.Item
-//                   {...restField}
-//                   name={[name, 'question_introduction']}
-//                   label='问题简要描述'
-//                   rules={[
-//                     {
-//                       required: true,
-//                       message: '请简要描述问题',
-//                     },
-//                   ]}
-//                 >
-//                   <Input.TextArea placeholder="问题简要描述" />
-//                 </Form.Item>
-//                 <Form.Item
-//                   {...restField}
-//                   name={[name, 'corresponding_requirement_entry']}//对应需求条目
-//                   label='对应需求条目'
-//                   rules={[
-//                     {
-//                       required: true,
-//                       message: '请填写对应需求条目',
-//                     },
-//                   ]}
-//                 >
-//                   <Input placeholder="对应需求条目" />
-//                 </Form.Item>
-//                 <Form.Item
-//                   {...restField}
-//                   name={[name, 'condition']}//发现缺陷的初始条件
-//                   label='发现缺陷的初始条件'
-//                   rules={[
-//                     {
-//                       required: true,
-//                       message: '发现缺陷的初始条件',
-//                     },
-//                   ]}
-//                 >
-//                   <Input placeholder="发现缺陷的初始条件" />
-//                 </Form.Item>
-//                 <Form.Item
-//                   {...restField}
-//                   name={[name, 'specific_operation_path']}//发现缺陷用例及具体操作路径（要具体）
-//                   label='发现缺陷用例及具体操作路径（要具体）'
-//                   rules={[
-//                     {
-//                       required: true,
-//                       message: '发现缺陷用例及具体操作路径（要具体）',
-//                     },
-//                   ]}
-//                 >
-//                   <Input placeholder="发现缺陷用例及具体操作路径（要具体）" />
-//                 </Form.Item>
-//                 <Form.Item
-//                   {...restField}
-//                   name={[name, 'related examples']}//关联用例
-//                   label='关联用例'
-//                   rules={[
-//                     {
-//                       required: true,
-//                       message: '关联用例',
-//                     },
-//                   ]}
-//                 >
-//                   <Input placeholder="关联用例" />
-//                 </Form.Item>
-//                 <Form.Item
-//                   {...restField}
-//                   name={[name, 'related examples']}//关联用例
-//                   label='关联用例'
-//                   rules={[
-//                     {
-//                       required: true,
-//                       message: '关联用例',
-//                     },
-//                   ]}
-//                 >
-//                   <Input placeholder="关联用例" />
-//                 </Form.Item>
-//                 <MinusCircleOutlined onClick={() => remove(name)} />
-//               </Space>
-//             ))}
-//             <Form.Item>
-//               <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
-//                 Add field
-//               </Button>
-//             </Form.Item>
-//           </>
-//         )}
-//       </Form.List>
-//       <Form.Item>
-//         <Button type="primary" htmlType="submit">
-//           Submit
-//         </Button>
-//       </Form.Item>
-//     </Form>
-//   );
-// };
-
 // export default QuestionList;
+QuestionList.propTypes={
+  /** 用户状态 */
+  _state:PropTypes.object,
+  /** 更新用户状态方法 */
+  UpdateUserInfo:PropTypes.func,
+  /** 切换界面方法 */
+  GotoPage:PropTypes.func
+}

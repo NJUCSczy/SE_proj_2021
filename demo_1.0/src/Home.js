@@ -31,6 +31,8 @@ import CheckList from './UserActions/actions/TestPart/CheckList/CheckList';
 import QuestionList from './UserActions/actions/TestPart/QuestionList/QuestionList';
 import TestCheckList from './UserActions/actions/TestPart/TestCheckList/TestCheckList';
 import TestRecord from './UserActions/actions/TestPart/TestRecord/TestRecord';
+import TestScenarioReviewForm from './UserActions/actions/TestPart/TestScenarioReviewForm/TestScenarioReviewForm';
+import SoftwareDocumentReviewForm from './UserActions/actions/TestPart/SoftwareDocumentReviewForm/SoftwareDocumentReviewForm';
 import TestPlan from './UserActions/actions/TestPart/TestPlan/TestPlan';
 import TestReport from './UserActions/actions/TestPart/TestReport/TestReport';
 import TestCase from './UserActions/actions/TestPart/TestCase/TestCase';
