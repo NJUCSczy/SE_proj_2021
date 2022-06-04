@@ -73,7 +73,7 @@ module.exports = {
                 },
                 {
                     name:"回显部分",
-                    components: 'src/UserActions/actions/ViewPart/**/*.js',
+                    components: 'src/UserActions/actions/ViewFilesPart/**/*.js',
                 }
             ]
             

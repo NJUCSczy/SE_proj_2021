@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-
+import PropTypes from 'prop-types';
 import { message, DatePicker, Divider, Form, Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import { useState } from 'react';
 import Paragraph from 'antd/lib/skeleton/Paragraph';
@@ -11,7 +11,7 @@ const formItemLayout = {
 };
 
 /**
- * 市场部填写报价单的部分
+ * 市场部填写报价单的界面
  */
 function Quotation(props) {
   const { UpdateUserInfo, GotoPage, _state } = props;
@@ -54,7 +54,7 @@ function Quotation(props) {
           'tokenType': _state['tokenType'],
           'usrName': _state['userName'],
           'usrID': _state['userID'],
-          'usrRole': _state['userRole'],
+          'usrRole': _state['userRole'][0],
           'Authorization': _state['accessToken']
         },
       })
@@ -113,7 +113,7 @@ function Quotation(props) {
           'tokenType': _state['tokenType'],
           'usrName': _state['userName'],
           'usrID': _state['userID'],
-          'usrRole': _state['userRole'],
+          'usrRole': _state['userRole'][0],
           'Authorization': _state['accessToken']
         },
         body: JSON.stringify(_form)
@@ -272,3 +272,12 @@ function Quotation(props) {
 
 }
 export default Quotation;
+
+Quotation.propTypes={
+  /** 用户状态 */
+  _state:PropTypes.object,
+  /** 更新用户状态方法 */
+  UpdateUserInfo:PropTypes.func,
+  /** 切换界面方法 */
+  GotoPage:PropTypes.func
+}

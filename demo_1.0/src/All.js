@@ -5,8 +5,6 @@ import { findDOMNode } from 'react-dom';
 import SubmitApplication from './UserActions/actions/DelegationPart/SubmitApplication/SubmitApplication';
 import {HashRouter as Router, Route, Routes} from 'react-router-dom';
 import Home from './Home';
-import View from './register_login/View';
-import UserAddPage from './register_login/pages/UserAdd';
 import UserListPage from './register_login/pages/UserList';
 import LoginPage from './register_login/pages/Login';
 import RegisterPage from './register_login/pages/Register';
@@ -26,11 +24,9 @@ class All extends React.Component{
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<LoginPage />} />
-                    {/* <Route path="/user/add" element={<UserAddPage />} /> */}
                     <Route path="/register" element={<RegisterPage />} />
                     <Route path="/user/list" element={<UserListPage />} />
                     <Route path="/user/edit/:id" element={<UserEditPage />} />
-                    <Route path="/yjqtest" element={<View />} />
                 </Routes>
         </Router>
         )

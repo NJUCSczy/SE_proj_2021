@@ -103,7 +103,7 @@ function SubmitApplication(props) {
           'tokenType': userState['tokenType'],
           'usrName': userState['userName'],
           'usrID': userState['userID'],
-          'usrRole': userState['userRole'],
+          'usrRole': userState['userRole'][0],
           'Authorization': userState['accessToken']
         },
         body: JSON.stringify(_form)

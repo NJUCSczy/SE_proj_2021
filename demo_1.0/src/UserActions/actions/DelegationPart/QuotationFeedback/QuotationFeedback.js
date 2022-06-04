@@ -1,5 +1,6 @@
 import isMobile from 'is-mobile';
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import { message, Typography, DatePicker, Form, InputNumber, Button, Input, Col, Radio } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
@@ -15,7 +16,7 @@ var _ = require('lodash');
  * 用户查看报价单并进行回复
  */
 function QuotationFeedback(props) {
-    const { UpdateUserInfo, GotoPage, _state } = props;
+    const { UpdateUserInfo, GotoPage, _state,focusedQuotationData } = props;
     const userState = props._state
     const [entrustData, setEntrustData] = useState({ 'formData': null })
 
@@ -53,7 +54,8 @@ function QuotationFeedback(props) {
             })
     }
     useEffect(() => {
-        updateInfo();
+        if (focusedQuotationData === undefined)
+            updateInfo();
     }, []
     )
 
@@ -91,7 +93,7 @@ function QuotationFeedback(props) {
                     'tokenType': _state['tokenType'],
                     'usrName': _state['userName'],
                     'usrID': _state['userID'],
-                    'usrRole': _state['userRole'],
+                    'usrRole': _state['userRole'][0],
                     'Authorization': _state['accessToken']
                 },
                 body: JSON.stringify(_form)
@@ -142,7 +144,9 @@ function QuotationFeedback(props) {
 
     return (
         <div>
-            <ViewQuotation _state={_state} UpdateUserInfo={UpdateUserInfo} GotoPage={GotoPage}></ViewQuotation>
+            <div style={{ padding: '20px 30px' }}>
+            <ViewQuotation _state={_state} UpdateUserInfo={UpdateUserInfo} GotoPage={GotoPage} focusedData={focusedQuotationData}></ViewQuotation>
+            </div>
             <Form
                 initialValues={{ remember: true }}
                 style={{ padding: '20px 30px' }}
@@ -202,3 +206,14 @@ function QuotationFeedback(props) {
 
 
 export default QuotationFeedback
+
+QuotationFeedback.propTypes={
+    /** 用户状态 */
+    _state:PropTypes.object,
+    /** 更新用户状态方法 */
+    UpdateUserInfo:PropTypes.func,
+    /** 切换界面方法 */
+    GotoPage:PropTypes.func,
+    /** 报价单的数据，正常情况下为空。若为空则从后端读取；不为空的情况仅用于测试 */
+    focusedQuotationData:PropTypes.object,
+  }

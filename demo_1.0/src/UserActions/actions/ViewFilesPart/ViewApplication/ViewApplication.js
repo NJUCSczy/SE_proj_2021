@@ -55,7 +55,7 @@ function ViewApplication(props) {
           'tokenType': _state['tokenType'],
           'usrName': _state['userName'],
           'usrID': _state['userID'],
-          'usrRole': _state['userRole'],
+          'usrRole': _state['userRole'][0],
           'Authorization': _state['accessToken']
         },
       })
@@ -104,8 +104,6 @@ function ViewApplication(props) {
         <h1 style={{ textAlign: 'center', fontSize: 30 }}>软件项目委托测试申请书</h1>
 
         <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试类型</h2>
-        <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>{entrustData['form1']["测试类型"].map(item => (<h3 style={{ fontWeight: 'bolder', marginTop: 10 }} key={item}> {item}</h3>))}</h3>
-        <h4 style={{ fontWeight: 'bolder', marginTop: 10 }}> {entrustData['form1']["测试类型(其他)"]}</h4>
         <Checkbox.Group defaultValue={entrustData['form1']["测试类型"]} disabled>
           <Col span={30}>
             <Checkbox value="软件确认测试" style={{ lineHeight: '32px' }}>
@@ -130,7 +128,6 @@ function ViewApplication(props) {
         </Checkbox.Group>
 
         <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件名称</h2>
-        <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>{entrustData['form1']["软件名称"]}</h2>
         <Input style={{ maxWidth: 500 }} defaultValue={entrustData['form1']["软件名称"]} disabled />
 
         <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>版本号</h2>

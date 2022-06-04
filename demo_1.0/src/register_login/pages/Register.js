@@ -33,18 +33,17 @@ function RegisterPage(props) {
       })
         .then(res => {
           console.log(formData)
+          console.log(res)
           if (res.status === 201) {
             message.success({content:'注册成功！',key:"register"})
+            GotoPage("Login")
           }else{
             message.error({content:'注册失败',key:"register"})
           }
-          return (res.json(),res.status)
+          return (res.json())
         })
-        .then((data,status) => {
+        .then(data => {
           console.log(data)
-          if (status===201) {
-            GotoPage('Login');
-          }
         })
     }
     else {
@@ -60,16 +59,14 @@ function RegisterPage(props) {
           console.log(formData)
           if (res.status === 200) {
             message.success({content:'注册成功！',key:"register"})
+            GotoPage("Login")
           }else{
             message.error({content:'注册失败',key:"register"})
           }
-          return (res.json(),res.status)
+          return res.json()
         })
-        .then((data,status) => {
+        .then(data => {
           console.log(data)
-          if (status==200) {
-            GotoPage('Login');
-          }
         })
     }
   }

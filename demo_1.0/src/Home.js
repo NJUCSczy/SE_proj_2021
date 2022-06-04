@@ -9,6 +9,7 @@ import "./Home.css";
 import UserInfoPage from './register_login/pages/UserInfo';
 import Login from './register_login/pages/Login';
 import RegisterPage from './register_login/pages/Register';
+import RegisterStaffPage from './register_login/pages/registerStaff';
 
 import SubmitApplication from './UserActions/actions/DelegationPart/SubmitApplication/SubmitApplication';
 import FunctionList from './UserActions/actions/DelegationPart/FunctionList/FunctionList';
@@ -64,7 +65,7 @@ class Home extends React.Component {
         this.state = {
             PageContent: MainPage,
             userID: null,
-            userRole: "ROLE_USER",
+            userRole: ["ROLE_USER"],
             userName: null,
             accessToken: null,
             tokenType: null,
@@ -99,6 +100,11 @@ class Home extends React.Component {
             case 'Register':
                 this.setState({ HeaderMenuIndex: '2', BreadcrumbByIndex: ['首页', '注册', '0', '0', '0'] });
                 return (<RegisterPage UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage} />);
+            case 'RegisterStaff':
+                this.setState({ HeaderMenuIndex: '2', BreadcrumbByIndex: ['首页', '注册', '0', '0', '0'] });
+                return (<RegisterStaffPage _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage} />);
+
+
             case 'SubmitApplication':
                 if (this.state.accessToken === null) {
                     alert('请先登录！')
@@ -181,7 +187,7 @@ class Home extends React.Component {
 
             case 'Info1':
                 this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '机构信息', '0', '0', '0'] });
-                return (<TestPlan _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestPlan>);
+                return (<RegisterStaffPage _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></RegisterStaffPage>);
             case 'Info2':
                 this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '资质信息', '0', '0', '0'] });
                 return (<TestPlan></TestPlan>);
@@ -297,7 +303,7 @@ class Home extends React.Component {
                             label: {
                                 0: (<a id="home_headers_mainpage" onClick={() => { this.GotoPage('MainPage', this.state) }}><Space style={{ color: 'white' }}>首页</Space></a>),
                                 1: (<a id="home_headers_user" onClick={() => { this.state.accessToken === null ? this.GotoPage('Login', this.state) : this.GotoPage('UserInfo', this.state) }}><Space style={{ color: 'white' }}>用户</Space></a>),
-                                2: (this.state.userRole == "ROLE_ADMIN") ? adminFunctionMenu : ((this.state.userRole == "ROLE_USER") ? userFunctionMenu : staffFunctionMenu),
+                                2: (this.state.userRole[0] == "ROLE_ADMIN") ? adminFunctionMenu : ((this.state.userRole[0] == "ROLE_USER") ? userFunctionMenu : staffFunctionMenu),
                                 3: infoMenu,
                             }[index],
                         }))}

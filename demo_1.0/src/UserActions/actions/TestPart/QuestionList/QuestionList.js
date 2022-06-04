@@ -56,7 +56,7 @@ function QuestionList(props) {
           'tokenType': _state['tokenType'],
           'usrName': _state['userName'],
           'usrID': _state['userID'],
-          'usrRole': _state['userRole'],
+          'usrRole': _state['userRole'][0],
           'Authorization': _state['accessToken']
         },
       })
@@ -115,7 +115,7 @@ function QuestionList(props) {
           'tokenType': _state['tokenType'],
           'usrName': _state['userName'],
           'usrID': _state['userID'],
-          'usrRole': _state['userRole'],
+          'usrRole': _state['userRole'][0],
           'Authorization': _state['accessToken']
         },
         body: JSON.stringify(_form)

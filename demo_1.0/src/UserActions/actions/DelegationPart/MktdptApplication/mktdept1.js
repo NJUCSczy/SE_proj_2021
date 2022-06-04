@@ -1,5 +1,6 @@
 import isMobile from 'is-mobile';
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import { message,DatePicker, Divider, Form, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import { useState } from 'react';
 import TextArea from 'antd/lib/input/TextArea';
@@ -11,7 +12,7 @@ var _ = require('lodash');
 var mobile = require('is-mobile');
 
 /**
- * 市场部审核用户申请表的部分
+ * 市场部审核用户申请表的界面
  */
 function MktdptApplicationStep1(props) {
   const { UpdateUserInfo, GotoPage, _state } = props;
@@ -101,7 +102,7 @@ function MktdptApplicationStep1(props) {
           'tokenType': _state['tokenType'],
           'usrName': _state['userName'],
           'usrID': _state['userID'],
-          'usrRole': _state['userRole'],
+          'usrRole': _state['userRole'][0],
           'Authorization': _state['accessToken']
         },
         body: JSON.stringify(_form)
@@ -185,3 +186,12 @@ function MktdptApplicationStep1(props) {
 }
 
 export default MktdptApplicationStep1;
+
+MktdptApplicationStep1.propTypes={
+  /** 用户状态 */
+  _state:PropTypes.object,
+  /** 更新用户状态方法 */
+  UpdateUserInfo:PropTypes.func,
+  /** 切换界面方法 */
+  GotoPage:PropTypes.func
+}

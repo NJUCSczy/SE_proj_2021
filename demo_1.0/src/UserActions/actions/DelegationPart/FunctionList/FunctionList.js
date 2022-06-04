@@ -1,5 +1,5 @@
 import React ,{ Fragment }from 'react'
-
+import PropTypes from 'prop-types';
 import { message, Divider, Form,Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import { useState } from 'react';
 import Paragraph from 'antd/lib/skeleton/Paragraph';
@@ -8,7 +8,7 @@ import FormItem from 'antd/lib/form/FormItem';
 import { USE_JSON_SERVER,REMOTE_SERVER } from '../../../functions/functions';
 
 /**
- * 用户提交功能表的界面
+ * 用户提交《委托测试软件功能列表》的界面  
  */
 function FunctionList(props) {
     const { UpdateUserInfo, GotoPage, _state } = props;
@@ -76,7 +76,7 @@ function FunctionList(props) {
           'tokenType': _state['tokenType'],
           'usrName': _state['userName'],
           'usrID': _state['userID'],
-          'usrRole': _state['userRole'],
+          'usrRole': _state['userRole'][0],
           'Authorization': _state['accessToken']
         },
         body: JSON.stringify(_form)
@@ -187,7 +187,14 @@ function FunctionList(props) {
       </Form.Item>
     </Form>
   )
-
-
 }
 export default FunctionList;
+
+FunctionList.propTypes={
+  /** 用户状态 */
+  _state:PropTypes.object,
+  /** 更新用户状态方法 */
+  UpdateUserInfo:PropTypes.func,
+  /** 切换界面方法 */
+  GotoPage:PropTypes.func
+}

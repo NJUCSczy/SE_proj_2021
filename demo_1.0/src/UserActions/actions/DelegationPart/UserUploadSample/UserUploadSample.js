@@ -1,5 +1,6 @@
 import isMobile from 'is-mobile';
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import { message, Button, Upload, Form, Radio, Col, Input } from 'antd';
 import { useState, useEffect } from 'react';
 import TextArea from 'antd/lib/input/TextArea';
@@ -10,8 +11,13 @@ import { USE_JSON_SERVER, REMOTE_SERVER } from '../../../functions/functions';
 var _ = require('lodash');
 var mobile = require('is-mobile');
 
+/**
+ * 若用户选择用U盘或光盘提交样品，那么此处需要填写备注信息；  
+ * 
+ * 若用户选择在线上传样品，那么此处需要上传文件
+ */
 function UserUploadSample(props) {
-    const { UpdateUserInfo, GotoPage, _state } = props;
+    const { UpdateUserInfo, GotoPage, _state,focusedData } = props;
     const [formData, setFormData] = useState({ '软件介质': null })
     const setDataByKey = (key, val) => {
         setFormData(prev => {
@@ -57,7 +63,7 @@ function UserUploadSample(props) {
                     'tokenType': _state['tokenType'],
                     'usrName': _state['userName'],
                     'usrID': _state['userID'],
-                    'usrRole': _state['userRole'],
+                    'usrRole': _state['userRole'][0],
                     'Authorization': _state['accessToken']
                 },
             })
@@ -78,7 +84,15 @@ function UserUploadSample(props) {
         }
     }
     useEffect(() => {
-        updateInfo();
+        if(focusedData===undefined)
+            updateInfo();
+        else{
+            setFormData(prev => {
+                const newData = _.cloneDeep(prev)
+                newData['软件介质'] = focusedData
+                return newData
+            })
+        }
     }, []
     )
 
@@ -88,7 +102,7 @@ function UserUploadSample(props) {
         if(formData["软件介质"] === '在线上传'){
             const res = new FormData();
             values['样品文件']['fileList'].forEach(_file => {
-                res.append('样品文件',_file)
+                res.append('sample',_file)
             });
             res.append('备注',values['备注'])
             console.log(res.get('样品文件'))
@@ -109,7 +123,7 @@ function UserUploadSample(props) {
                 'tokenType': _state['tokenType'],
                 'usrName': _state['userName'],
                 'usrID': _state['userID'],
-                'usrRole': _state['userRole'],
+                'usrRole': _state['userRole'][0],
                 'Authorization': _state['accessToken']
             },
             body: _form
@@ -140,7 +154,7 @@ function UserUploadSample(props) {
               'tokenType': _state['tokenType'],
               'usrName': _state['userName'],
               'usrID': _state['userID'],
-              'usrRole': _state['userRole'],
+              'usrRole': _state['userRole'][0],
               'Authorization': _state['accessToken']
             },
             body: JSON.stringify(_form)
@@ -238,3 +252,15 @@ function UserUploadSample(props) {
     )
 }
 export default UserUploadSample
+
+UserUploadSample.propTypes={
+    /** 用户状态 */
+    _state:PropTypes.object,
+    /** 更新用户状态方法 */
+    UpdateUserInfo:PropTypes.func,
+    /** 切换界面方法 */
+    GotoPage:PropTypes.func,
+    /** 用户之前选择的样品提交方式，仅在测试情况下有此参数，正常流程中应为undefined */
+    focusedData:PropTypes.string,
+  }
+  

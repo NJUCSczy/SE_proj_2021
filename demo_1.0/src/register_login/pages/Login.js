@@ -49,7 +49,7 @@ function Login(props) {
           console.log(data)
           if (data.accessToken != undefined) {
             handleChange('accessToken', data.accessToken)
-            var _info = { userRole: 'ROLE_USER', userID: data.user.id, userName: data.user.username, accessToken: data.accessToken };
+            var _info = { userRole: ['ROLE_USER'], userID: data.user.id, userName: data.user.username, accessToken: data.accessToken };
             UpdateUserInfo(_info, GotoPage('UserInfo', _info));
           }
         })
@@ -78,7 +78,7 @@ function Login(props) {
           console.log(data)
           if (data.accessToken != undefined) {
             handleChange('accessToken', data['accessToken'])
-            var _info = { userRole: data['roles'][0], userID: data['id'], userName: data['username'], accessToken: data['accessToken'],tokenType:data['tokenType'] };
+            var _info = { userRole: data['roles'], userID: data['id'], userName: data['username'], accessToken: data['accessToken'],tokenType:data['tokenType'] };
             UpdateUserInfo(_info, GotoPage('UserInfo', _info));
           }
         })

@@ -1,18 +1,19 @@
 import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types';
 import { DatePicker, Divider, Form, Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import './ViewQuotation.css'
 import { useEffect, useState } from 'react';
 import moment from 'moment';
 import Paragraph from 'antd/lib/skeleton/Paragraph';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
-import { USE_JSON_SERVER,REMOTE_SERVER,getStageByInfo, getStatusInfo } from '../../../functions/functions';
+import { USE_JSON_SERVER, REMOTE_SERVER, getStageByInfo, getStatusInfo } from '../../../functions/functions';
 
 var _ = require('lodash');
 
 
 function ViewQuotation(props) {
-    const { UpdateUserInfo, GotoPage, _state } = props;
-    const [entrustData, setEntrustData] = useState({ 'formData': null,'报价单':null })
+    const { UpdateUserInfo, GotoPage, _state, focusedData } = props;
+    const [entrustData, setEntrustData] = useState({ 'formData': null, '报价单': null })
     const { Option } = Select;
     const { TextArea } = Input;
 
@@ -41,7 +42,7 @@ function ViewQuotation(props) {
                 })
         }
         else {
-            fetch(REMOTE_SERVER+"/delegation/" + _state['PageInfo']['id'], {
+            fetch(REMOTE_SERVER + "/delegation/" + _state['PageInfo']['id'], {
                 method: "GET",
                 headers: {
                     'Accept': 'application/json',
@@ -50,12 +51,12 @@ function ViewQuotation(props) {
                     'tokenType': _state['tokenType'],
                     'usrName': _state['userName'],
                     'usrID': _state['userID'],
-                    'usrRole': _state['userRole'],
+                    'usrRole': _state['userRole'][0],
                     'Authorization': _state['accessToken']
                 },
             })
                 .then(res => {
-                    if(res.status!=200){
+                    if (res.status != 200) {
                         alert('查询报价单失败！')
                         return null
                     }
@@ -75,7 +76,15 @@ function ViewQuotation(props) {
         }
     }
     useEffect(() => {
-        updateInfo();
+        if (focusedData === undefined)
+            updateInfo();
+        else{
+            setEntrustData(prev => {
+                const newData = _.cloneDeep(prev)
+                newData['报价单'] = focusedData
+                return newData
+            })
+        }  
     }, []
     )
 
@@ -157,6 +166,15 @@ function ViewQuotation(props) {
     )
 }
 
-
-
 export default ViewQuotation
+
+ViewQuotation.propTypes={
+    /** 用户状态 */
+    _state:PropTypes.object,
+    /** 更新用户状态方法 */
+    UpdateUserInfo:PropTypes.func,
+    /** 切换界面方法 */
+    GotoPage:PropTypes.func,
+    /** 表单的数据，正常情况下为空。若为空则从后端读取；不为空的情况仅用于测试 */
+    focusedData:PropTypes.object,
+  }

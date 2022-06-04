@@ -1,5 +1,6 @@
 import isMobile from 'is-mobile';
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import { message, DatePicker, Divider, Form, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import './TadultApplication.css'
 import TextArea from 'antd/lib/input/TextArea';
@@ -12,7 +13,7 @@ import { USE_JSON_SERVER,REMOTE_SERVER } from '../../../functions/functions';
 var _ = require('lodash');
 
 /**
- * 测试部审核用户申请表
+ * 测试部审核用户申请表的界面
  */
 function TadultApplication(props) {
 
@@ -92,7 +93,7 @@ function TadultApplication(props) {
           'tokenType': _state['tokenType'],
           'usrName': _state['userName'],
           'usrID': _state['userID'],
-          'usrRole': _state['userRole'],
+          'usrRole': _state['userRole'][0],
           'Authorization': _state['accessToken']
         },
         body: JSON.stringify(_form)
@@ -308,3 +309,12 @@ function TadultApplication(props) {
 
 
 export default TadultApplication
+
+TadultApplication.propTypes={
+  /** 用户状态 */
+  _state:PropTypes.object,
+  /** 更新用户状态方法 */
+  UpdateUserInfo:PropTypes.func,
+  /** 切换界面方法 */
+  GotoPage:PropTypes.func,
+}
