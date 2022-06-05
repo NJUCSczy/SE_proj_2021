@@ -318,7 +318,7 @@ sleep(1)
 
 #%%
 #用户登录
-Login_as_mkt()
+Login_as_User()
 sleep(1)
 
 #%%
