@@ -7,8 +7,7 @@ options=webdriver.ChromeOptions()
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 browser=webdriver.Chrome(options=options)
 browser.maximize_window()
-browser.get('http://localhost:3000')
-#browser.get('file:///F:/Learning/SE_proj/SE_proj_2021/demo_1.0/build/index.html#')
+browser.get('http://my-bucket-1310801955.cos-website.ap-guangzhou.myqcloud.com')
 def Login_as_User():
     browser.find_element_by_id("home_headers_mainpage").click()
     browser.find_element_by_id("home_headers_user").click()
@@ -148,7 +147,7 @@ sleep(2)
 #%%
 #进入填写软件功能列表界面
 View_entrustList()
-sleep(1)
+sleep(2)
 View_latest_entrust()
 sleep(1)
 browser.find_element_by_id("填写软件功能列表").click()
