@@ -16,6 +16,8 @@ function ViewEntrustList(props) {
       dataIndex: (USE_JSON_SERVER) ? 'id' : 'delegationId',
       key: 'id',
       width: 100,
+      sorter: (a, b) => (USE_JSON_SERVER)?a.id-b.id:a.delegationId.localeCompare(b.delegationId),
+      sortDirections: ['descend'],
       render: (id) => (
         <Space >
           {id}
@@ -59,7 +61,7 @@ function ViewEntrustList(props) {
       textWrap: 'word-break',
       render: (id) => (
         <Space size="middle">
-          <a
+          <a id='view_entrust'
             onClick={() => gotoEntrustPage(id)}
           >查看</a>
         </Space>
@@ -95,7 +97,9 @@ function ViewEntrustList(props) {
         })
     }
     else {
-      fetch(REMOTE_SERVER+"/delegations", {
+      const URL=_state['userRole'][0]==='ROLE_USER'?(REMOTE_SERVER+"/delegations"):(REMOTE_SERVER+"/delegations/all")
+      console.log(URL)
+      fetch(URL, {
         method: "GET",
         headers: {
           'Accept': 'application/json',

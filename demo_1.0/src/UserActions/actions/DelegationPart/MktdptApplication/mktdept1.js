@@ -143,13 +143,13 @@ function MktdptApplicationStep1(props) {
       >
         <Radio.Group >
           <Col span={30} >
-            <Radio value={USE_JSON_SERVER?"受理":"可以测试"} style={{ lineHeight: '32px' }} onClick={() => setDataByKey('是否受理', '受理')}>受理</Radio>
+            <Radio id='市场部受理意见_受理' value={USE_JSON_SERVER?"受理":"可以测试"} style={{ lineHeight: '32px' }} onClick={() => setDataByKey('是否受理', '受理')}>受理</Radio>
           </Col>
           <Col span={30}>
-            <Radio value="不受理" style={{ lineHeight: '32px' }} onClick={() => setDataByKey('是否受理', '不受理')}>不受理</Radio>
+            <Radio id='市场部受理意见_不受理' value="不受理" style={{ lineHeight: '32px' }} onClick={() => setDataByKey('是否受理', '不受理')}>不受理</Radio>
           </Col>
           <Col span={30}>
-            <Radio value="需进一步审理" style={{ lineHeight: '32px' }} onClick={() => setDataByKey('是否受理', '需进一步审理')}>需进一步审理</Radio>
+            <Radio id='市场部受理意见_需进一步审理' value="需进一步审理" style={{ lineHeight: '32px' }} onClick={() => setDataByKey('是否受理', '需进一步审理')}>需进一步审理</Radio>
           </Col>
         </Radio.Group>
         </Form.Item>
@@ -159,7 +159,7 @@ function MktdptApplicationStep1(props) {
           name="市场部备注"
           rules={[{ required: true, message: '请填写市场部备注' }]}
         >
-          <TextArea rows={5} style={{ maxWidth: 700 }}></TextArea>
+          <TextArea id='市场部备注' rows={5} style={{ maxWidth: 700 }}></TextArea>
         </Form.Item></div>) : null}
       {
         (formData['是否受理'] === '需进一步审理') ? (
@@ -169,14 +169,14 @@ function MktdptApplicationStep1(props) {
               name="进一步审理方向及原因"
               rules={[{ required: true, message: '请填写进一步审理方向及原因，暂无请填“无”' }]}
             >
-              <TextArea rows={5} style={{ maxWidth: 700 }}></TextArea>
+              <TextArea id='进一步审理方向及原因' rows={5} style={{ maxWidth: 700 }}></TextArea>
             </Form.Item>
           </div>
         ) : null
       }
 
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <Button id='提交' type="primary" htmlType="submit">
           提交
         </Button>
       </Form.Item>

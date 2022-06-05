@@ -160,34 +160,34 @@ function ViewEntrust(props) {
                 </Collapse>
                 {(() => {
                     switch (entrustData['stage']) {
-                        case 0: return (<Button type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('FunctionList')}>用户填写软件功能列表</Button>);
-                        case 1: return (<Button type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('UserUploadFiles')}>用户上传软件文档</Button>);
-                        case 2: return (<Button type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('UserUploadFiles')}>用户提交样品</Button>);
-                        case 3: return (<Button type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('TadultApplication')}>测试部人员审核</Button>);
+                        case 0: return (<Button id='填写软件功能列表' type="primary" style={{ marginLeft: 20 }}
+                            onClick={() => ChangePage('FunctionList')}>填写软件功能列表</Button>);
+                        case 1: return (<Button id='上传软件文档' type="primary" style={{ marginLeft: 20 }}
+                            onClick={() => ChangePage('UserUploadFiles')}>上传软件文档</Button>);
+                        case 2: return (<Button id='提交样品' type="primary" style={{ marginLeft: 20 }}
+                            onClick={() => ChangePage('UserUploadSample')}>提交样品</Button>);
+                        case 3: return (<Button id='测试部审核' type="primary" style={{ marginLeft: 20 }}
+                            onClick={() => ChangePage('TadultApplication')}>测试部审核</Button>);
                         case 4: case 6: case 10: case 15: return null;
-                        case 5: case 7: return (<Button type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('MktdptApplicationStep1')}>市场部人员审核</Button>);
-                        case 8: case 11: return (<Button type="primary" style={{ marginLeft: 20 }}
+                        case 5: case 7: return (<Button id='市场部审核' type="primary" style={{ marginLeft: 20 }}
+                            onClick={() => ChangePage('MktdptApplicationStep1')}>市场部审核</Button>);
+                        case 8: case 11: return (<Button id='发起议价' type="primary" style={{ marginLeft: 20 }}
                             onClick={() => ChangePage('Quotation')}>发起议价</Button>);
-                        case 9: return (<Button type="primary" style={{ marginLeft: 20 }}
+                        case 9: return (<Button id='查看议价' type="primary" style={{ marginLeft: 20 }}
                             onClick={() => ChangePage('QuotationFeedback')}>查看议价</Button>);
-                        case 11: return (<Button type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('MktdptApplicationStep2')}>市场部完成申请表</Button>);
-                        case 13: case 16: return (<Button type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('TestAgreement')}>市场部起草测试合同，拟定履行期限</Button>);
-                        case 14: return (<Button type="primary" style={{ marginLeft: 20 }}
+                        case 12: return (<Button id='完成申请表' type="primary" style={{ marginLeft: 20 }}
+                            onClick={() => ChangePage('MktdptApplicationStep2')}>完成申请表</Button>);
+                        case 13: case 16: return (<Button id='起草测试合同，拟定履行期限' type="primary" style={{ marginLeft: 20 }}
+                            onClick={() => ChangePage('TestAgreement')}>起草测试合同，拟定履行期限</Button>);
+                        case 14: return (<Button id='查看履行日期' type="primary" style={{ marginLeft: 20 }}
                             onClick={() => ChangePage('CheckTA')}>查看履行日期</Button>);
-                        case 17: return (<Button type="primary" style={{ marginLeft: 20 }}
+                        case 17: return (<Button id='市场部填写签章' type="primary" style={{ marginLeft: 20 }}
                             onClick={() => ChangePage('TrusteeApplication')}>市场部填写签章</Button>);
-                        case 18: return (<Button type="primary" style={{ marginLeft: 20 }}
+                        case 18: return (<Button id='客户填写签章' type="primary" style={{ marginLeft: 20 }}
                             onClick={() => ChangePage('ClientApplication')}>客户填写签章</Button>);
-                        case 19: return (<Button type="primary" style={{ marginLeft: 20 }}
+                        case 19: return (<Button id='市场部填写保密协议' type="primary" style={{ marginLeft: 20 }}
                             onClick={() => ChangePage('ConfidentialAgreementPartyB')}>市场部填写保密协议</Button>);
-                        case 20: return (<Button type="primary" style={{ marginLeft: 20 }}
+                        case 20: return (<Button id='客户填写保密协议' type="primary" style={{ marginLeft: 20 }}
                             onClick={() => ChangePage('ConfidentialAgreementPartyA')}>客户填写保密协议</Button>);
                     }
                 })()}

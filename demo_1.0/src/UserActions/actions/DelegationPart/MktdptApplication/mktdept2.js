@@ -133,12 +133,12 @@ function MktdptApplicationStep2(props) {
           name="测试项目编号"
           rules={[{ required: true, message: '请填写测试项目编号' }]}
         >
-          <Input style={{ maxWidth: 500 }} />
+          <Input id='测试项目编号' style={{ maxWidth: 500 }} />
 
         </Form.Item></div>
 
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <Button id='提交' type="primary" htmlType="submit">
           提交
         </Button>
       </Form.Item>

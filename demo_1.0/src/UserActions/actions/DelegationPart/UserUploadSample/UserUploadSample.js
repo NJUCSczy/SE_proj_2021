@@ -17,7 +17,7 @@ var mobile = require('is-mobile');
  * 若用户选择在线上传样品，那么此处需要上传文件
  */
 function UserUploadSample(props) {
-    const { UpdateUserInfo, GotoPage, _state,focusedData } = props;
+    const { UpdateUserInfo, GotoPage, _state, focusedData } = props;
     const [formData, setFormData] = useState({ '软件介质': null })
     const setDataByKey = (key, val) => {
         setFormData(prev => {
@@ -75,7 +75,7 @@ function UserUploadSample(props) {
                     if (data != null) {
                         setFormData(prev => {
                             const newData = _.cloneDeep(prev)
-                            newData['软件介质'] = data['用户申请表']['样品和数量']['软件介质']
+                            newData['软件介质'] = data['applicationTable']['样品和数量']['软件介质']
                             return newData
                         })
                     }
@@ -84,9 +84,9 @@ function UserUploadSample(props) {
         }
     }
     useEffect(() => {
-        if(focusedData===undefined)
+        if (focusedData === undefined)
             updateInfo();
-        else{
+        else {
             setFormData(prev => {
                 const newData = _.cloneDeep(prev)
                 newData['软件介质'] = focusedData
@@ -98,24 +98,21 @@ function UserUploadSample(props) {
 
     const OnFinishForm = (values) => {
         console.log(values)
-        if(USE_JSON_SERVER)return
-        if(formData["软件介质"] === '在线上传'){
-            const res = new FormData();
-            values['样品文件']['fileList'].forEach(_file => {
-                res.append('sample',_file)
-            });
-            res.append('备注',values['备注'])
-            console.log(res.get('样品文件'))
-            SubmitFormWithFile(res)
+        if (USE_JSON_SERVER) return
+        if (formData["软件介质"] === '在线上传') {
+            SubmitFormWithFile(values)
         }
-        else{
+        else {
             SubmitFormWOFile(values)
         }
     }
 
-    const SubmitFormWithFile = (_form) => {
+    const SubmitFormWithFile = (values) => {
+        const _form = new FormData();
+        _form.append('样品', values['样品文件']['file'])
+        //_form.append('备注',values['备注'])
         message.loading({ content: "上传中", key: "upload" })
-        fetch(REMOTE_SERVER + "/delegation/" + _state['PageInfo']['id'] + "/files", {
+        fetch(REMOTE_SERVER + "/sample/online/" + _state['PageInfo']['id'], {
             method: "POST",
             headers: {
                 'credentials': 'same-origin',
@@ -145,33 +142,33 @@ function UserUploadSample(props) {
     }
 
     const SubmitFormWOFile = (_form) => {
-        fetch(REMOTE_SERVER+"/audit/delegation/test/" + _state['PageInfo']['id'], {
+        fetch(REMOTE_SERVER + "/sample/offline/" + _state['PageInfo']['id'], {
             method: "POST",
             headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json;charset=utf-8',
-              'accessToken': _state['accessToken'],
-              'tokenType': _state['tokenType'],
-              'usrName': _state['userName'],
-              'usrID': _state['userID'],
-              'usrRole': _state['userRole'][0],
-              'Authorization': _state['accessToken']
+                'Accept': 'application/json',
+                'Content-Type': 'application/json;charset=utf-8',
+                'accessToken': _state['accessToken'],
+                'tokenType': _state['tokenType'],
+                'usrName': _state['userName'],
+                'usrID': _state['userID'],
+                'usrRole': _state['userRole'][0],
+                'Authorization': _state['accessToken']
             },
             body: JSON.stringify(_form)
-          })
+        })
             .then(res => {
-              console.log(res)
-              if (res.status === 200) {
-                message.success({ content: "提交成功！", key: "upload" })
-                GotoPage("ViewEntrust", _state)
-              }
-              else {
-                message.error({ content: "提交失败！", key: "upload" })
-              }
-              return res.json()
+                console.log(res)
+                if (res.status === 201) {
+                    message.success({ content: "提交成功！", key: "upload" })
+                    GotoPage("ViewEntrust", _state)
+                }
+                else {
+                    message.error({ content: "提交失败！", key: "upload" })
+                }
+                return res.json()
             })
             .then(data => {
-              console.log(data)
+                console.log(data)
             })
     }
 
@@ -215,6 +212,7 @@ function UserUploadSample(props) {
                         ]}
                     >
                         <Upload
+                        id='样品文件'
                             beforeUpload={(file, fileList) => {
                                 const newFileList = formData.hasOwnProperty("样品文件") ? [...formData["样品文件"], file] : [file];
                                 setDataByKey("样品文件", newFileList);
@@ -241,10 +239,10 @@ function UserUploadSample(props) {
                 <Form.Item
                     name='备注'
                     rules={[{ required: true, message: '请填写备注' }]}
-                ><Input.TextArea rows={3} style={{ maxWidth: 700 }} /></Form.Item>
+                ><Input.TextArea id='备注' rows={3} style={{ maxWidth: 700 }} /></Form.Item>
 
                 <Form.Item>
-                    <Button type="primary" htmlType="submit">
+                    <Button id='提交' type="primary" htmlType="submit">
                         提交
                     </Button>
                 </Form.Item>
@@ -253,14 +251,13 @@ function UserUploadSample(props) {
 }
 export default UserUploadSample
 
-UserUploadSample.propTypes={
+UserUploadSample.propTypes = {
     /** 用户状态 */
-    _state:PropTypes.object,
+    _state: PropTypes.object,
     /** 更新用户状态方法 */
-    UpdateUserInfo:PropTypes.func,
+    UpdateUserInfo: PropTypes.func,
     /** 切换界面方法 */
-    GotoPage:PropTypes.func,
+    GotoPage: PropTypes.func,
     /** 用户之前选择的样品提交方式，仅在测试情况下有此参数，正常流程中应为undefined */
-    focusedData:PropTypes.string,
-  }
-  
+    focusedData: PropTypes.string,
+}

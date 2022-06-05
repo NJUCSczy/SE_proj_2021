@@ -141,13 +141,13 @@ function TadultApplication(props) {
       >
         <Radio.Group >
           <Col span={30} >
-            <Radio value="无密级" style={{ lineHeight: '32px' }} >无密级</Radio>
+            <Radio id='密级_无密级' value="无密级" style={{ lineHeight: '32px' }} >无密级</Radio>
           </Col>
           <Col span={30}>
-            <Radio value="秘密" style={{ lineHeight: '32px' }}>秘密</Radio>
+            <Radio id='密级_秘密' value="秘密" style={{ lineHeight: '32px' }}>秘密</Radio>
           </Col>
           <Col span={30}>
-            <Radio value="机密" style={{ lineHeight: '32px' }}>机密</Radio>
+            <Radio id='密级_机密' value="机密" style={{ lineHeight: '32px' }}>机密</Radio>
           </Col>
         </Radio.Group>
       </Form.Item>
@@ -159,19 +159,19 @@ function TadultApplication(props) {
       >
         <Checkbox.Group >
           <Col span={30}>
-            <Checkbox value="已完成" style={{ lineHeight: '32px' }}>
+            <Checkbox id='查杀病毒_已完成' value="已完成" style={{ lineHeight: '32px' }}>
               已完成
             </Checkbox>
           </Col>
-          <Checkbox value="未完成" style={{ lineHeight: '32px' }} onChange={(e) => setDataByKey('查杀工具', e.target.checked)}>
-            其他
+          <Checkbox id='查杀病毒_未完成' value="未完成" style={{ lineHeight: '32px' }} onChange={(e) => setDataByKey('查杀工具', e.target.checked)}>
+            无法完成
           </Checkbox>
           <Form.Item
             style={{ paddingLeft: 20 }}
             name="查杀工具"
             rules={[{ required: (formData['查杀工具'] === true), message: '请填写查杀工具！' }]}
           >
-            <Input style={{ padding: 0 }} disabled={formData['查杀工具'] != true} />
+            <Input id='查杀工具' style={{ padding: 0 }} disabled={formData['查杀工具'] != true} placeholder='查杀工具'/>
           </Form.Item>
         </Checkbox.Group>
       </Form.Item>
@@ -184,12 +184,12 @@ function TadultApplication(props) {
       >
         <Checkbox.Group >
           <Col span={30}>
-            <Checkbox value="源代码" style={{ lineHeight: '32px' }}>
+            <Checkbox id='材料检查_测试样品_源代码' value="源代码" style={{ lineHeight: '32px' }}>
               源代码
             </Checkbox>
           </Col>
           <Col span={30}>
-            <Checkbox value="可执行文件" style={{ lineHeight: '32px' }}>
+            <Checkbox id='材料检查_测试样品_可执行文件' value="可执行文件" style={{ lineHeight: '32px' }}>
               可执行文件
             </Checkbox>
           </Col>
@@ -203,17 +203,17 @@ function TadultApplication(props) {
       >
         <Checkbox.Group >
           <Col span={30}>
-            <Checkbox value="项目计划任务书" style={{ lineHeight: '32px' }}>
+            <Checkbox id='材料检查_需求文档_项目计划任务书' value="项目计划任务书" style={{ lineHeight: '32px' }}>
               项目计划任务书
             </Checkbox>
           </Col>
           <Col span={30}>
-            <Checkbox value="需求分析报告" style={{ lineHeight: '32px' }}>
+            <Checkbox id='材料检查_需求文档_需求分析报告' value="需求分析报告" style={{ lineHeight: '32px' }}>
               需求分析报告
             </Checkbox>
           </Col>
           <Col span={30}>
-            <Checkbox value="合同" style={{ lineHeight: '32px' }}>
+            <Checkbox id='材料检查_需求文档_合同' value="合同" style={{ lineHeight: '32px' }}>
               合同
             </Checkbox>
           </Col>
@@ -227,12 +227,12 @@ function TadultApplication(props) {
       >
         <Checkbox.Group >
           <Col span={30}>
-            <Checkbox value="用户手册" style={{ lineHeight: '32px' }}>
+            <Checkbox id='材料检查_用户文档_用户手册' value="用户手册" style={{ lineHeight: '32px' }}>
               用户手册
             </Checkbox>
           </Col>
           <Col span={30}>
-            <Checkbox value="用户指南" style={{ lineHeight: '32px' }}>
+            <Checkbox id='材料检查_用户文档_用户指南' value="用户指南" style={{ lineHeight: '32px' }}>
               用户指南
             </Checkbox>
           </Col>
@@ -246,22 +246,22 @@ function TadultApplication(props) {
       >
         <Checkbox.Group >
           <Col span={30}>
-            <Checkbox value="操作员手册" style={{ lineHeight: '32px' }}>
+            <Checkbox id='材料检查_操作文档_操作员手册' value="操作员手册" style={{ lineHeight: '32px' }}>
               操作员手册
             </Checkbox>
           </Col>
           <Col span={30}>
-            <Checkbox value="安装手册" style={{ lineHeight: '32px' }}>
+            <Checkbox id='材料检查_操作文档_安装手册' value="安装手册" style={{ lineHeight: '32px' }}>
               安装手册
             </Checkbox>
           </Col>
           <Col span={30}>
-            <Checkbox value="诊断手册" style={{ lineHeight: '32px' }}>
+            <Checkbox id='材料检查_操作文档_诊断手册' value="诊断手册" style={{ lineHeight: '32px' }}>
               诊断手册
             </Checkbox>
           </Col>
           <Col span={30}>
-            <Checkbox value="支持手册" style={{ lineHeight: '32px' }}>
+            <Checkbox id='材料检查_操作文档_支持手册' value="支持手册" style={{ lineHeight: '32px' }}>
               支持手册
             </Checkbox>
           </Col>
@@ -272,7 +272,7 @@ function TadultApplication(props) {
       <Form.Item
         name={["材料检查", "其它"]}
       >
-        <Input style={{ maxWidth: 500 }} />
+        <Input id='材料检查_其他' style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>确认意见</h2>
@@ -282,22 +282,22 @@ function TadultApplication(props) {
       >
         <Radio.Group >
           <Col span={30} >
-            <Radio value="材料不全" style={{ lineHeight: '32px' }} >测试所需材料不全，未达到受理条件。</Radio>
+            <Radio id='确认意见_材料不全' value="材料不全" style={{ lineHeight: '32px' }} >测试所需材料不全，未达到受理条件。</Radio>
           </Col>
           <Col span={30}>
-            <Radio value="可以测试" style={{ lineHeight: '32px' }}>属依据国家标准或自编非标规范进行的常规检测，有资质、能力和资源满足委托方要求。</Radio>
+            <Radio id='确认意见_可以测试' value="可以测试" style={{ lineHeight: '32px' }}>属依据国家标准或自编非标规范进行的常规检测，有资质、能力和资源满足委托方要求。</Radio>
           </Col>
           <Col span={30}>
-            <Radio value="不符合标准或者缺乏设备" style={{ lineHeight: '32px' }}>无国家标准和规范依据，或实验室缺乏检测设备和工具，无法完成检测。</Radio>
+            <Radio id='确认意见_不符合标准或者缺乏设备' value="不符合标准或者缺乏设备" style={{ lineHeight: '32px' }}>无国家标准和规范依据，或实验室缺乏检测设备和工具，无法完成检测。</Radio>
           </Col>
           <Col span={30}>
-            <Radio value="超出能力范围" style={{ lineHeight: '32px' }}>超出实验室能力和资质范围，无法完成检测。</Radio>
+            <Radio id='确认意见_超出能力范围' value="超出能力范围" style={{ lineHeight: '32px' }}>超出实验室能力和资质范围，无法完成检测。</Radio>
           </Col>
         </Radio.Group>
       </Form.Item>
 
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <Button id='提交' type="primary" htmlType="submit">
           提交
         </Button>
       </Form.Item>

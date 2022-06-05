@@ -160,13 +160,13 @@ function QuotationFeedback(props) {
                 >
                     <Radio.Group >
                         <Col span={30} >
-                            <Radio value="接受" style={{ lineHeight: '32px' }} onClick={() => setDataByKey('用户反馈', '接受')}>接受</Radio>
+                            <Radio id='用户反馈_接受' value="接受" style={{ lineHeight: '32px' }} onClick={() => setDataByKey('用户反馈', '接受')}>接受</Radio>
                         </Col>
                         <Col span={30}>
-                            <Radio value="请求议价" style={{ lineHeight: '32px' }} onClick={() => setDataByKey('用户反馈', '请求议价')}>请求议价</Radio>
+                            <Radio id='用户反馈_请求议价' value="请求议价" style={{ lineHeight: '32px' }} onClick={() => setDataByKey('用户反馈', '请求议价')}>请求议价</Radio>
                         </Col>
                         <Col span={30}>
-                            <Radio value="不接受" style={{ lineHeight: '32px' }} onClick={() => setDataByKey('用户反馈', '不接受')}>不接受</Radio>
+                            <Radio id='用户反馈_不接受' value="不接受" style={{ lineHeight: '32px' }} onClick={() => setDataByKey('用户反馈', '不接受')}>不接受</Radio>
                         </Col>
                     </Radio.Group>
                 </Form.Item>
@@ -176,12 +176,12 @@ function QuotationFeedback(props) {
                         <Form.Item
                             name="委托人签字"
                             rules={[{ required: true, message: '请填写委托人签字' }]}
-                        ><Input style={{ maxWidth: 300 }} /></Form.Item>
+                        ><Input id='委托人签字' style={{ maxWidth: 300 }} /></Form.Item>
                         <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>日期</h4>
                         <Form.Item
                             name="委托人签字日期"
                             rules={[{ required: true, message: '请填写日期' }]}
-                        ><DatePicker /></Form.Item>
+                        ><DatePicker id='委托人签字日期' /></Form.Item>
                     </div>
                 ) : null
                 }
@@ -190,12 +190,12 @@ function QuotationFeedback(props) {
                         <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>理由</h4>
                         <Form.Item
                             name="附加信息"
-                        ><TextArea rows={3} style={{ maxWidth: 700 }} /></Form.Item>
+                        ><TextArea id='理由' rows={3} style={{ maxWidth: 700 }} /></Form.Item>
                     </div>
                 ) : null
                 }
                 <Form.Item>
-                    <Button type="primary" htmlType="submit">
+                    <Button id='提交' type="primary" htmlType="submit">
                         提交
                     </Button>
                 </Form.Item>

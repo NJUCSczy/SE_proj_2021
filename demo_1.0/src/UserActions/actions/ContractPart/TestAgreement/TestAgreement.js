@@ -105,25 +105,31 @@ function TestAgreement(props) {
       >
         <h2 style={{ fontWeight: 'bolder', marginTop: 30, textAlign: 'center' }}>软件委托测试合同</h2>
 
-        <Form.Item label="项目名称" name="projectname">
+        <Form.Item label="项目名称" name="项目名称">
           {/* <Input placeholder="请输入项目名称" style={{maxWidth:300}}/> */}
           <Input style={{ maxWidth: 300 }} defaultValue={entrustData["formData"]["用户申请表"]["软件名称"]} disabled />
         </Form.Item>
 
-        <Form.Item label="委托方(甲方)" name="clientname">
+        <Form.Item label="委托方(甲方)" name="委托方(甲方)">
           {/* <Input placeholder="请输入委托方" style={{maxWidth:180}}/> */}
           <Input style={{ maxWidth: 180 }} defaultValue={entrustData["formData"]["用户申请表"]["委托单位(中文)"]} disabled />
         </Form.Item>
 
-        <Form.Item label="受托方(乙方)" name="trusteename">
+        <Form.Item label="受托方(乙方)" name="受托方(乙方)" rules={[{ required: true, message: '请填写受托方' }]}>
           <Input placeholder="请输入受托方" style={{ maxWidth: 180 }} onChange={(e) => { handleChange(e.target.value) }} />
         </Form.Item>
 
-        <Form.Item label="签订地点" name="place">
+        <Form.Item
+          label="签订地点" name="签订地点"
+          rules={[{ required: true, message: '请填写签订地点' }]}
+        >
           <Input placeholder="请输入签订地点" style={{ maxWidth: 150 }} />
         </Form.Item>
 
-        <Form.Item label="签订日期" name={['date']}>
+        <Form.Item
+          label="签订日期" name='签订日期'
+          rules={[{ required: true, message: '请填写签订日期' }]}
+        >
           <DatePicker />
         </Form.Item>
 
@@ -166,16 +172,22 @@ function TestAgreement(props) {
 
         <h3>六.履行的期限</h3>
         1.本次测试的履行期限为合同生效之日起&emsp;
-        <Form.Item name="合同履行期限" noStyle>
+        <Form.Item 
+        name="合同履行期限" noStyle
+        rules={[{ required: true, message: '请填写合同履行期限' }]}
+        >
           <InputNumber min={1} max={10000000} style={{ width: 100 }} />
         </Form.Item>
         &emsp;个自然日内完成
         <Paragraph>&emsp;2.	经甲乙双方同意，可对测试进度作适当修改，并以修改后的测试进度作为本合同执行的期限。</Paragraph>
         <Paragraph>&emsp;3.	如受测软件在测试过程中出现的问题，导致继续进行测试会影响整体测试进度,则乙方暂停测试并以书面形式通知甲方进行整改。在整个测试过程中,</Paragraph>
-        <Form.Item label="整改次数限于" labelCol={{ span: 6 }} name="整改限制次数">
-          <InputNumber min={1} max={10000000} style={{ width: 100 }} addonAfter="次" />
+        <Form.Item 
+        label="整改次数限于" labelCol={{ span: 6 }} name="整改限制次数"
+        rules={[{ required: true, message: '请填写整改限制次数' }]}>
+          <InputNumber min={1} max={10000000} style={{ width: 100 }} addonAfter="次"/>
         </Form.Item>
-        <Form.Item label="每次不超过" labelCol={{ span: 6 }} name="一次整改限制的天数">
+        <Form.Item label="每次不超过" labelCol={{ span: 6 }} name="一次整改限制的天数"
+          rules={[{ required: true, message: '请填写整改限制的天数' }]}>
           <InputNumber min={1} max={10000000} style={{ width: 100 }} addonAfter="天" />
         </Form.Item>
         <Paragraph>&emsp;4.	如因甲方原因，导致测试进度延迟、应由甲方负责,乙方不承担责任。</Paragraph>

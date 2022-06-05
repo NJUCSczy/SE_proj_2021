@@ -140,9 +140,6 @@ function Quotation(props) {
     alert('请正确填写！')
   };
 
-
-
-
   return (
     <Form
       name="报价单"
@@ -163,7 +160,7 @@ function Quotation(props) {
         name="软件名称"
         rules={[{ required: true, message: '请填写软件名称' }]}
       >
-        <Input style={{ maxWidth: 500 }} />
+        <Input id='软件名称' style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <Form.List name="项目列表" layout='vertical' width={500}>
@@ -177,7 +174,7 @@ function Quotation(props) {
                   name={[name, '项目']}
                   rules={[{ required: true, message: '请填写项目名' }]}
                 >
-                  <Input style={{ maxWidth: 500 }} placeholder="项目" />
+                  <Input id='项目' style={{ maxWidth: 500 }} placeholder="项目" />
                 </Form.Item>
 
                 <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>分项</h5>
@@ -186,7 +183,7 @@ function Quotation(props) {
                   name={[name, '分项']}
                   rules={[{ required: true, message: '请填写分项' }]}
                 >
-                  <Input style={{ maxWidth: 500 }} placeholder="分项" />
+                  <Input id='分项' style={{ maxWidth: 500 }} placeholder="分项" />
                 </Form.Item>
 
                 <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>单价</h5>
@@ -196,7 +193,7 @@ function Quotation(props) {
                   rules={[{ required: true, message: '请填写单价' },
                   { pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请输入整数' }]}
                 >
-                  <Input style={{ maxWidth: 500 }} placeholder="单价" />
+                  <Input id='单价' style={{ maxWidth: 500 }} placeholder="单价" />
                 </Form.Item>
 
                 <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>说明</h5>
@@ -205,7 +202,7 @@ function Quotation(props) {
                   name={[name, '说明']}
                   rules={[{ required: true, message: '请填写说明' }]}
                 >
-                  <Input style={{ maxWidth: 500 }} placeholder="说明" />
+                  <Input id='说明' style={{ maxWidth: 500 }} placeholder="说明" />
                 </Form.Item>
 
                 <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>行合计</h5>
@@ -215,15 +212,15 @@ function Quotation(props) {
                   rules={[{ required: true, message: '请填写行合计' },
                   { pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请输入整数' }]}
                 >
-                  <Input style={{ maxWidth: 500 }} placeholder="行合计" />
+                  <Input id='行合计' style={{ maxWidth: 500 }} placeholder="行合计" />
                 </Form.Item>
-                <Button onClick={() => remove(name)} type='danger'>
+                <Button id='删除该项目' onClick={() => remove(name)} type='danger'>
                   删除该项目
                 </Button>
               </Fragment>
             ))}
             <Form.Item>
-              <Button type="dashed"
+              <Button type="dashed" id='添加新项目'
                 style={{ width: 500, marginTop: 30 }}
                 onClick={() => add()} icon={<PlusOutlined />}  >
                 添加新项目
@@ -239,7 +236,7 @@ function Quotation(props) {
         rules={[{ required: true, message: '请填写小计' },
         { pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请输入整数' }]}
       >
-        <Input style={{ maxWidth: 500 }} />
+        <Input id='小计' style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>税率(8%)</h4>
@@ -248,7 +245,7 @@ function Quotation(props) {
         rules={[{ required: true, message: '请填写税率' },
         { pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请输入整数' }]}
       >
-        <Input style={{ maxWidth: 500 }} />
+        <Input id='税率' style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>总计</h4>
@@ -257,11 +254,11 @@ function Quotation(props) {
         rules={[{ required: true, message: '请填写总计' },
         { pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请输入整数' }]}
       >
-        <Input style={{ maxWidth: 500 }} />
+        <Input id='总计' style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <Button id='提交' type="primary" htmlType="submit">
           提交
         </Button>
       </Form.Item>

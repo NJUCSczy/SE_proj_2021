@@ -25,7 +25,7 @@ function UserInfoPage(props) {
           case 'ROLE_MODQLTY':return '质检部人员'
         }})()}</h2>
       {(_state.userRole[0] === 'ROLE_ADMIN') ? <div style={{ textAlign: 'center',marginTop:20 }}><Button type="primary" size='large' onClick={() => GotoPage("RegisterStaff",_state)}>注册工作人员</Button></div> : null}
-      <div style={{ textAlign: 'center',marginTop:20 }}><Button type="primary" size='large' onClick={Logout}>退出登录</Button></div>
+      <div style={{ textAlign: 'center',marginTop:20 }}><Button id='logout' type="primary" size='large' onClick={Logout}>退出登录</Button></div>
     </div>
   )
 }

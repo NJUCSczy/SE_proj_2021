@@ -187,7 +187,7 @@ class Home extends React.Component {
 
             case 'Info1':
                 this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '机构信息', '0', '0', '0'] });
-                return (<RegisterStaffPage _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></RegisterStaffPage>);
+                return (<TestPlan _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestPlan>);
             case 'Info2':
                 this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '资质信息', '0', '0', '0'] });
                 return (<TestPlan></TestPlan>);
@@ -278,7 +278,7 @@ class Home extends React.Component {
             items={[
                 { label: (<a id="home_headers_functions_view_application" onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
             ]} />} placement="bottom">
-            <a onClick={e => e.preventDefault()}><Space style={{ color: 'white' }}>操作<DownOutlined /></Space></a>
+            <a id="home_headers_functions" onClick={e => e.preventDefault()}><Space style={{ color: 'white' }}>操作<DownOutlined /></Space></a>
         </Dropdown>)
 
         const adminFunctionMenu = (<Dropdown overlay={<Menu
@@ -286,7 +286,7 @@ class Home extends React.Component {
                 { label: (<a id="home_headers_functions_submit_application" onClick={() => { this.GotoPage('SubmitApplication', this.state) }}>提交申请</a>), },
                 { label: (<a id="home_headers_functions_view_application" onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
             ]} />} placement="bottom">
-            <a onClick={e => e.preventDefault()}><Space style={{ color: 'white' }}>操作<DownOutlined /></Space></a>
+            <a id="home_headers_functions" onClick={e => e.preventDefault()}><Space style={{ color: 'white' }}>操作<DownOutlined /></Space></a>
         </Dropdown>)
 
         return (

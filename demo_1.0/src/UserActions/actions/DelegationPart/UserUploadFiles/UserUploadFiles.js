@@ -91,6 +91,7 @@ function UserUploadFiles(props) {
                 ]}
             >
                 <Upload
+                id='需求文档'
                     beforeUpload={(file, fileList) => {
                         const newFileList = formData.hasOwnProperty("需求文档") ? [...formData["需求文档"], file] : [file];
                         setDataByKey("需求文档", newFileList);
@@ -128,6 +129,7 @@ function UserUploadFiles(props) {
                 ]}
             >
                 <Upload
+                id='用户文档'
                     beforeUpload={(file, fileList) => {
                         const newFileList = formData.hasOwnProperty("用户文档") ? [...formData["用户文档"], file] : [file];
                         setDataByKey("用户文档", newFileList);
@@ -165,6 +167,7 @@ function UserUploadFiles(props) {
                 ]}
             >
                 <Upload
+                id='操作文档'
                     beforeUpload={(file, fileList) => {
                         const newFileList = formData.hasOwnProperty("操作文档") ? [...formData["操作文档"], file] : [file];
                         setDataByKey("操作文档", newFileList);
@@ -188,7 +191,7 @@ function UserUploadFiles(props) {
             </Form.Item>
 
             <Form.Item>
-                <Button type="primary" htmlType="submit">
+                <Button id='提交' type="primary" htmlType="submit">
                     提交
                 </Button>
             </Form.Item>
