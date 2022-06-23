@@ -199,7 +199,7 @@ browser.find_element_by_id("提交样品").click()
 sleep(0.5)
 
 #%%
-#用户上传软件文档
+#用户上传样品文件
 browser.find_element_by_id("样品文件").send_keys(os.path.split(os.path.realpath(__file__))[0]+"/test_files/test4.txt")
 browser.find_element_by_id("备注").send_keys('样品的一个备注')
 sleep(0.5)
