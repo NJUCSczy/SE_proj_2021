@@ -1,4 +1,4 @@
-export const USE_JSON_SERVER=false;
+export const USE_JSON_SERVER=true;
 export var REMOTE_SERVER='http://210.28.133.13:21250'
 
 export function getStageByInfo(info){
