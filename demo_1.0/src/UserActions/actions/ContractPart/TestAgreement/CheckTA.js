@@ -7,35 +7,99 @@ import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
 import { NoFormStatus } from 'antd/lib/form/context';
 import { useEffect, useState } from 'react';
 import moment from 'moment';
+import { USE_JSON_SERVER, REMOTE_SERVER } from '../../../functions/functions';
 const { Title, Paragraph, Text, Link } = Typography;
 var _ = require('lodash');
 
 function CheckTA(props) {
     const { UpdateUserInfo, GotoPage, _state } = props;
     const userState = props._state
-    const [entrustData, setEntrustData] = useState({ 'formData': null })
+    const [entrustData, setEntrustData] = useState({ 'formData': null, '履行期限(受托方部分)': null, '用户申请表': null, '报价单': null })
 
     const updateInfo = () => {
-        fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
-            method: "GET",
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-            .then(res => {
-                return res.json()
+        if (USE_JSON_SERVER) {
+            fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
+                method: "GET",
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
             })
-            .then(data => {
-                if (data != null) {
-                    setEntrustData(prev => {
-                        const newData = _.cloneDeep(prev)
-                        newData["formData"] = data
-                        return newData
-                    })
-                }
-                console.log(data)
+                .then(res => {
+                    return res.json()
+                })
+                .then(data => {
+                    if (data != null) {
+                        setEntrustData(prev => {
+                            const newData = _.cloneDeep(prev)
+                            newData["formData"] = data
+                            newData['履行期限(受托方部分)'] = data['测试合同']['市场部部分']
+                            newData["用户申请表"] = data['用户申请表']
+                            newData['报价单'] = data['报价单']
+                            return newData
+                        })
+                    }
+                    console.log(data)
+                })
+        }
+        else {
+            fetch(REMOTE_SERVER + "/delegation/" + _state['PageInfo']['id'], {
+                method: "GET",
+                mode: 'cors',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json;charset=utf-8',
+                    'accessToken': _state['accessToken'],
+                    'tokenType': _state['tokenType'],
+                    'usrName': _state['userName'],
+                    'usrID': _state['userID'],
+                    'usrRole': _state['userRole'][0],
+                    'Authorization': _state['accessToken']
+                },
             })
+                .then(res => {
+                    return res.json()
+                })
+                .then(data => {
+                    console.log(data)
+                    if (data != null) {
+                        setEntrustData(prev => {
+                            const newData = _.cloneDeep(prev)
+                            newData["用户申请表"] = data['applicationTable']
+                            newData['报价单'] = data['offerTableUnion']
+                            return newData
+                        })
+                    }
+                })
+            fetch(REMOTE_SERVER + "/contract/performanceTerm/partyA", {
+                method: "GET",
+                mode: 'cors',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json;charset=utf-8',
+                    'accessToken': _state['accessToken'],
+                    'tokenType': _state['tokenType'],
+                    'usrName': _state['userName'],
+                    'usrID': _state['userID'],
+                    'usrRole': _state['userRole'][0],
+                    'Authorization': _state['accessToken'],
+                    'delegationId': _state['PageInfo']['id']
+                },
+            })
+                .then(res => {
+                    return res.json()
+                })
+                .then(data => {
+                    console.log(data)
+                    if (data != null) {
+                        setEntrustData(prev => {
+                            const newData = _.cloneDeep(prev)
+                            newData['履行期限(受托方部分)'] = data['履行期限(受托方部分)']
+                            return newData
+                        })
+                    }
+                })
+        }
     }
     useEffect(() => {
         updateInfo();
@@ -43,39 +107,76 @@ function CheckTA(props) {
     )
 
     const SubmitForm = (_form) => {
-        fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
-            method: "PUT",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(_form)
-        })
-            .then(res => {
-                console.log(res)
-                if (res.status === 200) {
-                    message.success({ content: "提交成功！", key: "upload" })
-                    GotoPage("ViewEntrust", _state)
-                }
-                else {
-                    message.error({ content: "提交失败！", key: "upload" })
-                }
-                return res.json()
+        if (USE_JSON_SERVER) {
+            fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
+                method: "PUT",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(_form)
             })
-            .then(data => {
-                console.log(data)
+                .then(res => {
+                    console.log(res)
+                    if (res.status === 200) {
+                        message.success({ content: "提交成功！", key: "upload" })
+                        GotoPage("ViewEntrust", _state)
+                    }
+                    else {
+                        message.error({ content: "提交失败！", key: "upload" })
+                    }
+                    return res.json()
+                })
+                .then(data => {
+                    console.log(data)
+                })
+        }
+        else {
+            fetch(REMOTE_SERVER + '/contract/'+_state['PageInfo']['ContractID']+'/performanceTerm/partyA', {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json;charset=utf-8',
+                    'accessToken': _state['accessToken'],
+                    'tokenType': _state['tokenType'],
+                    'usrName': _state['userName'],
+                    'usrID': _state['userID'],
+                    'usrRole': _state['userRole'][0],
+                    'Authorization': _state['accessToken'],
+                },
+                body: JSON.stringify(_form)
             })
+                .then(res => {
+                    console.log(res)
+                    if (res.status === 200) {
+                        message.success({ content: "提交成功！", key: "upload" })
+                        GotoPage("ViewEntrust", _state)
+                    }
+                    else {
+                        message.error({ content: "提交失败！", key: "upload" })
+                    }
+                    return res.json()
+                })
+                .then(data => {
+                    console.log(data)
+                })
+        }
     }
 
     const onFinishForm = (values) => {
-        var form = entrustData['formData'];
-        form['测试合同']['履行期限接受情况'] = values
-        SubmitForm(form)
+        if (USE_JSON_SERVER) {
+            var form = entrustData['formData'];
+            form['测试合同']['履行期限接受情况'] = values
+            SubmitForm(form)
+        }
+        else {
+            SubmitForm(values)
+        }
     }
 
 
     console.log(entrustData)
     return (
-        entrustData['formData'] === null ? null :
+        entrustData['履行期限(受托方部分)'] === null ? null :
             (<Form
                 style={{ padding: "10px 10px 10px 10px" }}
                 name="basic"
@@ -88,35 +189,35 @@ function CheckTA(props) {
             >
                 <h2 style={{ fontWeight: 'bolder', marginTop: 30, textAlign: 'center' }}>软件委托测试合同</h2>
                 <Form.Item label="项目名称" >
-                    <Input style={{ maxWidth: 300 }} defaultValue={entrustData["formData"]["用户申请表"]["软件名称"]} disabled />
+                    <Input style={{ maxWidth: 300 }} defaultValue={entrustData["用户申请表"]["软件名称"]} disabled />
                 </Form.Item>
 
                 <Form.Item label="委托方(甲方)" >
-                    <Input style={{ maxWidth: 180 }} defaultValue={entrustData["formData"]["用户申请表"]["委托单位(中文)"]} disabled />
+                    <Input style={{ maxWidth: 180 }} defaultValue={entrustData["用户申请表"]["委托单位(中文)"]} disabled />
                 </Form.Item>
 
                 <Form.Item label="受托方(乙方)" >
-                    <Input style={{ maxWidth: 180 }} defaultValue={entrustData["formData"]["测试合同"]["市场部部分"]["trusteename"]} disabled />
+                    <Input style={{ maxWidth: 180 }} defaultValue={entrustData["履行期限(受托方部分)"]["受托方(乙方)"]} disabled />
                 </Form.Item>
 
                 <Form.Item label="签订地点" >
-                    <Input style={{ maxWidth: 180 }} defaultValue={entrustData["formData"]["测试合同"]["市场部部分"]["place"]} disabled />
+                    <Input style={{ maxWidth: 180 }} defaultValue={entrustData["履行期限(受托方部分)"]["签订地点"]} disabled />
                 </Form.Item>
 
                 <Form.Item label="签订日期" >
-                    <Input style={{ maxWidth: 180 }} defaultValue={entrustData["formData"]["测试合同"]["市场部部分"]["date"]} disabled />
+                    <Input style={{ maxWidth: 180 }} defaultValue={entrustData["履行期限(受托方部分)"]["签订日期"]} disabled />
                 </Form.Item>
 
                 <Paragraph>
-                    &emsp;本合同由作为委托方的<strong>{entrustData["formData"]["用户申请表"]["委托单位(中文)"]}(以下简称"甲方")</strong>与
+                    &emsp;本合同由作为委托方的<strong>{entrustData["用户申请表"]["委托单位(中文)"]}(以下简称"甲方")</strong>与
                     作为受托方的
-                    <strong>{entrustData["formData"]["测试合同"]["市场部部分"]["trusteename"]}(以下简称"乙方")</strong>在平等自愿的基础上,依据《中华人民共和国合同法》有关规定就项目的执行,经友好协商后订立。
+                    <strong>{entrustData["履行期限(受托方部分)"]["trusteename"]}(以下简称"乙方")</strong>在平等自愿的基础上,依据《中华人民共和国合同法》有关规定就项目的执行,经友好协商后订立。
                 </Paragraph>
 
                 <h3>一.任务表述</h3>
                 <Paragraph>
-                    &emsp;乙方按照国家软件质量测试标准和测试规范,完成甲方委托的软件<strong>{entrustData["formData"]["用户申请表"]["软件名称"]}(下称受测软件)</strong>
-                    的质量特性<strong>{entrustData["formData"]["用户申请表"]["需要测试的技术指标"]}</strong>进行测试,并出具相应的测试报告。
+                    &emsp;乙方按照国家软件质量测试标准和测试规范,完成甲方委托的软件<strong>{entrustData["用户申请表"]["软件名称"]}(下称受测软件)</strong>
+                    的质量特性<strong>{entrustData["用户申请表"]["需要测试的技术指标"]}</strong>进行测试,并出具相应的测试报告。
                 </Paragraph>
 
                 <h3>二.双方的主要义务</h3>
@@ -139,7 +240,7 @@ function CheckTA(props) {
 
                 <h3>四.合同价款</h3>
                 <Form.Item label="本合同软件测试费用为人民币" labelCol={{ span: 6 }}>
-                    <Input style={{ maxWidth: 100 }} defaultValue={entrustData["formData"]["报价单"]['基本信息']["总计"]} addonAfter="元" disabled />
+                    <Input style={{ maxWidth: 100 }} defaultValue={entrustData["报价单"]['基本信息']["总计"]} addonAfter="元" disabled />
                 </Form.Item>
 
                 <h3>五.测试费用支付方式</h3>
@@ -148,16 +249,16 @@ function CheckTA(props) {
                 <h3>六.履行的期限</h3>
                 1.本次测试的履行期限为合同生效之日起&emsp;
                 <Form.Item name="合同履行期限" noStyle>
-                    <InputNumber style={{ maxWidth: 100 }} defaultValue={entrustData["formData"]["测试合同"]['市场部部分']["合同履行期限"]} disabled />
+                    <InputNumber style={{ maxWidth: 100 }} defaultValue={entrustData["履行期限(受托方部分)"]["合同履行期限"]} disabled />
                 </Form.Item>
                 &emsp;个自然日内完成
                 <Paragraph>&emsp;2.	经甲乙双方同意，可对测试进度作适当修改，并以修改后的测试进度作为本合同执行的期限。</Paragraph>
                 <Paragraph>&emsp;3.	如受测软件在测试过程中出现的问题，导致继续进行测试会影响整体测试进度,则乙方暂停测试并以书面形式通知甲方进行整改。在整个测试过程中,</Paragraph>
                 <Form.Item label="整改次数限于" labelCol={{ span: 6 }}>
-                    <Input style={{ maxWidth: 100 }} addonAfter="次" defaultValue={entrustData["formData"]["测试合同"]['市场部部分']["整改限制次数"]} disabled />
+                    <Input style={{ maxWidth: 100 }} addonAfter="次" defaultValue={entrustData["履行期限(受托方部分)"]["整改限制次数"]} disabled />
                 </Form.Item>
                 <Form.Item label="每次不超过" labelCol={{ span: 6 }} >
-                    <Input style={{ maxWidth: 100 }} addonAfter="天" defaultValue={entrustData["formData"]["测试合同"]['市场部部分']["一次整改限制的天数"]} disabled />
+                    <Input style={{ maxWidth: 100 }} addonAfter="天" defaultValue={entrustData["履行期限(受托方部分)"]["一次整改限制的天数"]} disabled />
                 </Form.Item>
                 <Paragraph>&emsp;4.	如因甲方原因，导致测试进度延迟、应由甲方负责,乙方不承担责任。</Paragraph>
                 <Paragraph>&emsp;5.	如因乙方原因,导致测试进度延迟,则甲方可酌情提出赔偿要求,赔偿金额不超过甲方已付金额的50%。双方经协商一致后另行签订书面协议，作为本合同的补充。</Paragraph>

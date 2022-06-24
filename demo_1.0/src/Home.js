@@ -71,7 +71,7 @@ class Home extends React.Component {
             tokenType: null,
             HeaderMenuIndex: '1',
             BreadcrumbByIndex: ['0', '0', '0', '0', '0'],
-            PageInfo: { 'id': 0 }
+            PageInfo: { 'id': 0,'ContractID':0 }
         };
     }
 
