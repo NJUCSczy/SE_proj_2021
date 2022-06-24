@@ -1,6 +1,6 @@
 import './ViewEntrust.css'
 import React from 'react';
-import { Button, Dropdown, Steps, Space, Collapse, } from 'antd';
+import { Descriptions, Select, Button, Dropdown, Steps, Space, Collapse, Row, Col, } from 'antd';
 
 import { DownOutlined, SmileOutlined, CaretRightOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
@@ -10,9 +10,26 @@ var _ = require('lodash');
 const { Panel } = Collapse;
 const { Step } = Steps;
 
+
 function ViewEntrust(props) {
+    const { Option } = Select;
     const { UpdateUserInfo, GotoPage, _state } = props;
+    const [fileData, setfileData] = useState({})
     const [entrustData, setEntrustData] = useState({ 'formData': null, 'stage': -1 })
+
+    const filelist =(values)=>{
+        setfileData(prev => {
+          const newfileData = _.cloneDeep(prev)
+          const filename=['软件项目委托测试申请书','委托测试软件功能列表','文档资料','报价单','软件测试委托合同签章','保密协议']
+          filename.map(item =>(newfileData[item] = false))
+          values.map(item => (newfileData[item] = true))
+          console.log(newfileData)
+          return newfileData;
+        })
+        
+        console.log(`selected ${values}`);
+      }
+
     const updateInfo = () => {
         if (USE_JSON_SERVER) {
             fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
@@ -192,53 +209,140 @@ function ViewEntrust(props) {
                     }
                 })()}
                 <h1 style={{ marginTop: 60 }}>文件列表</h1>
-                <div>
-                    <h2 style={{ marginTop: 40 }}>软件项目委托测试申请书</h2>
-                    <h3 style={{ marginTop: 20 }}>状态:{" "}{USE_JSON_SERVER ?
-                        getStatusInfo(entrustData['formData'], '软件项目委托测试申请书') :
-                        getStatusByDelegationState(entrustData['formData']['state'], '软件项目委托测试申请书')}</h3>
-                    <Button type="primary" style={{ marginLeft: 20 }} onClick={() => ChangePage('ViewApplication')}>查看</Button>
-                </div>
-                {(entrustData['stage'] >= 1) ?
-                    (<div>
-                        <h2 style={{ marginTop: 40 }}>委托测试软件功能列表</h2>
-                        <h3 style={{ marginTop: 20 }}>状态:{" "}{USE_JSON_SERVER ?
-                            getStatusInfo(entrustData['formData'], '委托测试软件功能列表') :
-                            getStatusByDelegationState(entrustData['formData']['state'], '委托测试软件功能列表')}</h3>
-                        <Button type="primary" style={{ marginLeft: 20 }} onClick={() => ChangePage('ViewFunction')}>查看</Button>
-                    </div>) : null
+                <Select id="文件列表" mode="multiple" allowClear style={{ width: 200 }} onChange={filelist}>
+                <Option id="软件项目委托测试申请书" value="软件项目委托测试申请书" style={{ lineHeight: '32px' }} >软件项目委托测试申请书</Option>
+                {(entrustData['stage'] >= 1)?
+                    (<Option id="委托测试软件功能列表" value="委托测试软件功能列表" style={{ lineHeight: '32px' }}>委托测试软件功能列表</Option>):null
                 }
                 {(entrustData['stage'] >= 2 && !USE_JSON_SERVER) ?
-                    (<div>
-                        <h2 style={{ marginTop: 40 }}>文档资料</h2>
-                        <Button type="primary" style={{ marginLeft: 20 }} onClick={() => ChangePage('ViewUserFiles')}>查看</Button>
-                    </div>) : null
+                    (<Option id="文档资料" value="文档资料" style={{ lineHeight: '32px' }} >文档资料</Option>) : null
                 }
                 {(entrustData['stage'] >= 9) ?
+                    (<Option id="报价单" value="报价单" style={{ lineHeight: '32px' }} >报价单</Option>) : null
+                }
+                {(entrustData['stage'] >= 14) ?
+                    (<Option id="软件测试委托合同签章" value="软件测试委托合同签章" style={{ lineHeight: '32px' }} >软件测试委托合同签章</Option>) : null
+                }
+                {(entrustData['stage'] >= 20) ?
+                    (<Option id="保密协议" value="保密协议" style={{ lineHeight: '32px' }} >保密协议</Option>) : null
+                }
+                </Select>
+                {(fileData['软件项目委托测试申请书']===true)?(
+                <div>
+                    <h2 style={{ marginTop: 40 }}>软件项目委托测试申请书</h2>
+                    <Descriptions
+                    column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+                    >
+
+                    <Descriptions.Item>
+                    <h4 style={{ marginTop: 10 }}>状态:{" "}{USE_JSON_SERVER ?
+                                getStatusInfo(entrustData['formData'], '软件项目委托测试申请书') :
+                                getStatusByDelegationState(entrustData['formData']['state'], '软件项目委托测试申请书')}</h4>
+                    </Descriptions.Item>
+
+                    <Descriptions.Item>
+                    <Button type="primary"  onClick={() => ChangePage('ViewApplication')}>查看</Button>
+                    </Descriptions.Item>
+                        
+                    </Descriptions>
+                    
+                </div>):null}
+                
+                {(fileData['委托测试软件功能列表']===true) ?
+                    (<div>
+                        <h2 style={{ marginTop: 40 }}>委托测试软件功能列表</h2>
+                        <Descriptions
+                        column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+                        >
+
+                        <Descriptions.Item>
+                        <h4 style={{ marginTop: 10 }}>状态:{" "}{USE_JSON_SERVER ?
+                                getStatusInfo(entrustData['formData'], '委托测试软件功能列表') :
+                                getStatusByDelegationState(entrustData['formData']['state'], '委托测试软件功能列表')}</h4>
+                        </Descriptions.Item>
+
+                        <Descriptions.Item>
+                        <Button type="primary"  onClick={() => ChangePage('ViewFunction')}>查看</Button>
+                        </Descriptions.Item>
+                            
+                        </Descriptions>
+                        
+                        
+                    </div>) : null
+                }
+                {(fileData['文档资料']===true) ?
+                    (<div>
+                        
+                        <h2 >文档资料</h2>
+                        <Descriptions
+                        column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+                        >
+                        <Descriptions.Item>
+                        <Button type="primary"  onClick={() => ChangePage('ViewUserFiles')}>查看</Button>
+                        </Descriptions.Item>
+                            
+                        </Descriptions>
+                        
+                    </div>) : null
+                }
+                {(fileData['报价单']===true) ?
                     (<div>
                         <h2 style={{ marginTop: 40 }}>报价单</h2>
-                        <h3 style={{ marginTop: 20 }}>状态:{" "}{USE_JSON_SERVER ?
+                        <Descriptions
+                        column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+                        >
+
+                        <Descriptions.Item>
+                        <h4 style={{ marginTop: 10 }}>状态:{" "}{USE_JSON_SERVER ?
                             getStatusInfo(entrustData['formData'], '报价单') :
-                            getStatusByDelegationState(entrustData['formData']['state'], '报价单')}</h3>
-                        <Button type="primary" style={{ marginLeft: 20 }} onClick={() => ChangePage('ViewQuotation')}>查看</Button>
+                            getStatusByDelegationState(entrustData['formData']['state'], '报价单')}</h4>
+                        </Descriptions.Item>
+
+                        <Descriptions.Item>
+                        <Button type="primary"  onClick={() => ChangePage('ViewQuotation')}>查看</Button>
+                        </Descriptions.Item>
+                            
+                        </Descriptions>
                     </div>) : null
                 }
-                {(entrustData['stage'] >= 19) ?
+                {(fileData['软件测试委托合同签章']===true) ?
                     (<div>
                         <h2 style={{ marginTop: 40 }}>软件测试委托合同签章</h2>
-                        <h3 style={{ marginTop: 20 }}>状态:{" "}{USE_JSON_SERVER ?
+                        <Descriptions
+                        column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+                        >
+
+                        <Descriptions.Item>
+                        <h4 style={{ marginTop: 10 }}>状态:{" "}{USE_JSON_SERVER ?
                             getStatusInfo(entrustData['formData'], '软件委托测试合同') :
-                            getStatusByDelegationState(entrustData['formData']['state'], '软件委托测试合同')}</h3>
-                        <Button type="primary" style={{ marginLeft: 20 }} onClick={() => ChangePage('ViewSignature')}>查看</Button>
+                            getStatusByDelegationState(entrustData['formData']['state'], '软件委托测试合同')}</h4>
+                        </Descriptions.Item>
+
+                        <Descriptions.Item>
+                        <Button type="primary"  onClick={() => ChangePage('ViewSignature')}>查看</Button>
+                        </Descriptions.Item>
+                            
+                        </Descriptions>   
                     </div>) : null
                 }
-                {(entrustData['stage'] >= 21) ?
+                {(fileData['保密协议']===true) ?
                     (<div>
                         <h2 style={{ marginTop: 40 }}>保密协议</h2>
-                        <h3 style={{ marginTop: 20 }}>状态:{" "}{USE_JSON_SERVER ?
+                        <Descriptions
+                        column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+                        >
+
+                        <Descriptions.Item>
+                        <h4 style={{ marginTop: 10 }}>状态:{" "}{USE_JSON_SERVER ?
                             getStatusInfo(entrustData['formData'], '保密协议') :
-                            getStatusByDelegationState(entrustData['formData']['state'], '保密协议')}</h3>
-                        <Button type="primary" style={{ marginLeft: 20 }} onClick={() => ChangePage('ViewCfdtagreement')}>查看</Button>
+                            getStatusByDelegationState(entrustData['formData']['state'], '保密协议')}</h4>
+                        </Descriptions.Item>
+
+                        <Descriptions.Item>
+                        <Button type="primary"  onClick={() => ChangePage('ViewCfdtagreement')}>查看</Button>
+                        </Descriptions.Item>
+                            
+                        </Descriptions>  
                     </div>) : null
                 }
 
