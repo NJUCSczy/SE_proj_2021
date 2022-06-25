@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { DatePicker, Divider, Form, Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
+import { Collapse, DatePicker, Divider, Form, Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import './ViewFunction.css'
 import { getStageByInfo, getStatusInfo, USE_JSON_SERVER,REMOTE_SERVER } from '../../../functions/functions'
 import { useEffect, useState } from 'react';
@@ -15,6 +15,7 @@ function ViewFunction(props) {
   const [entrustData, setEntrustData] = useState({ 'formData': null })
   const { Option } = Select;
   const { TextArea } = Input;
+  const { Panel } = Collapse;
 
   const updateInfo = () => {
     if (USE_JSON_SERVER) {
@@ -95,26 +96,32 @@ function ViewFunction(props) {
                 <Form.Item {...restField} name={[name, '软件功能项目']}>
                   <Input style={{ maxWidth: 250 }} disabled placeholder="软件功能项目" />
                 </Form.Item>
-                <Form.List name={[name, '子功能项目列表']} layout='vertical' width={500} >
-                  {(fieldsInside, { add: addInside, remove: removeInside }) => (<>
-                    {fieldsInside.map(({ key, name, ...restFieldInside }) => (
-                      <div>
-                        <h5 style={{ fontWeight: 'bolder', padding: '0px 50px' }}>软件子功能项目</h5>
-                        <Form.Item {...restFieldInside}
-                          name={[name, '软件子功能项目']}
-                          style={{ padding: '0px 50px' }}>
-                          <Input style={{ maxWidth: 250 }} disabled placeholder="软件子功能项目" />
-                        </Form.Item>
-                        <h5 style={{ fontWeight: 'bolder', padding: '0px 50px', marginTop: 30 }}>功能说明</h5>
-                        <Form.Item {...restFieldInside}
-                          style={{ padding: '0px 50px' }}
-                          name={[name, '功能说明']}>
-                          <Input type="textarea" rows={4} style={{ maxWidth: 450 }} disabled placeholder="功能说明" />
-                        </Form.Item>
-                      </div>
-                    ))}</>
-                  )}
-                </Form.List>
+                <Collapse  bordered={false} ghost>
+                  <Panel header="软件子功能列表" key="1">
+                    
+                    <Form.List name={[name, '子功能项目列表']} layout='vertical' width={500} >
+                      {(fieldsInside, { add: addInside, remove: removeInside }) => (<>
+                        {fieldsInside.map(({ key, name, ...restFieldInside }) => (
+                          <div>
+                            <h5 style={{ fontWeight: 'bolder', padding: '0px 50px' }}>软件子功能项目</h5>
+                            <Form.Item {...restFieldInside}
+                              name={[name, '软件子功能项目']}
+                              style={{ padding: '0px 50px' }}>
+                              <Input style={{ maxWidth: 250 }} disabled placeholder="软件子功能项目" />
+                            </Form.Item>
+                            <h5 style={{ fontWeight: 'bolder', padding: '0px 50px', marginTop: 30 }}>功能说明</h5>
+                            <Form.Item {...restFieldInside}
+                              style={{ padding: '0px 50px' }}
+                              name={[name, '功能说明']}>
+                              <Input type="textarea" rows={4} style={{ maxWidth: 450 }} disabled placeholder="功能说明" />
+                            </Form.Item>
+                          </div>
+                        ))}</>
+                      )}
+                    </Form.List>
+                  </Panel>
+                </Collapse>
+                
               </Fragment>
             ))}</>
           )}

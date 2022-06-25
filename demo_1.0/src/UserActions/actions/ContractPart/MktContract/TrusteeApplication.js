@@ -26,6 +26,7 @@ function TrusteeApplication(props) {
             form = data
             form['测试合同']['签章'] = {}
             form['测试合同']['签章']['市场部签章']=values
+            form['测试合同']['签章']['市场部签章']['单位全称']='南京大学计算机软件新技术国家重点实验室'
             SubmitForm(form)
           }
           console.log(data)

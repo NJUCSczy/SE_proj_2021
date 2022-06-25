@@ -1,6 +1,6 @@
 import React ,{ Fragment }from 'react'
 import PropTypes from 'prop-types';
-import { message, Divider, Form,Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
+import { Collapse,message, Divider, Form,Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import { useState } from 'react';
 import Paragraph from 'antd/lib/skeleton/Paragraph';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
@@ -15,6 +15,7 @@ function FunctionList(props) {
     const [formData, setFormData] = useState({})
     const { Option } = Select;
     const { TextArea } = Input;
+    const { Panel } = Collapse;
 
     const onFinishForm = (values) => {
       console.log('Success:', values);
@@ -135,39 +136,44 @@ function FunctionList(props) {
               <Form.Item {...restField} name={[name,'软件功能项目']} rules={[{ required: true, message: '请填写软件功能项目' }]}>
                 <Input id='软件功能' style={{maxWidth:500}} placeholder="软件功能项目" />
               </Form.Item>
-              <Form.List  name={[name, '子功能项目列表']} layout='vertical' width={500} >
-                {(fieldsInside, { add:addInside, remove:removeInside }) => ( <>
-                  {fieldsInside.map(({ key, name, ...restFieldInside }) => (
-                  <div>
-                    <h5 style={{ fontWeight: 'bolder', padding :'0px 50px' }}>软件子功能项目</h5>
-                    <Form.Item {...restFieldInside}
-                      name = {[name,'软件子功能项目']}
-                      style={{ padding :'0px 50px'}}
-                      rules={[{ required: true, message: '请填写软件子功能项目' }]}>
-                        <Input id='软件子功能项目' style={{maxWidth:450}} placeholder="软件子功能项目" />
-                    </Form.Item>
-                    <h5 style={{ fontWeight: 'bolder',padding :'0px 50px', marginTop: 30 }}>功能说明</h5>
-                    <Form.Item {...restFieldInside}
-                      style={{ padding :'0px 50px'}}
-                      name = {[name,'功能说明']}
-                      rules={[{ required: true, message: '请填写功能说明' }]}>
-                        <Input id='功能说明' style={{maxWidth:450}} placeholder="功能说明" />
-                    </Form.Item>
-                    <FormItem style={{ padding :'0px 50px'}}>
-                      <Button onClick={() => removeInside(name)} type='danger'>
-                        删除该项目
-                      </Button>
-                    </FormItem>
-                  </div>
-                  ))}
-                <Form.Item  style={{ padding :'0px 50px'}}>
-                  <Button id='添加新项目' type="dashed" style={{ padding :'0px 50px',width:450}} onClick={() => addInside()} icon={<PlusOutlined />}  >
-                    添加新项目
-                  </Button>
-                </Form.Item>
-                </>
-                )}
-              </Form.List>
+              <Collapse  bordered={false} ghost>
+                  <Panel header="软件子功能列表" key="1">
+                    <Form.List  name={[name, '子功能项目列表']} layout='vertical' width={500} >
+                      {(fieldsInside, { add:addInside, remove:removeInside }) => ( <>
+                        {fieldsInside.map(({ key, name, ...restFieldInside }) => (
+                        <div>
+                          <h5 style={{ fontWeight: 'bolder', padding :'0px 50px' }}>软件子功能项目</h5>
+                          <Form.Item {...restFieldInside}
+                            name = {[name,'软件子功能项目']}
+                            style={{ padding :'0px 50px'}}
+                            rules={[{ required: true, message: '请填写软件子功能项目' }]}>
+                              <Input id='软件子功能项目' style={{maxWidth:450}} placeholder="软件子功能项目" />
+                          </Form.Item>
+                          <h5 style={{ fontWeight: 'bolder',padding :'0px 50px', marginTop: 30 }}>功能说明</h5>
+                          <Form.Item {...restFieldInside}
+                            style={{ padding :'0px 50px'}}
+                            name = {[name,'功能说明']}
+                            rules={[{ required: true, message: '请填写功能说明' }]}>
+                              <Input id='功能说明' style={{maxWidth:450}} placeholder="功能说明" />
+                          </Form.Item>
+                          <FormItem style={{ padding :'0px 50px'}}>
+                            <Button onClick={() => removeInside(name)} type='danger'>
+                              删除该项目
+                            </Button>
+                          </FormItem>
+                        </div>
+                        ))}
+                      <Form.Item  style={{ padding :'0px 50px'}}>
+                        <Button id='添加新项目' type="dashed" style={{ padding :'0px 50px',width:450}} onClick={() => addInside()} icon={<PlusOutlined />}  >
+                          添加新项目
+                        </Button>
+                      </Form.Item>
+                      </>
+                      )}
+                    </Form.List>
+                  </Panel>
+              </Collapse>
+              
 
               <Button onClick={() => remove(name)} type='danger'>
                   删除该功能

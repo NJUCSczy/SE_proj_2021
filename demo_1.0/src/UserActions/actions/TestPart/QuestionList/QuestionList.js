@@ -238,8 +238,8 @@ function QuestionList(props) {
                 >
                   <Input style={{ maxWidth: 500 }} placeholder="发现时间" />
                 </Form.Item> */}
-                <Form.Item name={[name, '时间']} label="DatePicker" {...config}>
-                  <DatePicker />
+                <Form.Item name={[name, '时间']}  label="DatePicker" {...config}>
+                  <DatePicker showTime />
                 </Form.Item>
 
                 <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>责任人</h5>

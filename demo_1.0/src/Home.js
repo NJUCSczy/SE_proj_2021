@@ -47,6 +47,7 @@ import ViewContract from './UserActions/actions/ViewFilesPart/ViewContract/ViewC
 import ViewFunction from './UserActions/actions/ViewFilesPart/ViewFunction/ViewFunction';
 import ViewSignature from './UserActions/actions/ViewFilesPart/ViewSignature/ViewSignature';
 import ViewQuotation from './UserActions/actions/ViewFilesPart/ViewQuotation/ViewQuotation';
+import Viewquestionlist from './UserActions/actions/ViewFilesPart/Viewquestionlist/Viewquestionlist';
 
 
 import { USE_JSON_SERVER } from './UserActions/functions/functions';
@@ -193,10 +194,10 @@ class Home extends React.Component {
                 return (<TestPlan></TestPlan>);
             case 'Info3':
                 this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '政策法规', '0', '0', '0'] });
-                return (<TestCase _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestCase>);
+                return (<QuestionList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></QuestionList>);
             case 'Info4':
                 this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '业务信息', '0', '0', '0'] });
-                return (<TestRecord _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestRecord>);
+                return (<Viewquestionlist _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></Viewquestionlist>);
             case 'Info5':
                 this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '新闻资讯', '0', '0', '0'] });
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>新闻资讯</div>);
