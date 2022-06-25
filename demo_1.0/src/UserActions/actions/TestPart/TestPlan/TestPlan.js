@@ -16,6 +16,9 @@ var mobile = require('is-mobile');
 
 function TestPlan(props){
     const { UpdateUserInfo, GotoPage, _state } = props;
+    const [formData, setFormData] = useState({})
+    const { Option } = Select;
+    const { TextArea } = Input;
 
     const onFinishForm = (values) => {
       console.log('Success:', values);

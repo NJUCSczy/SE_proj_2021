@@ -7,6 +7,7 @@ import TextArea from 'antd/lib/input/TextArea';
 import { UploadOutlined, InboxOutlined, MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { NoFormStatus } from 'antd/lib/form/context';
 import { Typography } from 'antd';
+import { USE_JSON_SERVER,REMOTE_SERVER } from '../../../functions/functions';
 
 const { Title, Paragraph, Text, Link } = Typography;
 const { RangePicker } = DatePicker;
@@ -16,9 +17,97 @@ var mobile = require('is-mobile');
 
 function TestCase(props){
     const { UpdateUserInfo, GotoPage, _state } = props;
+    const [formData, setFormData] = useState({})
+    const { Option } = Select;
+    const { TextArea } = Input;
+
     const OnFinishForm = (values) => {
-      console.log(values)
+      console.log('Success:', values);
+      if(!USE_JSON_SERVER){
+        return SubmitForm(values)
+      }
+      var form = {}
+      fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
+        method: "GET",
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(res => {
+          return res.json()
+        })
+        .then(data => {
+          if (data != null) {
+            form = data
+            form['软件测试用例']=values
+            SubmitForm(form)
+          }
+          console.log(data)
+        })
+    };
+
+    const SubmitForm = (_form) => {
+      if(USE_JSON_SERVER){
+      fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'], {
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(_form)
+      })
+        .then(res => {
+          console.log(res)
+          if (res.status === 200) {
+            message.success({content:"提交成功！",key:"upload"})
+            GotoPage("ViewEntrust",_state)
+          }
+          else{
+            message.error({content:"提交失败！",key:"upload"})
+          }
+          return res.json()
+        })
+        .then(data => {
+          console.log(data)
+        })
+      }
+      else{
+        fetch(REMOTE_SERVER+"/delegations/"+_state['PageInfo']['id']+"/test-scheme", {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json;charset=utf-8',
+        'accessToken': _state['accessToken'],
+        'tokenType': _state['tokenType'],
+        'usrName': _state['userName'],
+        'usrID': _state['userID'],
+        'usrRole': _state['userRole'][0],
+        'Authorization': _state['accessToken']
+      },
+      body: JSON.stringify(_form)
+    })
+      .then(res => {
+        console.log(res)
+        if (res.status === 200) {
+          message.success({content:"提交成功！",key:"upload"})
+          GotoPage("ViewEntrust",_state)
+        }
+        else{
+          message.error({content:"提交失败！",key:"upload"})
+        }
+        return res.json()
+      })
+      .then(data => {
+        console.log(data)
+      })
+      }
     }
+
+    const onFinishFailed = (errorInfo) => {
+      console.log('Failed:', errorInfo);
+      alert('请正确填写！')
+    };
+
     return(
         <Form
           style={{padding:"10px 10px 10px 10px"}}
