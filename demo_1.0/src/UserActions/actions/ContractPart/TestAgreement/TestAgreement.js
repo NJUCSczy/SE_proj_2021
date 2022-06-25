@@ -248,7 +248,7 @@ function TestAgreement(props) {
           name="合同履行期限" noStyle
           rules={[{ required: true, message: '请填写合同履行期限' }]}
         >
-          <InputNumber min={1} max={10000000} style={{ width: 100 }} />
+          <Input /*Number min={1} max={10000000}*/ style={{ width: 100 }} />
         </Form.Item>
         &emsp;个自然日内完成
         <Paragraph>&emsp;2.	经甲乙双方同意，可对测试进度作适当修改，并以修改后的测试进度作为本合同执行的期限。</Paragraph>
@@ -256,11 +256,11 @@ function TestAgreement(props) {
         <Form.Item
           label="整改次数限于" labelCol={{ span: 6 }} name="整改限制次数"
           rules={[{ required: true, message: '请填写整改限制次数' }]}>
-          <InputNumber min={1} max={10000000} style={{ width: 100 }} addonAfter="次" />
+          <Input style={{ width: 100 }} addonAfter="次" />
         </Form.Item>
         <Form.Item label="每次不超过" labelCol={{ span: 6 }} name="一次整改限制的天数"
           rules={[{ required: true, message: '请填写整改限制的天数' }]}>
-          <InputNumber min={1} max={10000000} style={{ width: 100 }} addonAfter="天" />
+          <Input style={{ width: 100 }} addonAfter="天" />
         </Form.Item>
         <Paragraph>&emsp;4.	如因甲方原因，导致测试进度延迟、应由甲方负责,乙方不承担责任。</Paragraph>
         <Paragraph>&emsp;5.	如因乙方原因,导致测试进度延迟,则甲方可酌情提出赔偿要求,赔偿金额不超过甲方已付金额的50%。双方经协商一致后另行签订书面协议，作为本合同的补充。</Paragraph>
