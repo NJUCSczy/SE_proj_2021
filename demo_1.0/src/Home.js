@@ -197,11 +197,7 @@ class Home extends React.Component {
                 return (<QuestionList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></QuestionList>);
             case 'Info4':
                 this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '业务信息', '0', '0', '0'] });
-<<<<<<< HEAD
                 return (<Viewquestionlist _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></Viewquestionlist>);
-=======
-                return (<CheckTA _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></CheckTA>);
->>>>>>> bd979e580618af399cdc566ecd15ac05e394ec54
             case 'Info5':
                 this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '新闻资讯', '0', '0', '0'] });
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>新闻资讯</div>);
