@@ -37,7 +37,7 @@ export function getStageByDelegationState(state){
         case 'UPLOAD_FILES':return 1;//已经填写功能表，等待上传软件文档
         case 'UPLOAD_SAMPLE':return 2;//已经上传软件文档，等待提交样品
         case 'AUDIT_TEST_APARTMENT':return 3;//已经上传文件，等待测试部审核
-        case 'AUDIT_TEST_DEPARTMENT_DENIED':return 4;//测试部拒绝
+        case 'AUDIT_TEST_APARTMENT_DENIED':return 4;//测试部拒绝
         case 'AUDIT_MARKET_APARTMENT':return 5;//测试部审核通过，等待市场部审核
         case 'AUDIT_MARKET_APARTMENT_DENIED':return 6;//市场部拒绝
         case 'AUDIT_MARKET_APARTMENT_FURTHER':return 7;//市场部进一步审理
