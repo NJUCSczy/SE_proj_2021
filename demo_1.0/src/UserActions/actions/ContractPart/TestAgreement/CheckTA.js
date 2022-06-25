@@ -8,6 +8,8 @@ import { NoFormStatus } from 'antd/lib/form/context';
 import { useEffect, useState } from 'react';
 import moment from 'moment';
 import { USE_JSON_SERVER, REMOTE_SERVER } from '../../../functions/functions';
+import { Select } from 'antd';
+const { Option } = Select;
 const { Title, Paragraph, Text, Link } = Typography;
 var _ = require('lodash');
 
@@ -15,10 +17,12 @@ function CheckTA(props) {
     const { UpdateUserInfo, GotoPage, _state } = props;
     const userState = props._state
     const [entrustData, setEntrustData] = useState({ 'formData': null, '履行期限(受托方部分)': null, '用户申请表': null, '报价单': null })
-
+    const handleChange = (value) => {
+        console.log(`selected ${value}`);
+      };
     const updateInfo = () => {
         if (USE_JSON_SERVER) {
-            fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
+            fetch("http://localhost:8000/forms/1" /*+ _state['PageInfo']['id']*/, {
                 method: "GET",
                 mode: 'cors',
                 headers: {
@@ -108,7 +112,7 @@ function CheckTA(props) {
 
     const SubmitForm = (_form) => {
         if (USE_JSON_SERVER) {
-            fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
+            fetch("http://localhost:8000/forms/1" /*+ _state['PageInfo']['id']*/, {
                 method: "PUT",
                 headers: {
                     'Content-Type': 'application/json'
@@ -166,6 +170,7 @@ function CheckTA(props) {
         if (USE_JSON_SERVER) {
             var form = entrustData['formData'];
             form['测试合同']['履行期限接受情况'] = values
+            
             SubmitForm(form)
         }
         else {
@@ -183,7 +188,7 @@ function CheckTA(props) {
                 labelCol={{ span: 3 }}
                 wrapperCol={{ span: 16 }}
                 initialValues={{ remember: true }}
-                onFinish={null}
+                onFinish={onFinishForm}
                 onFinishFailed={null}
                 autoComplete="off"
             >
@@ -279,11 +284,32 @@ function CheckTA(props) {
                 <Paragraph>&emsp;本合同自双方授权代表签字盖章之日起生效,自受托方的主要义务履行完毕之日起终止。</Paragraph>
                 <Paragraph>&emsp;本合同未尽事宜由双方协商解决。</Paragraph>
                 <Paragraph>&emsp;本合同的正本一式肆份,双方各执两份,具有同等法律效力。</Paragraph>
-                <Form inline style={{ textAlign: 'center' }}>
+                <Form.Item label="意见" name="意见">
+                    <Input.TextArea style={{ maxWidth: 500 }} />
+                </Form.Item>
+                <Form.Item label="态度" name="态度">
+                    <Select
+                        style={{
+                            width: 120,
+                        }}
+                        onChange={handleChange}
+                        >
+                        <Option value="接受">接受</Option>
+                        <Option value="申请再议">申请再议</Option>
+                        <Option value="不接受">不接受</Option>
+                    </Select>
+                </Form.Item>
+                {/* <Form inline style={{ textAlign: 'center' }}>
                     <Button onClick={() => onFinishForm('接受')}>确认合同</Button>&emsp;
                     <Button onClick={() => onFinishForm('申请再议')}>申请再议</Button>&emsp;
                     <Button onClick={() => onFinishForm('不接受')}>结束委托</Button>
-                </Form>
+                </Form> */}
+                <Form.Item>
+                    <Button id='提交' type="primary" htmlType="submit">
+                    提交
+                    </Button>
+                </Form.Item>
+                
             </Form>)
     )
 }

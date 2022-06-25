@@ -15,18 +15,139 @@ function CheckList(props) {
     const { Option } = Select;
     const { TextArea } = Input;
     const mobile = require('is-mobile');
+    var _ = require('lodash');
+    const setDataByKey = (key, val) => {
+      setFormData(prev => {
+        const newFormData = _.cloneDeep(prev)
+        newFormData[key] = val;
+        console.log(newFormData)
+        return newFormData;
+      })
+  
+    }
+    const onFinishForm = (values) => {
+      console.log('Success:', values);
+      var form = {}
+      if (USE_JSON_SERVER) {
+        fetch("http://localhost:8000/forms/1" , {
+          method: "GET",
+          mode: 'cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+          .then(res => {
+            return res.json()
+          })
+          .then(data => {
+            if (data != null) {
+              form = data
+              form['软件报告检查表'] = values
+              SubmitForm(form)
+            }
+            console.log(data)
+          })
+      }
+      else {
+        fetch(REMOTE_SERVER+"/delegation/" + _state['PageInfo']['id'], {
+          method: "GET",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json;charset=utf-8',
+            'accessToken': _state['accessToken'],
+            'tokenType': _state['tokenType'],
+            'usrName': _state['userName'],
+            'usrID': _state['userID'],
+            'usrRole': _state['userRole'][0],
+            'Authorization': _state['accessToken']
+          },
+        })
+          .then(res => {
+            return res.json()
+          })
+          .then(data => {
+            console.log(data)
+            if (data != null) {
+              form['基本信息'] = values;
+              if (data['state'] === 'QUOTATION_MARKET') {
+                SubmitForm(form, true);
+              }
+              else if (data['state'] === 'QUOTATION_USER_APPLICATION') {
+                SubmitForm(form, false);
+              }
+              else {
+                alert('状态有误！')
+              }
+            }
+          })
+      }
+    };
+  
+    const SubmitForm = (_form, firstTime = false) => {
+      if (USE_JSON_SERVER) {
+        fetch("http://localhost:8000/forms/1" , {
+          method: "PUT",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(_form)
+        })
+          .then(res => {
+            console.log(res)
+            if (res.status === 200) {
+              message.success({ content: "提交成功！", key: "upload" })
+              GotoPage("ViewEntrust", _state)
+            }
+            else {
+              message.error({ content: "提交失败！", key: "upload" })
+            }
+            return res.json()
+          })
+          .then(data => {
+            console.log(data)
+          })
+      }
+      else {
+        fetch(REMOTE_SERVER+"/offer/delegation/" + _state['PageInfo']['id'], {
+          method: firstTime ? "POST" : "PUT",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json;charset=utf-8',
+            'accessToken': _state['accessToken'],
+            'tokenType': _state['tokenType'],
+            'usrName': _state['userName'],
+            'usrID': _state['userID'],
+            'usrRole': _state['userRole'][0],
+            'Authorization': _state['accessToken']
+          },
+          body: JSON.stringify(_form)
+        })
+          .then(res => {
+            console.log(res)
+            if ((res.status === 201 && firstTime === true) || (res.status === 200 && firstTime === false)) {
+              message.success({ content: "提交成功！", key: "upload" })
+              GotoPage("ViewEntrust", _state)
+            }
+            else {
+              message.error({ content: "提交失败！", key: "upload" })
+            }
+            return res.json()
+          })
+          .then(data => {
+            console.log(data)
+          })
+      }
+    }
+  
+    const onFinishFailed = (errorInfo) => {
+      console.log('Failed:', errorInfo);
+      alert('请正确填写！')
+    };
 
-   
-/*
-interface DataType {
-  key: number;
-  name: string;
-  content: string;
 
-}
 
-const columns: ColumnsType<DataType> = [
-  /*{
+const columns = [
+  {
     title: '序号',
     dataIndex: 'key',
     key: 'key',
@@ -50,16 +171,18 @@ const columns: ColumnsType<DataType> = [
     title: '检查结果',
     key: 'action',
     width:100,
-    render: (_, record) => (
-        <>
-        <Switch checkedChildren="正确" unCheckedChildren="有误" defaultChecked />
-        <br />
-        </>
+    render: (_, record,index) => (
+        
+      <Form.Item name={'tableItem_'+index} initialValue={false}>
+      <Switch checkedChildren="是" unCheckedChildren="否" defaultChecked={false}/>
+      
+    
+    </Form.Item>
     ),
   },
 ];
 
-const data: DataType[] = [
+const data = [
     {
       key: 1,
       name: '报告编号',
@@ -131,15 +254,17 @@ const data: DataType[] = [
       content: '语句是否通顺，是否准确描述用户的文档。',
     },
   ];
-*/
 
-    return(/* <Form
+
+    return( <Form
         name="测试报告检查表"
         initialValues={{ remember: true }}
         style={{ padding: mobile()?'20px 5px': '20px 30px' }}
         labelCol={{ span: 10, flex: 'auto' }}
         wrapperCol={{ span: 20 }}
         layout='vertical'
+        onFinish={onFinishForm}
+        onFinishFailed={onFinishFailed}
         >
         <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件名称</h3>
      <Form.Item
@@ -155,23 +280,32 @@ const data: DataType[] = [
       >
         <Input  style={{maxWidth:500} } />
       </Form.Item>
-
-      <Table columns={columns} dataSource={data} />
+      <Form.Item
+      name='表项'
+      >
+        <Table columns={columns} dataSource={data} pagination={{pageSize:40}} />
+      </Form.Item>
+      
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>检查人</h3>
      <Form.Item
      name="检查人"
      rules={[{ required: true, message: '请填写检查人' }]}
       >
         <Input  style={{maxWidth:500} } />
-        <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>日期</h3>
+        
+      </Form.Item>
+      <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>日期</h3>
       <Form.Item
-        name={['日期']}
+        name="日期"
         rules={[{ required: true, message: '请填写日期' }]}
       >
         <DatePicker />
       </Form.Item>
-      </Form.Item>
-        </Form>*/null
+      
+      <Button type="primary" htmlType="submit">
+          提交
+        </Button>
+        </Form>
     )
 
 

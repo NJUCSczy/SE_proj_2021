@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types';
-import { DatePicker, Divider, Form, Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
+import { Collapse, DatePicker, Divider, Form, Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import './ViewQuotation.css'
 import { useEffect, useState } from 'react';
 import moment from 'moment';
@@ -16,6 +16,7 @@ function ViewQuotation(props) {
     const [entrustData, setEntrustData] = useState({ 'formData': null, '报价单': null })
     const { Option } = Select;
     const { TextArea } = Input;
+    const { Panel } = Collapse;
 
     const updateInfo = () => {
         if (USE_JSON_SERVER) {
@@ -106,45 +107,51 @@ function ViewQuotation(props) {
                         <>
                             {fields.map(({ key, name, ...restField }) => (
                                 <Fragment layout='vertical' key={key} style={{ display: 'flex', marginBottom: 8 }}>
-                                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>项目</h5>
-                                    <Form.Item
-                                        {...restField}
-                                        name={[name, '项目']}
-                                    >
-                                        <Input style={{ maxWidth: 500 }} disabled placeholder="项目" />
-                                    </Form.Item>
+                                    <Collapse  bordered={false} ghost>
+                                        <Panel  key="1">
+                                            <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>项目</h5>
+                                            <Form.Item
+                                                {...restField}
+                                                name={[name, '项目']}
+                                            >
+                                                <Input style={{ maxWidth: 500 }} disabled placeholder="项目" />
+                                            </Form.Item>
 
-                                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>分项</h5>
-                                    <Form.Item
-                                        {...restField}
-                                        name={[name, '分项']}
-                                    >
-                                        <Input style={{ maxWidth: 500 }} disabled placeholder="分项" />
-                                    </Form.Item>
+                                            <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>分项</h5>
+                                            <Form.Item
+                                                {...restField}
+                                                name={[name, '分项']}
+                                            >
+                                                <Input style={{ maxWidth: 500 }} disabled placeholder="分项" />
+                                            </Form.Item>
 
-                                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>单价</h5>
-                                    <Form.Item
-                                        {...restField}
-                                        name={[name, '单价']}
-                                    >
-                                        <Input style={{ maxWidth: 500 }} disabled placeholder="单价" />
-                                    </Form.Item>
+                                            <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>单价</h5>
+                                            <Form.Item
+                                                {...restField}
+                                                name={[name, '单价']}
+                                            >
+                                                <Input style={{ maxWidth: 500 }} disabled placeholder="单价" />
+                                            </Form.Item>
 
-                                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>说明</h5>
-                                    <Form.Item
-                                        {...restField}
-                                        name={[name, '说明']}
-                                    >
-                                        <Input style={{ maxWidth: 500 }} disabled placeholder="说明" />
-                                    </Form.Item>
+                                            <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>说明</h5>
+                                            <Form.Item
+                                                {...restField}
+                                                name={[name, '说明']}
+                                            >
+                                                <Input style={{ maxWidth: 500 }} disabled placeholder="说明" />
+                                            </Form.Item>
 
-                                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>行合计</h5>
-                                    <Form.Item
-                                        {...restField}
-                                        name={[name, '行合计']}
-                                    >
-                                        <Input style={{ maxWidth: 500 }} disabled placeholder="行合计" />
-                                    </Form.Item>
+                                            <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>行合计</h5>
+                                            <Form.Item
+                                                {...restField}
+                                                name={[name, '行合计']}
+                                            >
+                                                <Input style={{ maxWidth: 500 }} disabled placeholder="行合计" />
+                                            </Form.Item>
+                                        </Panel>
+                                    </Collapse>
+                  
+                                    
                                 </Fragment>
                             ))}
                         </>

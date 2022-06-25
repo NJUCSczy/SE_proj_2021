@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types';
-import { message, DatePicker, Divider, Form, Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
+import { Collapse, message, DatePicker, Divider, Form, Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import { useState } from 'react';
 import Paragraph from 'antd/lib/skeleton/Paragraph';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
@@ -18,6 +18,7 @@ function Quotation(props) {
   const [formData, setFormData] = useState({})
   const { Option } = Select;
   const { TextArea } = Input;
+  const { Panel } = Collapse;
 
   const onFinishForm = (values) => {
     console.log('Success:', values);
@@ -168,55 +169,61 @@ function Quotation(props) {
           <>
             {fields.map(({ key, name, ...restField }) => (
               <Fragment layout='vertical' key={key} style={{ display: 'flex', marginBottom: 8 }}>
-                <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>项目</h5>
-                <Form.Item
-                  {...restField}
-                  name={[name, '项目']}
-                  rules={[{ required: true, message: '请填写项目名' }]}
-                >
-                  <Input id='项目' style={{ maxWidth: 500 }} placeholder="项目" />
-                </Form.Item>
+                <Collapse  bordered={false} ghost>
+                  <Panel  key="1">
+                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>项目</h5>
+                    <Form.Item
+                      {...restField}
+                      name={[name, '项目']}
+                      rules={[{ required: true, message: '请填写项目名' }]}
+                    >
+                      <Input id='项目' style={{ maxWidth: 500 }} placeholder="项目" />
+                    </Form.Item>
 
-                <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>分项</h5>
-                <Form.Item
-                  {...restField}
-                  name={[name, '分项']}
-                  rules={[{ required: true, message: '请填写分项' }]}
-                >
-                  <Input id='分项' style={{ maxWidth: 500 }} placeholder="分项" />
-                </Form.Item>
+                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>分项</h5>
+                    <Form.Item
+                      {...restField}
+                      name={[name, '分项']}
+                      rules={[{ required: true, message: '请填写分项' }]}
+                    >
+                      <Input id='分项' style={{ maxWidth: 500 }} placeholder="分项" />
+                    </Form.Item>
 
-                <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>单价</h5>
-                <Form.Item
-                  {...restField}
-                  name={[name, '单价']}
-                  rules={[{ required: true, message: '请填写单价' },
-                  { pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请输入整数' }]}
-                >
-                  <Input id='单价' style={{ maxWidth: 500 }} placeholder="单价" />
-                </Form.Item>
+                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>单价</h5>
+                    <Form.Item
+                      {...restField}
+                      name={[name, '单价']}
+                      rules={[{ required: true, message: '请填写单价' },
+                      { pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请输入整数' }]}
+                    >
+                      <Input id='单价' style={{ maxWidth: 500 }} placeholder="单价" />
+                    </Form.Item>
 
-                <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>说明</h5>
-                <Form.Item
-                  {...restField}
-                  name={[name, '说明']}
-                  rules={[{ required: true, message: '请填写说明' }]}
-                >
-                  <Input id='说明' style={{ maxWidth: 500 }} placeholder="说明" />
-                </Form.Item>
+                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>说明</h5>
+                    <Form.Item
+                      {...restField}
+                      name={[name, '说明']}
+                      rules={[{ required: true, message: '请填写说明' }]}
+                    >
+                      <Input id='说明' style={{ maxWidth: 500 }} placeholder="说明" />
+                    </Form.Item>
 
-                <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>行合计</h5>
-                <Form.Item
-                  {...restField}
-                  name={[name, '行合计']}
-                  rules={[{ required: true, message: '请填写行合计' },
-                  { pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请输入整数' }]}
-                >
-                  <Input id='行合计' style={{ maxWidth: 500 }} placeholder="行合计" />
-                </Form.Item>
-                <Button id='删除该项目' onClick={() => remove(name)} type='danger'>
-                  删除该项目
-                </Button>
+                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>行合计</h5>
+                    <Form.Item
+                      {...restField}
+                      name={[name, '行合计']}
+                      rules={[{ required: true, message: '请填写行合计' },
+                      { pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请输入整数' }]}
+                    >
+                      <Input id='行合计' style={{ maxWidth: 500 }} placeholder="行合计" />
+                    </Form.Item>
+                    <Button id='删除该项目' onClick={() => remove(name)} type='danger'>
+                      删除该项目
+                    </Button>
+                  </Panel>
+                </Collapse>
+          
+                
               </Fragment>
             ))}
             <Form.Item>

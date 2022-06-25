@@ -49,7 +49,7 @@ return(
 
           <h2 style={{fontWeight: 'bolder',fontSize:30,marginTop: 40}}>软件测试委托合同签章(委托方)</h2>
 
-          {getStageByInfo(entrustData['formData'])<18? null:(
+          {getStageByInfo(entrustData['formData'])<19? null:(
               <div>
                 <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>单位全称</h3>
                 <Input  style={{maxWidth:500}} disabled={true} defaultValue={entrustData['formData']['测试合同']['签章']['委托人签章']['单位全称']}/>
@@ -85,7 +85,7 @@ return(
 
 
           <h2 style={{fontWeight: 'bolder',fontSize:30,marginTop: 40}}>软件测试委托合同签章(受托方)</h2>
-          {getStageByInfo(entrustData['formData'])<17? null:(
+          {getStageByInfo(entrustData['formData'])<18? null:(
               <div>
                 <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>单位全称</h3>
                 <Input  style={{maxWidth:500}} disabled={true} defaultValue={'南京大学计算机软件新技术国家重点实验室'}/>
