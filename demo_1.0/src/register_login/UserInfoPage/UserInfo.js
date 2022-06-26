@@ -4,6 +4,13 @@ import { Menu } from 'antd';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import { USE_JSON_SERVER } from '../../UserActions/functions/functions';
 
+/**
+ * 查看用户信息的界面
+ * 
+ * 显示每一个用户的身份信息
+ * 
+ */
+
 
 function UserInfoPage(props) {
   const { _state, UpdateUserInfo, GotoPage } = props;

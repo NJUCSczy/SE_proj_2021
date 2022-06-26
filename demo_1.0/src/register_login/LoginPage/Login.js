@@ -1,15 +1,22 @@
 import React from 'react';
-import HomeLayout from '../layouts/HomeLayout';
-import FormItem from '../components/FormItem';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Input, Card, Button, Row, Space,message } from 'antd';
-import './css/register.css';
+import './Login.css'
 import { USE_JSON_SERVER,REMOTE_SERVER } from '../../UserActions/functions/functions';
 
 var _ = require('lodash');
 
-function Login(props) {
+/**
+ * 用户登录的界面，采用自适应布局，包含卡片，按钮，输入框等多种表单组件
+ * 
+ * 在用户填写邮箱，账号和密码之后可以点击登录，提交的数据会发送给后端进行核验
+ * 
+ * 用户点击立即注册可以转到注册界面
+ * 
+ */
+
+function LoginPage(props) {
   const { UpdateUserInfo, GotoPage } = props;
 
   const [formData, setFormData] = useState({})
@@ -120,7 +127,7 @@ function Login(props) {
 
   return (
     <div className="App" style={{ float: "center" }} >
-      <Row justify="center" align="middle" className="register_ground" style={{ backgroundImage: "url(" + require("./images/westWorld1.jpeg") + ")" }}>
+      <Row justify="center" align="middle" className="register_ground" style={{ backgroundImage: "url(" + require("../images/westWorld1.jpeg") + ")" }}>
         <Card justify="center" title="用户登录" className="register_card">
           <br />
           <Input id="login_input_email" placeholder="请输入邮箱" className="register_email"
@@ -144,34 +151,4 @@ function Login(props) {
   );
 }
 
-//  Login.contextTypes = {
-//    router: PropTypes.object.isRequired
-//  };
-
-//  Login = formProvider({
-//    account: {
-//      defaultValue: '',
-//      rules: [
-//        {
-//          pattern (value) {
-//            return value.length > 0;
-//          },
-//          error: '请输入账号'
-//        }
-//      ]
-//    },
-//    password: {
-//      defaultValue: '',
-//      rules: [
-//        {
-//          pattern (value) {
-//            return value.length > 0;
-//          },
-//          error: '请输入密码'
-//        }
-//      ]
-//    }
-//  })(Login);
-
-
-export default Login;
+export default LoginPage;

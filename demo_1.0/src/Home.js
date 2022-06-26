@@ -6,10 +6,10 @@ import { DownOutlined, SmileOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import "./Home.css";
 
-import UserInfoPage from './register_login/pages/UserInfo';
-import Login from './register_login/pages/Login';
-import RegisterPage from './register_login/pages/Register';
-import RegisterStaffPage from './register_login/pages/registerStaff';
+import UserInfoPage from './register_login/UserInfoPage/UserInfo';
+import LoginPage from './register_login/LoginPage/Login';
+import RegisterPage from './register_login/RegisterPage/Register';
+import RegisterStaffPage from './register_login/RegisterStaffPage/RegisterStaff';
 
 import SubmitApplication from './UserActions/actions/DelegationPart/SubmitApplication/SubmitApplication';
 import FunctionList from './UserActions/actions/DelegationPart/FunctionList/FunctionList';
@@ -97,7 +97,7 @@ class Home extends React.Component {
                 return (<UserInfoPage _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage} />);
             case 'Login':
                 this.setState({ HeaderMenuIndex: '2', BreadcrumbByIndex: ['首页', '登录', '0', '0', '0'] });
-                return (<Login UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage} />);
+                return (<LoginPage UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage} />);
             case 'Register':
                 this.setState({ HeaderMenuIndex: '2', BreadcrumbByIndex: ['首页', '注册', '0', '0', '0'] });
                 return (<RegisterPage UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage} />);

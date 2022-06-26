@@ -7,6 +7,14 @@ import { USE_JSON_SERVER, REMOTE_SERVER } from '../../UserActions/functions/func
 var _ = require('lodash');
 var mobile = require('is-mobile');
 
+/**
+ * 管理员注册的界面，采用自适应布局，包含卡片，按钮，输入框等多种表单组件
+ * 
+ * 用户可以在测试部人员，市场部人员，质检部人员之中选择一项身份
+ * 
+ * 在用户填写邮箱，账号和密码之后可以点击注册，提交的数据会发送给后端进行数据存储
+ * 
+ */
 
 function RegisterStaffPage(props) {
   const { _state, UpdateUserInfo, GotoPage } = props;
