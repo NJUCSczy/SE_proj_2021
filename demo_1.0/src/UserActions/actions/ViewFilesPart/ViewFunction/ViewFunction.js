@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Collapse, DatePicker, Divider, Form, Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
+import { Descriptions, Collapse, DatePicker, Divider, Form, Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import './ViewFunction.css'
 import { getStageByInfo, getStatusInfo, USE_JSON_SERVER,REMOTE_SERVER } from '../../../functions/functions'
 import { useEffect, useState } from 'react';
@@ -84,50 +84,47 @@ function ViewFunction(props) {
         initialValues={{ "项目列表": entrustData['委托测试软件功能列表']['功能项目列表'] }}
       >
         <h1 style={{ textAlign: 'center', fontSize: 30 }}>委托测试软件功能列表</h1>
-        <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>&emsp;软件名称</h4>
-        <Input style={{ maxWidth: 250 }} disabled defaultValue={entrustData['委托测试软件功能列表']['软件名称']} />
-        <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>&emsp;版本号</h4>
-        <Input style={{ maxWidth: 250 }} disabled defaultValue={entrustData['委托测试软件功能列表']['版本号']} />
-        <Form.List name="项目列表" layout='vertical' width={500}>
-          {(fields, { add, remove }) => (<>
-            {fields.map(({ key, name, ...restField }) => (
-              <Fragment>
-                <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件功能</h4>
-                <Form.Item {...restField} name={[name, '软件功能项目']}>
-                  <Input style={{ maxWidth: 250 }} disabled placeholder="软件功能项目" />
-                </Form.Item>
-                <Collapse  bordered={false} ghost>
-                  <Panel header="软件子功能列表" key="1">
-                    
-                    <Form.List name={[name, '子功能项目列表']} layout='vertical' width={500} >
-                      {(fieldsInside, { add: addInside, remove: removeInside }) => (<>
-                        {fieldsInside.map(({ key, name, ...restFieldInside }) => (
-                          <div>
-                            <h5 style={{ fontWeight: 'bolder', padding: '0px 50px' }}>软件子功能项目</h5>
-                            <Form.Item {...restFieldInside}
-                              name={[name, '软件子功能项目']}
-                              style={{ padding: '0px 50px' }}>
-                              <Input style={{ maxWidth: 250 }} disabled placeholder="软件子功能项目" />
-                            </Form.Item>
-                            <h5 style={{ fontWeight: 'bolder', padding: '0px 50px', marginTop: 30 }}>功能说明</h5>
-                            <Form.Item {...restFieldInside}
-                              style={{ padding: '0px 50px' }}
-                              name={[name, '功能说明']}>
-                              <Input type="textarea" rows={4} style={{ maxWidth: 450 }} disabled placeholder="功能说明" />
-                            </Form.Item>
-                          </div>
-                        ))}</>
-                      )}
-                    </Form.List>
-                  </Panel>
-                </Collapse>
-                
-              </Fragment>
-            ))}</>
-          )}
-        </Form.List>
-        <br />
-        <br />
+        <Descriptions
+        layout='vertical'
+        column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+        >
+          <Descriptions.Item label={<h4 style={{ fontWeight: 'bolder'}} >软件名称</h4>} >
+          <h4 style={{ fontWeight: 'bolder'}} >&emsp;{entrustData['委托测试软件功能列表']['软件名称']}</h4>
+          </Descriptions.Item>
+        </Descriptions>
+        <Descriptions
+        layout='vertical'
+        column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+        >
+          <Descriptions.Item label={<h4 style={{ fontWeight: 'bolder'}} >版本号</h4>} >
+          <h4 style={{ fontWeight: 'bolder'}} >&emsp;{entrustData['委托测试软件功能列表']['版本号']}</h4>
+          </Descriptions.Item>
+        </Descriptions>
+        {entrustData['委托测试软件功能列表']['功能项目列表'].map((index)=>
+        <div>
+            {index['子功能项目列表'].map((index1)=>
+            <div>
+              <Collapse  bordered={false} ghost>
+                <Panel header={<h4 style={{ fontWeight: 'bolder'}} >项目:{index['软件功能项目']}</h4>} key="1">
+                  <Descriptions
+                  bordered
+                  column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+                  >
+
+                      <Descriptions.Item label="软件子功能项目" >
+                      <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{index1['软件子功能项目']}</h4>
+                      </Descriptions.Item>
+
+                      <Descriptions.Item label="功能说明" >
+                      <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{index1['功能说明']}</h4>
+                      </Descriptions.Item>
+                  </Descriptions>
+                </Panel>
+              </Collapse>
+            </div>
+            )}
+        </div>
+        )}
       </Form>
     )
   )
