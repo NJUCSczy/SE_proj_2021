@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Tooltip, Input, Select, Form } from 'antd';
+import { Tooltip, Input, Select, Form,message,Upload,Button } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
 import { getStageByInfo, getStatusInfo, REMOTE_SERVER } from '../../../functions/functions'
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -11,6 +12,15 @@ function OfflineSignContract(props) {
     const [formData, setFormData] = useState({ 'files': {} })
     const { Option } = Select;
     const { TextArea } = Input;
+
+    const setDataByKey = (key, val) => {
+        setFormData(prev => {
+          const newFormData = _.cloneDeep(prev)
+          newFormData[key] = val;
+          console.log(newFormData)
+          return newFormData;
+        })
+      }
 
     const updateInfo = () => {
         fetch(REMOTE_SERVER + "/contract/" + _state['PageInfo']['ContractID'] + "/files/contractTable", {
