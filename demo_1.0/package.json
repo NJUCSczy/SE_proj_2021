@@ -13,6 +13,7 @@
     "npm": "^8.9.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-highlight-words": "^0.18.0",
     "react-router-dom": "^6.3.0",
     "react-script": "^2.0.5",
     "react-scripts": "^5.0.1",

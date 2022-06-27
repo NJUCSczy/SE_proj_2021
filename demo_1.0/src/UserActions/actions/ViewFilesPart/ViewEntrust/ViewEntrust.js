@@ -202,8 +202,8 @@ function ViewEntrust(props) {
                             onClick={() => ChangePage('TrusteeApplication')}>市场部填写签章</Button>);
                         case 18: return (<Button id='客户填写签章' type="primary" style={{ marginLeft: 20 }}
                             onClick={() => ChangePage('ClientApplication')}>客户填写签章</Button>);
-                        case 19: return (<Button id='市场部填写保密协议' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('ConfidentialAgreementPartyB')}>市场部填写保密协议</Button>);
+                        case 19: return (<Button id='市场部下载并完成合同和保密协议' type="primary" style={{ marginLeft: 20 }}
+                            onClick={() => ChangePage('OfflineSignContract')}>市场部下载并完成合同和保密协议</Button>);
                         case 20: return (<Button id='客户填写保密协议' type="primary" style={{ marginLeft: 20 }}
                             onClick={() => ChangePage('ConfidentialAgreementPartyA')}>客户填写保密协议</Button>);
                     }
