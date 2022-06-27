@@ -1,16 +1,23 @@
 import React from 'react';
-import HomeLayout from '../layouts/HomeLayout';
-import FormItem from '../components/FormItem';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Input, Card, Button, Row, Space,message } from 'antd';
-import './css/register.css';
+import './Login.css'
 import { USE_JSON_SERVER,REMOTE_SERVER } from '../../UserActions/functions/functions';
 
 var _ = require('lodash');
 
-function Login(props) {
-  const { UpdateUserInfo, GotoPage } = props;
+/**
+ * 用户登录的界面，采用自适应布局，包含卡片，按钮，输入框等多种表单组件
+ * 
+ * 在用户填写邮箱，账号和密码之后可以点击登录，提交的数据会发送给后端进行核验
+ * 
+ * 用户点击立即注册可以转到注册界面
+ * 
+ */
+
+function LoginPage(props) {
+  const { _state, UpdateUserInfo, GotoPage } = props;
 
   const [formData, setFormData] = useState({})
   var [userInfo, setUserInfo] = useState({})
@@ -38,9 +45,9 @@ function Login(props) {
       })
         .then(res => {
           if (res.status === 200) {
-            message.success({content:'登陆成功！',key:"login",duration:2})
+            message.success({content:'登录成功！',key:"login",duration:2})
           }else{
-            message.error({content:'登陆失败',key:"login",duration:2})
+            message.error({content:'登录失败',key:"login",duration:2})
           }
 
           return res.json()
@@ -68,9 +75,9 @@ function Login(props) {
       })
         .then(res => {
           if (res.status === 200) {
-            message.success({content:'登陆成功！',key:"login"})
+            message.success({content:'登录成功！',key:"login"})
           }else{
-            message.error({content:'登陆失败',key:"login"})
+            message.error({content:'登录失败',key:"login"})
           }
           return res.json()
         })
@@ -85,42 +92,11 @@ function Login(props) {
     }
   }
 
-  const updateInfo = () => {
-    fetch("http://localhost:8000/users", {
-      method: "GET",
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': "Bearer " + formData['Authorization']
-      },
-    })
-      .then(res => {
-        console.log("Bearer " + formData['authentication'])
-        if (formData['Authorization'] == null) {
-          alert("请先登录！")
-          return null
-        }
-        else if (res.status === 201) {
-          alert("读取成功！")
-          //navigate('/')
-        }
-        return res.json()
-      })
-      .then(data => {
-        if (data != null) {
-          setUserInfo(prev => {
-            const newFormData = _.cloneDeep(prev)
-            newFormData["userInfo"] = data
-            return newFormData
-          })
-        }
-        console.log(data)
-      })
-  }
+  const changePassword = () => {}
 
   return (
     <div className="App" style={{ float: "center" }} >
-      <Row justify="center" align="middle" className="register_ground" style={{ backgroundImage: "url(" + require("./images/westWorld1.jpeg") + ")" }}>
+      <Row justify="center" align="middle" className="register_ground" style={{ backgroundImage: "url(" + require("../images/westWorld1.jpeg") + ")" }}>
         <Card justify="center" title="用户登录" className="register_card">
           <br />
           <Input id="login_input_email" placeholder="请输入邮箱" className="register_email"
@@ -136,7 +112,7 @@ function Login(props) {
           <br />
           <br />
           <Button id="login_button" className="register_btn" onClick={handleLogin}>登录</Button>{" "}
-          <Button className="register_btn" onClick={updateInfo}>查看</Button>{" "}
+          <Button id = "changepw_button" className="register_btn" onClick={() => changePassword}>忘记密码</Button>{" "}
           <Button id="goto_register_button" onClick={() => { GotoPage('Register') }} className="register_btn" > 立即注册</Button>
         </Card>
       </Row>
@@ -144,34 +120,4 @@ function Login(props) {
   );
 }
 
-//  Login.contextTypes = {
-//    router: PropTypes.object.isRequired
-//  };
-
-//  Login = formProvider({
-//    account: {
-//      defaultValue: '',
-//      rules: [
-//        {
-//          pattern (value) {
-//            return value.length > 0;
-//          },
-//          error: '请输入账号'
-//        }
-//      ]
-//    },
-//    password: {
-//      defaultValue: '',
-//      rules: [
-//        {
-//          pattern (value) {
-//            return value.length > 0;
-//          },
-//          error: '请输入密码'
-//        }
-//      ]
-//    }
-//  })(Login);
-
-
-export default Login;
+export default LoginPage;

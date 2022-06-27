@@ -6,10 +6,10 @@ import { DownOutlined, SmileOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import "./Home.css";
 
-import UserInfoPage from './register_login/pages/UserInfo';
-import Login from './register_login/pages/Login';
-import RegisterPage from './register_login/pages/Register';
-import RegisterStaffPage from './register_login/pages/registerStaff';
+import UserInfoPage from './register_login/UserInfoPage/UserInfo';
+import LoginPage from './register_login/LoginPage/Login';
+import RegisterPage from './register_login/RegisterPage/Register';
+import RegisterStaffPage from './register_login/RegisterStaffPage/RegisterStaff';
 
 import SubmitApplication from './UserActions/actions/DelegationPart/SubmitApplication/SubmitApplication';
 import FunctionList from './UserActions/actions/DelegationPart/FunctionList/FunctionList';
@@ -97,7 +97,7 @@ class Home extends React.Component {
                 return (<UserInfoPage _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage} />);
             case 'Login':
                 this.setState({ HeaderMenuIndex: '2', BreadcrumbByIndex: ['首页', '登录', '0', '0', '0'] });
-                return (<Login UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage} />);
+                return (<LoginPage UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage} />);
             case 'Register':
                 this.setState({ HeaderMenuIndex: '2', BreadcrumbByIndex: ['首页', '注册', '0', '0', '0'] });
                 return (<RegisterPage UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage} />);
@@ -303,7 +303,7 @@ class Home extends React.Component {
                             key: String(index + 1),
                             label: {
                                 0: (<a id="home_headers_mainpage" onClick={() => { this.GotoPage('MainPage', this.state) }}><Space style={{ color: 'white' }}>首页</Space></a>),
-                                1: (<a id="home_headers_user" onClick={() => { this.state.accessToken === null ? this.GotoPage('Login', this.state) : this.GotoPage('UserInfo', this.state) }}><Space style={{ color: 'white' }}>用户</Space></a>),
+                                1: (<a id="home_headers_user" onClick={() => { this.state.accessToken === null ? this.GotoPage('Login', this.state) : this.GotoPage('UserInfo', this.state) }}><Space style={{ color: 'white' }}>{ this.state.accessToken === null ? "用户":this.state.userName}</Space></a>),
                                 2: (this.state.userRole[0] == "ROLE_ADMIN") ? adminFunctionMenu : ((this.state.userRole[0] == "ROLE_USER") ? userFunctionMenu : staffFunctionMenu),
                                 3: infoMenu,
                             }[index],

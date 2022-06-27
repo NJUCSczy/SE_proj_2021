@@ -5,10 +5,6 @@ import { findDOMNode } from 'react-dom';
 import SubmitApplication from './UserActions/actions/DelegationPart/SubmitApplication/SubmitApplication';
 import {HashRouter as Router, Route, Routes} from 'react-router-dom';
 import Home from './Home';
-import UserListPage from './register_login/pages/UserList';
-import LoginPage from './register_login/pages/Login';
-import RegisterPage from './register_login/pages/Register';
-import UserEditPage from './register_login/pages/UserEdit'; // 用户编辑页面
 
 class All extends React.Component{
     handle(){
@@ -23,10 +19,6 @@ class All extends React.Component{
             <Router>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<LoginPage />} />
-                    <Route path="/register" element={<RegisterPage />} />
-                    <Route path="/user/list" element={<UserListPage />} />
-                    <Route path="/user/edit/:id" element={<UserEditPage />} />
                 </Routes>
         </Router>
         )

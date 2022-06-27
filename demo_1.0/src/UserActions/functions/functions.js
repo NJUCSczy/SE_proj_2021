@@ -1,4 +1,4 @@
-export const USE_JSON_SERVER=true;
+export const USE_JSON_SERVER=false;
 export var REMOTE_SERVER='http://210.28.133.13:21250'
 
 export function getStageByInfo(info){
@@ -37,7 +37,7 @@ export function getStageByDelegationState(state){
         case 'UPLOAD_FILES':return 1;//已经填写功能表，等待上传软件文档
         case 'UPLOAD_SAMPLE':return 2;//已经上传软件文档，等待提交样品
         case 'AUDIT_TEST_APARTMENT':return 3;//已经上传文件，等待测试部审核
-        case 'AUDIT_TEST_DEPARTMENT_DENIED':return 4;//测试部拒绝
+        case 'AUDIT_TEST_APARTMENT_DENIED':return 4;//测试部拒绝
         case 'AUDIT_MARKET_APARTMENT':return 5;//测试部审核通过，等待市场部审核
         case 'AUDIT_MARKET_APARTMENT_DENIED':return 6;//市场部拒绝
         case 'AUDIT_MARKET_APARTMENT_FURTHER':return 7;//市场部进一步审理
@@ -47,6 +47,14 @@ export function getStageByDelegationState(state){
         case 'QUOTATION_USER_APPLICATION':return 11;//用户申请再次议价
         case 'TEST_MARKET_APPLICATION':return 12;//用户接受议价，等待市场部完成测试申请表
         case 'TEST_MARKET_CONTRACT':return 13;//市场部完成测试申请表，等待市场部完成合同
+        case 'PARTYB_ADD_CONTRACT_ TABLE':return 14;//市场部已经拟写履行期限﹖等待用户回复履行期限
+        case 'PARTYB_UPDATE_PERFORMANCE_TERM':return 14;//市场部已经修改履行期限﹐等待用户回复履行期限
+        case 'PARTYA_REJECT_PERFORMANCE_TERM_TO_END':return 15;//用户已经拒绝履行期限﹐合同被删除,委托结束
+        case 'PARTYA_REJECT_ PERFORMANCE_TERM_FOR_MODIFICATION':return 16;//用户已经申请再议履行期限﹐等待市场部修改履行期限
+        case 'PARTYA_ACCEPT_PERFORMANCE_TERM':return 17;//用户已经同意履行期限﹐等待市场部填写测试合同
+        case 'PARTYB_ADD_CONTRACT_ TABLE':return 18;//市场部已经填写测试合同·等待用户填写测试合同
+        case 'PARTYA_ADD_CONTRACT_ TABLE':return 19;//用户已经填写测试合同·等待市场部下载未签订合同
+        case 'PARTYB UPLOAD_SIGNED_CONTRACT':return 21;//市场部已经上传已签订合同
         default:return -1;
     }
 }

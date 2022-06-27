@@ -2,14 +2,23 @@ import React from 'react';
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from 'react';
 import { Input, Card, Button, Row, Space,message } from 'antd';
-import './css/register.css';
+import './Register.css';
 import { USE_JSON_SERVER ,REMOTE_SERVER} from '../../UserActions/functions/functions';
 
 
 var _ = require('lodash');
 
+/**
+ * 用户注册的界面，采用自适应布局，包含卡片，按钮，输入框等多种表单组件
+ * 
+ * 在用户填写邮箱，账号和密码之后可以点击注册，提交的数据会发送给后端进行数据存储
+ * 
+ * 用户点击立即登录可以转到登录界面
+ * 
+ */
+
 function RegisterPage(props) {
-  const { UpdateUserInfo, GotoPage } = props;
+  const { _state, UpdateUserInfo, GotoPage } = props;
   const [formData, setFormData] = useState({})
   var [userInfo, setUserInfo] = useState({})
   //const navigate = useNavigate();
@@ -70,43 +79,10 @@ function RegisterPage(props) {
         })
     }
   }
-
-  const updateInfo = () => {
-    fetch("http://localhost:8000/users", {
-      method: "GET",
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': "Bearer " + formData['Authorization']
-      },
-    })
-      .then(res => {
-        console.log("Bearer " + formData['authentication'])
-        if (formData['Authorization'] == null) {
-          alert("请先登录！")
-          return null
-        }
-        else if (res.status === 201) {
-          alert("读取成功！")
-          //navigate('/')
-        }
-        return res.json()
-      })
-      .then(data => {
-        if (data != null) {
-          setUserInfo(prev => {
-            const newFormData = _.cloneDeep(prev)
-            newFormData["userInfo"] = data
-            return newFormData
-          })
-        }
-        console.log(data)
-      })
-  }
-
+  const changePassword = () => {}
   return (
     <div className="App" style={{ float: "center" }}>
-      <Row justify="center" align="middle" className="register_ground" style={{ backgroundImage: "url(" + require("./images/westWorld1.jpeg") + ")" }}>
+      <Row justify="center" align="middle" className="register_ground" style={{ backgroundImage: "url(" + require("../images/westWorld1.jpeg") + ")" }}>
         <Card justify="center" title="用户注册" className="register_card">
           <br />
           <Input placeholder="请输入邮箱" className="register_email"
@@ -122,7 +98,7 @@ function RegisterPage(props) {
           <br />
           <br />
           <Button className="register_btn" onClick={handleRigister}>注册</Button>{" "}
-          <Button className="register_btn" onClick={updateInfo}>查看</Button>{" "}
+          <Button id = "changepw_button" className="register_btn" onClick={() => changePassword}>忘记密码</Button>{" "}
           <Button onClick={() => { GotoPage('Login') }} className="register_btn" > 转到登录</Button>
         </Card>
       </Row>
