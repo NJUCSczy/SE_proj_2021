@@ -17,7 +17,7 @@ var _ = require('lodash');
  */
 
 function LoginPage(props) {
-  const { UpdateUserInfo, GotoPage } = props;
+  const { _state, UpdateUserInfo, GotoPage } = props;
 
   const [formData, setFormData] = useState({})
   var [userInfo, setUserInfo] = useState({})
@@ -45,9 +45,9 @@ function LoginPage(props) {
       })
         .then(res => {
           if (res.status === 200) {
-            message.success({content:'登陆成功！',key:"login",duration:2})
+            message.success({content:'登录成功！',key:"login",duration:2})
           }else{
-            message.error({content:'登陆失败',key:"login",duration:2})
+            message.error({content:'登录失败',key:"login",duration:2})
           }
 
           return res.json()
@@ -75,9 +75,9 @@ function LoginPage(props) {
       })
         .then(res => {
           if (res.status === 200) {
-            message.success({content:'登陆成功！',key:"login"})
+            message.success({content:'登录成功！',key:"login"})
           }else{
-            message.error({content:'登陆失败',key:"login"})
+            message.error({content:'登录失败',key:"login"})
           }
           return res.json()
         })
@@ -92,38 +92,7 @@ function LoginPage(props) {
     }
   }
 
-  const updateInfo = () => {
-    fetch("http://localhost:8000/users", {
-      method: "GET",
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': "Bearer " + formData['Authorization']
-      },
-    })
-      .then(res => {
-        console.log("Bearer " + formData['authentication'])
-        if (formData['Authorization'] == null) {
-          alert("请先登录！")
-          return null
-        }
-        else if (res.status === 201) {
-          alert("读取成功！")
-          //navigate('/')
-        }
-        return res.json()
-      })
-      .then(data => {
-        if (data != null) {
-          setUserInfo(prev => {
-            const newFormData = _.cloneDeep(prev)
-            newFormData["userInfo"] = data
-            return newFormData
-          })
-        }
-        console.log(data)
-      })
-  }
+  const changePassword = () => {}
 
   return (
     <div className="App" style={{ float: "center" }} >
@@ -143,7 +112,7 @@ function LoginPage(props) {
           <br />
           <br />
           <Button id="login_button" className="register_btn" onClick={handleLogin}>登录</Button>{" "}
-          <Button className="register_btn" onClick={updateInfo}>查看</Button>{" "}
+          <Button id = "changepw_button" className="register_btn" onClick={() => changePassword}>忘记密码</Button>{" "}
           <Button id="goto_register_button" onClick={() => { GotoPage('Register') }} className="register_btn" > 立即注册</Button>
         </Card>
       </Row>
