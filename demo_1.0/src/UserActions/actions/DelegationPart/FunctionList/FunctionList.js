@@ -137,7 +137,7 @@ function FunctionList(props) {
                 <Input id='软件功能' style={{maxWidth:500}} placeholder="软件功能项目" />
               </Form.Item>
               <Collapse  bordered={false} ghost>
-                  <Panel header="软件子功能列表" key="1">
+                  <Panel header="软件子功能列表" key="1" id='软件子功能列表'>
                     <Form.List  name={[name, '子功能项目列表']} layout='vertical' width={500} >
                       {(fieldsInside, { add:addInside, remove:removeInside }) => ( <>
                         {fieldsInside.map(({ key, name, ...restFieldInside }) => (
@@ -174,7 +174,6 @@ function FunctionList(props) {
                   </Panel>
               </Collapse>
               
-
               <Button onClick={() => remove(name)} type='danger'>
                   删除该功能
               </Button>

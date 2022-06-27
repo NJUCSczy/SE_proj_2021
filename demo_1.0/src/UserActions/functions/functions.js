@@ -47,6 +47,14 @@ export function getStageByDelegationState(state){
         case 'QUOTATION_USER_APPLICATION':return 11;//用户申请再次议价
         case 'TEST_MARKET_APPLICATION':return 12;//用户接受议价，等待市场部完成测试申请表
         case 'TEST_MARKET_CONTRACT':return 13;//市场部完成测试申请表，等待市场部完成合同
+        case 'PARTYB_ADD_CONTRACT_ TABLE':return 14;//市场部已经拟写履行期限﹖等待用户回复履行期限
+        case 'PARTYB_UPDATE_PERFORMANCE_TERM':return 14;//市场部已经修改履行期限﹐等待用户回复履行期限
+        case 'PARTYA_REJECT_PERFORMANCE_TERM_TO_END':return 15;//用户已经拒绝履行期限﹐合同被删除,委托结束
+        case 'PARTYA_REJECT_ PERFORMANCE_TERM_FOR_MODIFICATION':return 16;//用户已经申请再议履行期限﹐等待市场部修改履行期限
+        case 'PARTYA_ACCEPT_PERFORMANCE_TERM':return 17;//用户已经同意履行期限﹐等待市场部填写测试合同
+        case 'PARTYB_ADD_CONTRACT_ TABLE':return 18;//市场部已经填写测试合同·等待用户填写测试合同
+        case 'PARTYA_ADD_CONTRACT_ TABLE':return 19;//用户已经填写测试合同·等待市场部下载未签订合同
+        case 'PARTYB UPLOAD_SIGNED_CONTRACT':return 21;//市场部已经上传已签订合同
         default:return -1;
     }
 }
