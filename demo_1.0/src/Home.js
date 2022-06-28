@@ -27,6 +27,7 @@ import ClientApplication from './UserActions/actions/ContractPart/MktContract/Cl
 import TrusteeApplication from './UserActions/actions/ContractPart/MktContract/TrusteeApplication';
 import TestAgreement from './UserActions/actions/ContractPart/TestAgreement/TestAgreement';
 import CheckTA from './UserActions/actions/ContractPart/TestAgreement/CheckTA';
+import OfflineSignContract from './UserActions/actions/ContractPart/OfflineSignContract/OfflineSignContract'
 
 import CheckList from './UserActions/actions/TestPart/CheckList/CheckList';
 import QuestionList from './UserActions/actions/TestPart/QuestionList/QuestionList';
@@ -48,6 +49,8 @@ import ViewFunction from './UserActions/actions/ViewFilesPart/ViewFunction/ViewF
 import ViewSignature from './UserActions/actions/ViewFilesPart/ViewSignature/ViewSignature';
 import ViewQuotation from './UserActions/actions/ViewFilesPart/ViewQuotation/ViewQuotation';
 import Viewquestionlist from './UserActions/actions/ViewFilesPart/Viewquestionlist/Viewquestionlist';
+import Viewchecklist from './UserActions/actions/ViewFilesPart/Viewchecklist/Viewchecklist';
+import Viewtestchecklist from './UserActions/actions/ViewFilesPart/Viewtestchecklist/Viewtestchecklist';
 
 
 import { USE_JSON_SERVER } from './UserActions/functions/functions';
@@ -72,7 +75,7 @@ class Home extends React.Component {
             tokenType: null,
             HeaderMenuIndex: '1',
             BreadcrumbByIndex: ['0', '0', '0', '0', '0'],
-            PageInfo: { 'id': 0,'ContractID':0 }
+            PageInfo: { 'id': 0, 'ContractID': 0 }
         };
     }
 
@@ -157,6 +160,9 @@ class Home extends React.Component {
             case 'ConfidentialAgreementPartyA':
                 this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '委托人保密协议', '0'] });
                 return (<ConfidentialAgreementPartyA _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ConfidentialAgreementPartyA>);
+            case 'OfflineSignContract':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '下载并完成合同和保密协议', '0'] });
+                return (<OfflineSignContract _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></OfflineSignContract>);
 
             case 'ViewApplication':
                 this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '查看测试申请书', '0'] });
@@ -194,10 +200,10 @@ class Home extends React.Component {
                 return (<CheckList></CheckList>);
             case 'Info3':
                 this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '政策法规', '0', '0', '0'] });
-                return (<QuestionList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></QuestionList>);
+                return (<TestCheckList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestCheckList>);
             case 'Info4':
                 this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '业务信息', '0', '0', '0'] });
-                return (<Viewquestionlist _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></Viewquestionlist>);
+                return (<Viewtestchecklist _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></Viewtestchecklist>);
             case 'Info5':
                 this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '新闻资讯', '0', '0', '0'] });
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>新闻资讯</div>);
@@ -249,6 +255,7 @@ class Home extends React.Component {
             "签章委托人部分": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ClientApplication', this.state) }}>签章委托人部分</a></Breadcrumb.Item>,
             "受托人保密协议": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ConfidentialAgreementPartyB', this.state) }}>受托人保密协议</a></Breadcrumb.Item>,
             "委托人保密协议": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ConfidentialAgreementPartyA', this.state) }}>委托人保密协议</a></Breadcrumb.Item>,
+            "下载并完成合同和保密协议":<Breadcrumb.Item><a onClick={() => { this.GotoPage('OfflineSignContract', this.state) }}>下载并完成合同和保密协议</a></Breadcrumb.Item>,
 
             "查看委托列表": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托列表</a></Breadcrumb.Item>,
             "查看委托": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewEntrust', this.state) }}>查看委托</a></Breadcrumb.Item>,
