@@ -94,7 +94,6 @@ function ViewQuotation(props) {
         entrustData['报价单'] === null ? null : (
             <Form
                 name="报价单"
-                initialValues={{ "项目列表": entrustData['报价单']['基本信息']['项目列表'] }}
             >
                 <h1 style={{ textAlign: 'center', fontSize: 30 }}>报价单</h1>
                 <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>户名：南京大学</h4>
@@ -111,7 +110,7 @@ function ViewQuotation(props) {
                 
                 {entrustData['报价单']['基本信息']['项目列表'].map((index)=>
                 <div>
-                    <Collapse  bordered={false} ghost>
+                    <Collapse  bordered={false} ghost defaultActiveKey={['1']}>
                         <Panel header={<h4 style={{ fontWeight: 'bolder'}} >项目:{index['项目']}</h4>} key="1">
                         <Descriptions
                         bordered

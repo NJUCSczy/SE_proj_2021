@@ -104,7 +104,7 @@ function ViewFunction(props) {
         <div>
             {index['子功能项目列表'].map((index1)=>
             <div>
-              <Collapse  bordered={false} ghost>
+              <Collapse  bordered={false} ghost defaultActiveKey={['1']}>
                 <Panel header={<h4 style={{ fontWeight: 'bolder'}} >项目:{index['软件功能项目']}</h4>} key="1">
                   <Descriptions
                   bordered

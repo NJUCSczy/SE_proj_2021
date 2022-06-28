@@ -83,7 +83,7 @@ function QuestionList(props) {
 
   const SubmitForm = (_form, firstTime = false) => {
     if (USE_JSON_SERVER) {
-      fetch("http://localhost:8000/forms/1" , {
+      fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'] , {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
