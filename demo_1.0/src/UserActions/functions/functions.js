@@ -1,4 +1,4 @@
-export const USE_JSON_SERVER=true;
+export const USE_JSON_SERVER=false;
 export var REMOTE_SERVER='http://210.28.133.13:21250'
 //export var REMOTE_SERVER='http://localhost:32000'
 
@@ -125,7 +125,7 @@ function getDescriptionByStage(stage,part){
         case 16:res='客户针对履行期限申请再议';break;
         case 17:res='客户接受履行期限，等待市场部填写签章受托人部分';break;
         case 18:res='市场部已填写受托人签章，等待客户填写委托人签章';break;
-        case 19:res='用户已经填写测试合同,等待市场部下载并签订合同和保密协议';break;
+        case 19:res='用户已经填写测试合同，等待市场部下载合同文件后双方线下签字，并由市场部上传已签订合同';break;
         case 20:res='测试部已填写保密协议，等待客户填写保密协议';break;
         case 21:res='已签署保密协议，委托完成';break;
     }

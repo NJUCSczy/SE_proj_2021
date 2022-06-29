@@ -135,8 +135,6 @@ function ViewQuotation(props) {
                         </Descriptions>
                         </Panel>
                     </Collapse>
-                                        
-                    
                 </div>
                 )}
                 <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>以下金额单位： 元</h3>
