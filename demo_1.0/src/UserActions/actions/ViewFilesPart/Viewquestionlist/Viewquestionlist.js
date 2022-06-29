@@ -1,6 +1,6 @@
 import {React, Fragment } from 'react'
 import PropTypes from 'prop-types';
-import { Collapse, message, DatePicker, Divider, Form, Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
+import { Descriptions, Collapse, message, DatePicker, Divider, Form, Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import { useEffect, useState } from 'react';
 import Paragraph from 'antd/lib/skeleton/Paragraph';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
@@ -19,7 +19,7 @@ function Viewquestionlist(props){
 
   const updateInfo = () => {
     if (USE_JSON_SERVER) {
-        fetch("http://localhost:8000/forms/1" , {
+        fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'] , {
             method: "GET",
             mode: 'cors',
             headers: {
@@ -57,7 +57,7 @@ function Viewquestionlist(props){
         })
             .then(res => {
                 if (res.status != 200) {
-                    alert('查询报价单失败！')
+                    alert('查询软件测试问题清单失败！')
                     return null
                 }
                 return res.json()
@@ -110,90 +110,51 @@ return (
         >
         <h1 style={{ textAlign: 'center', fontSize: 30 }}>软件测试问题清单</h1>
 
+        {entrustData['软件测试问题清单']['项目列表'].map((index)=>
+                <div>
+                    <Collapse  bordered={false} ghost defaultActiveKey={['1']}>
+                        <Panel header={<h4 style={{ fontWeight: 'bolder'}} >问题（缺陷）简要描述:{index['问题（缺陷）简要描述']}</h4>} key="1">
+                        <Descriptions
+                        bordered
+                        layout='vertical'
+                        column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+                        >
 
-        <Form.List name="项目列表" layout='vertical' width={500}>
-            {(fields, { add, remove }) => (
-            <>
-                {fields.map(({ key, name, ...restField }) => (
-                <Fragment layout='vertical' key={key} style={{ display: 'flex', marginBottom: 8 }}>
-                    <Collapse  bordered={false} ghost>
-                        <Panel  key="1">
-                            <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>问题（缺陷）简要描述</h5>
-                            <Form.Item
-                            {...restField}
-                            name={[name, '问题（缺陷）简要描述']}
-                            rules={[{ required: true, message: '请填写问题（缺陷）简要描述' }]}
-                            >
-                            <Input.TextArea style={{ maxWidth: 500 }} disabled placeholder="问题（缺陷）简要描述" />
-                            </Form.Item>
+                            <Descriptions.Item label="对应需求条目" >
+                            <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{index['对应需求条目']}</h4>
+                            </Descriptions.Item>
 
-                            <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>对应需求条目</h5>
-                            <Form.Item
-                            {...restField}
-                            name={[name, '对应需求条目']}
-                            rules={[{ required: true, message: '请填写对应需求条目' }]}
-                            >
-                            <Input style={{ maxWidth: 500 }} disabled placeholder="对应需求条目" />
-                            </Form.Item>
+                            <Descriptions.Item label="发现缺陷的初始条件" >
+                            <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{index['发现缺陷的初始条件']}</h4>
+                            </Descriptions.Item>
 
-                            <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>发现缺陷的初始条件</h5>
-                            <Form.Item
-                            {...restField}
-                            name={[name, '发现缺陷的初始条件']}
-                            rules={[{ required: true, message: '请填写发现缺陷的初始条件' }]}
-                            >
-                            <Input.TextArea style={{ maxWidth: 500 }} disabled placeholder="发现缺陷的初始条件" />
-                            </Form.Item>
+                            <Descriptions.Item label="发现缺陷用例及具体操作路径" span={3}>
+                            <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{index['发现缺陷用例及具体操作路径（要具体）']}</h4>
+                            </Descriptions.Item>
 
-                            <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>发现缺陷用例及具体操作路径（要具体）</h5>
-                            <Form.Item
-                            {...restField}
-                            name={[name, '发现缺陷用例及具体操作路径（要具体）']}
-                            rules={[{ required: true, message: '请填写发现缺陷用例及具体操作路径' }]}
-                            >
-                            <Input.TextArea style={{ maxWidth: 500 }} disabled placeholder="发现缺陷用例及具体操作路径（要具体）" />
-                            </Form.Item>
+                            <Descriptions.Item label="关联用例" >
+                            <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{index['关联用例']}</h4>
+                            </Descriptions.Item>
 
-                            <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>关联用例</h5>
-                            <Form.Item
-                            {...restField}
-                            name={[name, '关联用例']}
-                            rules={[{ required: true, message: '请填写关联用例' }]}
-                            >
-                            <Input style={{ maxWidth: 500 }} disabled placeholder="关联用例" />
-                            </Form.Item>
+                            <Descriptions.Item label="发现时间" >
+                            <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{index['时间']}</h4>
+                            </Descriptions.Item>
 
-                            <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>发现时间</h5>
-                            <Form.Item name={[name, '时间']} label="DatePicker" {...config}>
-                            <Input style={{ maxWidth: 500 } } disabled/>
-                            </Form.Item>
+                            <Descriptions.Item label="责任人" >
+                            <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{index['责任人']}</h4>
+                            </Descriptions.Item>
 
-                            <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>责任人</h5>
-                            <Form.Item
-                            {...restField}
-                            name={[name, '责任人']}
-                            rules={[{ required: true, message: '请填写责任人' }]}
-                            >
-                            <Input style={{ maxWidth: 500 } } disabled placeholder="责任人" />
-                            </Form.Item>
-
-                            <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>修改建议</h5>
-                            <Form.Item
-                            {...restField}
-                            name={[name, '修改建议']}
-                            rules={[{ required: true, message: '请填写修改建议' }]}
-                            >
-                            <Input.TextArea style={{ maxWidth: 500 }} disabled placeholder="修改建议" />
-                            </Form.Item>
+                            <Descriptions.Item label="修改建议" >
+                            <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{index['修改建议']}</h4>
+                            </Descriptions.Item>
+                        </Descriptions>
                         </Panel>
                     </Collapse>
                                         
                     
-                </Fragment>
-                ))}
-            </>
-            )}
-        </Form.List>
+                </div>
+                )}
+
 
         </Form>
     )

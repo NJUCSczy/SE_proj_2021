@@ -88,7 +88,7 @@ function OfflineSignContract(props) {
         const res = new FormData();
         res.append('contractTable', values['签章']['file']);
         res.append('nondisclosureAgreementTable', values['保密协议']['file']);
-        fetch(REMOTE_SERVER + "/contract/" + _state['PageInfo']['id'] + "/files", {
+        fetch(REMOTE_SERVER + "/contract/" + _state['PageInfo']['ContractID'] + "/files", {
             method: "POST",
             headers: {
                 'credentials': 'same-origin',
@@ -103,7 +103,7 @@ function OfflineSignContract(props) {
         })
             .then(res => {
                 console.log(res)
-                if (res.status === 201) {
+                if (res.status === 200) {
                     message.success({ content: "上传成功！", key: "upload" })
                     GotoPage("ViewEntrust", _state)
                 }
@@ -210,10 +210,9 @@ function OfflineSignContract(props) {
                         <Button icon={<UploadOutlined />}>Select File</Button>
                     </Upload>
                 </Form.Item>
-
                 <Form.Item>
-                    <Button type="primary" htmlType="submit">
-                        提交
+                    <Button id='提交' type="primary" htmlType="submit">
+                    提交
                     </Button>
                 </Form.Item>
             </Form>
