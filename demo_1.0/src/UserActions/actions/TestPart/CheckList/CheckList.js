@@ -42,7 +42,7 @@ function CheckList(props) {
           .then(data => {
             if (data != null) {
               form = data
-              form['软件报告检查表'] = values
+              form['测试报告检查表'] = values
               SubmitForm(form)
             }
             console.log(data)
