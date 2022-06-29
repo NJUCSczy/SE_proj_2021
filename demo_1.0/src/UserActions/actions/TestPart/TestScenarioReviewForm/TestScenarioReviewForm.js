@@ -9,6 +9,7 @@ import { USE_JSON_SERVER,REMOTE_SERVER } from '../../../functions/functions';
 
 
 const { Column, ColumnGroup } = Table;
+var _ = require('lodash');
 
 const columns =[
   {
@@ -19,7 +20,7 @@ const columns =[
     title:'评审意见',
     dataIndex:'opinion',
     render:(_, record,index) => (
-      <Form.Item name={'opinion_'+index} initialValue={''}>
+      <Form.Item name={'opinion_'+index} initialValue={''} rules={[{ required: true, message: '请填写软件名称' }]}>
       <Input></Input>
       </Form.Item>
     ),
@@ -29,7 +30,7 @@ const columns =[
     title:'签字',
     dataIndex:'sign',
     render:(_, record,index) => (
-      <Form.Item name={'sign_'+index} initialValue={''}>
+      <Form.Item name={'sign_'+index} initialValue={''} rules={[{ required: true, message: '请填写软件名称' }]}>
       <Input></Input>
       </Form.Item>
     ),
@@ -38,13 +39,15 @@ const columns =[
     title:'日期',
     dataIndex:'date',
     render:(_, record,index) => (
-      <Form.Item name={'date_'+index} initialValue={''}>
-      <Input></Input>
+      <Form.Item name={'date_'+index} initialValue={''} rules={[{ required: true, message: '请填写软件名称' }]}>
+      <DatePicker/>
       </Form.Item>
     ),
   },
   
 ]
+
+
 
 const data=[
   {
@@ -101,6 +104,7 @@ const data1=[
     }
 ]
 
+
 const formItemLayout = {
   labelCol: { span: 5 },
   wrapperCol: { span: 16 },
@@ -108,13 +112,28 @@ const formItemLayout = {
 function TestScenarioReviewForm(props) {
   const { UpdateUserInfo, GotoPage, _state } = props;
   const [formData, setFormData] = useState({})
+  const [selectData, setSelectData] = useState({})
   const { Option } = Select;
   const { TextArea } = Input;
+
+
+
+  const change =(value,key)=>{
+    setSelectData(prev => {
+      const newSelectData = _.cloneDeep(prev)
+      newSelectData['pass_'+key] = value;
+      console.log(newSelectData)
+      return newSelectData;
+    })
+  }
+
+  
+
   const onFinishForm = (values) => {
     console.log('Success:', values);
     var form = {}
     if (USE_JSON_SERVER) {
-      fetch("http://localhost:8000/forms/1" , {
+      fetch("http://localhost:8000/forms/1"/*+ _state['PageInfo']['id']*/ , {
         method: "GET",
         mode: 'cors',
         headers: {
@@ -288,14 +307,14 @@ function TestScenarioReviewForm(props) {
               <Column title='通过' dataIndex='pass' key='pass'
                 render={(_, record,index) => (
                   <Form.Item name={'pass_'+index} initialValue={false}>
-                    <Switch checkedChildren="是" unCheckedChildren="否" defaultChecked={false}/>
+                    <Switch checkedChildren="是" unCheckedChildren="否" defaultChecked={false} onChange={(e) => {change(e,index)}}/>
                   </Form.Item>
                 )}
               ></Column>
               <Column title='不通过及原因' dataIndex='fail' key='fail'
                 render={(_, record,index) => (
-                  <Form.Item name={'fail_reason_'+index} initialValue={''}>
-                  <Input></Input>
+                  <Form.Item name={'fail_reason_'+index} initialValue={''} rules={[{ required: (selectData['pass_'+index]!=true), message: '请填写软件名称' }]}>
+                  <Input disabled={(selectData['pass_'+index]===true)}/>
                   </Form.Item>
                 )}
               ></Column>
