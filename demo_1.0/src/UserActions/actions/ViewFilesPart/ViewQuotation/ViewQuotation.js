@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types';
-import { Collapse, DatePicker, Divider, Form, Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
+import { Descriptions, Collapse, DatePicker, Divider, Form, Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import './ViewQuotation.css'
 import { useEffect, useState } from 'react';
 import moment from 'moment';
@@ -94,78 +94,69 @@ function ViewQuotation(props) {
         entrustData['报价单'] === null ? null : (
             <Form
                 name="报价单"
-                initialValues={{ "项目列表": entrustData['报价单']['基本信息']['项目列表'] }}
             >
                 <h1 style={{ textAlign: 'center', fontSize: 30 }}>报价单</h1>
                 <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>户名：南京大学</h4>
                 <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>开户银行：中国工商银行股份有限公司南京汉口路分理处</h4>
                 <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>账号:4301011309001041656</h4>
-                <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件名称</h4>
-                <Input style={{ maxWidth: 500 }} disabled defaultValue={entrustData['报价单']['基本信息']['软件名称']} />
-                <Form.List name="项目列表" layout='vertical' width={500}>
-                    {(fields, { add, remove }) => (
-                        <>
-                            {fields.map(({ key, name, ...restField }) => (
-                                <Fragment layout='vertical' key={key} style={{ display: 'flex', marginBottom: 8 }}>
-                                    <Collapse  bordered={false} ghost>
-                                        <Panel  key="1">
-                                            <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>项目</h5>
-                                            <Form.Item
-                                                {...restField}
-                                                name={[name, '项目']}
-                                            >
-                                                <Input style={{ maxWidth: 500 }} disabled placeholder="项目" />
-                                            </Form.Item>
+                <Descriptions
+                        
+                column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+                >
+                    <Descriptions.Item label={<h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件名称</h4>} >
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 30 }} >{entrustData['报价单']['基本信息']['软件名称']}</h4>
+                    </Descriptions.Item>
+                </Descriptions>
+                
+                {entrustData['报价单']['基本信息']['项目列表'].map((index)=>
+                <div>
+                    <Collapse  bordered={false} ghost defaultActiveKey={['1']}>
+                        <Panel header={<h4 style={{ fontWeight: 'bolder'}} >项目:{index['项目']}</h4>} key="1">
+                        <Descriptions
+                        bordered
+                        column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+                        >
 
-                                            <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>分项</h5>
-                                            <Form.Item
-                                                {...restField}
-                                                name={[name, '分项']}
-                                            >
-                                                <Input style={{ maxWidth: 500 }} disabled placeholder="分项" />
-                                            </Form.Item>
+                            <Descriptions.Item label="分项" >
+                            <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{index['分项']}</h4>
+                            </Descriptions.Item>
 
-                                            <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>单价</h5>
-                                            <Form.Item
-                                                {...restField}
-                                                name={[name, '单价']}
-                                            >
-                                                <Input style={{ maxWidth: 500 }} disabled placeholder="单价" />
-                                            </Form.Item>
+                            <Descriptions.Item label="单价" >
+                            <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{index['单价']}</h4>
+                            </Descriptions.Item>
 
-                                            <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>说明</h5>
-                                            <Form.Item
-                                                {...restField}
-                                                name={[name, '说明']}
-                                            >
-                                                <Input style={{ maxWidth: 500 }} disabled placeholder="说明" />
-                                            </Form.Item>
+                            <Descriptions.Item label="说明" >
+                            <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{index['说明']}</h4>
+                            </Descriptions.Item>
 
-                                            <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>行合计</h5>
-                                            <Form.Item
-                                                {...restField}
-                                                name={[name, '行合计']}
-                                            >
-                                                <Input style={{ maxWidth: 500 }} disabled placeholder="行合计" />
-                                            </Form.Item>
-                                        </Panel>
-                                    </Collapse>
-                  
-                                    
-                                </Fragment>
-                            ))}
-                        </>
-                    )}
-                </Form.List>
+                            <Descriptions.Item label="行合计" >
+                            <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{index['行合计']}</h4>
+                            </Descriptions.Item>
+                        </Descriptions>
+                        </Panel>
+                    </Collapse>
+                                        
+                    
+                </div>
+                )}
                 <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>以下金额单位： 元</h3>
-                <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>小计</h4>
-                <Input style={{ maxWidth: 500 }} disabled defaultValue={entrustData['报价单']['基本信息']['小计']} />
+                <Descriptions
+                bordered
+                layout='vertical'
+                column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+                >
+                    <Descriptions.Item label="小计" >
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['报价单']['基本信息']['小计']}</h4>
+                    </Descriptions.Item>
 
-                <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>税率(8%)</h4>
-                <Input style={{ maxWidth: 500 }} disabled defaultValue={entrustData['报价单']['基本信息']['税率(8%)']} />
+                    <Descriptions.Item label="税率(8%)" >
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['报价单']['基本信息']['税率(8%)']}</h4>
+                    </Descriptions.Item>
 
-                <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>总计</h4>
-                <Input style={{ maxWidth: 500 }} disabled defaultValue={entrustData['报价单']['基本信息']['总计']} />
+                    <Descriptions.Item label="总计">
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['报价单']['基本信息']['总计']}</h4>
+                    </Descriptions.Item>
+                </Descriptions>
 
             </Form>
         )
