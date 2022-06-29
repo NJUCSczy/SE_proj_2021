@@ -27,7 +27,7 @@ function TadultApplication(props) {
     setFormData(prev => {
       const newFormData = _.cloneDeep(prev)
       newFormData[key] = val;
-      console.log(newFormData)
+      console.log(val)
       return newFormData;
     })
 
@@ -157,15 +157,15 @@ function TadultApplication(props) {
         name='查杀病毒'
         rules={[{ required: true, message: '请填写查杀病毒' }]}
       >
-        <Checkbox.Group >
+        <Radio.Group >
           <Col span={30}>
-            <Checkbox id='查杀病毒_已完成' value="已完成" style={{ lineHeight: '32px' }}>
+            <Radio id='查杀病毒_已完成' value="已完成" style={{ lineHeight: '32px' }} onChange={(e) => setDataByKey('查杀工具', false)}>
               已完成
-            </Checkbox>
+            </Radio>
           </Col>
-          <Checkbox id='查杀病毒_未完成' value="未完成" style={{ lineHeight: '32px' }} onChange={(e) => setDataByKey('查杀工具', e.target.checked)}>
+          <Radio id='查杀病毒_未完成' value="未完成" style={{ lineHeight: '32px' }} onChange={(e) => setDataByKey('查杀工具', e.target.checked)}>
             无法完成
-          </Checkbox>
+          </Radio>
           <Form.Item
             style={{ paddingLeft: 20 }}
             name="查杀工具"
@@ -173,7 +173,7 @@ function TadultApplication(props) {
           >
             <Input id='查杀工具' style={{ padding: 0 }} disabled={formData['查杀工具'] != true} placeholder='查杀工具'/>
           </Form.Item>
-        </Checkbox.Group>
+        </Radio.Group>
       </Form.Item>
 
       <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>材料检查</h2>
