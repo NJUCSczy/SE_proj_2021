@@ -1,15 +1,16 @@
-import './ViewEntrustList.css'
+import './ViewProjList.css'
 import React from 'react';
 import { Table, Tag, Space, message, Button, Input, Select } from 'antd';
 import { useEffect, useState, useRef } from 'react';
 import { getStageByInfo, getStatusInfo, getStageByDelegationState, getStatusByDelegationState, USE_JSON_SERVER, REMOTE_SERVER } from '../../../functions/functions'
+import {getTestStageByDTAState,getTestStageByInfo,getTestStatusInfo,getTestStatusByDelegationState,getTestDescriptionByStage} from '../../../functions/functionTest'
 import { SearchOutlined } from '@ant-design/icons';
 import Highlighter from 'react-highlight-words';
 
 const { Option } = Select;
 var _ = require('lodash');
 
-function ViewEntrustList(props) {
+function ViewProjList(props) {
   const { UpdateUserInfo, GotoPage, _state } = props;
   const [entrustData, setEntrustData] = useState({ 'formData': null })
   const [formData, setFormData] = useState({ 'formData': null })
@@ -147,12 +148,14 @@ function ViewEntrustList(props) {
       key: 'status',
       render: (userApplication) => (
         USE_JSON_SERVER ?
-          (<Space size="middle">
-            {getStatusInfo(userApplication)
+          (
+          <Space size="middle">
+            {
+            getTestStatusInfo(userApplication)
             }
-          </Space>) : (
+          </Space>) : (//TODO
             <Space size="middle">
-              {getStatusByDelegationState(userApplication['state'])
+              {getTestStatusByDelegationState(userApplication['state'])
               }
             </Space>)
       )
@@ -171,14 +174,14 @@ function ViewEntrustList(props) {
             <a id='view_entrust'
               onClick={() => gotoEntrustPage(userApplication['delegationId'], userApplication['contractId'])}
             >查看</a>
-          </Space>)
+          </Space>)//TODO
       ),
     },
   ];
   const gotoEntrustPage = (id, ContractID) => {
     _state['PageInfo']['id'] = id;
     _state['PageInfo']['ContractID'] = ContractID
-    UpdateUserInfo({ PageInfo: { 'id': id } }, GotoPage('ViewEntrust', _state))
+    UpdateUserInfo({ PageInfo: { 'id': id } }, GotoPage('ViewEntrust', _state))//TODO
   }
   const updateInfo = () => {
     if (USE_JSON_SERVER) {
@@ -197,20 +200,53 @@ function ViewEntrustList(props) {
           if (data != null) {
             setEntrustData(prev => {
               const newData = _.cloneDeep(prev)
-              newData["formData"] = data
-              return newData
+              const res = {'formData':[]}
+              newData["formData"]=data
+              newData["formData"].forEach(element => {
+                if (USE_JSON_SERVER) {
+                  if (getStageByInfo(element) >= 21)
+                    res["formData"].push(element);
+                } else {
+                  if (getStageByDelegationState(element['state']) >= 21)
+                    res["formData"].push(element)
+                }
+              });
+              console.log(res)
+              return res;
             })
+            // setEntrustData(prev => {
+            //   const newData = _.cloneDeep(prev)
+            //   newData["formData"] = data
+            //   return newData
+            // })
           }
           if (data != null) {
             setFormData(prev => {
               const newData = _.cloneDeep(prev)
-              newData["formData"] = data
-              return newData
+              const res = {'formData':[]}
+              newData["formData"]=data
+              newData["formData"].forEach(element => {
+                if (USE_JSON_SERVER) {
+                  console.log(getStageByInfo(element))
+                  if (getStageByInfo(element) >= 21)
+                    res["formData"].push(element);
+                } else {
+                  if (getStageByDelegationState(element['state']) >= 21)
+                    res["formData"].push(element)
+                }
+              });
+              console.log(res)
+              return res;
             })
+            // setFormData(prev => {
+            //   const newData = _.cloneDeep(prev)
+            //   newData["formData"] = data
+            //   return newData
+            // })
           }
         })
     }
-    else {
+    else {//TODO
       const URL = _state['userRole'][0] === 'ROLE_USER' ? (REMOTE_SERVER + "/delegations") : (REMOTE_SERVER + "/delegations/all")
       console.log(URL)
       fetch(URL, {
@@ -268,14 +304,15 @@ function ViewEntrustList(props) {
   const FliterDataByState = (State) => {
     switch(State){
       case '全部':FliterDataByStage(0,100);break;
-      case '未定项委托':FliterDataByStage(0,12);break;
-      case '已定项委托':FliterDataByStage(13,100);break;
-      case '已签署合同':FliterDataByStage(21,100);break;
-      case '等待用户提交材料':FliterDataByStage(0,2);break;
-      case '审核委托中':FliterDataByStage(3,7);break;
-      case '议价中':FliterDataByStage(8,12);break;
-      case '线上完成合同中':FliterDataByStage(13,17);break;
-      case '线下签署合同中':FliterDataByStage(18,20);break;
+      case '未填写测试方案':FliterDataByStage(0,0);break;
+      case '测试方案审核中':FliterDataByStage(1,2);break;
+      case '测试方案已通过':FliterDataByStage(3,100);break;
+      case '实施测试中':FliterDataByStage(3,7);break;
+      case '已生成测试报告':FliterDataByStage(8,100);break;
+      case '测试报告审核中':FliterDataByStage(8,9);break;
+      case '测试报告已通过':FliterDataByStage(10,100);break;
+      case '测试报告已签发':FliterDataByStage(12,100);break;
+      
     }
   }
 
@@ -285,10 +322,10 @@ function ViewEntrustList(props) {
       const res = {'formData':[]}
       newData["formData"].forEach(element => {
         if (USE_JSON_SERVER) {
-          if (getStageByInfo(element) >= minStage && getStageByInfo(element) <= maxStage)
+          if (getTestStageByInfo(element) >= minStage && getTestStageByInfo(element) <= maxStage)
             res["formData"].push(element);
         } else {
-          if (getStageByDelegationState(element['state']) >= minStage && getStageByDelegationState(element['state']) <= maxStage)
+          if (getTestStageByDTAState(element['state']) >= minStage && getTestStageByDTAState(element['state']) <= maxStage)
             res["formData"].push(element)
         }
       });
@@ -301,14 +338,14 @@ function ViewEntrustList(props) {
     <>
       <Select defaultValue="全部" style={{ width: 160, marginLeft: 30,marginTop:20,marginBottom:20 }} onChange={FliterDataByState}>
         <Option value="全部">全部</Option>
-        <Option value="未定项委托">未定项委托</Option>
-        <Option value="已定项委托">已定项委托</Option>
-        <Option value="已签署合同">已签署合同</Option>
-        <Option value="等待用户提交材料">等待用户提交材料</Option>
-        <Option value="审核委托中">审核委托中</Option>
-        <Option value="议价中">议价中</Option>
-        <Option value="线上完成合同中">线上完成合同中</Option>
-        <Option value="线下签署合同中">线下签署合同中</Option>
+        <Option value="未填写测试方案">未填写测试方案</Option>
+        <Option value="测试方案审核中">测试方案审核中</Option>
+        <Option value="测试方案已通过">测试方案已通过</Option>
+        <Option value="实施测试中">实施测试中</Option>
+        <Option value="已生成测试报告">已生成测试报告</Option>
+        <Option value="测试报告审核中">测试报告审核中</Option>
+        <Option value="测试报告已通过">测试报告已通过</Option>
+        <Option value="测试报告已签发">测试报告已签发</Option>
       </Select>
       <Table
         style={{ marginLeft: 20, marginRight: 20 }}
@@ -320,4 +357,4 @@ function ViewEntrustList(props) {
   )
 }
 
-export default ViewEntrustList
+export default ViewProjList

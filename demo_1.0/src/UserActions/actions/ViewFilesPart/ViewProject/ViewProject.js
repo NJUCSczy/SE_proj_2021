@@ -5,7 +5,7 @@ import { Descriptions, Select, Button, Dropdown, Steps, Space, Collapse, Row, Co
 import { DownOutlined, SmileOutlined, CaretRightOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
 import { USE_JSON_SERVER, REMOTE_SERVER} from '../../../functions/functions';
-import {  getTestStageByInfo, getTestStageByDTAState, getTestStatusInfo, getStatusByDelegationState } from '../../../functions/functionTest';
+import {  getTestStageByInfo, getTestStageByDTAState, getTestStatusInfo, getTestStatusByDelegationState } from '../../../functions/functionTest';
 var _ = require('lodash');
 
 const { Panel } = Collapse;
@@ -66,7 +66,7 @@ function ViewProject(props){
                         setEntrustData(prev => {
                             const newData = _.cloneDeep(prev)
                             newData["formData"] = data
-                            newData['stage'] = getStatusByDelegationState(data['state']);
+                            newData['stage'] = getTestStatusByDelegationState(data['state']);
                             return newData
                         })
                     }
@@ -88,7 +88,7 @@ function ViewProject(props){
                 <Descriptions bordered title="项目基本信息" layout="vertical" style={{ marginLeft: 20 , marginRight: 20}}>
                     <Descriptions.Item label="项目编号">{(entrustData['formData'] === null) ? null : USE_JSON_SERVER ? entrustData['formData']['市场部审核委托']['测试项目编号'] : entrustData['formData']['delegationId']}</Descriptions.Item>
                     <Descriptions.Item label="用户">{(entrustData['formData'] === null) ? null : USE_JSON_SERVER ? entrustData['formData']['userName'] : entrustData['formData']['usrBelonged']}</Descriptions.Item>
-                    <Descriptions.Item label="当前状态">{USE_JSON_SERVER ? getTestStatusInfo(entrustData['formData']) : getStatusByDelegationState(entrustData['formData']['state'])}</Descriptions.Item>
+                    <Descriptions.Item label="当前状态">{USE_JSON_SERVER ? getTestStatusInfo(entrustData['formData']) : getTestStatusByDelegationState(entrustData['formData']['state'])}</Descriptions.Item>
                 </Descriptions>
                 <Collapse ghost={true} expandIcon={({ isActive }) => <CaretRightOutlined style={{ paddingTop: 12 }} rotate={isActive ? 90 : 0} />}>
                     <Panel header={<h3>详细信息</h3>} key="1">

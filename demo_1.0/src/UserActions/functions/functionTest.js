@@ -1,4 +1,3 @@
-
 export function getTestStageByInfo(info){
     if(info===null || info ===undefined)return 0;
     return (
@@ -45,7 +44,7 @@ export function getTestStatusInfo(info,part=null){
     return getTestDescriptionByStage(stage,part);
 }
 
-export function getStatusByDelegationState(state,part=null){
+export function getTestStatusByDelegationState(state,part=null){
     var stage=getTestStageByDTAState(state);
     //console.log(stage,part)
     return getTestDescriptionByStage(stage,part);
@@ -87,7 +86,7 @@ function getTestDescriptionByStage(stage,part){
     // }
     switch(stage){
         case -1:res='状态错误';break;
-        case 0:res='项目已生成，等待测试人员填写《软件测试方案》'
+        case 0:res='项目已生成，等待测试人员填写《软件测试方案》';break;
         case 1:res='测试人员已经填写《软件测试方案》，等待质量部人员审核并填写《测试方案评审表》';break;
         case 2:res='质量部人员审核完成，填写《测试方案评审表》，测试方案未通过，等待测试人员重新填写《软件测试方案》';break;
         case 3:res='质量部人员审核完成，填写《测试方案评审表》，测试方案通过，等待测试人员填写《测试用例》';break;
