@@ -83,7 +83,6 @@ return(
               </div>
           )}
 
-
           <h2 style={{fontWeight: 'bolder',fontSize:30,marginTop: 40}}>软件测试委托合同签章(受托方)</h2>
           {getStageByInfo(entrustData['formData'])<18? null:(
               <div>

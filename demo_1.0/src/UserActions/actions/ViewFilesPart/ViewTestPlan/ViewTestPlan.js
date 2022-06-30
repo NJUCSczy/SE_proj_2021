@@ -46,7 +46,7 @@ function ViewTestPlan(props) {
                 })
         }
         else {
-            fetch(REMOTE_SERVER + "/delegation/" + _state['PageInfo']['id'], {
+            fetch(REMOTE_SERVER + "/test/" + _state['PageInfo']['id'] + "/test-scheme", {
                 method: "GET",
                 headers: {
                     'Accept': 'application/json',
@@ -56,7 +56,8 @@ function ViewTestPlan(props) {
                     'usrName': _state['userName'],
                     'usrID': _state['userID'],
                     'usrRole': _state['userRole'][0],
-                    'Authorization': _state['accessToken']
+                    'Authorization': _state['accessToken'],
+                    //'delegationId':_state['PageInfo']['id']
                 },
             })
                 .then(res => {
@@ -71,8 +72,7 @@ function ViewTestPlan(props) {
                     if (data != null) {
                         setEntrustData(prev => {
                             const newData = _.cloneDeep(prev)
-                            newData["formData"] = data
-                            newData['报价单'] = data['offerTableUnion']
+                            newData['软件测试方案'] = data['testschemeTable']
                             return newData
                         })
                     }
