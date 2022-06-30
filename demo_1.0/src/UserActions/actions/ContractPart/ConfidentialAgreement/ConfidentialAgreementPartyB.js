@@ -173,7 +173,7 @@ function ConfidentialAgreementPartyB(props){
              </Form.Item>
 
               <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                <Button type="primary" htmlType="submit">
+                <Button id='提交' type="primary" htmlType="submit">
                   Submit
                 </Button>
               </Form.Item>
