@@ -188,10 +188,10 @@ function QuestionList(props) {
                 <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>问题（缺陷）简要描述</h5>
                 <Form.Item
                   {...restField}
-                  name={[name, '问题（缺陷）简要描述']}
+                  name={[name, '问题(缺陷)简要描述']}
                   rules={[{ required: true, message: '请填写问题（缺陷）简要描述' }]}
                 >
-                  <Input.TextArea style={{ maxWidth: 500 }} placeholder="问题（缺陷）简要描述" />
+                  <Input.TextArea style={{ maxWidth: 500 }} placeholder="问题(缺陷)简要描述" />
                 </Form.Item>
 
                 <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>对应需求条目</h5>
