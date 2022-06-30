@@ -118,14 +118,14 @@ function TrusteeApplication(props) {
         name="单位全称"
         rules={[{ required: true, message: '请填写单位全称' }]}
       >
-        <Input style={{ maxWidth: 500 }} defaultValue={'南京大学计算机软件新技术国家重点实验室'} />
+        <Input id = '单位全称'style={{ maxWidth: 500 }} defaultValue={'南京大学计算机软件新技术国家重点实验室'} />
       </Form.Item>
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>授权代表</h3>
       <Form.Item
         name="授权代表"
         rules={[{ required: true, message: '请填写授权代表' }]}
       >
-        <Input style={{ maxWidth: 500 }} />
+        <Input id='授权代表' style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>联系人</h3>
@@ -133,7 +133,7 @@ function TrusteeApplication(props) {
         name="联系人"
         rules={[{ required: true, message: '请填写联系人' }]}
       >
-        <Input style={{ maxWidth: 500 }} />
+        <Input id='联系人' style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>通讯地址</h3>
@@ -141,7 +141,7 @@ function TrusteeApplication(props) {
         name="通讯地址"
         rules={[{ required: true, message: '请填写通讯地址' }]}
       >
-        <Input style={{ maxWidth: 500 }} />
+        <Input id='通讯地址' style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>邮编</h3>
@@ -149,7 +149,7 @@ function TrusteeApplication(props) {
         name="邮编"
         rules={[{ required: true, message: '请填写邮编' }]}
       >
-        <Input style={{ maxWidth: 500 }} />
+        <Input id='邮编' style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>电话</h3>
@@ -157,7 +157,7 @@ function TrusteeApplication(props) {
         name="电话"
         rules={[{ required: true, message: '请填写电话' }, { pattern: new RegExp(/^[1-9]\d*$/, "g"), message: '请正确输入电话' }]}
       >
-        <Input style={{ maxWidth: 500 }} />
+        <Input id='电话' style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>传真</h3>
@@ -165,7 +165,7 @@ function TrusteeApplication(props) {
         name="传真"
         rules={[{ required: true, message: '请填写传真' }]}
       >
-        <Input style={{ maxWidth: 500 }} />
+        <Input id='传真' style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>开户银行</h3>
@@ -186,7 +186,7 @@ function TrusteeApplication(props) {
         <Input style={{ maxWidth: 500 }} defaultValue={'4301011309001041656'} />
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <Button id='提交'type="primary" htmlType="submit">
           提交
         </Button>
       </Form.Item>

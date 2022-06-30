@@ -169,7 +169,7 @@ function Quotation(props) {
           <>
             {fields.map(({ key, name, ...restField }) => (
               <Fragment layout='vertical' key={key} style={{ display: 'flex', marginBottom: 8 }}>
-                <Collapse  bordered={false} ghost>
+                <Collapse defaultActiveKey={["1"]} bordered={false} ghost>
                   <Panel  key="1">
                     <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>项目</h5>
                     <Form.Item
