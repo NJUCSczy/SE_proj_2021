@@ -55,6 +55,10 @@ import Viewsdreviewform from './UserActions/actions/ViewFilesPart/Viewsdreviewfo
 import Viewtsreviewform from './UserActions/actions/ViewFilesPart/Viewtsreviewform/Viewtsreviewform';
 
 import { USE_JSON_SERVER } from './UserActions/functions/functions';
+import ViewTestCase from './UserActions/actions/ViewFilesPart/ViewTestCase/ViewTestCase';
+import ViewTestPlan from './UserActions/actions/ViewFilesPart/ViewTestPlan/ViewTestPlan';
+import ViewTestRecord from './UserActions/actions/ViewFilesPart/ViewTestRecord/ViewTestRecord';
+import ViewTestReport from './UserActions/actions/ViewFilesPart/ViewTestReport/ViewTestReport';
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -194,16 +198,16 @@ class Home extends React.Component {
 
             case 'Info1':
                 this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '机构信息', '0', '0', '0'] });
-                return (<TestPlan _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestPlan>);
+                return (<TestReport _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestReport>);
             case 'Info2':
                 this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '资质信息', '0', '0', '0'] });
-                return (<CheckList></CheckList>);
+                return (<TestReport></TestReport>);
             case 'Info3':
                 this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '政策法规', '0', '0', '0'] });
                 return (<TestScenarioReviewForm _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestScenarioReviewForm>);
             case 'Info4':
                 this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '业务信息', '0', '0', '0'] });
-                return (<Viewtsreviewform _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></Viewtsreviewform>);
+                return (<ViewTestReport _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewTestReport>);
             case 'Info5':
                 this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '新闻资讯', '0', '0', '0'] });
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>新闻资讯</div>);

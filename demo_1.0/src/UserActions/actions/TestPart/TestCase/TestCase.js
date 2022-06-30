@@ -40,7 +40,7 @@ function TestCase(props){
         .then(data => {
           if (data != null) {
             form = data
-            form['软件测试用例']=values
+            form['测试用例电子记录']=values
             SubmitForm(form)
           }
           console.log(data)
