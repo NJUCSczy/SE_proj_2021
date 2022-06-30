@@ -285,7 +285,7 @@ function ViewEntrustList(props) {
       const res = {'formData':[]}
       newData["formData"].forEach(element => {
         if (USE_JSON_SERVER) {
-          if (getStageByInfo(element) >= minStage && getStageByInfo <= maxStage)
+          if (getStageByInfo(element) >= minStage && getStageByInfo(element) <= maxStage)
             res["formData"].push(element);
         } else {
           if (getStageByDelegationState(element['state']) >= minStage && getStageByDelegationState(element['state']) <= maxStage)
