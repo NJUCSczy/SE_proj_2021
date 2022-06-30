@@ -36,7 +36,6 @@ function SubmitApplication(props) {
       console.log(newFormData)
       return newFormData;
     })
-
   }
 
   const test =(value,key)=>{

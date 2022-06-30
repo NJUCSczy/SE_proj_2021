@@ -107,7 +107,7 @@ function TestAgreement(props) {
         })
     }
     else {
-      fetch(REMOTE_SERVER + "/contract/performanceTerm/partyB" + _state['PageInfo']['id'], {
+      fetch(REMOTE_SERVER + "/contract/performanceTerm/partyB", {
         method: "POST",
         headers: {
           'Accept': 'application/json',
@@ -177,14 +177,14 @@ function TestAgreement(props) {
       >
         <h2 style={{ fontWeight: 'bolder', marginTop: 30, textAlign: 'center' }}>软件委托测试合同</h2>
 
-        <Form.Item label="项目名称" name="项目名称">
+        <Form.Item label="项目名称" name="项目名称" initialValue={entrustData["用户申请表"]["软件名称"]} rules={[{ required: true, message: '请填写项目名称' }]}>
           {/* <Input placeholder="请输入项目名称" style={{maxWidth:300}}/> */}
-          <Input style={{ maxWidth: 300 }} defaultValue={entrustData["用户申请表"]["软件名称"]} disabled />
+          <Input style={{ maxWidth: 300 }} defaultValue={entrustData["用户申请表"]["软件名称"]}  />
         </Form.Item>
 
-        <Form.Item label="委托方(甲方)" name="委托方(甲方)">
+        <Form.Item label="委托方(甲方)" name="委托方(甲方)" initialValue={entrustData["用户申请表"]["委托单位(中文)"]} rules={[{ required: true, message: '请填写委托方' }]}>
           {/* <Input placeholder="请输入委托方" style={{maxWidth:180}}/> */}
-          <Input style={{ maxWidth: 180 }} defaultValue={entrustData["用户申请表"]["委托单位(中文)"]} disabled />
+          <Input style={{ maxWidth: 180 }} defaultValue={entrustData["用户申请表"]["委托单位(中文)"]}  />
         </Form.Item>
 
         <Form.Item  label="受托方(乙方)" name="受托方(乙方)" rules={[{ required: true, message: '请填写受托方' }]}>

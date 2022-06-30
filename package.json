@@ -3,5 +3,8 @@
     "@testing-library/react": "^13.3.0",
     "react-styleguidist": "^11.2.0",
     "webpack": "^5.72.1"
+  },
+  "dependencies": {
+    "react-highlight-words": "^0.18.0"
   }
 }

@@ -234,6 +234,12 @@ log(False,'Software FunctionList',WARNING,'Page')
 browser.find_element_by_id("软件名称").send_keys('测试软件(自动)')
 browser.find_element_by_id("版本号").send_keys('1.0.0')
 browser.find_element_by_id("添加新功能").click()
+<<<<<<< HEAD
+=======
+browser.find_element_by_id("软件子功能列表").click()
+sleep(0.5)
+browser.find_element_by_id("添加新项目").click()
+>>>>>>> ffe59179dc377d38b0761aef0e8de1902d11fbf6
 browser.find_element_by_id("软件功能").send_keys('啥都能干')
 browser.find_element_by_id("添加新项目").click()
 browser.find_element_by_id("软件子功能项目").send_keys('项目1')

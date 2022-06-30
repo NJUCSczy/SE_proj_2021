@@ -29,7 +29,7 @@ function CheckList(props) {
       console.log('Success:', values);
       var form = {}
       if (USE_JSON_SERVER) {
-        fetch("http://localhost:8000/forms/1" , {
+        fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'], {
           method: "GET",
           mode: 'cors',
           headers: {
@@ -42,7 +42,7 @@ function CheckList(props) {
           .then(data => {
             if (data != null) {
               form = data
-              form['软件报告检查表'] = values
+              form['测试报告检查表'] = values
               SubmitForm(form)
             }
             console.log(data)
@@ -85,7 +85,7 @@ function CheckList(props) {
   
     const SubmitForm = (_form, firstTime = false) => {
       if (USE_JSON_SERVER) {
-        fetch("http://localhost:8000/forms/1" , {
+        fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'] , {
           method: "PUT",
           headers: {
             'Content-Type': 'application/json'
@@ -143,6 +143,7 @@ function CheckList(props) {
       console.log('Failed:', errorInfo);
       alert('请正确填写！')
     };
+
 
 
 

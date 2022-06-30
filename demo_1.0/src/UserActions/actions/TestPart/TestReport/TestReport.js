@@ -118,6 +118,7 @@ function TestReport(props){
           wrapperCol={{ span: 16 }}
           initialValues={{ remember: true }}
           autoComplete="off"
+          onFinish={onFinishForm}
         >
 
           <h1 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试报告</h1>
@@ -147,9 +148,9 @@ function TestReport(props){
           </Form.Item>
 
           <Form.Item
-            label="委托单位"
-            name="委托单位"
-            rules={[{ required: true, message: '请输入委托单位' }]}
+            label="总委托单位"
+            name="总委托单位"
+            rules={[{ required: true, message: '请输入总委托单位' }]}
           >
             <Input style={{maxWidth:200}}/>
           </Form.Item>
@@ -247,11 +248,19 @@ function TestReport(props){
           </Form.Item>
 
           <Form.Item 
-            name="测试时间" 
-            label="测试时间" 
-            rules={[{ required: true, message: '请输入开始结束时间' }]}
+            name="测试开始时间" 
+            label="测试开始时间" 
+            rules={[{ required: true, message: '请输入测试开始时间' }]}
           >  
-            <RangePicker />
+            <DatePicker />
+          </Form.Item>
+
+          <Form.Item 
+            name="测试结束时间" 
+            label="测试结束时间" 
+            rules={[{ required: true, message: '请输入测试结束时间' }]}
+          >  
+            <DatePicker />
           </Form.Item>
 
           <Form.Item
@@ -263,9 +272,9 @@ function TestReport(props){
           </Form.Item>
 
           <Form.Item
-            label="测试依据"
-            name="测试依据"
-            rules={[{ required: true, message: '请输入测试依据' }]}
+            label="总测试依据"
+            name="总测试依据"
+            rules={[{ required: true, message: '请输入总测试依据' }]}
           >
             <Input.TextArea/>
           </Form.Item>
@@ -291,7 +300,14 @@ function TestReport(props){
             name="主测人"
             rules={[{ required: true, message: '请输入主测人' }]}
           >
-            <Input style={{maxWidth:200}}/>
+            <Input style={{maxWidth:200}}/>      
+          </Form.Item>
+
+          <Form.Item
+            label="主测人日期"
+            name="主测人日期"
+            rules={[{ required: true, message: '请输入主测人日期' }]}
+          >
             <DatePicker />
           </Form.Item>
 
@@ -301,6 +317,13 @@ function TestReport(props){
             rules={[{ required: true, message: '请输入审核人' }]}
           >
             <Input style={{maxWidth:200}}/>
+          </Form.Item>
+
+          <Form.Item
+            label="审核人日期"
+            name="审核人日期"
+            rules={[{ required: true, message: '请输入审核人日期' }]}
+          >
             <DatePicker />
           </Form.Item>
 
@@ -310,6 +333,13 @@ function TestReport(props){
             rules={[{ required: true, message: '请输入批准人' }]}
           >
             <Input style={{maxWidth:200}}/>
+          </Form.Item>
+
+          <Form.Item
+            label="批准人日期"
+            name="批准人日期"
+            rules={[{ required: true, message: '请输入批准人日期' }]}
+          >
             <DatePicker />
           </Form.Item>
 
@@ -518,14 +548,14 @@ function TestReport(props){
                     <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试依据</h5>
                     <Form.Item
                       {...restField}
-                      name={[name, '测试依据']}
-                      rules={[{ required: true, message: '请填写测试依据' }]}
+                      name={[name, '测试依据分项']}
+                      rules={[{ required: true, message: '请填写测试依据分项' }]}
                     >
-                      <Input style={{ maxWidth: 500 }} placeholder="测试依据" />
+                      <Input style={{ maxWidth: 500 }} placeholder="测试依据分项" />
                     </Form.Item>
                                           
                     <Button onClick={() => remove(name)} type='danger'>
-                      删除该测试依据
+                      删除该测试依据分项
                     </Button>
                   </Fragment>
                 ))}
@@ -533,7 +563,7 @@ function TestReport(props){
                   <Button type="dashed"
                     style={{ width: 500, marginTop: 30 }}
                     onClick={() => add()} icon={<PlusOutlined />}  >
-                    添加新测试依据
+                    添加新测试依据分项
                   </Button>
                 </Form.Item>
               </>
@@ -550,14 +580,14 @@ function TestReport(props){
                     <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>参考资料</h5>
                     <Form.Item
                       {...restField}
-                      name={[name, '参考资料']}
-                      rules={[{ required: true, message: '请填写参考资料' }]}
+                      name={[name, '参考资料分项']}
+                      rules={[{ required: true, message: '请填写参考资料分项' }]}
                     >
-                      <Input style={{ maxWidth: 500 }} placeholder="参考资料" />
+                      <Input style={{ maxWidth: 500 }} placeholder="参考资料分项" />
                     </Form.Item>
                                           
                     <Button onClick={() => remove(name)} type='danger'>
-                      删除该参考资料
+                      删除该参考资料分项
                     </Button>
                   </Fragment>
                 ))}
@@ -565,7 +595,7 @@ function TestReport(props){
                   <Button type="dashed"
                     style={{ width: 500, marginTop: 30 }}
                     onClick={() => add()} icon={<PlusOutlined />}  >
-                    添加新参考资料
+                    添加新参考资料分项
                   </Button>
                 </Form.Item>
               </>
@@ -589,6 +619,7 @@ function TestReport(props){
                       <Input style={{ maxWidth: 500 }} placeholder="功能模块" />
                     </Form.Item>
 
+                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>功能要求</h5>
                     <Form.Item
                       {...restField}
                       name={[name, '功能要求']}
@@ -597,6 +628,7 @@ function TestReport(props){
                       <Input style={{ maxWidth: 500 }} placeholder="功能要求" />
                     </Form.Item>
 
+                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试结果</h5>
                     <Form.Item
                       {...restField}
                       name={[name, '测试结果']}
@@ -637,6 +669,7 @@ function TestReport(props){
                       <Input style={{ maxWidth: 500 }} placeholder="测试特性" />
                     </Form.Item>
 
+                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试说明</h5>
                     <Form.Item
                       {...restField}
                       name={[name, '测试说明']}
@@ -645,6 +678,7 @@ function TestReport(props){
                       <Input style={{ maxWidth: 500 }} placeholder="测试说明" />
                     </Form.Item>
 
+                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试结果</h5>
                     <Form.Item
                       {...restField}
                       name={[name, '测试结果']}
@@ -685,6 +719,7 @@ function TestReport(props){
                       <Input style={{ maxWidth: 500 }} placeholder="测试特性" />
                     </Form.Item>
 
+                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试说明</h5>
                     <Form.Item
                       {...restField}
                       name={[name, '测试说明']}
@@ -693,6 +728,7 @@ function TestReport(props){
                       <Input style={{ maxWidth: 500 }} placeholder="测试说明" />
                     </Form.Item>
 
+                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试结果</h5>
                     <Form.Item
                       {...restField}
                       name={[name, '测试结果']}
@@ -733,6 +769,7 @@ function TestReport(props){
                       <Input style={{ maxWidth: 500 }} placeholder="测试特性" />
                     </Form.Item>
 
+                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试说明</h5>
                     <Form.Item
                       {...restField}
                       name={[name, '测试说明']}
@@ -741,6 +778,7 @@ function TestReport(props){
                       <Input style={{ maxWidth: 500 }} placeholder="测试说明" />
                     </Form.Item>
 
+                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试结果</h5>
                     <Form.Item
                       {...restField}
                       name={[name, '测试结果']}
@@ -781,6 +819,7 @@ function TestReport(props){
                       <Input style={{ maxWidth: 500 }} placeholder="测试特性" />
                     </Form.Item>
 
+                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试说明</h5>
                     <Form.Item
                       {...restField}
                       name={[name, '测试说明']}
@@ -789,6 +828,7 @@ function TestReport(props){
                       <Input style={{ maxWidth: 500 }} placeholder="测试说明" />
                     </Form.Item>
 
+                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试结果</h5>
                     <Form.Item
                       {...restField}
                       name={[name, '测试结果']}
@@ -829,6 +869,7 @@ function TestReport(props){
                       <Input style={{ maxWidth: 500 }} placeholder="测试特性" />
                     </Form.Item>
 
+                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试说明</h5>
                     <Form.Item
                       {...restField}
                       name={[name, '测试说明']}
@@ -837,6 +878,7 @@ function TestReport(props){
                       <Input style={{ maxWidth: 500 }} placeholder="测试说明" />
                     </Form.Item>
 
+                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试结果</h5>
                     <Form.Item
                       {...restField}
                       name={[name, '测试结果']}

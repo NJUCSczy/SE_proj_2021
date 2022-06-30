@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Tooltip, Input, Select, Form } from 'antd';
+import { Tooltip, Input, Select, Form, message, Upload, Button } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
 import { getStageByInfo, getStatusInfo, REMOTE_SERVER } from '../../../functions/functions'
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -11,6 +12,15 @@ function OfflineSignContract(props) {
     const [formData, setFormData] = useState({ 'files': {} })
     const { Option } = Select;
     const { TextArea } = Input;
+
+    const setDataByKey = (key, val) => {
+        setFormData(prev => {
+            const newFormData = _.cloneDeep(prev)
+            newFormData[key] = val;
+            console.log(newFormData)
+            return newFormData;
+        })
+    }
 
     const updateInfo = () => {
         fetch(REMOTE_SERVER + "/contract/" + _state['PageInfo']['ContractID'] + "/files/contractTable", {
@@ -78,7 +88,7 @@ function OfflineSignContract(props) {
         const res = new FormData();
         res.append('contractTable', values['签章']['file']);
         res.append('nondisclosureAgreementTable', values['保密协议']['file']);
-        fetch(REMOTE_SERVER + "/contract/" + _state['PageInfo']['id'] + "/files", {
+        fetch(REMOTE_SERVER + "/contract/" + _state['PageInfo']['ContractID'] + "/files", {
             method: "POST",
             headers: {
                 'credentials': 'same-origin',
@@ -93,7 +103,7 @@ function OfflineSignContract(props) {
         })
             .then(res => {
                 console.log(res)
-                if (res.status === 201) {
+                if (res.status === 200) {
                     message.success({ content: "上传成功！", key: "upload" })
                     GotoPage("ViewEntrust", _state)
                 }
@@ -108,7 +118,7 @@ function OfflineSignContract(props) {
     }
 
     return (
-        formData['files']["nondisclosureAgreementTable"] === undefined ? (null) : (<div>
+        formData['files']["nondisclosureAgreementTable"] === undefined || formData['files']["contractTable"] === undefined ? (null) : (<div>
             <h1>空白表下载</h1>
             <div><a href={formData["files"]["contractTable"]['fileUri']}><Tooltip title="点击下载" placement='right'>{formData["files"]["contractTable"]['fileName']}</Tooltip></a></div>
             <div><a href={formData["files"]["nondisclosureAgreementTable"]['fileUri']}><Tooltip title="点击下载" placement='right'>{formData["files"]["nondisclosureAgreementTable"]['fileName']}</Tooltip></a></div>
@@ -199,6 +209,11 @@ function OfflineSignContract(props) {
                     >
                         <Button icon={<UploadOutlined />}>Select File</Button>
                     </Upload>
+                </Form.Item>
+                <Form.Item>
+                    <Button id='提交' type="primary" htmlType="submit">
+                    提交
+                    </Button>
                 </Form.Item>
             </Form>
         </div>)

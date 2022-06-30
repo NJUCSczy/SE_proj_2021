@@ -4,7 +4,7 @@ import { Collapse, message, DatePicker, Divider, Form, Space, Select, InputNumbe
 import { useState } from 'react';
 import Paragraph from 'antd/lib/skeleton/Paragraph';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
-import { USE_JSON_SERVER,REMOTE_SERVER } from '../../../functions/functions';
+import { USE_JSON_SERVER, REMOTE_SERVER } from '../../../functions/functions';
 const formItemLayout = {
   labelCol: { span: 5 },
   wrapperCol: { span: 16 },
@@ -46,7 +46,7 @@ function Quotation(props) {
         })
     }
     else {
-      fetch(REMOTE_SERVER+"/delegation/" + _state['PageInfo']['id'], {
+      fetch(REMOTE_SERVER + "/delegation/" + _state['PageInfo']['id'], {
         method: "GET",
         headers: {
           'Accept': 'application/json',
@@ -105,7 +105,7 @@ function Quotation(props) {
         })
     }
     else {
-      fetch(REMOTE_SERVER+"/offer/delegation/" + _state['PageInfo']['id'], {
+      fetch(REMOTE_SERVER + "/offer/delegation/" + _state['PageInfo']['id'], {
         method: firstTime ? "POST" : "PUT",
         headers: {
           'Accept': 'application/json',
@@ -169,8 +169,13 @@ function Quotation(props) {
           <>
             {fields.map(({ key, name, ...restField }) => (
               <Fragment layout='vertical' key={key} style={{ display: 'flex', marginBottom: 8 }}>
+<<<<<<< HEAD
                 <Collapse defaultActiveKey={["1"]} bordered={false} ghost>
                   <Panel  key="1">
+=======
+                <Collapse bordered={false} ghost>
+                  <Panel key="1">
+>>>>>>> ffe59179dc377d38b0761aef0e8de1902d11fbf6
                     <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>项目</h5>
                     <Form.Item
                       {...restField}
@@ -222,8 +227,8 @@ function Quotation(props) {
                     </Button>
                   </Panel>
                 </Collapse>
-          
-                
+
+
               </Fragment>
             ))}
             <Form.Item>
@@ -277,11 +282,11 @@ function Quotation(props) {
 }
 export default Quotation;
 
-Quotation.propTypes={
+Quotation.propTypes = {
   /** 用户状态 */
-  _state:PropTypes.object,
+  _state: PropTypes.object,
   /** 更新用户状态方法 */
-  UpdateUserInfo:PropTypes.func,
+  UpdateUserInfo: PropTypes.func,
   /** 切换界面方法 */
-  GotoPage:PropTypes.func
+  GotoPage: PropTypes.func
 }

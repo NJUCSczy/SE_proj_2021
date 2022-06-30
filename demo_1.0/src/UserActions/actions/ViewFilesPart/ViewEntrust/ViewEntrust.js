@@ -96,10 +96,13 @@ function ViewEntrust(props) {
     return (
         (entrustData['formData'] === null) ? null :
             (<div style={{ padding: 30 }}>
-                <h1>用户: {(entrustData['formData'] === null) ? null : USE_JSON_SERVER ? entrustData['formData']['userName'] : entrustData['formData']['usrBelonged']}</h1>
-                <h1 style={{ marginLeft: 20 }}>当前状态:{' '}{USE_JSON_SERVER ? getStatusInfo(entrustData['formData']) : getStatusByDelegationState(entrustData['formData']['state'])}</h1>
+                <Descriptions bordered title="委托基本信息" layout="vertical" style={{ marginLeft: 20 , marginRight: 20}}>
+                    <Descriptions.Item label="委托编号">{(entrustData['formData'] === null) ? null : USE_JSON_SERVER ? entrustData['formData']['id'] : entrustData['formData']['delegationId']}</Descriptions.Item>
+                    <Descriptions.Item label="用户">{(entrustData['formData'] === null) ? null : USE_JSON_SERVER ? entrustData['formData']['userName'] : entrustData['formData']['usrBelonged']}</Descriptions.Item>
+                    <Descriptions.Item label="当前状态">{USE_JSON_SERVER ? getStatusInfo(entrustData['formData']) : getStatusByDelegationState(entrustData['formData']['state'])}</Descriptions.Item>
+                </Descriptions>
                 <Collapse ghost={true} expandIcon={({ isActive }) => <CaretRightOutlined style={{ paddingTop: 12 }} rotate={isActive ? 90 : 0} />}>
-                    <Panel header={<h2>详细信息</h2>} key="1">
+                    <Panel header={<h3>详细信息</h3>} key="1">
                         <p>
                             <Steps direction="vertical">
                                 <Step title='用户提交申请表'
@@ -202,8 +205,8 @@ function ViewEntrust(props) {
                             onClick={() => ChangePage('TrusteeApplication')}>市场部填写签章</Button>);
                         case 18: return (<Button id='客户填写签章' type="primary" style={{ marginLeft: 20 }}
                             onClick={() => ChangePage('ClientApplication')}>客户填写签章</Button>);
-                        case 19: return (<Button id='市场部填写保密协议' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('ConfidentialAgreementPartyB')}>市场部填写保密协议</Button>);
+                        case 19: return (<Button id='市场部下载并完成合同和保密协议' type="primary" style={{ marginLeft: 20 }}
+                            onClick={() => ChangePage('OfflineSignContract')}>市场部下载并完成合同和保密协议</Button>);
                         case 20: return (<Button id='客户填写保密协议' type="primary" style={{ marginLeft: 20 }}
                             onClick={() => ChangePage('ConfidentialAgreementPartyA')}>客户填写保密协议</Button>);
                     }
