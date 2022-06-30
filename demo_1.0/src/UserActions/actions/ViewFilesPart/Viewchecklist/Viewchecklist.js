@@ -12,7 +12,7 @@ import { USE_JSON_SERVER,REMOTE_SERVER } from '../../../functions/functions';
 function Viewchecklist(props) {
     const { UpdateUserInfo, GotoPage, _state, focusedData } = props;
     const [formData, setFormData] = useState({})
-    const [entrustData, setEntrustData] = useState({ 'formData': null, '软件报告检查表': null })
+    const [entrustData, setEntrustData] = useState({ 'formData': null, '测试报告检查表': null })
     const { Option } = Select;
     const { TextArea } = Input;
     const mobile = require('is-mobile');
@@ -45,7 +45,7 @@ function Viewchecklist(props) {
                         setEntrustData(prev => {
                             const newData = _.cloneDeep(prev)
                             newData["formData"] = data
-                            newData['软件报告检查表'] = data['软件报告检查表']
+                            newData['测试报告检查表'] = data['测试报告检查表']
                             return newData
                         })
                     }
@@ -67,7 +67,7 @@ function Viewchecklist(props) {
             })
                 .then(res => {
                     if (res.status != 200) {
-                        alert('查询软件报告检查表失败！')
+                        alert('查询测试报告检查表失败！')
                         return null
                     }
                     return res.json()
@@ -91,7 +91,7 @@ function Viewchecklist(props) {
         else{
             setEntrustData(prev => {
                 const newData = _.cloneDeep(prev)
-                newData['软件报告检查表'] = focusedData
+                newData['测试报告检查表'] = focusedData
                 return newData
             })
         }  
@@ -127,7 +127,7 @@ const columns = [
     render: (_, record,index) => (
         
       <Form.Item name={'tableItem_'+index} initialValue={false}>
-      <Switch disabled checkedChildren="是" unCheckedChildren="否" defaultChecked={entrustData['软件报告检查表']['tableItem_'+index]}/>
+      <Switch disabled checkedChildren="是" unCheckedChildren="否" defaultChecked={entrustData['测试报告检查表']['tableItem_'+index]}/>
       
     
     </Form.Item>
@@ -210,7 +210,7 @@ const data = [
 
 
     return(
-        entrustData['软件报告检查表'] === null ? null : (
+        entrustData['测试报告检查表'] === null ? null : (
             <Form
         name="测试报告检查表"
         initialValues={{ remember: true }}
@@ -219,11 +219,12 @@ const data = [
         wrapperCol={{ span: 20 }}
         layout='vertical'
         >
+          <h2 style={{ textAlign: 'center',fontWeight: 'bolder', marginTop: 30 }}>测试报告检查表</h2>
         <Descriptions     
         column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
         >
             <Descriptions.Item label={<h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件名称</h3>} >
-            <h3 style={{ fontWeight: 'bolder', marginTop: 30}} >{entrustData['软件报告检查表']['软件名称']}</h3>
+            <h3 style={{ fontWeight: 'bolder', marginTop: 30}} >{entrustData['测试报告检查表']['软件名称']}</h3>
             </Descriptions.Item>
         </Descriptions>
 
@@ -231,22 +232,18 @@ const data = [
         column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
         >
             <Descriptions.Item label={<h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>委托单位</h3>} >
-            <h3 style={{ fontWeight: 'bolder', marginTop: 30}} >{entrustData['软件报告检查表']['委托单位']}</h3>
+            <h3 style={{ fontWeight: 'bolder', marginTop: 30}} >{entrustData['测试报告检查表']['委托单位']}</h3>
             </Descriptions.Item>
         </Descriptions>
 
-        <Form.Item
-        name='表项'
-        >
-            <Table columns={columns} dataSource={data} pagination={{pageSize:40}} />
-        </Form.Item>
+        <Table columns={columns} dataSource={data} pagination={{pageSize:40}} />
 
 
         <Descriptions    
         column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
         >
             <Descriptions.Item label={<h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>检查人</h3>} >
-            <h3 style={{ fontWeight: 'bolder', marginTop: 30}} >{entrustData['软件报告检查表']['检查人']}</h3>
+            <h3 style={{ fontWeight: 'bolder', marginTop: 30}} >{entrustData['测试报告检查表']['检查人']}</h3>
             </Descriptions.Item>
         </Descriptions>
 
@@ -254,7 +251,7 @@ const data = [
         <Form.Item
             name="日期"
         >
-            <DatePicker disabled defaultValue={moment((entrustData['软件报告检查表']["日期"]), 'YYYY/MM/DD')} format='YYYY/MM/DD'/>
+            <DatePicker disabled defaultValue={moment((entrustData['测试报告检查表']["日期"]), 'YYYY/MM/DD')} format='YYYY/MM/DD'/>
         </Form.Item>
             </Form>
             )

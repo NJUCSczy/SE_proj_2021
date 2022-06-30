@@ -181,7 +181,7 @@ function ViewProjList(props) {
   const gotoEntrustPage = (id, ContractID) => {
     _state['PageInfo']['id'] = id;
     _state['PageInfo']['ContractID'] = ContractID
-    UpdateUserInfo({ PageInfo: { 'id': id } }, GotoPage('ViewEntrust', _state))//TODO
+    UpdateUserInfo({ PageInfo: { 'id': id } }, GotoPage('ViewProject', _state))//TODO
   }
   const updateInfo = () => {
     if (USE_JSON_SERVER) {

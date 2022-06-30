@@ -209,7 +209,7 @@ function Viewtsreviewform(props) {
         <Descriptions     
         column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
         layout='vertical'
-        
+        title={<h2 style={{ textAlign: 'center',fontWeight: 'bolder', marginTop: 30 }}>测试方案评审表</h2>}
         >
             <Descriptions.Item label={<h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件名称</h3>} >
             <h4 style={{ fontWeight: 'bolder'}} >{entrustData['测试方案评审表']['软件名称']}</h4>

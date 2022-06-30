@@ -231,6 +231,40 @@ class Home extends React.Component {
             case 'ViewSignature':
                 this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '查看测试合同', '0'] });
                 return (<ViewSignature _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewSignature>);
+            case 'ViewProject':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看项目列表', '查看项目', '0', '0'] });
+                return (<ViewProject _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewProject>);
+
+            case 'ViewTestPlan':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看项目列表', '查看项目', '查看软件测试方案', '0'] });
+                return (<ViewTestPlan _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewTestPlan>);
+            case 'Viewchecklist':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看项目列表', '查看项目', '查看测试报告检查表', '0'] });
+                return (<Viewchecklist _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></Viewchecklist>);
+            case 'Viewquestionlist':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看项目列表', '查看项目', '查看软件测试问题清单', '0'] });
+                return (<Viewquestionlist _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></Viewquestionlist>);
+            case 'Viewsdreviewform':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看项目列表', '查看项目', '查看软件文档评审表', '0'] });
+                return (<Viewsdreviewform _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></Viewsdreviewform>);
+            case 'ViewTestCase':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看项目列表', '查看项目', '查看测试用例电子记录', '0'] });
+                return (<ViewTestCase _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewTestCase>);
+            case 'Viewtestchecklist':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看项目列表', '查看项目', '查看软件项目委托测试工作检查表', '0'] });
+                return (<Viewtestchecklist _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></Viewtestchecklist>);
+            case 'ViewTestRecord':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看项目列表', '查看项目', '查看软件测试记录电子记录', '0'] });
+                return (<ViewTestRecord _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewTestRecord>);
+            case 'ViewTestReport':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看项目列表', '查看项目', '查看软件测试报告', '0'] });
+                return (<ViewTestReport _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewTestReport>);
+            case 'Viewtsreviewform':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看项目列表', '查看项目', '查看测试方案评审表', '0'] });
+                return (<Viewtsreviewform _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></Viewtsreviewform>);
+
+
+
 
             case 'Info1':
                 this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '机构信息', '0', '0', '0'] });

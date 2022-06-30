@@ -18,10 +18,24 @@ function ViewProject(props){
     const [entrustData, setEntrustData] = useState({ 'formData': null, 'stage': -1 })
 
 
+    const filelist =(values)=>{
+    setfileData(prev => {
+        const newfileData = _.cloneDeep(prev)
+        const filename=['软件测试方案','测试报告检查表','软件测试问题清单','软件文档评审表','测试用例电子记录','软件项目委托测试工作检查表','软件测试记录电子记录','软件测试报告','测试方案评审表']
+        filename.map(item =>(newfileData[item] = false))
+        values.map(item => (newfileData[item] = true))
+        console.log(newfileData)
+        return newfileData;
+    })
+    
+    console.log(`selected ${values}`);
+    }
+
+
 
     const updateInfo = () => {
         if (USE_JSON_SERVER) {
-            fetch("http://localhost:8000/forms/3"/* + _state['PageInfo']['id']*/, {
+            fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
                 method: "GET",
                 mode: 'cors',
                 headers: {
@@ -181,6 +195,219 @@ function ViewProject(props){
                             onClick={() => ChangePage('TestReport')}>重新填写软件测试报告</Button>);
                     }
                 })()}
+
+                <h1 style={{ marginTop: 60 }}>文件列表</h1>
+                <Select id="文件列表" mode="multiple" allowClear style={{ width: 200 }} onChange={filelist}>
+                {(entrustData['stage'] >= 1)?
+                    (<Option id="软件测试方案" value="软件测试方案" style={{ lineHeight: '32px' }}>软件测试方案</Option>):null
+                }
+                {(entrustData['stage'] >= 2) ?
+                    (<Option id="测试方案评审表" value="测试方案评审表" style={{ lineHeight: '32px' }} >测试方案评审表</Option>) : null
+                }
+                {(entrustData['stage'] >= 4) ?
+                    (<Option id="测试用例" value="测试用例" style={{ lineHeight: '32px' }} >测试用例</Option>) : null
+                }
+                {(entrustData['stage'] >= 5) ?
+                    (<Option id="软件测试记录" value="软件测试记录" style={{ lineHeight: '32px' }} >软件测试记录</Option>) : null
+                }
+                {(entrustData['stage'] >= 6) ?
+                    (<Option id="软件测试问题清单" value="软件测试问题清单" style={{ lineHeight: '32px' }} >软件测试问题清单</Option>) : null
+                }
+                {(entrustData['stage'] >= 7) ?
+                    (<Option id="软件文档评审表" value="软件文档评审表" style={{ lineHeight: '32px' }} >软件文档评审表</Option>) : null
+                }
+                {(entrustData['stage'] >= 8) ?
+                    (<Option id="软件测试报告" value="软件测试报告" style={{ lineHeight: '32px' }} >软件测试报告</Option>) : null
+                }
+                {(entrustData['stage'] >= 9) ?
+                    (<Option id="测试报告检查表" value="测试报告检查表" style={{ lineHeight: '32px' }} >测试报告检查表</Option>) : null
+                }
+                {(entrustData['stage'] >= 11) ?
+                    (<Option id="软件项目委托测试工作检查表" value="软件项目委托测试工作检查表" style={{ lineHeight: '32px' }} >软件项目委托测试工作检查表</Option>) : null
+                }
+                </Select>
+                {(fileData['软件测试方案']===true)?(
+                <div>
+                    <h2 style={{ marginTop: 40 }}>软件测试方案</h2>
+                    <Descriptions
+                    column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+                    >
+
+                    <Descriptions.Item>
+                    <h4 style={{ marginTop: 10 }}>状态:{" "}{USE_JSON_SERVER ?
+                                getTestStatusInfo(entrustData['formData'], '软件测试方案') :
+                                getTestStatusByDelegationState(entrustData['formData']['state'], '软件测试方案')}</h4>
+                    </Descriptions.Item>
+
+                    <Descriptions.Item>
+                    <Button type="primary"  onClick={() => ChangePage('ViewTestPlan')}>查看</Button>
+                    </Descriptions.Item>
+                        
+                    </Descriptions>
+                    
+                </div>):null}
+                {(fileData['测试方案评审表']===true)?(
+                <div>
+                    <h2 style={{ marginTop: 40 }}>测试方案评审表</h2>
+                    <Descriptions
+                    column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+                    >
+
+                    <Descriptions.Item>
+                    <h4 style={{ marginTop: 10 }}>状态:{" "}{USE_JSON_SERVER ?
+                                getTestStatusInfo(entrustData['formData'], '测试方案评审表') :
+                                getTestStatusByDelegationState(entrustData['formData']['state'], '测试方案评审表')}</h4>
+                    </Descriptions.Item>
+
+                    <Descriptions.Item>
+                    <Button type="primary"  onClick={() => ChangePage('Viewtsreviewform')}>查看</Button>
+                    </Descriptions.Item>
+                        
+                    </Descriptions>
+                    
+                </div>):null}
+                {(fileData['测试用例']===true)?(
+                <div>
+                    <h2 style={{ marginTop: 40 }}>测试用例</h2>
+                    <Descriptions
+                    column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+                    >
+
+                    <Descriptions.Item>
+                    <h4 style={{ marginTop: 10 }}>状态:{" "}{USE_JSON_SERVER ?
+                                getTestStatusInfo(entrustData['formData'], '测试用例') :
+                                getTestStatusByDelegationState(entrustData['formData']['state'], '测试用例')}</h4>
+                    </Descriptions.Item>
+
+                    <Descriptions.Item>
+                    <Button type="primary"  onClick={() => ChangePage('ViewTestCase')}>查看</Button>
+                    </Descriptions.Item>
+                        
+                    </Descriptions>
+                    
+                </div>):null}
+                {(fileData['软件测试记录']===true)?(
+                <div>
+                    <h2 style={{ marginTop: 40 }}>软件测试记录</h2>
+                    <Descriptions
+                    column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+                    >
+
+                    <Descriptions.Item>
+                    <h4 style={{ marginTop: 10 }}>状态:{" "}{USE_JSON_SERVER ?
+                                getTestStatusInfo(entrustData['formData'], '软件测试记录') :
+                                getTestStatusByDelegationState(entrustData['formData']['state'], '软件测试记录')}</h4>
+                    </Descriptions.Item>
+
+                    <Descriptions.Item>
+                    <Button type="primary"  onClick={() => ChangePage('ViewTestRecord')}>查看</Button>
+                    </Descriptions.Item>
+                        
+                    </Descriptions>
+                    
+                </div>):null}
+                {(fileData['软件测试问题清单']===true)?(
+                <div>
+                    <h2 style={{ marginTop: 40 }}>软件测试问题清单</h2>
+                    <Descriptions
+                    column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+                    >
+
+                    <Descriptions.Item>
+                    <h4 style={{ marginTop: 10 }}>状态:{" "}{USE_JSON_SERVER ?
+                                getTestStatusInfo(entrustData['formData'], '软件测试问题清单') :
+                                getTestStatusByDelegationState(entrustData['formData']['state'], '软件测试问题清单')}</h4>
+                    </Descriptions.Item>
+
+                    <Descriptions.Item>
+                    <Button type="primary"  onClick={() => ChangePage('Viewquestionlist')}>查看</Button>
+                    </Descriptions.Item>
+                        
+                    </Descriptions>
+                    
+                </div>):null}
+                {(fileData['软件文档评审表']===true)?(
+                <div>
+                    <h2 style={{ marginTop: 40 }}>软件文档评审表</h2>
+                    <Descriptions
+                    column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+                    >
+
+                    <Descriptions.Item>
+                    <h4 style={{ marginTop: 10 }}>状态:{" "}{USE_JSON_SERVER ?
+                                getTestStatusInfo(entrustData['formData'], '软件文档评审表') :
+                                getTestStatusByDelegationState(entrustData['formData']['state'], '软件文档评审表')}</h4>
+                    </Descriptions.Item>
+
+                    <Descriptions.Item>
+                    <Button type="primary"  onClick={() => ChangePage('Viewsdreviewform')}>查看</Button>
+                    </Descriptions.Item>
+                        
+                    </Descriptions>
+                    
+                </div>):null}
+                {(fileData['软件测试报告']===true)?(
+                <div>
+                    <h2 style={{ marginTop: 40 }}>软件测试报告</h2>
+                    <Descriptions
+                    column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+                    >
+
+                    <Descriptions.Item>
+                    <h4 style={{ marginTop: 10 }}>状态:{" "}{USE_JSON_SERVER ?
+                                getTestStatusInfo(entrustData['formData'], '软件测试报告') :
+                                getTestStatusByDelegationState(entrustData['formData']['state'], '软件测试报告')}</h4>
+                    </Descriptions.Item>
+
+                    <Descriptions.Item>
+                    <Button type="primary"  onClick={() => ChangePage('ViewTestReport')}>查看</Button>
+                    </Descriptions.Item>
+                        
+                    </Descriptions>
+                    
+                </div>):null}
+                {(fileData['测试报告检查表']===true)?(
+                <div>
+                    <h2 style={{ marginTop: 40 }}>测试报告检查表</h2>
+                    <Descriptions
+                    column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+                    >
+
+                    <Descriptions.Item>
+                    <h4 style={{ marginTop: 10 }}>状态:{" "}{USE_JSON_SERVER ?
+                                getTestStatusInfo(entrustData['formData'], '测试报告检查表') :
+                                getTestStatusByDelegationState(entrustData['formData']['state'], '测试报告检查表')}</h4>
+                    </Descriptions.Item>
+
+                    <Descriptions.Item>
+                    <Button type="primary"  onClick={() => ChangePage('Viewchecklist')}>查看</Button>
+                    </Descriptions.Item>
+                        
+                    </Descriptions>
+                    
+                </div>):null}
+                {(fileData['软件项目委托测试工作检查表']===true)?(
+                <div>
+                    <h2 style={{ marginTop: 40 }}>软件项目委托测试工作检查表</h2>
+                    <Descriptions
+                    column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+                    >
+
+                    <Descriptions.Item>
+                    <h4 style={{ marginTop: 10 }}>状态:{" "}{USE_JSON_SERVER ?
+                                getTestStatusInfo(entrustData['formData'], '软件项目委托测试工作检查表') :
+                                getTestStatusByDelegationState(entrustData['formData']['state'], '软件项目委托测试工作检查表')}</h4>
+                    </Descriptions.Item>
+
+                    <Descriptions.Item>
+                    <Button type="primary"  onClick={() => ChangePage('Viewtestchecklist')}>查看</Button>
+                    </Descriptions.Item>
+                        
+                    </Descriptions>
+                    
+                </div>):null}
+                
+
                 
 
             </div>)

@@ -60,7 +60,7 @@ function TestRecord(props){
           console.log(res)
           if (res.status === 200) {
             message.success({content:"提交成功！",key:"upload"})
-            GotoPage("ViewEntrust",_state)
+            GotoPage("ViewProject",_state)
           }
           else{
             message.error({content:"提交失败！",key:"upload"})
@@ -90,7 +90,7 @@ function TestRecord(props){
         console.log(res)
         if (res.status === 200) {
           message.success({content:"提交成功！",key:"upload"})
-          GotoPage("ViewEntrust",_state)
+          GotoPage("ViewProject",_state)
         }
         else{
           message.error({content:"提交失败！",key:"upload"})
