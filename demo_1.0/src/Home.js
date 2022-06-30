@@ -43,6 +43,7 @@ import ViewEntrust from './UserActions/actions/ViewFilesPart/ViewEntrust/ViewEnt
 import ViewUserFiles from './UserActions/actions/ViewFilesPart/ViewUserFiles/ViewUserFiles';
 import ViewApplication from './UserActions/actions/ViewFilesPart/ViewApplication/ViewApplication';
 import ViewEntrustList from './UserActions/actions/ViewFilesPart/ViewEntrustList/ViewEntrustList';
+import ViewProjList from './UserActions/actions/ViewFilesPart/ViewProjList/ViewProjList';
 import ViewCfdtagreement from './UserActions/actions/ViewFilesPart/ViewCfdtagreement/ViewCfdtagreement';
 import ViewContract from './UserActions/actions/ViewFilesPart/ViewContract/ViewContract';
 import ViewFunction from './UserActions/actions/ViewFilesPart/ViewFunction/ViewFunction';
@@ -183,6 +184,9 @@ class Home extends React.Component {
             case 'ViewEntrustList':
                 this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '0', '0', '0'] });
                 return (<ViewEntrustList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewEntrustList>);
+            case 'ViewProjList':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看项目列表', '0', '0', '0'] });
+                return (<ViewProjList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewProjList>);
             case 'ViewFunction':
                 this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '查看功能列表', '0'] });
                 return (<ViewFunction _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewFunction>);
@@ -279,6 +283,7 @@ class Home extends React.Component {
             items={[
                 { label: (<a id="home_headers_functions_submit_application" onClick={() => { this.GotoPage('SubmitApplication', this.state) }}>提交申请</a>), },
                 { label: (<a id="home_headers_functions_view_application" onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
+                { label: (<a id="home_headers_functions_view_test_application" onClick={() => { this.GotoPage('ViewProjList', this.state) }}>查看项目</a>), },
             ]} />} placement="bottom">
             <a id="home_headers_functions" onClick={e => e.preventDefault()}><Space style={{ color: 'white' }}>操作<DownOutlined /></Space></a>
         </Dropdown>)
