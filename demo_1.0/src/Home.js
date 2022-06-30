@@ -55,6 +55,10 @@ import Viewsdreviewform from './UserActions/actions/ViewFilesPart/Viewsdreviewfo
 import Viewtsreviewform from './UserActions/actions/ViewFilesPart/Viewtsreviewform/Viewtsreviewform';
 
 import { USE_JSON_SERVER } from './UserActions/functions/functions';
+import ViewTestCase from './UserActions/actions/ViewFilesPart/ViewTestCase/ViewTestCase';
+import ViewTestPlan from './UserActions/actions/ViewFilesPart/ViewTestPlan/ViewTestPlan';
+import ViewTestRecord from './UserActions/actions/ViewFilesPart/ViewTestRecord/ViewTestRecord';
+import ViewTestReport from './UserActions/actions/ViewFilesPart/ViewTestReport/ViewTestReport';
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -79,7 +83,6 @@ class Home extends React.Component {
             PageInfo: { 'id': 0, 'ContractID': 0 }
         };
     }
-
 
     GotoPage = (PageName, _state) => {
         console.log(PageName);
@@ -198,13 +201,13 @@ class Home extends React.Component {
                 return (<TestCheckList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestCheckList>);
             case 'Info2':
                 this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '资质信息', '0', '0', '0'] });
-                return (<CheckList></CheckList>);
+                return (<TestReport></TestReport>);
             case 'Info3':
                 this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '政策法规', '0', '0', '0'] });
                 return (<TestScenarioReviewForm _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestScenarioReviewForm>);
             case 'Info4':
                 this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '业务信息', '0', '0', '0'] });
-                return (<Viewtsreviewform _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></Viewtsreviewform>);
+                return (<ViewTestReport _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewTestReport>);
             case 'Info5':
                 this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '新闻资讯', '0', '0', '0'] });
                 return (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>新闻资讯</div>);
@@ -221,9 +224,6 @@ class Home extends React.Component {
     }
 
     render() {
-
-
-
         const infoMenu = (<div id='home_headers_infos'><Dropdown overlay={<Menu
             items={[
                 { label: (<a onClick={() => { this.GotoPage('Info1', this.state) }}>机构信息</a>), },
@@ -256,7 +256,7 @@ class Home extends React.Component {
             "签章委托人部分": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ClientApplication', this.state) }}>签章委托人部分</a></Breadcrumb.Item>,
             "受托人保密协议": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ConfidentialAgreementPartyB', this.state) }}>受托人保密协议</a></Breadcrumb.Item>,
             "委托人保密协议": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ConfidentialAgreementPartyA', this.state) }}>委托人保密协议</a></Breadcrumb.Item>,
-            "下载并完成合同和保密协议":<Breadcrumb.Item><a onClick={() => { this.GotoPage('OfflineSignContract', this.state) }}>下载并完成合同和保密协议</a></Breadcrumb.Item>,
+            "下载并完成合同和保密协议": <Breadcrumb.Item><a onClick={() => { this.GotoPage('OfflineSignContract', this.state) }}>下载并完成合同和保密协议</a></Breadcrumb.Item>,
 
             "查看委托列表": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托列表</a></Breadcrumb.Item>,
             "查看委托": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewEntrust', this.state) }}>查看委托</a></Breadcrumb.Item>,
@@ -311,7 +311,7 @@ class Home extends React.Component {
                             key: String(index + 1),
                             label: {
                                 0: (<a id="home_headers_mainpage" onClick={() => { this.GotoPage('MainPage', this.state) }}><Space style={{ color: 'white' }}>首页</Space></a>),
-                                1: (<a id="home_headers_user" onClick={() => { this.state.accessToken === null ? this.GotoPage('Login', this.state) : this.GotoPage('UserInfo', this.state) }}><Space style={{ color: 'white' }}>{ this.state.accessToken === null ? "用户":this.state.userName}</Space></a>),
+                                1: (<a id="home_headers_user" onClick={() => { this.state.accessToken === null ? this.GotoPage('Login', this.state) : this.GotoPage('UserInfo', this.state) }}><Space style={{ color: 'white' }}>{this.state.accessToken === null ? "用户" : this.state.userName}</Space></a>),
                                 2: (this.state.userRole[0] == "ROLE_ADMIN") ? adminFunctionMenu : ((this.state.userRole[0] == "ROLE_USER") ? userFunctionMenu : staffFunctionMenu),
                                 3: infoMenu,
                             }[index],

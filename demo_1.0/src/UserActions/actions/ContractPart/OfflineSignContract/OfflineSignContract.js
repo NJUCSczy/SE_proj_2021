@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Tooltip, Input, Select, Form,message,Upload,Button } from 'antd';
+import { Tooltip, Input, Select, Form, message, Upload, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { getStageByInfo, getStatusInfo, REMOTE_SERVER } from '../../../functions/functions'
 import { useEffect, useState } from 'react';
@@ -15,12 +15,12 @@ function OfflineSignContract(props) {
 
     const setDataByKey = (key, val) => {
         setFormData(prev => {
-          const newFormData = _.cloneDeep(prev)
-          newFormData[key] = val;
-          console.log(newFormData)
-          return newFormData;
+            const newFormData = _.cloneDeep(prev)
+            newFormData[key] = val;
+            console.log(newFormData)
+            return newFormData;
         })
-      }
+    }
 
     const updateInfo = () => {
         fetch(REMOTE_SERVER + "/contract/" + _state['PageInfo']['ContractID'] + "/files/contractTable", {
@@ -118,7 +118,7 @@ function OfflineSignContract(props) {
     }
 
     return (
-        formData['files']["nondisclosureAgreementTable"] === undefined ? (null) : (<div>
+        formData['files']["nondisclosureAgreementTable"] === undefined || formData['files']["contractTable"] === undefined ? (null) : (<div>
             <h1>空白表下载</h1>
             <div><a href={formData["files"]["contractTable"]['fileUri']}><Tooltip title="点击下载" placement='right'>{formData["files"]["contractTable"]['fileName']}</Tooltip></a></div>
             <div><a href={formData["files"]["nondisclosureAgreementTable"]['fileUri']}><Tooltip title="点击下载" placement='right'>{formData["files"]["nondisclosureAgreementTable"]['fileName']}</Tooltip></a></div>

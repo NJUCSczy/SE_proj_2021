@@ -100,7 +100,7 @@ function ViewQuotation(props) {
                 <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>开户银行：中国工商银行股份有限公司南京汉口路分理处</h4>
                 <h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>账号:4301011309001041656</h4>
                 <Descriptions
-                        
+                       
                 column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
                 >
                     <Descriptions.Item label={<h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件名称</h4>} >
@@ -135,8 +135,6 @@ function ViewQuotation(props) {
                         </Descriptions>
                         </Panel>
                     </Collapse>
-                                        
-                    
                 </div>
                 )}
                 <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>以下金额单位： 元</h3>

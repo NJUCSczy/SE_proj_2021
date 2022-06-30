@@ -40,7 +40,7 @@ function TestRecord(props){
         .then(data => {
           if (data != null) {
             form = data
-            form['软件测试记录']=values
+            form['软件测试记录电子记录']=values
             SubmitForm(form)
           }
           console.log(data)
