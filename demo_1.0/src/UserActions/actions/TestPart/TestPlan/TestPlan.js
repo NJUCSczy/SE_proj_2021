@@ -159,7 +159,7 @@ function TestPlan(props){
                     <Form.Item
                       {...restField}
                       name={[name, 'AMD']}
-                      rules={[{ required: true, message: '请填写AMD' }]}
+                      rules={[{ pattern: new RegExp(/^(a|m|d|A|M|D)\d*$/, "g"), message: '请填写AMD' }]}
                     >
                       <Input style={{ maxWidth: 500 }} placeholder="A-添加,M-修改,D-删除" />
                     </Form.Item>                

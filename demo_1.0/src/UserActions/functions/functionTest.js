@@ -20,18 +20,19 @@ export function getTestStageByInfo(info){
 export function getTestStageByDTAState(state){
     switch(state){
         case 'ERROR':return -1;//错误状态
-        case 'AUDIT_QUALITY':return 0;//测试人员已经填写《软件测试方案》，等待质量部人员审核并填写《测试方案评审表》
-        case 'AUDIT_QUALITY_DENIED':return 1;//质量部人员审核完成，填写《测试方案评审表》，测试方案未通过，等待测试人员重新填写《软件测试方案》
-        case 'TEST_DOC_TEST_CASE':return 2;//质量部人员审核完成，填写《测试方案评审表》，测试方案通过，等待测试人员填写《测试用例》
-        case 'TEST_DOC_TEST_RECORD':return 3;//测试人员填写《测试用例》，等待填写《软件测试记录》
-        case 'TEST_DOC_BUG_LIST':return 4;//测试人员填写《软件测试记录》，等待填写《软件测试问题清单》
-        case ' TEST_DOC_DOC_EVALUATION_TABLE':return 5;//测试人员填写《软件测试问题清单》,等待填写《软件文档评审表》
-        case ' TEST_DOC_TEST_REPORT':return 6;//测试人员填写《软件文档评审表》，等待《软件测试报告》的填写
-        case 'TEST_DOC_TEST_REPORT_EVALUATION_TABLE':return 7;//测试人员完成《软件测试报告》的填写，等待质量部人员审核
-        case 'TEST_REPORT_DENIED':return 8;//质量部人员完成填写《测试报告检查表》，《软件测试报告》未通过，等待测试人员重新填写《软件测试报告》
-        case 'TEST_DOC_WORK_EVALUATION_TABLE':return 9;//质量部人员完成填写《测试报告检查表》，《软件测试报告》通过，等待市场部人员填写《软件项目委托测试工作检查表》
-        case ' TEST_DOC_WORK_ACCEPTED':return 10;//市场部人员填写《软件项目委托测试工作检查表》，批准签发《软件测试报告》
-        case 'TEST_DOC_WORK_DENIED':return 11;//市场部人员填写《软件项目委托测试工作检查表》，未批准《软件测试报告》
+        case 'TEST_SCHEME':return 0;//项目已生成，等待测试人员填写《软件测试方案》
+        case 'AUDIT_QUALITY':return 1;//测试人员已经填写《软件测试方案》，等待质量部人员审核并填写《测试方案评审表》
+        case 'AUDIT_QUALITY_DENIED':return 2;//质量部人员审核完成，填写《测试方案评审表》，测试方案未通过，等待测试人员重新填写《软件测试方案》
+        case 'TEST_DOC_TEST_CASE':return 3;//质量部人员审核完成，填写《测试方案评审表》，测试方案通过，等待测试人员填写《测试用例》
+        case 'TEST_DOC_TEST_RECORD':return 4;//测试人员填写《测试用例》，等待填写《软件测试记录》
+        case 'TEST_DOC_BUG_LIST':return 5;//测试人员填写《软件测试记录》，等待填写《软件测试问题清单》
+        case ' TEST_DOC_DOC_EVALUATION_TABLE':return 6;//测试人员填写《软件测试问题清单》,等待填写《软件文档评审表》
+        case ' TEST_DOC_TEST_REPORT':return 7;//测试人员填写《软件文档评审表》，等待《软件测试报告》的填写
+        case 'TEST_DOC_TEST_REPORT_EVALUATION_TABLE':return 8;//测试人员完成《软件测试报告》的填写，等待质量部人员审核
+        case 'TEST_REPORT_DENIED':return 9;//质量部人员完成填写《测试报告检查表》，《软件测试报告》未通过，等待测试人员重新填写《软件测试报告》
+        case 'TEST_DOC_WORK_EVALUATION_TABLE':return 10;//质量部人员完成填写《测试报告检查表》，《软件测试报告》通过，等待市场部人员填写《软件项目委托测试工作检查表》
+        case ' TEST_DOC_WORK_ACCEPTED':return 11;//市场部人员填写《软件项目委托测试工作检查表》，批准签发《软件测试报告》
+        case 'TEST_DOC_WORK_DENIED':return 12;//市场部人员填写《软件项目委托测试工作检查表》，未批准《软件测试报告》
 
         default:return -1;
     }
@@ -39,14 +40,15 @@ export function getTestStageByDTAState(state){
 
 export function getTestStatusInfo(info,part=null){  
     var stage=getTestStageByInfo(info);
-    return getDescriptionByStage(stage,part);
+    return getTestDescriptionByStage(stage,part);
 }
 
 export function getStatusByDelegationState(state,part=null){
-    var stage=getTestStageByDelegationState(state);
+    var stage=getTestStageByDTAState(state);
     //console.log(stage,part)
     return getTestDescriptionByStage(stage,part);
 }
+
 
 function getTestDescriptionByStage(stage,part){
     if(stage<0)return null;
