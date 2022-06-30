@@ -53,6 +53,7 @@ import Viewchecklist from './UserActions/actions/ViewFilesPart/Viewchecklist/Vie
 import Viewtestchecklist from './UserActions/actions/ViewFilesPart/Viewtestchecklist/Viewtestchecklist';
 import Viewsdreviewform from './UserActions/actions/ViewFilesPart/Viewsdreviewform/Viewsdreviewform';
 import Viewtsreviewform from './UserActions/actions/ViewFilesPart/Viewtsreviewform/Viewtsreviewform';
+import ViewProject from './UserActions/actions/ViewFilesPart/ViewProject/ViewProject';
 
 import { USE_JSON_SERVER } from './UserActions/functions/functions';
 import ViewTestCase from './UserActions/actions/ViewFilesPart/ViewTestCase/ViewTestCase';
@@ -168,6 +169,37 @@ class Home extends React.Component {
                 this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '下载并完成合同和保密协议', '0'] });
                 return (<OfflineSignContract _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></OfflineSignContract>);
 
+            case 'TestPlan':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看项目列表', '查看项目', '填写软件测试方案', '0'] });
+                return (<TestPlan _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestPlan>);
+            case 'CheckList':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看项目列表', '查看项目', '填写测试报告检查表', '0'] });
+                return (<CheckList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></CheckList>);
+            case 'QuestionList':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看项目列表', '查看项目', '填写软件测试问题清单', '0'] });
+                return (<QuestionList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></QuestionList>);
+            case 'SoftwareDocumentReviewForm':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看项目列表', '查看项目', '填写软件文档评审表', '0'] });
+                return (<SoftwareDocumentReviewForm _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></SoftwareDocumentReviewForm>);
+            case 'TestCase':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看项目列表', '查看项目', '填写测试用例电子记录', '0'] });
+                return (<TestCase _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestCase>);
+            case 'TestCheckList':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看项目列表', '查看项目', '填写软件项目委托测试工作检查表', '0'] });
+                return (<TestCheckList _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestCheckList>);
+            case 'TestRecord':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看项目列表', '查看项目', '填写软件测试记录电子记录', '0'] });
+                return (<TestRecord _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestRecord>);
+            case 'TestReport':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看项目列表', '查看项目', '填写软件测试报告', '0'] });
+                return (<TestReport _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestReport>);
+            case 'TestScenarioReviewForm':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看项目列表', '查看项目', '填写测试方案评审表', '0'] });
+                return (<TestScenarioReviewForm _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestScenarioReviewForm>);
+
+
+
+
             case 'ViewApplication':
                 this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看委托列表', '查看委托', '查看测试申请书', '0'] });
                 return (<ViewApplication _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewApplication>);
@@ -198,7 +230,7 @@ class Home extends React.Component {
 
             case 'Info1':
                 this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '机构信息', '0', '0', '0'] });
-                return (<TestReport _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></TestReport>);
+                return (<ViewProject _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewProject>);
             case 'Info2':
                 this.setState({ HeaderMenuIndex: '4', BreadcrumbByIndex: ['首页', '资质信息', '0', '0', '0'] });
                 return (<TestReport></TestReport>);

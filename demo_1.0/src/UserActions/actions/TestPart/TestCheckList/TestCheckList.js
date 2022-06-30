@@ -330,6 +330,7 @@ function TestCheckList(props) {
           if (data != null) {
             form = data
             form['软件项目委托测试工作检查表'] = values
+            
             SubmitForm(form)
           }
           console.log(data)
