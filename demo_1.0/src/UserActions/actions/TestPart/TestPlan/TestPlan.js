@@ -161,7 +161,7 @@ function TestPlan(props){
                       name={[name, 'AMD']}
                       rules={[{ required: true, message: '请填写AMD' }]}
                     >
-                      <Input style={{ maxWidth: 500 }} placeholder="A-添加，M-修改，D-删除" />
+                      <Input style={{ maxWidth: 500 }} placeholder="A-添加,M-修改,D-删除" />
                     </Form.Item>                
 
                     <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>修订者</h5>

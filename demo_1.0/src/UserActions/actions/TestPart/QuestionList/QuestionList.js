@@ -27,7 +27,7 @@ function QuestionList(props) {
     console.log('Success:', values);
     var form = {}
     if (USE_JSON_SERVER) {
-      fetch("http://localhost:8000/forms/1" , {
+      fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'] , {
         method: "GET",
         mode: 'cors',
         headers: {
