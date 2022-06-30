@@ -44,7 +44,7 @@ export function getTestStatusInfo(info,part=null){
     return getTestDescriptionByStage(stage,part);
 }
 
-export function getStatusByDelegationState(state,part=null){
+export function getTestStatusByDelegationState(state,part=null){
     var stage=getTestStageByDTAState(state);
     //console.log(stage,part)
     return getTestDescriptionByStage(stage,part);
@@ -86,18 +86,19 @@ function getTestDescriptionByStage(stage,part){
     // }
     switch(stage){
         case -1:res='状态错误';break;
-        case 0:res='测试人员已经填写《软件测试方案》，等待质量部人员审核并填写《测试方案评审表》';break;
-        case 1:res='质量部人员审核完成，填写《测试方案评审表》，测试方案未通过，等待测试人员重新填写《软件测试方案》';break;
-        case 2:res='质量部人员审核完成，填写《测试方案评审表》，测试方案通过，等待测试人员填写《测试用例》';break;
-        case 3:res='测试人员填写《测试用例》，等待填写《软件测试记录》';break;
-        case 4:res='测试人员填写《软件测试记录》，等待填写《问题清单》';break;
-        case 5:res='测试人员填写《软件测试问题清单》,等待填写《软件文档评审表》';break;
-        case 6:res='测试人员填写《软件文档评审表》，等待《软件测试报告》的填写';break;
-        case 7:res='测试人员完成《软件测试报告》的填写，等待质量部人员审核';break;
-        case 8:res='质量部人员完成填写《测试报告检查表》，《软件测试报告》未通过，等待测试人员重新填写《软件测试报告》';break;
-        case 9:res='质量部人员完成填写《测试报告检查表》，《软件测试报告》通过，等待市场部人员填写《软件项目委托测试工作检查表》';break;
-        case 10:res='市场部人员填写《软件项目委托测试工作检查表》，批准签发《软件测试报告》';break;
-        case 11:res='市场部人员填写《软件项目委托测试工作检查表》，未批准《软件测试报告》';break;
+        case 0:res='项目已生成，等待测试人员填写《软件测试方案》';break;
+        case 1:res='测试人员已经填写《软件测试方案》，等待质量部人员审核并填写《测试方案评审表》';break;
+        case 2:res='质量部人员审核完成，填写《测试方案评审表》，测试方案未通过，等待测试人员重新填写《软件测试方案》';break;
+        case 3:res='质量部人员审核完成，填写《测试方案评审表》，测试方案通过，等待测试人员填写《测试用例》';break;
+        case 4:res='测试人员填写《测试用例》，等待填写《软件测试记录》';break;
+        case 5:res='测试人员填写《软件测试记录》，等待填写《问题清单》';break;
+        case 6:res='测试人员填写《软件测试问题清单》,等待填写《软件文档评审表》';break;
+        case 7:res='测试人员填写《软件文档评审表》，等待《软件测试报告》的填写';break;
+        case 8:res='测试人员完成《软件测试报告》的填写，等待质量部人员审核';break;
+        case 9:res='质量部人员完成填写《测试报告检查表》，《软件测试报告》未通过，等待测试人员重新填写《软件测试报告》';break;
+        case 10:res='质量部人员完成填写《测试报告检查表》，《软件测试报告》通过，等待市场部人员填写《软件项目委托测试工作检查表》';break;
+        case 11:res='市场部人员填写《软件项目委托测试工作检查表》，批准签发《软件测试报告》';break;
+        case 12:res='市场部人员填写《软件项目委托测试工作检查表》，未批准《软件测试报告》';break;
 
     }
     return res;
