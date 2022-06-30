@@ -1,0 +1,184 @@
+INFO:root:Website FOUND.
+WARNING:root:Login List Page
+INFO:root:login_input_email PASS
+INFO:root:login_input_username PASS
+INFO:root:login_input_password PASS
+WARNING:root:Application List Page
+INFO:root:Software Name PASS
+INFO:root:Build Number PASS
+INFO:root:Trustee(CN) PASS
+INFO:root:Trustee(EN) PASS
+INFO:root:Development Unit PASS
+INFO:root:User Object PASS
+INFO:root:Main Function PASS
+INFO:root:Function Number PASS
+INFO:root:Code Number PASS
+INFO:root:Edition of Runtime Environment Client Windows System PASS
+INFO:root:Edition of Runtime Environment Client Linux System PASS
+INFO:root:Memory Requirments of Runtime Environment Client  PASS
+INFO:root:Other Requirments of Runtime Environment Client  PASS
+INFO:root:Memory Requirments of Runtime Environment Server PASS
+INFO:root:HDD Requirments of Runtime Environment Server PASS
+INFO:root:Other Requirments of Runtime Environment Server PASS
+INFO:root:Runtime Environment Server OS System PASS
+INFO:root:Programming Language of Runtime Environment Server PASS
+INFO:root:Runtime Environment Server Database PASS
+INFO:root:Runtime Environment Server Middlepart PASS
+INFO:root:Runtime Environment Server Other Supporting Software PASS
+INFO:root:Edition of Runtime Environment Server PASS
+INFO:root:Runtime Network Environment PASS
+INFO:root:Trustee Telephone PASS
+INFO:root:Trustee Fax PASS
+INFO:root:Trustee Address PASS
+INFO:root:Trustee Post Code PASS
+INFO:root:Trustee Liaison Man PASS
+INFO:root:Trustee Liaison Man Phone Number PASS
+INFO:root:Trustee Email PASS
+INFO:root:Trustee Web Address PASS
+WARNING:root:Application Form Page
+WARNING:root:Software FunctionList Page
+INFO:root:Software Name PASS
+INFO:root:Software Edition PASS
+WARNING:root:Test Apartment Page
+INFO:root:Material Check PASS
+WARNING:root:Market Department Check Page
+INFO:root:Market Department Check PASS
+WARNING:root:Market Department Quotation Page
+INFO:root:Software Name PASS
+INFO:root:Subject PASS
+INFO:root:Subitem PASS
+INFO:root:Price PASS
+INFO:root:Explain PASS
+INFO:root:Line Total PASS
+INFO:root:Subtotal PASS
+INFO:root:Tax Rate PASS
+INFO:root:Total PASS
+WARNING:root:Quotation Reply Page
+INFO:root:Sign PASS
+WARNING:root:View Test Application Page
+INFO:root:Trial Project Number PASS
+WARNING:root:Test Contract Page
+INFO:root:Trustee Name PASS
+INFO:root:Signing Address PASS
+INFO:root:Alternation Time PASS
+INFO:root:Alternation Upper Limit PASS
+INFO:root:Alternation Time Upper Limit PASS
+WARNING:root:Time Limit Confirming Page
+INFO:root:Suggestion PASS
+WARNING:root:Market Department Signature Page
+INFO:root:Deligate PASS
+INFO:root:Liaison Man PASS
+ERROR:root:Liaison Address not right
+ERROR:root:Postal Code not right
+INFO:root:Phone Number PASS
+INFO:root:Fax PASS
+WARNING:root:Client Signature Page
+INFO:root:Total Name PASS
+INFO:root:Deligate PASS
+INFO:root:Liaison Man PASS
+ERROR:root:Liaison Address not right
+ERROR:root:Postal Code not right
+INFO:root:Phone Number PASS
+INFO:root:Fax PASS
+INFO:root:Bank PASS
+INFO:root:Account PASS
+WARNING:root:Market Department Non-disclosure Agreement Page
+INFO:root:Client PASS
+INFO:root:Object Name PASS
+INFO:root:Trustee PASS
+INFO:root:Deligate PASS
+WARNING:root:Client Non-disclosure Agreement Page
+INFO:root:Client PASS
+INFO:root:Deligate PASS
+INFO:root:Website FOUND.
+WARNING:root:Login List Page
+INFO:root:login_input_email PASS
+INFO:root:login_input_username PASS
+INFO:root:login_input_password PASS
+WARNING:root:Application List Page
+INFO:root:Software Name PASS
+INFO:root:Build Number PASS
+INFO:root:Trustee(CN) PASS
+INFO:root:Trustee(EN) PASS
+INFO:root:Development Unit PASS
+INFO:root:User Object PASS
+INFO:root:Main Function PASS
+INFO:root:Function Number PASS
+INFO:root:Code Number PASS
+INFO:root:Edition of Runtime Environment Client Windows System PASS
+INFO:root:Edition of Runtime Environment Client Linux System PASS
+INFO:root:Memory Requirments of Runtime Environment Client  PASS
+INFO:root:Other Requirments of Runtime Environment Client  PASS
+INFO:root:Memory Requirments of Runtime Environment Server PASS
+INFO:root:HDD Requirments of Runtime Environment Server PASS
+INFO:root:Other Requirments of Runtime Environment Server PASS
+INFO:root:Runtime Environment Server OS System PASS
+INFO:root:Programming Language of Runtime Environment Server PASS
+INFO:root:Runtime Environment Server Database PASS
+INFO:root:Runtime Environment Server Middlepart PASS
+INFO:root:Runtime Environment Server Other Supporting Software PASS
+INFO:root:Edition of Runtime Environment Server PASS
+INFO:root:Runtime Network Environment PASS
+INFO:root:Trustee Telephone PASS
+INFO:root:Trustee Fax PASS
+INFO:root:Trustee Address PASS
+INFO:root:Trustee Post Code PASS
+INFO:root:Trustee Liaison Man PASS
+INFO:root:Trustee Liaison Man Phone Number PASS
+INFO:root:Trustee Email PASS
+INFO:root:Trustee Web Address PASS
+WARNING:root:Application Form Page
+WARNING:root:Software FunctionList Page
+INFO:root:Software Name PASS
+INFO:root:Software Edition PASS
+WARNING:root:Test Apartment Page
+INFO:root:Material Check PASS
+WARNING:root:Market Department Check Page
+INFO:root:Market Department Check PASS
+WARNING:root:Market Department Quotation Page
+INFO:root:Software Name PASS
+INFO:root:Subject PASS
+INFO:root:Subitem PASS
+INFO:root:Price PASS
+INFO:root:Explain PASS
+INFO:root:Line Total PASS
+INFO:root:Subtotal PASS
+INFO:root:Tax Rate PASS
+INFO:root:Total PASS
+WARNING:root:Quotation Reply Page
+INFO:root:Sign PASS
+WARNING:root:View Test Application Page
+INFO:root:Trial Project Number PASS
+WARNING:root:Test Contract Page
+INFO:root:Trustee Name PASS
+INFO:root:Signing Address PASS
+INFO:root:Alternation Time PASS
+INFO:root:Alternation Upper Limit PASS
+INFO:root:Alternation Time Upper Limit PASS
+WARNING:root:Time Limit Confirming Page
+INFO:root:Suggestion PASS
+WARNING:root:Market Department Signature Page
+INFO:root:Deligate PASS
+INFO:root:Liaison Man PASS
+INFO:root:Liaison Address PASS
+INFO:root:Postal Code PASS
+INFO:root:Phone Number PASS
+INFO:root:Fax PASS
+WARNING:root:Client Signature Page
+INFO:root:Total Name PASS
+INFO:root:Deligate PASS
+INFO:root:Liaison Man PASS
+INFO:root:Liaison Address PASS
+INFO:root:Postal Code PASS
+INFO:root:Phone Number PASS
+INFO:root:Fax PASS
+INFO:root:Bank PASS
+INFO:root:Account PASS
+WARNING:root:Market Department Non-disclosure Agreement Page
+INFO:root:Client PASS
+INFO:root:Object Name PASS
+INFO:root:Trustee PASS
+INFO:root:Deligate PASS
+WARNING:root:Client Non-disclosure Agreement Page
+INFO:root:Client PASS
+INFO:root:Deligate PASS

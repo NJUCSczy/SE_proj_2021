@@ -133,7 +133,7 @@ function TestScenarioReviewForm(props) {
     console.log('Success:', values);
     var form = {}
     if (USE_JSON_SERVER) {
-      fetch("http://localhost:8000/forms/1"/*+ _state['PageInfo']['id']*/ , {
+      fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'], {
         method: "GET",
         mode: 'cors',
         headers: {
@@ -189,7 +189,7 @@ function TestScenarioReviewForm(props) {
 
   const SubmitForm = (_form, firstTime = false) => {
     if (USE_JSON_SERVER) {
-      fetch("http://localhost:8000/forms/1" , {
+      fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'] , {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'

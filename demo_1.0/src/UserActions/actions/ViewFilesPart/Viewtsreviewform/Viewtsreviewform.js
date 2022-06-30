@@ -35,7 +35,7 @@ function Viewtsreviewform(props) {
 
     const updateInfo = () => {
         if (USE_JSON_SERVER) {
-            fetch("http://localhost:8000/forms/1" /*+ _state['PageInfo']['id']*/, {
+            fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
                 method: "GET",
                 mode: 'cors',
                 headers: {

@@ -187,22 +187,22 @@ function TestAgreement(props) {
           <Input style={{ maxWidth: 180 }} defaultValue={entrustData["用户申请表"]["委托单位(中文)"]}  />
         </Form.Item>
 
-        <Form.Item label="受托方(乙方)" name="受托方(乙方)" rules={[{ required: true, message: '请填写受托方' }]}>
-          <Input placeholder="请输入受托方" style={{ maxWidth: 180 }} onChange={(e) => { handleChange(e.target.value) }} />
+        <Form.Item  label="受托方(乙方)" name="受托方(乙方)" rules={[{ required: true, message: '请填写受托方' }]}>
+          <Input id='受托方(乙方)' placeholder="请输入受托方" style={{ maxWidth: 180 }} onChange={(e) => { handleChange(e.target.value) }} />
         </Form.Item>
 
         <Form.Item
-          label="签订地点" name="签订地点"
+          label="签订地点" name="签订地点" 
           rules={[{ required: true, message: '请填写签订地点' }]}
         >
-          <Input placeholder="请输入签订地点" style={{ maxWidth: 150 }} />
+          <Input id='签订地点' placeholder="请输入签订地点" style={{ maxWidth: 150 }} />
         </Form.Item>
 
         <Form.Item
           label="签订日期" name='签订日期'
           rules={[{ required: true, message: '请填写签订日期' }]}
         >
-          <DatePicker />
+        <DatePicker  id='签订日期' />
         </Form.Item>
 
         <Paragraph>
@@ -245,10 +245,10 @@ function TestAgreement(props) {
         <h3>六.履行的期限</h3>
         1.本次测试的履行期限为合同生效之日起&emsp;
         <Form.Item
-          name="合同履行期限" noStyle
+          name="合同履行期限" noStyle 
           rules={[{ required: true, message: '请填写合同履行期限' }]}
         >
-          <Input /*Number min={1} max={10000000}*/ style={{ width: 100 }} />
+          <Input id='履行期限'/*Number min={1} max={10000000}*/ style={{ width: 100 }} />
         </Form.Item>
         &emsp;个自然日内完成
         <Paragraph>&emsp;2.	经甲乙双方同意，可对测试进度作适当修改，并以修改后的测试进度作为本合同执行的期限。</Paragraph>
@@ -256,11 +256,11 @@ function TestAgreement(props) {
         <Form.Item
           label="整改次数限于" labelCol={{ span: 6 }} name="整改限制次数"
           rules={[{ required: true, message: '请填写整改限制次数' }]}>
-          <Input style={{ width: 100 }} addonAfter="次" />
+          <Input id = '整改次数上限' style={{ width: 100 }} addonAfter="次" />
         </Form.Item>
         <Form.Item label="每次不超过" labelCol={{ span: 6 }} name="一次整改限制的天数"
           rules={[{ required: true, message: '请填写整改限制的天数' }]}>
-          <Input style={{ width: 100 }} addonAfter="天" />
+          <Input id='整改时间上限' style={{ width: 100 }} addonAfter="天" />
         </Form.Item>
         <Paragraph>&emsp;4.	如因甲方原因，导致测试进度延迟、应由甲方负责,乙方不承担责任。</Paragraph>
         <Paragraph>&emsp;5.	如因乙方原因,导致测试进度延迟,则甲方可酌情提出赔偿要求,赔偿金额不超过甲方已付金额的50%。双方经协商一致后另行签订书面协议，作为本合同的补充。</Paragraph>
@@ -285,7 +285,7 @@ function TestAgreement(props) {
 
 
         <Form.Item style={{ textAlign: 'center' }}>
-          <Button htmlType="submit">
+          <Button id='提交' htmlType="submit">
             提交合同
           </Button>
         </Form.Item>

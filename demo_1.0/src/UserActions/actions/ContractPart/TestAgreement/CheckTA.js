@@ -202,15 +202,15 @@ function CheckTA(props) {
                 </Form.Item>
 
                 <Form.Item label="受托方(乙方)" >
-                    <Input style={{ maxWidth: 180 }} defaultValue={entrustData["履行期限(受托方部分)"]["受托方(乙方)"]} disabled />
+                    <Input id='受托方(乙方)' style={{ maxWidth: 180 }} defaultValue={entrustData["履行期限(受托方部分)"]["受托方(乙方)"]} disabled />
                 </Form.Item>
 
                 <Form.Item label="签订地点" >
-                    <Input style={{ maxWidth: 180 }} defaultValue={entrustData["履行期限(受托方部分)"]["签订地点"]} disabled />
+                    <Input id = '签订地点' style={{ maxWidth: 180 }} defaultValue={entrustData["履行期限(受托方部分)"]["签订地点"]} disabled />
                 </Form.Item>
 
                 <Form.Item label="签订日期" >
-                    <Input style={{ maxWidth: 180 }} defaultValue={entrustData["履行期限(受托方部分)"]["签订日期"]} disabled />
+                    <Input id='签订日期' style={{ maxWidth: 180 }} defaultValue={entrustData["履行期限(受托方部分)"]["签订日期"]} disabled />
                 </Form.Item>
 
                 <Paragraph>
@@ -254,16 +254,16 @@ function CheckTA(props) {
                 <h3>六.履行的期限</h3>
                 1.本次测试的履行期限为合同生效之日起&emsp;
                 <Form.Item name="合同履行期限" noStyle>
-                    <InputNumber style={{ maxWidth: 100 }} defaultValue={entrustData["履行期限(受托方部分)"]["合同履行期限"]} disabled />
+                    <InputNumber id='合同履行期限' style={{ maxWidth: 100 }} defaultValue={entrustData["履行期限(受托方部分)"]["合同履行期限"]} disabled />
                 </Form.Item>
                 &emsp;个自然日内完成
                 <Paragraph>&emsp;2.	经甲乙双方同意，可对测试进度作适当修改，并以修改后的测试进度作为本合同执行的期限。</Paragraph>
                 <Paragraph>&emsp;3.	如受测软件在测试过程中出现的问题，导致继续进行测试会影响整体测试进度,则乙方暂停测试并以书面形式通知甲方进行整改。在整个测试过程中,</Paragraph>
                 <Form.Item label="整改次数限于" labelCol={{ span: 6 }}>
-                    <Input style={{ maxWidth: 100 }} addonAfter="次" defaultValue={entrustData["履行期限(受托方部分)"]["整改限制次数"]} disabled />
+                    <Input id='整改次数上限' style={{ maxWidth: 100 }} addonAfter="次" defaultValue={entrustData["履行期限(受托方部分)"]["整改限制次数"]} disabled />
                 </Form.Item>
                 <Form.Item label="每次不超过" labelCol={{ span: 6 }} >
-                    <Input style={{ maxWidth: 100 }} addonAfter="天" defaultValue={entrustData["履行期限(受托方部分)"]["一次整改限制的天数"]} disabled />
+                    <Input id= '整改日期上限'style={{ maxWidth: 100 }} addonAfter="天" defaultValue={entrustData["履行期限(受托方部分)"]["一次整改限制的天数"]} disabled />
                 </Form.Item>
                 <Paragraph>&emsp;4.	如因甲方原因，导致测试进度延迟、应由甲方负责,乙方不承担责任。</Paragraph>
                 <Paragraph>&emsp;5.	如因乙方原因,导致测试进度延迟,则甲方可酌情提出赔偿要求,赔偿金额不超过甲方已付金额的50%。双方经协商一致后另行签订书面协议，作为本合同的补充。</Paragraph>
@@ -285,18 +285,18 @@ function CheckTA(props) {
                 <Paragraph>&emsp;本合同未尽事宜由双方协商解决。</Paragraph>
                 <Paragraph>&emsp;本合同的正本一式肆份,双方各执两份,具有同等法律效力。</Paragraph>
                 <Form.Item label="意见" name="意见">
-                    <Input.TextArea style={{ maxWidth: 500 }} />
+                    <Input.TextArea id='意见' style={{ maxWidth: 500 }} />
                 </Form.Item>
                 <Form.Item label="态度" name="态度">
-                    <Select
+                    <Select id='态度_下拉栏'
                         style={{
                             width: 120,
                         }}
                         onChange={handleChange}
                         >
-                        <Option value="接受">接受</Option>
-                        <Option value="申请再议">申请再议</Option>
-                        <Option value="不接受">不接受</Option>
+                        <Option id='态度_下拉栏_接受' value="接受">接受</Option>
+                        <Option id='态度_下拉栏_申请再议' value="申请再议">申请再议</Option>
+                        <Option id='态度_下拉栏_不接受' value="不接受">不接受</Option>
                     </Select>
                 </Form.Item>
                 {/* <Form inline style={{ textAlign: 'center' }}>

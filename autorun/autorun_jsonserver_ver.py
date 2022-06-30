@@ -29,7 +29,7 @@ def log(flag,name,mode,alert):
     _alert = name + ' ' + alert
     if flag:
         logging.info(_passname)
-    elif mode == DEBUG:
+    elif mode == DEBUG:# 事实上这里是不会显示的，原因在于selenium的debug信息过多设置的消息等级为info
         logging.debug(_alert)
     elif mode == WARNING:
         logging.warning(_alert)
@@ -63,6 +63,7 @@ def View_latest_entrust():
 #%%
 #登录
 Login_as_User()
+log(False,'Login List',WARNING,'Page')
 flag = browser.find_element_by_id("login_input_email").get_attribute('value') == "lys1223@qq.com"
 log(flag,"login_input_email",ERROR,'not right')
 flag= browser.find_element_by_id("login_input_username").get_attribute('value') == "2131"
@@ -77,7 +78,7 @@ sleep(0.5)
 browser.find_element_by_id("home_headers_functions").click()
 sleep(0.5)
 browser.find_element_by_id("home_headers_functions_submit_application").click()
-
+log(False,'Application List',WARNING,'Page')
 #%%
 #自动填写用户申请表
 sleep(0.5)
@@ -218,7 +219,7 @@ log(flag,'Trustee Web Address',ERROR,'not right')
 #提交用户申请表
 browser.find_element_by_id("提交用户申请表").click()
 sleep(1)
-
+log(False,'Application Form',WARNING,'Page')
 #%%
 #进入填写软件功能列表界面
 View_entrustList()
@@ -227,19 +228,26 @@ View_latest_entrust()
 sleep(0.5)
 browser.find_element_by_id("填写软件功能列表").click()
 sleep(0.5)
-
+log(False,'Software FunctionList',WARNING,'Page')
 #%%
 #填写软件功能列表
 browser.find_element_by_id("软件名称").send_keys('测试软件(自动)')
 browser.find_element_by_id("版本号").send_keys('1.0.0')
 browser.find_element_by_id("添加新功能").click()
+<<<<<<< HEAD
+=======
 browser.find_element_by_id("软件子功能列表").click()
 sleep(0.5)
 browser.find_element_by_id("添加新项目").click()
+>>>>>>> ffe59179dc377d38b0761aef0e8de1902d11fbf6
 browser.find_element_by_id("软件功能").send_keys('啥都能干')
+browser.find_element_by_id("添加新项目").click()
 browser.find_element_by_id("软件子功能项目").send_keys('项目1')
 browser.find_element_by_id("功能说明").send_keys('也是啥都能干')
-
+flag = browser.find_element_by_id("软件名称").get_attribute('value') == '测试软件(自动)'
+log(flag,'Software Name',ERROR,'not right')
+flag = browser.find_element_by_id("版本号").get_attribute('value') == '1.0.0'
+log(flag,'Software Edition',ERROR,'not right')
 #%%
 #提交软件功能表
 browser.find_element_by_id("提交按钮").click()
@@ -247,6 +255,7 @@ sleep(0.5)
 
 #%%
 #进入测试部审核界面
+log(False,'Test Apartment',WARNING,'Page')
 View_entrustList()
 View_latest_entrust()
 sleep(0.5)
@@ -270,6 +279,8 @@ browser.find_element_by_id("材料检查_操作文档_诊断手册").click()
 browser.find_element_by_id("材料检查_操作文档_支持手册").click()
 browser.find_element_by_id("材料检查_其他").send_keys('无')
 browser.find_element_by_id("确认意见_可以测试").click()
+flag = browser.find_element_by_id("材料检查_其他").get_attribute('value') == '无'
+log(flag,'Material Check',ERROR,'not right')
 sleep(0.5)
 
 #%%
@@ -287,11 +298,13 @@ sleep(0.5)
 
 #%%
 #市场部审核
+log(False,'Market Department Check',WARNING,'Page')
 browser.find_element_by_id("市场部受理意见_受理").click()
 sleep(0.5)
 browser.find_element_by_id("市场部备注").send_keys('审核没问题')
 sleep(0.5)
-
+flag = browser.find_element_by_id("市场部备注").get_attribute('value') == '审核没问题'
+log(flag,'Market Department Check',ERROR,'not right')
 #%%
 #市场部提交审核
 browser.find_element_by_id("提交").click()
@@ -307,6 +320,7 @@ sleep(0.5)
 
 #%%
 #市场部填写报价单
+log(False,'Market Department Quotation',WARNING,'Page')
 browser.find_element_by_id("添加新项目").click()
 browser.find_element_by_id("软件名称").send_keys("测试软件(自动)")
 browser.find_element_by_id("项目").send_keys("项目1")
@@ -318,6 +332,24 @@ browser.find_element_by_id("小计").send_keys("123")
 browser.find_element_by_id("税率").send_keys("9")
 browser.find_element_by_id("总计").send_keys("142")
 
+flag = browser.find_element_by_id("软件名称").get_attribute('value') == '测试软件(自动)'
+log(flag,'Software Name',ERROR,'not right')
+flag = browser.find_element_by_id("项目").get_attribute('value') == '项目1'
+log(flag,'Subject',ERROR,'not right')
+flag = browser.find_element_by_id("分项").get_attribute('value') == '分项1'
+log(flag,'Subitem',ERROR,'not right')
+flag = browser.find_element_by_id("单价").get_attribute('value') == '123'
+log(flag,'Price',ERROR,'not right')
+flag = browser.find_element_by_id("说明").get_attribute('value') == '说明'
+log(flag,'Explain',ERROR,'not right')
+flag = browser.find_element_by_id("行合计").get_attribute('value') == '123'
+log(flag,'Line Total',ERROR,'not right')
+flag = browser.find_element_by_id("小计").get_attribute('value') == '123'
+log(flag,'Subtotal',ERROR,'not right')
+flag = browser.find_element_by_id("税率").get_attribute('value') == '9'
+log(flag,'Tax Rate',ERROR,'not right')
+flag = browser.find_element_by_id("总计").get_attribute('value') == '142'
+log(flag,'Total',ERROR,'not right')
 #%%
 #市场部提交报价单
 browser.find_element_by_id("提交").click()
@@ -333,10 +365,13 @@ sleep(0.5)
 
 #%%
 #用户回复报价单
+log(False,'Quotation Reply',WARNING,'Page')
 browser.find_element_by_id("用户反馈_接受").click()
 browser.find_element_by_id("委托人签字").send_keys("cc")
 browser.find_element_by_id("委托人签字日期").click()
 browser.find_element_by_class_name("ant-picker-today-btn").click()
+flag = browser.find_element_by_id("委托人签字").get_attribute('value') == 'cc'
+log(flag,'Sign',ERROR,'not right')
 sleep(0.5)
 
 #%%
@@ -348,6 +383,7 @@ sleep(0.5)
 #进入市场部完成测试申请书界面
 View_entrustList()
 View_latest_entrust()
+log(False,'View Test Application',WARNING,'Page')
 sleep(0.5)
 browser.find_element_by_id("完成申请表").click()
 sleep(0.5)
@@ -357,12 +393,187 @@ sleep(0.5)
 browser.find_element_by_id("测试项目编号").send_keys("123456")
 sleep(0.5)
 
+flag = browser.find_element_by_id("测试项目编号").get_attribute('value') == '123456'
+log(flag,'Trial Project Number',ERROR,'not right')
 #%%
 #提交测试项目编号
 browser.find_element_by_id("提交").click()
 sleep(0.5)
+#%%
+#进入测试合同委托方填写界面
+View_entrustList()
+sleep(0.5)
+View_latest_entrust()
+sleep(0.5)
+browser.find_element_by_id("起草测试合同，拟定履行期限").click()
+sleep(0.5)
 
-# %%
+#%%
+#填写测试合同
+log(False,'Test Contract',WARNING,'Page')
+browser.find_element_by_id("受托方(乙方)").send_keys("SE_A")
+browser.find_element_by_id("签订地点").send_keys("南京大学软件测试中心")
+browser.find_element_by_id("签订日期").click()
+browser.find_element_by_class_name("ant-picker-today-btn").click()
+browser.find_element_by_id("履行期限").send_keys("90")
+browser.find_element_by_id("整改次数上限").send_keys("3")
+browser.find_element_by_id("整改时间上限").send_keys("2")
+
+flag = browser.find_element_by_id("受托方(乙方)").get_attribute('value') == 'SE_A'
+log(flag,'Trustee Name',ERROR,'not right')
+flag = browser.find_element_by_id("签订地点").get_attribute('value') == '南京大学软件测试中心'
+log(flag,'Signing Address',ERROR,'not right')
+flag = browser.find_element_by_id("履行期限").get_attribute('value') == '90'
+log(flag,'Alternation Time',ERROR,'not right')
+flag = browser.find_element_by_id("整改次数上限").get_attribute('value') == '3'
+log(flag,'Alternation Upper Limit',ERROR,'not right')
+flag = browser.find_element_by_id("整改时间上限").get_attribute('value') == '2'
+log(flag,'Alternation Time Upper Limit',ERROR,'not right')
+browser.find_element_by_id("提交").click()
+
+#%%
+# 确认履行期限
+View_entrustList()
+sleep(0.5)
+View_latest_entrust()
+sleep(0.5)
+browser.find_element_by_id("查看履行日期").click()
+sleep(0.5)
+log(False,'Time Limit Confirming',WARNING,'Page')
+browser.find_element_by_id("意见").send_keys("无")
+browser.find_element_by_id("态度_下拉栏").click()
+sleep(0.5)
+browser.find_element_by_id("态度_下拉栏_接受").click()
+flag = browser.find_element_by_id("意见").get_attribute('value') == '无'
+log(flag,'Suggestion',ERROR,'not right')
+browser.find_element_by_id("提交").click()
+#%%
+#市场部填写签章
+View_entrustList()
+sleep(0.5)
+View_latest_entrust()
+sleep(0.5)
+browser.find_element_by_id("市场部填写签章").click()
+sleep(0.5)
+log(False,'Market Department Signature',WARNING,'Page')
+browser.find_element_by_id("单位全称").send_keys("1")
+browser.find_element_by_id("授权代表").send_keys("南京大学软件测试中心")
+browser.find_element_by_id("联系人").send_keys("刘岩菘")
+browser.find_element_by_id("通讯地址").send_keys("lysisgbldad@qq.com")
+browser.find_element_by_id("邮编").send_keys("8923800")
+browser.find_element_by_id("电话").send_keys("18904033116")
+browser.find_element_by_id("传真").send_keys("411092")
+
+
+
+flag = browser.find_element_by_id("授权代表").get_attribute('value') == '南京大学软件测试中心'
+log(flag,'Deligate',ERROR,'not right')
+flag = browser.find_element_by_id("联系人").get_attribute('value') == '刘岩菘'
+log(flag,'Liaison Man',ERROR,'not right')
+flag = browser.find_element_by_id("通讯地址").get_attribute('value') == 'lysisgbldad@qq.com'
+log(flag,'Liaison Address',ERROR,'not right')
+flag = browser.find_element_by_id("邮编").get_attribute('value') == '8923800'
+log(flag,'Postal Code',ERROR,'not right')
+flag = browser.find_element_by_id("电话").get_attribute('value') == '18904033116'
+log(flag,'Phone Number',ERROR,'not right')
+flag = browser.find_element_by_id("传真").get_attribute('value') == '411092'
+log(flag,'Fax',ERROR,'not right')
+
+
+
+
+browser.find_element_by_id("提交").click()
+#%%
+#客户填写签章
+View_entrustList()
+sleep(0.5)
+View_latest_entrust()
+sleep(0.5)
+browser.find_element_by_id("客户填写签章").click()
+sleep(0.5)
+log(False,'Client Signature',WARNING,'Page')
+#%%
+#填写软件测试委托合同签章（委托方）
+browser.find_element_by_id("单位全称").send_keys("南京大学软件测试中心")
+browser.find_element_by_id("授权代表").send_keys("cc")
+browser.find_element_by_id("联系人").send_keys("刘岩菘")
+browser.find_element_by_id("通讯地址").send_keys("lysisgbldad@qq.com")
+browser.find_element_by_id("电话").send_keys("18904033116")
+browser.find_element_by_id("传真").send_keys("411092")
+browser.find_element_by_id("开户银行").send_keys("中国工商银行")
+browser.find_element_by_id("账号").send_keys("6222 8009 2313 2839 2398")
+browser.find_element_by_id("邮编").send_keys("8923800")
+
+flag = browser.find_element_by_id("单位全称").get_attribute('value') == '南京大学软件测试中心'
+log(flag,'Total Name',ERROR,'not right')
+flag = browser.find_element_by_id("授权代表").get_attribute('value') == 'cc'
+log(flag,'Deligate',ERROR,'not right')
+flag = browser.find_element_by_id("联系人").get_attribute('value') == '刘岩菘'
+log(flag,'Liaison Man',ERROR,'not right')
+flag = browser.find_element_by_id("通讯地址").get_attribute('value') == 'lysisgbldad@qq.com'
+log(flag,'Liaison Address',ERROR,'not right')
+flag = browser.find_element_by_id("邮编").get_attribute('value') == '8923800'
+log(flag,'Postal Code',ERROR,'not right')
+flag = browser.find_element_by_id("电话").get_attribute('value') == '18904033116'
+log(flag,'Phone Number',ERROR,'not right')
+flag = browser.find_element_by_id("传真").get_attribute('value') == '411092'
+log(flag,'Fax',ERROR,'not right')
+flag = browser.find_element_by_id("开户银行").get_attribute('value') == '中国工商银行'
+log(flag,'Bank',ERROR,'not right')
+flag = browser.find_element_by_id("账号").get_attribute('value') == '6222 8009 2313 2839 2398'
+log(flag,'Account',ERROR,'not right')
+
+browser.find_element_by_id("提交").click()
+
+#%%
+#市场部填写保密协议
+View_entrustList()
+sleep(0.5)
+View_latest_entrust()
+sleep(0.5)
+browser.find_element_by_id("市场部填写保密协议").click()
+sleep(0.5)
+log(False,'Market Department Non-disclosure Agreement',WARNING,'Page')
+browser.find_element_by_id("basic_委托方").send_keys("司马睿")
+browser.find_element_by_id("basic_项目名").send_keys("bilibili视频弹幕软件")
+browser.find_element_by_id("basic_乙方").send_keys("南京大学软件测试中心")
+browser.find_element_by_id("basic_法人代表").send_keys("法人代表")
+browser.find_element_by_id("basic_日期").click()
+browser.find_element_by_class_name("ant-picker-today-btn").click()
+
+flag = browser.find_element_by_id("basic_委托方").get_attribute('value') == '司马睿'
+log(flag,'Client',ERROR,'not right')
+flag = browser.find_element_by_id("basic_项目名").get_attribute('value') == 'bilibili视频弹幕软件'
+log(flag,'Object Name',ERROR,'not right')
+flag = browser.find_element_by_id("basic_乙方").get_attribute('value') == '南京大学软件测试中心'
+log(flag,'Trustee',ERROR,'not right')
+flag = browser.find_element_by_id("basic_法人代表").get_attribute('value') == '法人代表'
+log(flag,'Deligate',ERROR,'not right')
+
+browser.find_element_by_id("提交").click()
+
+#%%
+#客户填写保密协议
+View_entrustList()
+sleep(0.5)
+View_latest_entrust()
+sleep(0.5)
+browser.find_element_by_id("客户填写保密协议").click()
+sleep(0.5)
+log(False,'Client Non-disclosure Agreement',WARNING,'Page')
+browser.find_element_by_id("basic_甲方").send_keys("委托人甲")
+browser.find_element_by_id("basic_法人代表").send_keys("法人代表")
+browser.find_element_by_id("basic_日期").click()
+browser.find_element_by_class_name("ant-picker-today-btn").click()
+
+
+flag = browser.find_element_by_id("basic_甲方").get_attribute('value') == '委托人甲'
+log(flag,'Client',ERROR,'not right')
+flag = browser.find_element_by_id("basic_法人代表").get_attribute('value') == '法人代表'
+log(flag,'Deligate',ERROR,'not right')
+
+browser.find_element_by_id("提交").click()
+#%%
 #关闭网页
 Quit_browser()
 # %%

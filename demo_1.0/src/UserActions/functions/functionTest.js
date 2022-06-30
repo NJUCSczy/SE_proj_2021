@@ -1,25 +1,27 @@
 export function getTestStageByInfo(info){
     if(info===null || info ===undefined)return 0;
     return (
-    info.hasOwnProperty('软件测试方案') === false  ? -1: //错误状态
-    info.hasOwnProperty('委托测试软件功能列表') === false  ? 0: //testplan.js
-    info.hasOwnProperty('软件测试用例') === false ? 2: //testcase.js
-    info.hasOwnProperty('软件测试记录') === false ? 3: //testrecord.js
-    info.hasOwnProperty('软件测试问题清单') === false ? 4: //questionlist.js
-    info.hasOwnProperty('软件文档评审表') === false ? 5: //sofewaredocumentreviewform.js
-    info.hasOwnProperty('软件测试报告') === false ? 6: //testreport.js
-    info.hasOwnProperty('测试报告检查表') === false ? 7: ///checklist.js
-    info['测试报告检查表']['确认意见'] === '不通过' ? 8 : //checklist.js 需要修改
-    info.hasOwnProperty('软件项目委托测试工作检查表') === false ? 9://testchecklist.js
-    info['软件项目委托测试工作检查表']['市场部受理意见'] === '批准签发' ? 10 : //testchecklist.js 需要修改
-    11
+        info.hasOwnProperty('用户申请表') === false  ? -1: //-1 错误状态
+        info.hasOwnProperty('软件测试方案') === false  ? 0: //0 项目已成立，等待测试人员填写《软件测试方案》
+        info.hasOwnProperty('测试方案评审表') === false  ? 1: //1 测试人员已经填写《软件测试方案》，等待质量部人员审核并填写《测试方案评审表》
+        info['测试方案评审表']['确认意见'] === '不通过'  ? 2: //2 质量部人员审核完成，填写《测试方案评审表》，测试方案未通过，等待测试人员重新填写《软件测试方案》
+        info.hasOwnProperty('测试用例电子记录') === false ? 3: //3 质量部人员审核完成，填写《测试方案评审表》，测试方案通过，等待测试人员填写《测试用例》
+        info.hasOwnProperty('软件测试记录电子记录') === false ? 4: //4 测试人员填写《测试用例》，等待填写《软件测试记录》
+        info.hasOwnProperty('软件测试问题清单') === false ? 5: //5 测试人员填写《软件测试记录》，等待填写《软件测试问题清单》
+        info.hasOwnProperty('软件文档评审表') === false ? 6: //6 测试人员填写《软件测试问题清单》,等待填写《软件文档评审表》
+        info.hasOwnProperty('软件测试报告') === false ? 7: //7 测试人员填写《软件文档评审表》，等待《软件测试报告》的填写
+        info.hasOwnProperty('测试报告检查表') === false ? 8: //8 测试人员完成《软件测试报告》的填写，等待质量部人员审核并填写《测试报告检查表》
+        info['测试报告检查表']['确认意见'] === '不通过' ? 9: //9 质量部人员完成填写《测试报告检查表》，《软件测试报告》未通过，等待测试人员重新填写《软件测试报告》
+        info.hasOwnProperty('软件项目委托测试工作检查表') === false ? 10: //10 质量部人员完成填写《测试报告检查表》，《软件测试报告》通过，等待市场部人员填写《软件项目委托测试工作检查表》
+        info['软件项目委托测试工作检查表']['市场部受理意见'] === '批准签发' ? 11: //11 市场部人员填写《软件项目委托测试工作检查表》，批准签发《软件测试报告》
+         12 //12 市场部人员填写《软件项目委托测试工作检查表》，未批准《软件测试报告》
     );
 }
 
 export function getTestStageByDTAState(state){
     switch(state){
         case 'ERROR':return -1;//错误状态
-        case 'TEST_SCHEME':return 0;
+        case 'TEST_SCHEME':return 0;//项目已生成，等待测试人员填写《软件测试方案》
         case 'AUDIT_QUALITY':return 1;//测试人员已经填写《软件测试方案》，等待质量部人员审核并填写《测试方案评审表》
         case 'AUDIT_QUALITY_DENIED':return 2;//质量部人员审核完成，填写《测试方案评审表》，测试方案未通过，等待测试人员重新填写《软件测试方案》
         case 'TEST_DOC_TEST_CASE':return 3;//质量部人员审核完成，填写《测试方案评审表》，测试方案通过，等待测试人员填写《测试用例》
@@ -27,7 +29,7 @@ export function getTestStageByDTAState(state){
         case 'TEST_DOC_BUG_LIST':return 5;//测试人员填写《软件测试记录》，等待填写《软件测试问题清单》
         case ' TEST_DOC_DOC_EVALUATION_TABLE':return 6;//测试人员填写《软件测试问题清单》,等待填写《软件文档评审表》
         case ' TEST_DOC_TEST_REPORT':return 7;//测试人员填写《软件文档评审表》，等待《软件测试报告》的填写
-        case 'TEST_DOC_TEST_REPORT_EVALUATION_TABLE':return 8;//测试人员完成《软件测试报告》的填写，等待质量部人员审核
+        case 'TEST_DOC_TEST_REPORT_EVALUATION_TABLE':return 8;//测试人员完成《软件测试报告》的填写，等待质量部人员审核并填写《测试报告检查表》
         case 'TEST_REPORT_DENIED':return 9;//质量部人员完成填写《测试报告检查表》，《软件测试报告》未通过，等待测试人员重新填写《软件测试报告》
         case 'TEST_DOC_WORK_EVALUATION_TABLE':return 10;//质量部人员完成填写《测试报告检查表》，《软件测试报告》通过，等待市场部人员填写《软件项目委托测试工作检查表》
         case ' TEST_DOC_WORK_ACCEPTED':return 11;//市场部人员填写《软件项目委托测试工作检查表》，批准签发《软件测试报告》
@@ -47,6 +49,7 @@ export function getStatusByDelegationState(state,part=null){
     //console.log(stage,part)
     return getTestDescriptionByStage(stage,part);
 }
+
 
 function getTestDescriptionByStage(stage,part){
     if(stage<0)return null;
