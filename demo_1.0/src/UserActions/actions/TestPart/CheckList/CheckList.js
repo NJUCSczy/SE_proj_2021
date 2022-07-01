@@ -43,6 +43,16 @@ function CheckList(props) {
             if (data != null) {
               form = data
               form['测试报告检查表'] = values
+              if(form['测试报告检查表']['tableItem_0']&&form['测试报告检查表']['tableItem_1']&&form['测试报告检查表']['tableItem_2']
+              &&form['测试报告检查表']['tableItem_3']&&form['测试报告检查表']['tableItem_4']&&form['测试报告检查表']['tableItem_5']
+              &&form['测试报告检查表']['tableItem_6']&&form['测试报告检查表']['tableItem_7']&&form['测试报告检查表']['tableItem_8']
+              &&form['测试报告检查表']['tableItem_9']&&form['测试报告检查表']['tableItem_10']&&form['测试报告检查表']['tableItem_11']
+              &&form['测试报告检查表']['tableItem_12']&&form['测试报告检查表']['tableItem_13']){
+                form['测试报告检查表']['确认意见']='通过';
+              }
+              else{
+                form['测试报告检查表']['确认意见']='不通过';
+              }
               SubmitForm(form)
             }
             console.log(data)

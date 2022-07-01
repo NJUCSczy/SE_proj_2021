@@ -54,36 +54,72 @@ export function getTestStatusByDelegationState(state,part=null){
 function getTestDescriptionByStage(stage,part){
     if(stage<0)return null;
     var res='';
-    // if(part === '软件项目委托测试申请书'){
-    //     if(stage>=13)
-    //     return '已完成'
-    //     else if(stage>=8)
-    //     return '等待市场部完成'
-    // }
-    // else if(part === '委托测试软件功能列表'){
-    //     if(stage>=1)
-    //     return '已完成'
-    //     else
-    //     return '尚未创建'
-    // }
-    // else if(part === '软件委托测试合同'){
-    //     if(stage>=19)
-    //         return '已完成'
-    //     else if(stage<14)
-    //         return '尚未创建'
-    // }
-    // else if(part === '软件项目委托测试保密协议'){
-    //     if(stage>=21)
-    //         return '用户已签署保密协议，委托完成'
-    //     else if(stage<20)
-    //         return '尚未创建'
-    // }
-    // else if(part === '报价单'){
-    //     if(stage>=12)
-    //         return '已签订'
-    //     else
-    //         return '等待用户回复'
-    // }
+     if(part === '软件测试方案'){
+        if(stage>=3)
+            return '已完成,质量部审核通过'
+        else if(stage===2)
+            return '质量部审核未通过,等待重写'
+        else if(stage>=1)
+            return '已完成'
+        else if(stage===0)
+            return '尚未完成'
+    }
+    else if(part === '测试方案评审表'){
+        if(stage>=2)
+            return '已完成'
+        else 
+            return '尚未完成'
+    }
+    else if(part === '测试用例'){
+        if(stage>=4)
+            return '已完成'
+        else 
+            return '尚未完成'
+    }
+    else if(part === '软件测试记录'){
+        if(stage>=5)
+            return '已完成'
+        else 
+            return '尚未完成'
+    }
+    else if(part === '软件测试问题清单'){
+        if(stage>=6)
+            return '已完成'
+        else 
+            return '尚未完成'
+    }
+    else if(part === '软件文档评审表'){
+        if(stage>=7)
+            return '已完成'
+        else 
+            return '尚未完成'
+    }
+    else if(part === '软件测试报告'){
+        if(stage===11)
+            return '已完成,市场部批准签发'
+        else if(stage>=12)
+            return '已完成,市场部不批准签发'
+        else if(stage>=10)
+            return '已完成,质量部审核通过,等待市场部批准签发'
+        else if(stage>=8)
+            return '已完成,等待质量部审核'
+        else if(stage===9)
+            return '已完成,等待质量部审核'
+        else
+            return '未完成'
+    }
+    else if(part === '测试报告检查表'){
+        if(stage>=9)
+            return '已完成'
+        else
+            return '未完成'
+    }
+    else if(part === '软件项目委托测试工作检查表'){
+        if(stage>=11)
+            return '已完成'
+        else
+            return '未完成'
+    }
     switch(stage){
         case -1:res='状态错误';break;
         case 0:res='项目已生成，等待测试人员填写《软件测试方案》';break;

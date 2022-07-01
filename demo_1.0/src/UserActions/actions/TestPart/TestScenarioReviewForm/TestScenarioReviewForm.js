@@ -147,6 +147,14 @@ function TestScenarioReviewForm(props) {
           if (data != null) {
             form = data
             form['测试方案评审表'] = values
+            if(form['测试方案评审表']['pass_0']&&form['测试方案评审表']['pass_1']&&form['测试方案评审表']['pass_2']
+            &&form['测试方案评审表']['pass_3']&&form['测试方案评审表']['pass_4']&&form['测试方案评审表']['pass_5']
+            &&form['测试方案评审表']['pass_6']&&form['测试方案评审表']['pass_7']){
+              form['测试方案评审表']['确认意见']='通过';
+            }
+            else{
+              form['测试方案评审表']['确认意见']='不通过';
+            }
             SubmitForm(form)
           }
           console.log(data)

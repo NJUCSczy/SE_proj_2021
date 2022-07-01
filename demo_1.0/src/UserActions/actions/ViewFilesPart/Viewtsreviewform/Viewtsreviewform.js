@@ -259,6 +259,13 @@ function Viewtsreviewform(props) {
         </Table>
         
         <Table dataSource={data1} columns={columns} pagination={{pageSize:40}} bordered></Table>
+        <Descriptions     
+        column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+        >
+            <Descriptions.Item label={<h4 style={{ fontWeight: 'bolder', marginTop: 30 }}>最终评审意见</h4>} >
+            <h4 style={{ fontWeight: 'bolder', marginTop: 30 }} >{entrustData['测试方案评审表']['确认意见']}</h4>
+            </Descriptions.Item>
+        </Descriptions>
         </Form>
         )
             

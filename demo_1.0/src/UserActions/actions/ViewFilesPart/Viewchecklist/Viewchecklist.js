@@ -253,6 +253,14 @@ const data = [
         >
             <DatePicker disabled defaultValue={moment((entrustData['测试报告检查表']["日期"]), 'YYYY/MM/DD')} format='YYYY/MM/DD'/>
         </Form.Item>
+
+        <Descriptions    
+        column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+        >
+            <Descriptions.Item label={<h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>最终确认意见</h3>} >
+            <h3 style={{ fontWeight: 'bolder', marginTop: 30}} >{entrustData['测试报告检查表']['确认意见']}</h3>
+            </Descriptions.Item>
+        </Descriptions>
             </Form>
             )
             

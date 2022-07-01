@@ -330,7 +330,19 @@ function TestCheckList(props) {
           if (data != null) {
             form = data
             form['软件项目委托测试工作检查表'] = values
-            
+            if(form['软件项目委托测试工作检查表']['tableItem_1']&&form['软件项目委托测试工作检查表']['tableItem_2']&&form['软件项目委托测试工作检查表']['tableItem_3']
+            &&form['软件项目委托测试工作检查表']['tableItem_4']&&form['软件项目委托测试工作检查表']['tableItem_5']&&form['软件项目委托测试工作检查表']['tableItem_6']
+            &&form['软件项目委托测试工作检查表']['tableItem_7']&&form['软件项目委托测试工作检查表']['tableItem_9']&&form['软件项目委托测试工作检查表']['tableItem_11']
+            &&form['软件项目委托测试工作检查表']['tableItem_12']&&form['软件项目委托测试工作检查表']['tableItem_13']&&form['软件项目委托测试工作检查表']['tableItem_14']
+            &&form['软件项目委托测试工作检查表']['tableItem_15']&&form['软件项目委托测试工作检查表']['tableItem_16']&&form['软件项目委托测试工作检查表']['tableItem_17']
+            &&form['软件项目委托测试工作检查表']['tableItem_18']&&form['软件项目委托测试工作检查表']['tableItem_19']&&form['软件项目委托测试工作检查表']['tableItem_20']
+            &&form['软件项目委托测试工作检查表']['tableItem_21']&&form['软件项目委托测试工作检查表']['tableItem_22']&&form['软件项目委托测试工作检查表']['tableItem_23']
+            &&form['软件项目委托测试工作检查表']['tableItem_24']&&form['软件项目委托测试工作检查表']['tableItem_25']&&form['软件项目委托测试工作检查表']['tableItem_26']){
+              form['软件项目委托测试工作检查表']['市场部受理意见']='批准签发';
+            }
+            else{
+              form['软件项目委托测试工作检查表']['市场部受理意见']='不批准签发';
+            }
             SubmitForm(form)
           }
           console.log(data)
