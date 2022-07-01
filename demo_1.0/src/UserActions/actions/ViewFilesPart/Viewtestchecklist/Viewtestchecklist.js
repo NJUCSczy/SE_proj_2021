@@ -429,7 +429,7 @@ const data = [
             column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
             >
                 <Descriptions.Item label={<h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>市场部受理意见</h3>} >
-                <h3 style={{ fontWeight: 'bolder', marginTop: 30}} >{entrustData['软件项目委托测试工作检查表']['市场部受理意见']}</h3>
+                <h3 style={{ fontWeight: 'bolder', marginTop: 30}} >{entrustData['软件项目委托测试工作检查表']['市场部审核意见']}</h3>
                 </Descriptions.Item>
 
             </Descriptions>

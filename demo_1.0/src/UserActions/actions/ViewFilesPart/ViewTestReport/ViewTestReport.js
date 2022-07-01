@@ -394,9 +394,7 @@ function ViewTestReport(props) {
                 <Title style={{ fontWeight: 'bolder', marginTop: 30 }} level={5}>测试依据</Title>
 
                 {entrustData['软件测试报告']['测试依据'].map((index)=>
-                <div>
-                    <Collapse  bordered={false} ghost defaultActiveKey={['1']}>
-                                              
+                <div>                          
                         <Descriptions
                         bordered
                         layout='vertical'
@@ -408,8 +406,6 @@ function ViewTestReport(props) {
                             </Descriptions.Item>
           
                         </Descriptions>
-                        
-                    </Collapse>
                                             
                 </div>
                  )}      
@@ -418,8 +414,6 @@ function ViewTestReport(props) {
 
                 {entrustData['软件测试报告']['参考资料'].map((index)=>
                 <div>
-                    <Collapse  bordered={false} ghost defaultActiveKey={['1']}>
-                                              
                         <Descriptions
                         bordered
                         layout='vertical'
@@ -431,8 +425,6 @@ function ViewTestReport(props) {
                             </Descriptions.Item>
           
                         </Descriptions>
-                        
-                    </Collapse>
                                             
                 </div>
                  )}              

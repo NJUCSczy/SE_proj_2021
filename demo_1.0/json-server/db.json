@@ -650,7 +650,7 @@
         "tableItem_24": true,
         "tableItem_25": true,
         "tableItem_26": true,
-        "市场部受理意见": "批准签发"
+        "市场部审核意见": "批准签发"
       }
     },
     {
@@ -836,7 +836,7 @@
         "tableItem_24": false,
         "tableItem_25": false,
         "tableItem_26": false,
-        "市场部受理意见": "不批准签发"
+        "市场部审核意见": "不批准签发"
       },
       "测试方案评审表": {
         "软件名称": "我",
