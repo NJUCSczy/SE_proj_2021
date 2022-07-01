@@ -52,7 +52,7 @@ function Viewchecklist(props) {
                 })
         }
         else {
-            fetch(REMOTE_SERVER + "/delegation/" + _state['PageInfo']['id'], {
+            fetch(REMOTE_SERVER + "/test/" + _state['PageInfo']['id']+"/test-doc/test/report-evaluation", {
                 method: "GET",
                 headers: {
                     'Accept': 'application/json',
@@ -78,7 +78,7 @@ function Viewchecklist(props) {
                         setEntrustData(prev => {
                             const newData = _.cloneDeep(prev)
                             newData["formData"] = data
-                            newData['报价单'] = data['offerTableUnion']
+                            newData['测试报告检查表'] = data['TestReportEvaluationTableDto']
                             return newData
                         })
                     }

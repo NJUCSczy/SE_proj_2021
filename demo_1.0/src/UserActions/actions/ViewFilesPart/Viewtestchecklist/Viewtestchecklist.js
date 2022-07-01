@@ -67,7 +67,7 @@ var _ = require('lodash');
                 })
         }
         else {
-            fetch(REMOTE_SERVER + "/delegation/" + _state['PageInfo']['id'], {
+            fetch(REMOTE_SERVER + "/test/" + _state['PageInfo']['id']+"/test-doc/work-evaluation", {
                 method: "GET",
                 headers: {
                     'Accept': 'application/json',
@@ -93,7 +93,7 @@ var _ = require('lodash');
                         setEntrustData(prev => {
                             const newData = _.cloneDeep(prev)
                             newData["formData"] = data
-                            newData['报价单'] = data['offerTableUnion']
+                            newData['软件项目委托测试工作检查表'] = data['WorkEvaluationTableDto']
                             return newData
                         })
                     }

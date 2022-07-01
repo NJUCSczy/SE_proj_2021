@@ -58,7 +58,7 @@ function Viewtsreviewform(props) {
                 })
         }
         else {
-            fetch(REMOTE_SERVER + "/delegation/" + _state['PageInfo']['id'], {
+            fetch(REMOTE_SERVER + "/test/" + _state['PageInfo']['id']+"/test-scheme/audit-table", {
                 method: "GET",
                 headers: {
                     'Accept': 'application/json',
@@ -84,7 +84,7 @@ function Viewtsreviewform(props) {
                         setEntrustData(prev => {
                             const newData = _.cloneDeep(prev)
                             newData["formData"] = data
-                            newData['报价单'] = data['offerTableUnion']
+                            newData['测试方案评审表'] = data['TestSchemeAuditTableDto']
                             return newData
                         })
                     }

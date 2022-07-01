@@ -47,37 +47,7 @@ function QuestionList(props) {
         })
     }
     else {
-      fetch(REMOTE_SERVER+"/delegation/" + _state['PageInfo']['id'], {
-        method: "GET",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json;charset=utf-8',
-          'accessToken': _state['accessToken'],
-          'tokenType': _state['tokenType'],
-          'usrName': _state['userName'],
-          'usrID': _state['userID'],
-          'usrRole': _state['userRole'][0],
-          'Authorization': _state['accessToken']
-        },
-      })
-        .then(res => {
-          return res.json()
-        })
-        .then(data => {
-          console.log(data)
-          if (data != null) {
-            form['基本信息'] = values;
-            if (data['state'] === 'QUOTATION_MARKET') {
-              SubmitForm(form, true);
-            }
-            else if (data['state'] === 'QUOTATION_USER_APPLICATION') {
-              SubmitForm(form, false);
-            }
-            else {
-              alert('状态有误！')
-            }
-          }
-        })
+      return SubmitForm(values)
     }
   };
 
@@ -106,7 +76,7 @@ function QuestionList(props) {
         })
     }
     else {
-      fetch(REMOTE_SERVER+"/offer/delegation/" + _state['PageInfo']['id'], {
+      fetch(REMOTE_SERVER+"/test/" + _state['PageInfo']['id']+"/test-doc/buglist", {
         method: firstTime ? "POST" : "PUT",
         headers: {
           'Accept': 'application/json',

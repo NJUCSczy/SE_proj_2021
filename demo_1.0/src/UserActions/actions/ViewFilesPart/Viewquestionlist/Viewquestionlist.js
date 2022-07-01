@@ -42,7 +42,7 @@ function Viewquestionlist(props){
             })
     }
     else {
-        fetch(REMOTE_SERVER + "/delegation/" + _state['PageInfo']['id'], {
+        fetch(REMOTE_SERVER + "/test/" + _state['PageInfo']['id']+"/test-doc/buglist", {
             method: "GET",
             headers: {
                 'Accept': 'application/json',
@@ -68,7 +68,7 @@ function Viewquestionlist(props){
                     setEntrustData(prev => {
                         const newData = _.cloneDeep(prev)
                         newData["formData"] = data
-                        newData['报价单'] = data['offerTableUnion']
+                        newData['软件测试问题清单'] = data['BugListDto']
                         return newData
                     })
                 }

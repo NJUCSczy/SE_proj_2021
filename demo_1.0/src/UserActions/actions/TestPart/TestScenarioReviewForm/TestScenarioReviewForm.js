@@ -191,7 +191,7 @@ function TestScenarioReviewForm(props) {
         })
     }
     else {
-      fetch(REMOTE_SERVER+"/offer/delegation/" + _state['PageInfo']['id'], {
+      fetch(REMOTE_SERVER+"/test/" + _state['PageInfo']['id'] + "/audit-scheme", {
         method: firstTime ? "POST" : "PUT",
         headers: {
           'Accept': 'application/json',
