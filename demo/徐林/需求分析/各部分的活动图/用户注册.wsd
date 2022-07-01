@@ -1,0 +1,9 @@
+@startuml 用户注册
+start
+:用户进入登陆界面;
+repeat:填写邮箱、用户名和密码;
+backward:提示注册失败;
+repeatwhile(点击立即注册按钮)
+:提示注册成功;
+stop
+@enduml
