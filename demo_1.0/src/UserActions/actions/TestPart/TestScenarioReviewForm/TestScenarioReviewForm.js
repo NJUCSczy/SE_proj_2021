@@ -130,6 +130,14 @@ function TestScenarioReviewForm(props) {
   
 
   const onFinishForm = (values) => {
+    if(values['pass_0']&&values['pass_1']&&values['pass_2']
+    &&values['pass_3']&&values['pass_4']&&values['pass_5']
+    &&values['pass_6']&&values['pass_7']){
+      values['确认意见']='通过';
+    }
+    else{
+      values['确认意见']='不通过';
+    }
     console.log('Success:', values);
     var form = {}
     if (USE_JSON_SERVER) {
@@ -145,53 +153,16 @@ function TestScenarioReviewForm(props) {
         })
         .then(data => {
           if (data != null) {
+            
             form = data
             form['测试方案评审表'] = values
-            if(form['测试方案评审表']['pass_0']&&form['测试方案评审表']['pass_1']&&form['测试方案评审表']['pass_2']
-            &&form['测试方案评审表']['pass_3']&&form['测试方案评审表']['pass_4']&&form['测试方案评审表']['pass_5']
-            &&form['测试方案评审表']['pass_6']&&form['测试方案评审表']['pass_7']){
-              form['测试方案评审表']['确认意见']='通过';
-            }
-            else{
-              form['测试方案评审表']['确认意见']='不通过';
-            }
             SubmitForm(form)
           }
           console.log(data)
         })
     }
     else {
-      fetch(REMOTE_SERVER+"/delegation/" + _state['PageInfo']['id'], {
-        method: "GET",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json;charset=utf-8',
-          'accessToken': _state['accessToken'],
-          'tokenType': _state['tokenType'],
-          'usrName': _state['userName'],
-          'usrID': _state['userID'],
-          'usrRole': _state['userRole'][0],
-          'Authorization': _state['accessToken']
-        },
-      })
-        .then(res => {
-          return res.json()
-        })
-        .then(data => {
-          console.log(data)
-          if (data != null) {
-            form['基本信息'] = values;
-            if (data['state'] === 'QUOTATION_MARKET') {
-              SubmitForm(form, true);
-            }
-            else if (data['state'] === 'QUOTATION_USER_APPLICATION') {
-              SubmitForm(form, false);
-            }
-            else {
-              alert('状态有误！')
-            }
-          }
-        })
+      return SubmitForm(values)
     }
   };
 

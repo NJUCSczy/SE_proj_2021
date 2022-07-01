@@ -72,7 +72,7 @@ function TestRecord(props){
         })
       }
       else{
-        fetch(REMOTE_SERVER+"/delegations/"+_state['PageInfo']['id']+"/test-scheme", {
+        fetch(REMOTE_SERVER+"/test/"+_state['PageInfo']['id']+"/test-doc/test-record", {
       method: "POST",
       headers: {
         'Accept': 'application/json',

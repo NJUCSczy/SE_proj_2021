@@ -47,7 +47,7 @@ function ViewTestRecord(props) {
                 })
         }
         else {
-            fetch(REMOTE_SERVER + "/delegation/" + _state['PageInfo']['id'], {
+            fetch(REMOTE_SERVER + "/test/"+_state['PageInfo']['id']+"/test-doc/test-record", {
                 method: "GET",
                 headers: {
                     'Accept': 'application/json',
@@ -62,7 +62,7 @@ function ViewTestRecord(props) {
             })
                 .then(res => {
                     if (res.status != 200) {
-                        alert('查询软件测试方案失败！')
+                        alert('查询软件测试记录电子记录失败！')
                         return null
                     }
                     return res.json()
@@ -72,8 +72,7 @@ function ViewTestRecord(props) {
                     if (data != null) {
                         setEntrustData(prev => {
                             const newData = _.cloneDeep(prev)
-                            newData["formData"] = data
-                            newData['报价单'] = data['offerTableUnion']
+                            newData['软件测试记录电子记录'] = data['TestRecordDto']
                             return newData
                         })
                     }

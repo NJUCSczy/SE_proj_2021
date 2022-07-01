@@ -71,7 +71,7 @@ function TestPlan(props) {
       })
     }
     else {
-      fetch(REMOTE_SERVER + "/delegations/" + _state['PageInfo']['id'] + "/test-scheme", {
+      fetch(REMOTE_SERVER + "/test/" + _state['PageInfo']['id'] + "/test-scheme", {
         method: "POST",
         headers: {
           'Accept': 'application/json',
