@@ -313,6 +313,19 @@ function TestCheckList(props) {
   
   
   const onFinishForm = (values) => {
+    if(values['tableItem_1']&&values['tableItem_2']&&values['tableItem_3']
+    &&values['tableItem_4']&&values['tableItem_5']&&values['tableItem_6']
+    &&values['tableItem_7']&&values['tableItem_9']&&values['tableItem_11']
+    &&values['tableItem_12']&&values['tableItem_13']&&values['tableItem_14']
+    &&values['tableItem_15']&&values['tableItem_16']&&values['tableItem_17']
+    &&values['tableItem_18']&&values['tableItem_19']&&values['tableItem_20']
+    &&values['tableItem_21']&&values['tableItem_22']&&values['tableItem_23']
+    &&values['tableItem_24']&&values['tableItem_25']&&values['tableItem_26']){
+      values['市场部审核意见']='批准签发';
+    }
+    else{
+      values['市场部审核意见']='不批准签发';
+    }
     console.log('Success:', values);
     var form = {}
     if (USE_JSON_SERVER) {
@@ -330,56 +343,13 @@ function TestCheckList(props) {
           if (data != null) {
             form = data
             form['软件项目委托测试工作检查表'] = values
-            if(form['软件项目委托测试工作检查表']['tableItem_1']&&form['软件项目委托测试工作检查表']['tableItem_2']&&form['软件项目委托测试工作检查表']['tableItem_3']
-            &&form['软件项目委托测试工作检查表']['tableItem_4']&&form['软件项目委托测试工作检查表']['tableItem_5']&&form['软件项目委托测试工作检查表']['tableItem_6']
-            &&form['软件项目委托测试工作检查表']['tableItem_7']&&form['软件项目委托测试工作检查表']['tableItem_9']&&form['软件项目委托测试工作检查表']['tableItem_11']
-            &&form['软件项目委托测试工作检查表']['tableItem_12']&&form['软件项目委托测试工作检查表']['tableItem_13']&&form['软件项目委托测试工作检查表']['tableItem_14']
-            &&form['软件项目委托测试工作检查表']['tableItem_15']&&form['软件项目委托测试工作检查表']['tableItem_16']&&form['软件项目委托测试工作检查表']['tableItem_17']
-            &&form['软件项目委托测试工作检查表']['tableItem_18']&&form['软件项目委托测试工作检查表']['tableItem_19']&&form['软件项目委托测试工作检查表']['tableItem_20']
-            &&form['软件项目委托测试工作检查表']['tableItem_21']&&form['软件项目委托测试工作检查表']['tableItem_22']&&form['软件项目委托测试工作检查表']['tableItem_23']
-            &&form['软件项目委托测试工作检查表']['tableItem_24']&&form['软件项目委托测试工作检查表']['tableItem_25']&&form['软件项目委托测试工作检查表']['tableItem_26']){
-              form['软件项目委托测试工作检查表']['市场部审核意见']='批准签发';
-            }
-            else{
-              form['软件项目委托测试工作检查表']['市场部审核意见']='不批准签发';
-            }
             SubmitForm(form)
           }
           console.log(data)
         })
     }
     else {
-      fetch(REMOTE_SERVER+"/delegation/" + _state['PageInfo']['id'], {
-        method: "GET",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json;charset=utf-8',
-          'accessToken': _state['accessToken'],
-          'tokenType': _state['tokenType'],
-          'usrName': _state['userName'],
-          'usrID': _state['userID'],
-          'usrRole': _state['userRole'][0],
-          'Authorization': _state['accessToken']
-        },
-      })
-        .then(res => {
-          return res.json()
-        })
-        .then(data => {
-          console.log(data)
-          if (data != null) {
-            form['基本信息'] = values;
-            if (data['state'] === 'QUOTATION_MARKET') {
-              SubmitForm(form, true);
-            }
-            else if (data['state'] === 'QUOTATION_USER_APPLICATION') {
-              SubmitForm(form, false);
-            }
-            else {
-              alert('状态有误！')
-            }
-          }
-        })
+      return SubmitForm(values)
     }
   };
 

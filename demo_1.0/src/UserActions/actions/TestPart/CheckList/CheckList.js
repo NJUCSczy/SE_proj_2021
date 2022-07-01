@@ -26,6 +26,16 @@ function CheckList(props) {
   
     }
     const onFinishForm = (values) => {
+      if(values['tableItem_0']&&values['tableItem_1']&&values['tableItem_2']
+      &&values['tableItem_3']&&values['tableItem_4']&&values['tableItem_5']
+      &&values['tableItem_6']&&values['tableItem_7']&&values['tableItem_8']
+      &&values['tableItem_9']&&values['tableItem_10']&&values['tableItem_11']
+      &&values['tableItem_12']&&values['tableItem_13']){
+        values['确认意见']='通过';
+      }
+      else{
+        values['确认意见']='不通过';
+      }
       console.log('Success:', values);
       var form = {}
       if (USE_JSON_SERVER) {
@@ -43,53 +53,13 @@ function CheckList(props) {
             if (data != null) {
               form = data
               form['测试报告检查表'] = values
-              if(form['测试报告检查表']['tableItem_0']&&form['测试报告检查表']['tableItem_1']&&form['测试报告检查表']['tableItem_2']
-              &&form['测试报告检查表']['tableItem_3']&&form['测试报告检查表']['tableItem_4']&&form['测试报告检查表']['tableItem_5']
-              &&form['测试报告检查表']['tableItem_6']&&form['测试报告检查表']['tableItem_7']&&form['测试报告检查表']['tableItem_8']
-              &&form['测试报告检查表']['tableItem_9']&&form['测试报告检查表']['tableItem_10']&&form['测试报告检查表']['tableItem_11']
-              &&form['测试报告检查表']['tableItem_12']&&form['测试报告检查表']['tableItem_13']){
-                form['测试报告检查表']['确认意见']='通过';
-              }
-              else{
-                form['测试报告检查表']['确认意见']='不通过';
-              }
               SubmitForm(form)
             }
             console.log(data)
           })
       }
       else {
-        fetch(REMOTE_SERVER+"/delegation/" + _state['PageInfo']['id'], {
-          method: "GET",
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json;charset=utf-8',
-            'accessToken': _state['accessToken'],
-            'tokenType': _state['tokenType'],
-            'usrName': _state['userName'],
-            'usrID': _state['userID'],
-            'usrRole': _state['userRole'][0],
-            'Authorization': _state['accessToken']
-          },
-        })
-          .then(res => {
-            return res.json()
-          })
-          .then(data => {
-            console.log(data)
-            if (data != null) {
-              form['基本信息'] = values;
-              if (data['state'] === 'QUOTATION_MARKET') {
-                SubmitForm(form, true);
-              }
-              else if (data['state'] === 'QUOTATION_USER_APPLICATION') {
-                SubmitForm(form, false);
-              }
-              else {
-                alert('状态有误！')
-              }
-            }
-          })
+        return SubmitForm(values)
       }
     };
   
