@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Typography, DatePicker, Form, InputNumber, Button, Input } from 'antd';
 import './ViewContract.css'
-import { getStageByInfo, getStatusInfo } from '../../../functions/functions'
+import { getStageByInfo, getStatusInfo, USE_JSON_SERVER } from '../../../functions/functions'
 import { useEffect, useState } from 'react';
 import moment from 'moment';
 
@@ -14,6 +14,7 @@ function ViewContract (props) {
   const [entrustData, setEntrustData] = useState({ 'formData': null })
 
   const updateInfo = () => {
+    if(USE_JSON_SERVER){
     fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
         method: "GET",
         mode: 'cors',
@@ -34,6 +35,36 @@ function ViewContract (props) {
             }
             console.log(data)
         })
+    }
+    else{
+        fetch(REMOTE_SERVER + "/contract/" + _state['PageInfo']['ContractID'] , {
+            method: "GET",
+            mode: 'cors',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json;charset=utf-8',
+                'accessToken': _state['accessToken'],
+                'tokenType': _state['tokenType'],
+                'usrName': _state['userName'],
+                'usrID': _state['userID'],
+                'usrRole': _state['userRole'][0],
+                'Authorization': _state['accessToken']
+            },
+        })
+            .then(res => {
+                return res.json()
+            })
+            .then(data => {
+                console.log(data)
+                if (data != null) {
+                    setFormData(prev => {
+                        const newData = _.cloneDeep(prev)
+                        newData["formData"] = data
+                        return newData
+                    })
+                }
+            })
+    }
 }
 useEffect(() => {
     updateInfo();

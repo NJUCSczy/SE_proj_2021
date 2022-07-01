@@ -7,8 +7,9 @@ import TextArea from 'antd/lib/input/TextArea';
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
 import { NoFormStatus } from 'antd/lib/form/context';
 import { Typography } from 'antd';
-import { getStageByInfo, getStatusInfo } from '../../../functions/functions'
+import { getStageByInfo, getStatusInfo, USE_JSON_SERVER } from '../../../functions/functions'
 import moment from 'moment';
+import { UsageState } from 'webpack';
 const { Title, Paragraph, Text, Link } = Typography;
 
 var _ = require('lodash');
@@ -19,6 +20,7 @@ function ViewCfdtagreement(props){
   const [entrustData, setEntrustData] = useState({ 'formData': null })
 
   const updateInfo = () => {
+    if(USE_JSON_SERVER){
     fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'] , {
       method: "GET",
       mode: 'cors',
@@ -39,6 +41,36 @@ function ViewCfdtagreement(props){
         }
         console.log('update info',data)
       })
+    }
+    else{
+      fetch(REMOTE_SERVER + "/contract/" + _state['PageInfo']['ContractID'] + "/files/signedNondisclosureAgreementTable", {
+        method: "GET",
+        mode: 'cors',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json;charset=utf-8',
+            'accessToken': _state['accessToken'],
+            'tokenType': _state['tokenType'],
+            'usrName': _state['userName'],
+            'usrID': _state['userID'],
+            'usrRole': _state['userRole'][0],
+            'Authorization': _state['accessToken']
+        },
+    })
+        .then(res => {
+            return res.json()
+        })
+        .then(data => {
+            console.log(data)
+            if (data != null) {
+                setFormData(prev => {
+                    const newData = _.cloneDeep(prev)
+                    newData["formData"] = data
+                    return newData
+                })
+            }
+        })
+    }
   };
   useEffect(() => {
     updateInfo();
@@ -47,7 +79,7 @@ function ViewCfdtagreement(props){
 
 
  return(
-    entrustData['formData'] === null ? null :(
+    entrustData['formData'] === null ? null :(USE_JSON_SERVER?(
       <Form
       name="basic">
         <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>软件项目委托测试保密协议</h2>
@@ -162,10 +194,11 @@ function ViewCfdtagreement(props){
           </div>
         )}
       </Form>
-        
+    ):(
+      <div><a href={entrustData['formData']['fileUri']}><Tooltip title="点击下载" placement='right'>{entrustData['formData']['entrustData']}</Tooltip></a></div>
+    )
     )
  )
-
 
 }
 
