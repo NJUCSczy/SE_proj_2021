@@ -247,7 +247,7 @@ function ViewProjList(props) {
         })
     }
     else {//TODO
-      const URL = _state['userRole'][0] === 'ROLE_USER' ? (REMOTE_SERVER + "/delegations") : (REMOTE_SERVER + "/delegations/all")
+      const URL = _state['userRole'][0] === 'ROLE_USER' ? (REMOTE_SERVER + "/test/projects") : (REMOTE_SERVER + "/test/projects/all")
       console.log(URL)
       fetch(URL, {
         method: "GET",
@@ -264,14 +264,14 @@ function ViewProjList(props) {
       })
         .then(res => {
           if (res.status === 200) {
-            message.success({ content: "获取委托信息成功", key: "getEntrustList", duration: 2 })
+            message.success({ content: "获取委托信息成功", key: "getProjList", duration: 2 })
           }
           else if (res.status === 401) {
             alert("请先登录！")
             GotoPage("Login", _state)
           }
           else {
-            message.error({ content: "获取委托信息失败", key: "getEntrustList", duration: 2 })
+            message.error({ content: "获取委托信息失败", key: "getProjList", duration: 2 })
           }
 
           return res.json()

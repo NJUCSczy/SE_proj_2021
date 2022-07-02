@@ -92,7 +92,7 @@ var _ = require('lodash');
                     if (data != null) {
                         setEntrustData(prev => {
                             const newData = _.cloneDeep(prev)
-                            newData["formData"] = data
+                            
                             newData['软件项目委托测试工作检查表'] = data['WorkEvaluationTableDto']
                             return newData
                         })

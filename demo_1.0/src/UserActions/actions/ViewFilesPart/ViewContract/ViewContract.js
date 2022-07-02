@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Typography, DatePicker, Form, InputNumber, Button, Input } from 'antd';
 import './ViewContract.css'
-import { getStageByInfo, getStatusInfo, USE_JSON_SERVER } from '../../../functions/functions'
+import { getStageByInfo, getStatusInfo, USE_JSON_SERVER,REMOTE_SERVER } from '../../../functions/functions'
 import { useEffect, useState } from 'react';
 import moment from 'moment';
 
@@ -57,7 +57,7 @@ function ViewContract (props) {
             .then(data => {
                 console.log(data)
                 if (data != null) {
-                    setFormData(prev => {
+                    setEntrustData(prev => {
                         const newData = _.cloneDeep(prev)
                         newData["formData"] = data
                         return newData
