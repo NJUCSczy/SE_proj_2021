@@ -133,7 +133,14 @@ function TestRecord(props){
                       name={[name, '测试分类']}
                       rules={[{ required: true, message: '请填写测试分类' }]}
                     >
-                      <Input style={{ maxWidth: 500 }} placeholder="测试分类" />
+                       <Select id="测试分类_下拉栏" style={{ width: 160 }}>
+                        <Option id="测试分类_功能性测试" value="功能性测试" style={{ lineHeight: '32px' }}>功能性测试</Option>
+                        <Option id="测试分类_效率测试" value="效率测试" style={{ lineHeight: '32px' }}>效率测试</Option>
+                        <Option id="测试分类_可移植性测试" value="可移植性测试" style={{ lineHeight: '32px' }}>可移植性测试</Option>
+                        <Option id="测试分类_易用性测试" value="易用性测试" style={{ lineHeight: '32px' }}>易用性测试</Option>
+                        <Option id="测试分类_可靠性测试" value="可靠性测试" style={{ lineHeight: '32px' }}>可靠性测试</Option>
+                        <Option id="测试分类_可维护性测试" value="可维护性测试" style={{ lineHeight: '32px' }}>可维护性测试</Option>
+                      </Select>
                     </Form.Item>
 
                     <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>序号</h5>
@@ -145,6 +152,16 @@ function TestRecord(props){
                     >
                       <Input style={{ maxWidth: 500 }} placeholder="序号" />
                     </Form.Item>
+
+                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试特性</h5>
+                    <Form.Item
+                      {...restField}
+                      name={[name, '测试特性']}
+                      rules={[{ required: true, message: '请填写测试特性' }]}
+                    >
+                      <Input style={{ maxWidth: 500 }} placeholder="测试特性(功能性测试请填写功能模块)" />
+                    </Form.Item>
+
 
                     <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试用例设计说明</h5>
                     <Form.Item

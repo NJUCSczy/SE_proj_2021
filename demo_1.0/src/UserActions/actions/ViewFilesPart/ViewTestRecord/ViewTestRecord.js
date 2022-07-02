@@ -113,6 +113,10 @@ function ViewTestRecord(props) {
                             <Descriptions.Item label="测试分类" >
                             <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{index['测试分类']}</h4>
                             </Descriptions.Item>
+
+                            <Descriptions.Item label="测试特性" >
+                            <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{index['测试特性']}</h4>
+                            </Descriptions.Item>
                            
                             <Descriptions.Item label="测试用例设计说明" >
                             <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{index['测试用例设计说明']}</h4>

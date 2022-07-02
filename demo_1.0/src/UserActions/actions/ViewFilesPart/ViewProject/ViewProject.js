@@ -58,7 +58,7 @@ function ViewProject(props){
                 })
         }
         else {
-            fetch(REMOTE_SERVER + "/delegation/" + _state['PageInfo']['id'], {
+            fetch(REMOTE_SERVER + "/test/project/" + _state['PageInfo']['id'], {
                 method: "GET",
                 headers: {
                     'Accept': 'application/json',
