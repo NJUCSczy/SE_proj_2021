@@ -34,8 +34,7 @@ function TrusteeApplication(props) {
         })
     }
     else {
-      form['软件委托测试合同(受托方部分)']=values;
-      SubmitForm(form);
+      SubmitForm(values);
     }
   };
 

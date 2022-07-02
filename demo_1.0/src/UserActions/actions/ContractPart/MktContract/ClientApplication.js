@@ -10,9 +10,9 @@ function ClientApplication(props) {
   const { TextArea } = Input;
 
   const onFinishForm = (values) => {
-    var form = {}
     if (USE_JSON_SERVER) {
       console.log('Success:', values);
+      var form = {}
       fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
         method: "GET",
         mode: 'cors',
@@ -33,8 +33,7 @@ function ClientApplication(props) {
         })
     }
     else {
-      form['软件委托测试合同(委托方部分)']=values;
-      SubmitForm(form)
+      SubmitForm(values)
     }
   };
 
