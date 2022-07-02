@@ -378,6 +378,7 @@ class Home extends React.Component {
         const staffFunctionMenu = (<Dropdown overlay={<Menu
             items={[
                 { label: (<a id="home_headers_functions_view_application" onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
+                { label: (<a id="home_headers_functions_view_test_application" onClick={() => { this.GotoPage('ViewProjList', this.state) }}>查看项目</a>), },
             ]} />} placement="bottom">
             <a id="home_headers_functions" onClick={e => e.preventDefault()}><Space style={{ color: 'white' }}>操作<DownOutlined /></Space></a>
         </Dropdown>)
@@ -386,6 +387,7 @@ class Home extends React.Component {
             items={[
                 { label: (<a id="home_headers_functions_submit_application" onClick={() => { this.GotoPage('SubmitApplication', this.state) }}>提交申请</a>), },
                 { label: (<a id="home_headers_functions_view_application" onClick={() => { this.GotoPage('ViewEntrustList', this.state) }}>查看委托</a>), },
+                { label: (<a id="home_headers_functions_view_test_application" onClick={() => { this.GotoPage('ViewProjList', this.state) }}>查看项目</a>), },
             ]} />} placement="bottom">
             <a id="home_headers_functions" onClick={e => e.preventDefault()}><Space style={{ color: 'white' }}>操作<DownOutlined /></Space></a>
         </Dropdown>)
