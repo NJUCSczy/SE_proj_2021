@@ -23,7 +23,7 @@ function OfflineSignContract(props) {
     }
 
     const updateInfo = () => {
-        fetch(REMOTE_SERVER + "/contract/" + _state['PageInfo']['ContractID'] + "/files/contractTable", {
+        fetch(REMOTE_SERVER + "/contract/" + _state['PageInfo']['ContractID'] + "/files/unsignedContractTable", {
             method: "GET",
             mode: 'cors',
             headers: {
@@ -50,7 +50,7 @@ function OfflineSignContract(props) {
                     })
                 }
             })
-        fetch(REMOTE_SERVER + "/contract/" + _state['PageInfo']['ContractID'] + "/files/nondisclosureAgreementTable", {
+        fetch(REMOTE_SERVER + "/contract/" + _state['PageInfo']['ContractID'] + "/files/unsignedNondisclosureAgreementTable", {
             method: "GET",
             mode: 'cors',
             headers: {

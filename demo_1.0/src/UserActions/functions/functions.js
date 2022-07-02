@@ -55,7 +55,7 @@ export function getStageByDelegationState(state){
         case 'PARTYA_ACCEPT_PERFORMANCE_TERM':return 17;//用户已经同意履行期限﹐等待市场部填写测试合同
         case 'PARTYB_ADD_CONTRACT_TABLE':return 18;//市场部已经填写测试合同·等待用户填写测试合同
         case 'PARTYA_ADD_CONTRACT_TABLE':return 19;//用户已经填写测试合同·等待市场部下载未签订合同
-        case 'PARTYB UPLOAD_SIGNED_CONTRACT':return 21;//市场部已经上传已签订合同
+        case 'PARTYB_UPLOAD_SIGNED_CONTRACT':return 21;//市场部已经上传已签订合同
         default:return -1;
     }
 }

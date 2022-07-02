@@ -11,8 +11,8 @@ function TrusteeApplication(props) {
 
   const onFinishForm = (values) => {
     console.log('Success:', values);
+    var form = {}
     if (USE_JSON_SERVER) {
-      var form = {}
       fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
         method: "GET",
         mode: 'cors',

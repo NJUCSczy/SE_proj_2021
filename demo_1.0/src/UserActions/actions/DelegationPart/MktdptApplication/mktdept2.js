@@ -37,7 +37,7 @@ function MktdptApplicationStep2(props) {
     var form = {}
     if (!USE_JSON_SERVER) {
       form['id'] = values['测试项目编号']
-      SubmitForm(form)
+      return SubmitForm(form)
     }
     fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
       method: "GET",
