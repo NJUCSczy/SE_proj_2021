@@ -11,8 +11,8 @@ function TrusteeApplication(props) {
 
   const onFinishForm = (values) => {
     console.log('Success:', values);
+    var form = {}
     if (USE_JSON_SERVER) {
-      var form = {}
       fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
         method: "GET",
         mode: 'cors',
@@ -34,7 +34,8 @@ function TrusteeApplication(props) {
         })
     }
     else {
-      SubmitForm(values);
+      form['软件委托测试合同(受托方部分)']=values;
+      SubmitForm(form);
     }
   };
 
