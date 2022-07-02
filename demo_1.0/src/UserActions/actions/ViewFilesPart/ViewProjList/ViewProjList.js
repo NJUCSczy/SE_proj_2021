@@ -118,12 +118,12 @@ function ViewProjList(props) {
   const columns = [
     {
       title: '编号',
-      dataIndex: (USE_JSON_SERVER) ? 'id' : 'delegationId',
+      dataIndex: (USE_JSON_SERVER) ? ['市场部审核委托','测试项目编号'] : 'projectId',//MAYBE PROBLEM
       key: 'id',
       width: 100,
       sorter: (a, b) => (USE_JSON_SERVER) ? a.id - b.id : a.delegationId.localeCompare(b.delegationId),
       sortDirections: ['descend'],
-      ...getColumnSearchProps((USE_JSON_SERVER) ? 'id' : 'delegationId'),
+      ...getColumnSearchProps((USE_JSON_SERVER) ? ['市场部审核委托','测试项目编号'] : 'projectId'),
     },
     {
       title: '用户',
@@ -264,14 +264,14 @@ function ViewProjList(props) {
       })
         .then(res => {
           if (res.status === 200) {
-            message.success({ content: "获取委托信息成功", key: "getProjList", duration: 2 })
+            message.success({ content: "获取项目信息成功", key: "getProjList", duration: 2 })
           }
           else if (res.status === 401) {
             alert("请先登录！")
             GotoPage("Login", _state)
           }
           else {
-            message.error({ content: "获取委托信息失败", key: "getProjList", duration: 2 })
+            message.error({ content: "获取项目信息失败", key: "getProjList", duration: 2 })
           }
 
           return res.json()
