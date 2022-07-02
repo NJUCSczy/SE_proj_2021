@@ -86,8 +86,8 @@ function OfflineSignContract(props) {
     const OnFinishForm = (values) => {
         message.loading({ content: "上传中", key: "upload" })
         const res = new FormData();
-        res.append('contractTable', values['签章']['file']);
-        res.append('nondisclosureAgreementTable', values['保密协议']['file']);
+        res.append('contractTableFile', values['签章']['file']);
+        res.append('nondisclosureAgreementTableFile', values['保密协议']['file']);
         fetch(REMOTE_SERVER + "/contract/" + _state['PageInfo']['ContractID'] + "/files", {
             method: "POST",
             headers: {
