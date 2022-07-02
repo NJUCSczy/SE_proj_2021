@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { DatePicker, Divider, Form, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import './ViewSignature.css'
-import { getStageByInfo, getStatusInfo, REMOTE_SERVER, USE_JSON_SERVER } from '../../../functions/functions';
+import { getStageByInfo, getStatusInfo, USE_JSON_SERVER,REMOTE_SERVER } from '../../../functions/functions'
 import { useEffect, useState } from 'react';
 import moment from 'moment';
 

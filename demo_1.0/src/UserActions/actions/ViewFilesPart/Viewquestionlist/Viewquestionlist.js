@@ -34,7 +34,7 @@ function Viewquestionlist(props){
                 if (data != null) {
                     setEntrustData(prev => {
                         const newData = _.cloneDeep(prev)
-                        newData["formData"] = data
+                        
                         newData['软件测试问题清单'] = data['软件测试问题清单']
                         return newData
                     })
