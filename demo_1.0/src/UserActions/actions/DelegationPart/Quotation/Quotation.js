@@ -66,6 +66,7 @@ function Quotation(props) {
           console.log(data)
           if (data != null) {
             form['基本信息'] = values;
+            form['市场部态度'] = null;
             if (data['state'] === 'QUOTATION_MARKET') {
               SubmitForm(form, true);
             }
