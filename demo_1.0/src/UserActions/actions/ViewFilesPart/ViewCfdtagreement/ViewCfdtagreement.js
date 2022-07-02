@@ -1,15 +1,15 @@
 import isMobile from 'is-mobile';
 import React, { Component } from 'react'
-import { DatePicker,Divider, Form, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
+import { Tooltip,DatePicker,Divider, Form, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import './ViewCfdtagreement.css'
 import { useEffect, useState } from 'react';
 import TextArea from 'antd/lib/input/TextArea';
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
 import { NoFormStatus } from 'antd/lib/form/context';
 import { Typography } from 'antd';
-import { getStageByInfo, getStatusInfo, USE_JSON_SERVER } from '../../../functions/functions'
+import { getStageByInfo, getStatusInfo, REMOTE_SERVER, USE_JSON_SERVER } from '../../../functions/functions';
 import moment from 'moment';
-import { UsageState } from 'webpack';
+
 const { Title, Paragraph, Text, Link } = Typography;
 
 var _ = require('lodash');
@@ -63,7 +63,7 @@ function ViewCfdtagreement(props){
         .then(data => {
             console.log(data)
             if (data != null) {
-                setFormData(prev => {
+              setEntrustData(prev => {
                     const newData = _.cloneDeep(prev)
                     newData["formData"] = data
                     return newData
