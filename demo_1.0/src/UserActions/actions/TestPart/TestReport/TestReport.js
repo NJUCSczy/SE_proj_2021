@@ -28,7 +28,7 @@ function TestReport(props){
         return SubmitForm(values)
       }
       var form = {}
-      fetch("http://localhost:8000/forms/1"/* + _state['PageInfo']['id']*/, {
+      fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
         method: "GET",
         mode: 'cors',
         headers: {
@@ -50,7 +50,7 @@ function TestReport(props){
 
     const SubmitForm = (_form) => {
       if(USE_JSON_SERVER){
-      fetch("http://localhost:8000/forms/1"/*+ _state['PageInfo']['id']*/, {
+      fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'], {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
@@ -73,7 +73,7 @@ function TestReport(props){
         })
       }
       else{
-        fetch(REMOTE_SERVER+"/test/"+_state['PageInfo']['id']+"/test-doc/test-report", {
+      fetch(REMOTE_SERVER+"/test/"+_state['PageInfo']['id']+"/test-doc/test-report", {
       method: "POST",
       headers: {
         'Accept': 'application/json',
