@@ -126,20 +126,23 @@ function ViewProjList(props) {
     },
     {
       title: '用户',
-      dataIndex: (USE_JSON_SERVER) ? 'userName' : 'usrBelonged',
+      dataIndex: (USE_JSON_SERVER) ? 'userName' : 'usrId',
       sorter: (a, b) => (USE_JSON_SERVER) ? a.userName - b.userName : a.usrBelonged.localeCompare(b.usrBelonged),
       sortDirections: ['descend'],
       key: 'userName',
       ...getColumnSearchProps((USE_JSON_SERVER) ? 'userName' : 'usrId'),
     },
-    {
+    {//TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       title: '软件名称',
       dataIndex: (USE_JSON_SERVER) ? '用户申请表' : '软件名称',
+      
+      //dataIndex: (USE_JSON_SERVER) ? '用户申请表' : 'applicationTable',
       key: '软件名称',
       // render: (userApplication) => (
+      //   (USE_JSON_SERVER)?{userApplication}:(
       //   <Space size="middle">
       //     {userApplication === null ? null : userApplication["软件名称"]}
-      //   </Space>
+      //   </Space>)
       // )
     },
     {
