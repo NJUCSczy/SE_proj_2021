@@ -118,7 +118,7 @@ function TrusteeApplication(props) {
         name="单位全称"
         rules={[{ required: true, message: '请填写单位全称' }]}
       >
-        <Input id = '单位全称'style={{ maxWidth: 500 }} defaultValue={'南京大学计算机软件新技术国家重点实验室'} />
+        <Input id = '单位全称'style={{ maxWidth: 500 }}  />
       </Form.Item>
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>授权代表</h3>
       <Form.Item
@@ -170,20 +170,26 @@ function TrusteeApplication(props) {
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>开户银行</h3>
       <Form.Item
+      name='开户银行'
+      rules={[{ required: true, message: '请填写开户银行' }]} 
       >
-        <Input style={{ maxWidth: 500 }} defaultValue={'中国工商银行股份有限公司南京汉口路分理处'} />
+        <Input id='开户银行' style={{ maxWidth: 500 }} />
       </Form.Item>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>户名</h3>
       <Form.Item
+      name='户名'
+      rules={[{ required: true, message: '请填写户名' }]}
       >
-        <Input style={{ maxWidth: 500 }} defaultValue={'南京大学'} />
+        <Input id='户名' style={{ maxWidth: 500 }}  />
       </Form.Item>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>账号</h3>
       <Form.Item
+      name='账号'
+      rules={[{ required: true, message: '请填写账号' }]} 
       >
-        <Input style={{ maxWidth: 500 }} defaultValue={'4301011309001041656'} />
+        <Input id='账号' style={{ maxWidth: 500 }} />
       </Form.Item>
       <Form.Item>
         <Button id='提交'type="primary" htmlType="submit">
