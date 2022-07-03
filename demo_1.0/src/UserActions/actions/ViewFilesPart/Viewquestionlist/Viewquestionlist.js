@@ -68,7 +68,7 @@ function Viewquestionlist(props){
                     setEntrustData(prev => {
                         const newData = _.cloneDeep(prev)
                         newData["formData"] = data
-                        newData['软件测试问题清单'] = data['BugListDto']
+                        newData['软件测试问题清单'] = data
                         return newData
                     })
                 }

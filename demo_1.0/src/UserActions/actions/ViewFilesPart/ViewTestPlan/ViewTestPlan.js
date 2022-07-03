@@ -73,7 +73,7 @@ function ViewTestPlan(props) {
                     if (data != null) {
                         setEntrustData(prev => {
                             const newData = _.cloneDeep(prev)
-                            newData['软件测试方案'] = data['TestSchemeDto']
+                            newData['软件测试方案'] = data
                             return newData
                         })
                     }

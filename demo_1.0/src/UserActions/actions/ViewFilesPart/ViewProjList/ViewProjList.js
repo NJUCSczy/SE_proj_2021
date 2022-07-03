@@ -132,18 +132,19 @@ function ViewProjList(props) {
       key: 'userName',
       ...getColumnSearchProps((USE_JSON_SERVER) ? 'userName' : 'usrId'),
     },
-    {//TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    {
       title: '软件名称',
       dataIndex: (USE_JSON_SERVER) ? '用户申请表' : '软件名称',
-      
-      //dataIndex: (USE_JSON_SERVER) ? '用户申请表' : 'applicationTable',
       key: '软件名称',
-      // render: (userApplication) => (
-      //   (USE_JSON_SERVER)?{userApplication}:(
-      //   <Space size="middle">
-      //     {userApplication === null ? null : userApplication["软件名称"]}
-      //   </Space>)
-      // )
+      render: (userApplication) => USE_JSON_SERVER?(
+        <Space size="middle">
+          {userApplication === null ? null : userApplication["软件名称"]}
+        </Space>
+      ):(
+        <Space size="middle">
+          {userApplication}
+        </Space>
+      )
     },
     {
       title: '状态',
@@ -169,11 +170,11 @@ function ViewProjList(props) {
       render: (userApplication) => (
         USE_JSON_SERVER ? (
           <Space size="middle">
-            <a id='view_entrust'
+            <a id='view_proj'
               onClick={() => gotoEntrustPage(userApplication['id'], -1)}
             >查看</a>
           </Space>) : (<Space size="middle">
-            <a id='view_entrust'
+            <a id='view_proj'
               onClick={() => gotoEntrustPage(userApplication['delegationId'], userApplication['contractId'])}
             >查看</a>
           </Space>)//TODO
