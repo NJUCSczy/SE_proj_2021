@@ -17,7 +17,7 @@ export function getStageByInfo(info){
     info.hasOwnProperty('报价单') === false ? 8 : //市场部确认受理，等待市场部发起议价
     info['报价单']['用户反馈'] === null ? 9 : //市场部已发起议价，等待用户回复
     info['报价单']['用户反馈'] === '不接受' ? 10 : //客户不接受议价，委托终止
-    info['报价单']['用户反馈'] === '再议价' ? 11 : //客户申请再议价
+    info['报价单']['用户反馈'] === '请求议价' ? 11 : //客户申请再议价
     info['市场部审核委托'].hasOwnProperty('测试项目编号') === false ? 12 : //用户已接受议价，等待市场部人员完成测试申请书
     info.hasOwnProperty('测试合同') === false ? 13 : //市场部人员已完成申请表，等待市场部人员填写测试合同和履行期限
     info['测试合同']['履行期限接受情况'] === null ? 14 : //等待客户接受履行期限
@@ -55,7 +55,7 @@ export function getStageByDelegationState(state){
         case 'PARTYA_ACCEPT_PERFORMANCE_TERM':return 17;//用户已经同意履行期限﹐等待市场部填写测试合同
         case 'PARTYB_ADD_CONTRACT_TABLE':return 18;//市场部已经填写测试合同·等待用户填写测试合同
         case 'PARTYA_ADD_CONTRACT_TABLE':return 19;//用户已经填写测试合同·等待市场部下载未签订合同
-        case 'PARTYB UPLOAD_SIGNED_CONTRACT':return 21;//市场部已经上传已签订合同
+        case 'PARTYB_UPLOAD_SIGNED_CONTRACT':return 21;//市场部已经上传已签订合同
         default:return -1;
     }
 }
