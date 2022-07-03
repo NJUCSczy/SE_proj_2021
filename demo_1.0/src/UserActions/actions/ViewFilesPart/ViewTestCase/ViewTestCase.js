@@ -69,7 +69,7 @@ function ViewTestCase(props) {
                     if (data != null) {
                         setEntrustData(prev => {
                             const newData = _.cloneDeep(prev)
-                            newData['测试用例电子记录'] = data['TestCaseDto']
+                            newData['测试用例电子记录'] = data
                             return newData
                         })
                     }

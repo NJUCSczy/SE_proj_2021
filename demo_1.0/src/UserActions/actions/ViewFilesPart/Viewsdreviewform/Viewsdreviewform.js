@@ -91,7 +91,7 @@ function Viewsdreviewform(props) {
                         setEntrustData(prev => {
                             const newData = _.cloneDeep(prev)
                             newData["formData"] = data
-                            newData['软件文档评审表'] = data['DocEvaluationTableDto']
+                            newData['软件文档评审表'] = data
                             return newData
                         })
                     }

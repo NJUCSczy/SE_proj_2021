@@ -84,7 +84,7 @@ function Viewtsreviewform(props) {
                         setEntrustData(prev => {
                             const newData = _.cloneDeep(prev)
                             
-                            newData['测试方案评审表'] = data['TestSchemeAuditTableDto']
+                            newData['测试方案评审表'] = data
                             return newData
                         })
                     }

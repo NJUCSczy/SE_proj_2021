@@ -190,13 +190,13 @@ function TestCase(props){
                       <DatePicker placeholder="测试时间" />
                     </Form.Item>
 
-                    <Button onClick={() => remove(name)} type='danger'>
+                    <Button id='删除该测试用例' onClick={() => remove(name)} type='danger'>
                       删除该测试用例
                     </Button>
                   </Fragment>
                 ))}
                 <Form.Item>
-                  <Button type="dashed"
+                  <Button id='添加新测试用例' type="dashed"
                     style={{ width: 500, marginTop: 30 }}
                     onClick={() => add()} icon={<PlusOutlined />}  >
                     添加新测试用例
@@ -207,7 +207,7 @@ function TestCase(props){
           </Form.List>
 
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-            <Button type="primary" htmlType="submit">
+            <Button id='提交' type="primary" htmlType="submit">
               提交
             </Button>
           </Form.Item>

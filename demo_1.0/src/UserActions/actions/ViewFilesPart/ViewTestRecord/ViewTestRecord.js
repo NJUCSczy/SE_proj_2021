@@ -72,7 +72,7 @@ function ViewTestRecord(props) {
                     if (data != null) {
                         setEntrustData(prev => {
                             const newData = _.cloneDeep(prev)
-                            newData['软件测试记录电子记录'] = data['TestRecordDto']
+                            newData['软件测试记录电子记录'] = data
                             return newData
                         })
                     }

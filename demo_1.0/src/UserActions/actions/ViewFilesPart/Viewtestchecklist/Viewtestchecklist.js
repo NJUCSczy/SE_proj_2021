@@ -55,7 +55,7 @@ var _ = require('lodash');
                     return res.json()
                 })
                 .then(data => {
-                    console.log(data)
+                  console.log('data:',data)
                     if (data != null) {
                         setEntrustData(prev => {
                             const newData = _.cloneDeep(prev)
@@ -88,12 +88,11 @@ var _ = require('lodash');
                     return res.json()
                 })
                 .then(data => {
-                    console.log(data)
+                    console.log('data:',data)
                     if (data != null) {
                         setEntrustData(prev => {
                             const newData = _.cloneDeep(prev)
-                            
-                            newData['软件项目委托测试工作检查表'] = data['WorkEvaluationTableDto']
+                            newData['软件项目委托测试工作检查表'] = data
                             return newData
                         })
                     }
