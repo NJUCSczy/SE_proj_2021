@@ -3,7 +3,7 @@ import React from 'react';
 import { Table, Tag, Space, message, Button, Input, Select } from 'antd';
 import { useEffect, useState, useRef } from 'react';
 import { getStageByInfo, getStatusInfo, getStageByDelegationState, getStatusByDelegationState, USE_JSON_SERVER, REMOTE_SERVER } from '../../../functions/functions'
-import {getTestStageByDTAState,getTestStageByInfo,getTestStatusInfo,getTestStatusByDelegationState,getTestDescriptionByStage} from '../../../functions/functionTest'
+import { getTestStageByDTAState, getTestStageByInfo, getTestStatusInfo, getTestStatusByDelegationState, getTestDescriptionByStage } from '../../../functions/functionTest'
 import { SearchOutlined } from '@ant-design/icons';
 import Highlighter from 'react-highlight-words';
 
@@ -12,7 +12,6 @@ var _ = require('lodash');
 
 function ViewProjList(props) {
   const { UpdateUserInfo, GotoPage, _state } = props;
-  const [entrustData, setEntrustData] = useState({ 'formData': null })
   const [formData, setFormData] = useState({ 'formData': null })
 
   const [searchText, setSearchText] = useState('');
@@ -118,30 +117,33 @@ function ViewProjList(props) {
   const columns = [
     {
       title: '编号',
-      dataIndex: (USE_JSON_SERVER) ? ['市场部审核委托','测试项目编号'] : 'projectId',//MAYBE PROBLEM
+      dataIndex: (USE_JSON_SERVER) ? ['市场部审核委托', '测试项目编号'] : 'projectId',//MAYBE PROBLEM
       key: 'id',
       width: 100,
       sorter: (a, b) => (USE_JSON_SERVER) ? a.id - b.id : a.delegationId.localeCompare(b.delegationId),
       sortDirections: ['descend'],
-      ...getColumnSearchProps((USE_JSON_SERVER) ? ['市场部审核委托','测试项目编号'] : 'projectId'),
+      ...getColumnSearchProps((USE_JSON_SERVER) ? ['市场部审核委托', '测试项目编号'] : 'projectId'),
     },
     {
       title: '用户',
-      dataIndex: (USE_JSON_SERVER) ? 'userName' : 'usrBelonged',
+      dataIndex: (USE_JSON_SERVER) ? 'userName' : 'usrId',
       sorter: (a, b) => (USE_JSON_SERVER) ? a.userName - b.userName : a.usrBelonged.localeCompare(b.usrBelonged),
       sortDirections: ['descend'],
       key: 'userName',
-      ...getColumnSearchProps((USE_JSON_SERVER) ? 'userName' : 'usrBelonged'),
+      ...getColumnSearchProps((USE_JSON_SERVER) ? 'userName' : 'usrId'),
     },
-    {
+    {//TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       title: '软件名称',
-      dataIndex: (USE_JSON_SERVER) ? '用户申请表' : 'applicationTable',
+      dataIndex: (USE_JSON_SERVER) ? '用户申请表' : '软件名称',
+      
+      //dataIndex: (USE_JSON_SERVER) ? '用户申请表' : 'applicationTable',
       key: '软件名称',
-      render: (userApplication) => (
-        <Space size="middle">
-          {userApplication === null ? null : userApplication["软件名称"]}
-        </Space>
-      )
+      // render: (userApplication) => (
+      //   (USE_JSON_SERVER)?{userApplication}:(
+      //   <Space size="middle">
+      //     {userApplication === null ? null : userApplication["软件名称"]}
+      //   </Space>)
+      // )
     },
     {
       title: '状态',
@@ -149,11 +151,11 @@ function ViewProjList(props) {
       render: (userApplication) => (
         USE_JSON_SERVER ?
           (
-          <Space size="middle">
-            {
-            getTestStatusInfo(userApplication)
-            }
-          </Space>) : (//TODO
+            <Space size="middle">
+              {
+                getTestStatusInfo(userApplication)
+              }
+            </Space>) : (//TODO
             <Space size="middle">
               {getTestStatusByDelegationState(userApplication['state'])
               }
@@ -198,44 +200,23 @@ function ViewProjList(props) {
         .then(data => {
           console.log(data)
           if (data != null) {
-            setEntrustData(prev => {
-              const newData = _.cloneDeep(prev)
-              const res = {'formData':[]}
-              newData["formData"]=data
-              newData["formData"].forEach(element => {
-                
-                  if (getStageByInfo(element) >= 21)
-                    res["formData"].push(element);
-               
-              });
-              console.log(res)
-              return res;
-            })
-            // setEntrustData(prev => {
-            //   const newData = _.cloneDeep(prev)
-            //   newData["formData"] = data
-            //   return newData
-            // })
-          }
-          if (data != null) {
             setFormData(prev => {
               const newData = _.cloneDeep(prev)
-              const res = {'formData':[]}
-              newData["formData"]=data
+              const res = { 'formData': [] }
+              newData["formData"] = data
               newData["formData"].forEach(element => {
+                if (USE_JSON_SERVER) {
                   console.log(getStageByInfo(element))
                   if (getStageByInfo(element) >= 21)
                     res["formData"].push(element);
-                
+                } else {
+                  if (getStageByDelegationState(element['state']) >= 21)
+                    res["formData"].push(element)
+                }
               });
               console.log(res)
               return res;
             })
-            // setFormData(prev => {
-            //   const newData = _.cloneDeep(prev)
-            //   newData["formData"] = data
-            //   return newData
-            // })
           }
         })
     }
@@ -270,48 +251,17 @@ function ViewProjList(props) {
           return res.json()
         })
         .then(data => {
-          console.log(data)
-          if(data===null)
-            console.log("NULL\n")
+          console.log('data:',data)
           if (data != null) {
-            setEntrustData(prev => {
-              const newData = _.cloneDeep(prev)
-              const res = {'formData':[]}
-              newData["formData"]=data
-              newData["formData"].forEach(element => {
-                 
-                  if (getStageByDelegationState(element['state']) >= 21)
-                    res["formData"].push(element)
-                
-              });
-              console.log(res)
-              return res;
-            })
-            // setEntrustData(prev => {
-            //   const newData = _.cloneDeep(prev)
-            //   newData["formData"] = data
-            //   return newData
-            // })
-          }
-          if (data != null) {
+            if(data['status']!=undefined && data['status']!=200){
+              alert("获取项目信息失败！")
+              return
+            }
             setFormData(prev => {
               const newData = _.cloneDeep(prev)
-              const res = {'formData':[]}
-              newData["formData"]=data
-              newData["formData"].forEach(element => {
-                
-                  if (getStageByDelegationState(element['state']) >= 21)
-                    res["formData"].push(element)
-                
-              });
-              console.log(res)
-              return res;
+              newData["formData"] = data
+              return newData
             })
-            // setFormData(prev => {
-            //   const newData = _.cloneDeep(prev)
-            //   newData["formData"] = data
-            //   return newData
-            // })
           }
         })
     }
@@ -323,24 +273,24 @@ function ViewProjList(props) {
   )
 
   const FliterDataByState = (State) => {
-    switch(State){
-      case '全部':FliterDataByStage(0,100);break;
-      case '未填写测试方案':FliterDataByStage(0,0);break;
-      case '测试方案审核中':FliterDataByStage(1,2);break;
-      case '测试方案已通过':FliterDataByStage(3,100);break;
-      case '实施测试中':FliterDataByStage(3,7);break;
-      case '已生成测试报告':FliterDataByStage(8,100);break;
-      case '测试报告审核中':FliterDataByStage(8,9);break;
-      case '测试报告已通过':FliterDataByStage(10,100);break;
-      case '测试报告已签发':FliterDataByStage(12,100);break;
-      
+    switch (State) {
+      case '全部': FliterDataByStage(0, 100); break;
+      case '未填写测试方案': FliterDataByStage(0, 0); break;
+      case '测试方案审核中': FliterDataByStage(1, 2); break;
+      case '测试方案已通过': FliterDataByStage(3, 100); break;
+      case '实施测试中': FliterDataByStage(3, 7); break;
+      case '已生成测试报告': FliterDataByStage(8, 100); break;
+      case '测试报告审核中': FliterDataByStage(8, 9); break;
+      case '测试报告已通过': FliterDataByStage(10, 100); break;
+      case '测试报告已签发': FliterDataByStage(12, 100); break;
+
     }
   }
 
   const FliterDataByStage = (minStage, maxStage) => {
     setFormData(prev => {
-      const newData = _.cloneDeep(entrustData)
-      const res = {'formData':[]}
+      const newData = _.cloneDeep(formData)
+      const res = { 'formData': [] }
       newData["formData"].forEach(element => {
         if (USE_JSON_SERVER) {
           if (getTestStageByInfo(element) >= minStage && getTestStageByInfo(element) <= maxStage)
@@ -356,26 +306,26 @@ function ViewProjList(props) {
   }
 
   return (
-    <>
-      <Select defaultValue="全部" style={{ width: 160, marginLeft: 30,marginTop:20,marginBottom:20 }} onChange={FliterDataByState}>
-        <Option value="全部">全部</Option>
-        <Option value="未填写测试方案">未填写测试方案</Option>
-        <Option value="测试方案审核中">测试方案审核中</Option>
-        <Option value="测试方案已通过">测试方案已通过</Option>
-        <Option value="实施测试中">实施测试中</Option>
-        <Option value="已生成测试报告">已生成测试报告</Option>
-        <Option value="测试报告审核中">测试报告审核中</Option>
-        <Option value="测试报告已通过">测试报告已通过</Option>
-        <Option value="测试报告已签发">测试报告已签发</Option>
-      </Select>
-      <Table
-        style={{ marginLeft: 20, marginRight: 20 }}
-        pagination={{ pageSize: 7 }}
-        columns={columns}
-        dataSource={formData['formData']}
-        rowKey="id"
-      /></>
-  )
+      <>
+        <Select defaultValue="全部" style={{ width: 160, marginLeft: 30, marginTop: 20, marginBottom: 20 }} onChange={FliterDataByState}>
+          <Option value="全部">全部</Option>
+          <Option value="未填写测试方案">未填写测试方案</Option>
+          <Option value="测试方案审核中">测试方案审核中</Option>
+          <Option value="测试方案已通过">测试方案已通过</Option>
+          <Option value="实施测试中">实施测试中</Option>
+          <Option value="已生成测试报告">已生成测试报告</Option>
+          <Option value="测试报告审核中">测试报告审核中</Option>
+          <Option value="测试报告已通过">测试报告已通过</Option>
+          <Option value="测试报告已签发">测试报告已签发</Option>
+        </Select>
+        <Table
+          style={{ marginLeft: 20, marginRight: 20 }}
+          pagination={{ pageSize: 7 }}
+          columns={columns}
+          dataSource={formData['formData']}
+          rowKey="id"
+        /></>
+        )
 }
 
 export default ViewProjList
