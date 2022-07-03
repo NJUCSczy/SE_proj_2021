@@ -77,7 +77,7 @@ function QuestionList(props) {
     }
     else {
       fetch(REMOTE_SERVER+"/test/" + _state['PageInfo']['id']+"/test-doc/buglist", {
-        method: firstTime ? "POST" : "PUT",
+        method: firstTime ? "POST" : "POST",
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json;charset=utf-8',
