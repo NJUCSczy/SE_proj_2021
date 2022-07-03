@@ -277,6 +277,7 @@ function ViewProjList(props) {
           return res.json()
         })
         .then(data => {
+          
           console.log(data)
           if (data != null) {
             setEntrustData(prev => {
