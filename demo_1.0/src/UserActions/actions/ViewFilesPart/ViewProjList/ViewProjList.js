@@ -203,13 +203,10 @@ function ViewProjList(props) {
               const res = {'formData':[]}
               newData["formData"]=data
               newData["formData"].forEach(element => {
-                if (USE_JSON_SERVER) {
+                
                   if (getStageByInfo(element) >= 21)
                     res["formData"].push(element);
-                } else {
-                  if (getStageByDelegationState(element['state']) >= 21)
-                    res["formData"].push(element)
-                }
+               
               });
               console.log(res)
               return res;
@@ -226,14 +223,10 @@ function ViewProjList(props) {
               const res = {'formData':[]}
               newData["formData"]=data
               newData["formData"].forEach(element => {
-                if (USE_JSON_SERVER) {
                   console.log(getStageByInfo(element))
                   if (getStageByInfo(element) >= 21)
                     res["formData"].push(element);
-                } else {
-                  if (getStageByDelegationState(element['state']) >= 21)
-                    res["formData"].push(element)
-                }
+                
               });
               console.log(res)
               return res;
@@ -278,19 +271,47 @@ function ViewProjList(props) {
         })
         .then(data => {
           console.log(data)
+          if(data===null)
+            console.log("NULL\n")
           if (data != null) {
             setEntrustData(prev => {
               const newData = _.cloneDeep(prev)
-              newData["formData"] = data
-              return newData
+              const res = {'formData':[]}
+              newData["formData"]=data
+              newData["formData"].forEach(element => {
+                 
+                  if (getStageByDelegationState(element['state']) >= 21)
+                    res["formData"].push(element)
+                
+              });
+              console.log(res)
+              return res;
             })
+            // setEntrustData(prev => {
+            //   const newData = _.cloneDeep(prev)
+            //   newData["formData"] = data
+            //   return newData
+            // })
           }
           if (data != null) {
             setFormData(prev => {
               const newData = _.cloneDeep(prev)
-              newData["formData"] = data
-              return newData
+              const res = {'formData':[]}
+              newData["formData"]=data
+              newData["formData"].forEach(element => {
+                
+                  if (getStageByDelegationState(element['state']) >= 21)
+                    res["formData"].push(element)
+                
+              });
+              console.log(res)
+              return res;
             })
+            // setFormData(prev => {
+            //   const newData = _.cloneDeep(prev)
+            //   newData["formData"] = data
+            //   return newData
+            // })
           }
         })
     }
