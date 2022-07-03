@@ -100,8 +100,8 @@ function ViewProject(props){
         (entrustData['formData'] === null) ? null :
             (<div style={{ padding: 30 }}>
                 <Descriptions bordered title="项目基本信息" layout="vertical" style={{ marginLeft: 20 , marginRight: 20}}>
-                    <Descriptions.Item label="项目编号">{(entrustData['formData'] === null) ? null : USE_JSON_SERVER ? entrustData['formData']['市场部审核委托']['测试项目编号'] : entrustData['formData']['delegationId']}</Descriptions.Item>
-                    <Descriptions.Item label="用户">{(entrustData['formData'] === null) ? null : USE_JSON_SERVER ? entrustData['formData']['userName'] : entrustData['formData']['usrBelonged']}</Descriptions.Item>
+                    <Descriptions.Item label="项目编号">{(entrustData['formData'] === null) ? null : USE_JSON_SERVER ? entrustData['formData']['市场部审核委托']['测试项目编号'] : entrustData['formData']['projectId']}</Descriptions.Item>
+                    <Descriptions.Item label="用户">{(entrustData['formData'] === null) ? null : USE_JSON_SERVER ? entrustData['formData']['userName'] : entrustData['formData']['usrId']}</Descriptions.Item>
                     <Descriptions.Item label="当前状态">{USE_JSON_SERVER ? getTestStatusInfo(entrustData['formData']) : getTestStatusByDelegationState(entrustData['formData']['state'])}</Descriptions.Item>
                 </Descriptions>
                 <Collapse ghost={true} expandIcon={({ isActive }) => <CaretRightOutlined style={{ paddingTop: 12 }} rotate={isActive ? 90 : 0} />}>

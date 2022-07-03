@@ -130,17 +130,17 @@ function ViewProjList(props) {
       sorter: (a, b) => (USE_JSON_SERVER) ? a.userName - b.userName : a.usrBelonged.localeCompare(b.usrBelonged),
       sortDirections: ['descend'],
       key: 'userName',
-      ...getColumnSearchProps((USE_JSON_SERVER) ? 'userName' : 'usrBelonged'),
+      ...getColumnSearchProps((USE_JSON_SERVER) ? 'userName' : 'usrId'),
     },
     {
       title: '软件名称',
-      dataIndex: (USE_JSON_SERVER) ? '用户申请表' : 'applicationTable',
+      dataIndex: (USE_JSON_SERVER) ? '用户申请表' : '软件名称',
       key: '软件名称',
-      render: (userApplication) => (
-        <Space size="middle">
-          {userApplication === null ? null : userApplication["软件名称"]}
-        </Space>
-      )
+      // render: (userApplication) => (
+      //   <Space size="middle">
+      //     {userApplication === null ? null : userApplication["软件名称"]}
+      //   </Space>
+      // )
     },
     {
       title: '状态',
