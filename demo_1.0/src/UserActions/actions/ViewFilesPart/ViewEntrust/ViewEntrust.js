@@ -78,6 +78,7 @@ function ViewEntrust(props) {
                             const newData = _.cloneDeep(prev)
                             newData["formData"] = data
                             newData['stage'] = getStageByDelegationState(data['state']);
+                            console.log(newData)
                             return newData
                         })
                     }

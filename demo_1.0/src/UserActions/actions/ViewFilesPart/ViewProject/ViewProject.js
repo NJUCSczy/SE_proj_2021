@@ -58,7 +58,7 @@ function ViewProject(props){
                 })
         }
         else {
-            fetch(REMOTE_SERVER + "/test/project/" + _state['PageInfo']['id'], {
+            fetch(REMOTE_SERVER + "/test/projects/" + _state['PageInfo']['id'], {
                 method: "GET",
                 headers: {
                     'Accept': 'application/json',
@@ -80,7 +80,8 @@ function ViewProject(props){
                         setEntrustData(prev => {
                             const newData = _.cloneDeep(prev)
                             newData["formData"] = data
-                            newData['stage'] = getTestStatusByDelegationState(data['state']);
+                            newData['stage'] = getTestStageByDTAState(data['state']);
+                            console.log(newData)
                             return newData
                         })
                     }
