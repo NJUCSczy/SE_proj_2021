@@ -80,7 +80,7 @@ function ViewSignature(props) {
     )
 
     return (
-        entrustData['formDsta'] === null ? null : (
+        entrustData['formData'] === null ? null : (
             <Form
                 name="软件测试委托合同签章">
 
