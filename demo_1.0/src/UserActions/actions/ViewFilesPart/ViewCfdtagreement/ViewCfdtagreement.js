@@ -194,7 +194,7 @@ function ViewCfdtagreement(props){
         )}
       </Form>
     ):(
-      <div><a href={entrustData['formData']['fileUri']}><Tooltip title="点击下载" placement='right'>{entrustData['formData']['entrustData']}</Tooltip></a></div>
+      <div><a href={entrustData['formData']['fileUri']}><Tooltip title="点击下载" placement='right'>{entrustData['formData']['fileName']}</Tooltip></a></div>
     )
     )
  )
