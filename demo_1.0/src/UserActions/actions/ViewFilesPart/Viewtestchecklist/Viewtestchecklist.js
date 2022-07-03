@@ -67,7 +67,7 @@ var _ = require('lodash');
                 })
         }
         else {
-            fetch(REMOTE_SERVER + "/test/" + _state['PageInfo']['id']+"/test-doc/work-evaluation", {
+            fetch(REMOTE_SERVER + "/test/" + _state['PageInfo']['id']+"/test-doc/test/work-evaluation", {
                 method: "GET",
                 headers: {
                     'Accept': 'application/json',
