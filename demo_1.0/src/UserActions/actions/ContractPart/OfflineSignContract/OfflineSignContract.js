@@ -207,7 +207,7 @@ function OfflineSignContract(props) {
                             setDataByKey("保密协议", newFileList);
                         }}
                     >
-                        <Button icon={<UploadOutlined />}>Select File</Button>
+                        <Button  icon={<UploadOutlined />}>Select File</Button>
                     </Upload>
                 </Form.Item>
                 <Form.Item>
