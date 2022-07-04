@@ -153,19 +153,19 @@ function ViewTestPlan(props) {
                 >
 
                     <Descriptions.Item label="1.1标识" >
-                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['1.1标识']}</h4>
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['标识']}</h4>
                     </Descriptions.Item>
                     
                     <Descriptions.Item label="1.2系统概述" >
-                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['1.2系统概述']}</h4>
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['系统概述']}</h4>
                     </Descriptions.Item>
 
                     <Descriptions.Item label="1.3文档概述" >
-                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['1.3文档概述']}</h4>
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['文档概述']}</h4>
                     </Descriptions.Item>
 
                     <Descriptions.Item label="1.4基线" >
-                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['1.4基线']}</h4>
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['基线']}</h4>
                     </Descriptions.Item>
                 
                 </Descriptions>
@@ -185,23 +185,23 @@ function ViewTestPlan(props) {
                 >
 
                     <Descriptions.Item label="3.1硬件" >
-                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['3.1硬件']}</h4>
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['硬件']}</h4>
                     </Descriptions.Item>
                     
                     <Descriptions.Item label="3.2软件" >
-                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['3.2软件']}</h4>
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['软件']}</h4>
                     </Descriptions.Item>
 
                     <Descriptions.Item label="3.3其他" >
-                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['3.3其他']}</h4>
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['其他']}</h4>
                     </Descriptions.Item>
 
                     <Descriptions.Item label="3.4参与组织" >
-                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['3.4参与组织']}</h4>
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['参与组织']}</h4>
                     </Descriptions.Item>
 
                     <Descriptions.Item label="3.5人员" >
-                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['3.5人员']}</h4>
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['人员']}</h4>
                     </Descriptions.Item>
                 
                 </Descriptions>
@@ -219,27 +219,27 @@ function ViewTestPlan(props) {
                 >
 
                     <Descriptions.Item label="4.1总体设计" >
-                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['4.1总体设计']}</h4>
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['总体设计']}</h4>
                     </Descriptions.Item>
                     
                     <Descriptions.Item label="4.1.1测试级别" >
-                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['4.1.1测试级别']}</h4>
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['测试级别']}</h4>
                     </Descriptions.Item>
 
                     <Descriptions.Item label="4.1.2测试类别" >
-                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['4.1.2测试类别']}</h4>
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['测试类别']}</h4>
                     </Descriptions.Item>
 
                     <Descriptions.Item label="4.1.3一般测试条件" >
-                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['4.1.3一般测试条件']}</h4>
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['一般测试条件']}</h4>
                     </Descriptions.Item>
 
                     <Descriptions.Item label="4.2计划执行的测试" >
-                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['4.2计划执行的测试']}</h4>
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['计划执行的测试']}</h4>
                     </Descriptions.Item>
 
                     <Descriptions.Item label="4.3测试用例" >
-                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['4.3测试用例']}</h4>
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试方案']['测试用例']}</h4>
                     </Descriptions.Item>
                 
                 </Descriptions>
