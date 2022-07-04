@@ -488,7 +488,7 @@ function TestCheckList(props) {
           <Table columns={columns} dataSource={data} pagination={{pageSize:40}} bordered/>
         </Form.Item>
         
-        <Button type="primary" htmlType="submit">
+        <Button id="提交" type="primary" htmlType="submit">
           提交
         </Button>
       </Form>

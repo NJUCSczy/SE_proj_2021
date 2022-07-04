@@ -185,10 +185,10 @@ function QuestionList(props) {
                 <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>发现缺陷用例及具体操作路径（要具体）</h5>
                 <Form.Item
                   {...restField}
-                  name={[name, '发现缺陷用例及具体操作路径（要具体）']}
+                  name={[name, '发现缺陷用例及具体操作路径(要具体)']}
                   rules={[{ required: true, message: '请填写发现缺陷用例及具体操作路径' }]}
                 >
-                  <Input.TextArea style={{ maxWidth: 500 }} placeholder="发现缺陷用例及具体操作路径（要具体）" />
+                  <Input.TextArea style={{ maxWidth: 500 }} placeholder="发现缺陷用例及具体操作路径(要具体)" />
                 </Form.Item>
 
                 <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>关联用例</h5>
@@ -235,7 +235,7 @@ function QuestionList(props) {
               </Fragment>
             ))}
             <Form.Item>
-              <Button type="dashed"
+              <Button type="dashed" id='添加新项目'
                 style={{ width: 500, marginTop: 30 }}
                 onClick={() => {add();setFormValue(formValue+1)}} icon={<PlusOutlined />}  >
                 添加新项目
@@ -247,7 +247,7 @@ function QuestionList(props) {
       
 
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <Button id='提交' type="primary" htmlType="submit">
           提交
         </Button>
       </Form.Item>

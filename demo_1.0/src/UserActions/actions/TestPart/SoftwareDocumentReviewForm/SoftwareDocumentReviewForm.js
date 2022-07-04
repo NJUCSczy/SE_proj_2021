@@ -455,7 +455,7 @@ function SoftwareDocumentReviewForm(props) {
           <Input style={{ maxWidth: 150 }} placeholder="检查人" />
         </Form.Item>
 
-        <Button type="primary" htmlType="submit">
+        <Button id='提交' type="primary" htmlType="submit">
           提交
         </Button>
       </Form>
