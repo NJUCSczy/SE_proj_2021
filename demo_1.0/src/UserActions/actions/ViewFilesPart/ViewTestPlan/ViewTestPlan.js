@@ -68,6 +68,7 @@ function ViewTestPlan(props) {
                     return res.json()
                 })
                 .then(data => {
+                    console.log('154')
                     console.log(data)
                     if (data != null) {
                         setEntrustData(prev => {

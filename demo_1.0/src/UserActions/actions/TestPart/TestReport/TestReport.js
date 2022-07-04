@@ -17,10 +17,54 @@ var _ = require('lodash');
 var mobile = require('is-mobile');
 
 function TestReport(props){
-    const { UpdateUserInfo, GotoPage, _state } = props;
+    const { UpdateUserInfo, GotoPage, _state,focusedData } = props;
     const [formData, setFormData] = useState({})
     const { Option } = Select;
     const { TextArea } = Input;
+
+
+    const updateInfo = () => {
+      if (!USE_JSON_SERVER) {
+        fetch(REMOTE_SERVER + "/test/"+_state['PageInfo']['id']+"/test-doc/test-report", {
+          method: "GET",
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json;charset=utf-8',
+              'accessToken': _state['accessToken'],
+              'tokenType': _state['tokenType'],
+              'usrName': _state['userName'],
+              'usrID': _state['userID'],
+              'usrRole': _state['userRole'][0],
+              'Authorization': _state['accessToken']
+          },
+      })
+          .then(res => {
+              if (res.status != 200) {
+                  alert('查询软件测试报告失败！')
+                  return null
+              }
+              return res.json()
+          })
+          .then(data => {
+              console.log('hh')
+              console.log(data)
+              if (data != null) {
+                setFormData(prev => {
+                      const newData = _.cloneDeep(prev)
+                      newData['软件测试报告'] = data
+                      return newData
+                  })
+              }
+          })
+      }
+  }
+
+  useState(() => {
+    console.log('hhhh')
+    updateInfo();
+  }, []
+  )
+
 
     const onFinishForm = (values) => {
       console.log('Success:', values);
@@ -120,6 +164,11 @@ function TestReport(props){
           autoComplete="off"
           onFinish={onFinishForm}
         >
+          {formData['软件测试报告']===null?(
+            <h1 style={{ fontWeight: 'bolder', marginTop: 30 }}>空</h1>
+          ):(
+            <h1 style={{ fontWeight: 'bolder', marginTop: 30 }}>非空</h1>
+          )}
 
           <h1 style={{ fontWeight: 'bolder', marginTop: 30 }}>测试报告</h1>
 
@@ -154,6 +203,7 @@ function TestReport(props){
           >
             <Input style={{maxWidth:200}}/>
           </Form.Item>
+
 
           <Form.Item
             label="测试类别"
@@ -392,6 +442,57 @@ function TestReport(props){
           >
             <Input style={{maxWidth:200}}/>
           </Form.Item>
+
+          <Title level={4}>测试单位联系方式</Title>
+
+          <Form.Item
+            label="测试单位单位地址"
+            name="测试单位单位地址"
+            rules={[{ required: true, message: '请输入测试单位单位地址' }]}
+          >
+            <Input style={{maxWidth:200}}/>
+          </Form.Item>
+
+          <Form.Item
+            label="测试单位邮政编码"
+            name="测试单位邮政编码"
+            rules={[{ required: true, message: '请输入测试单位邮政编码' }]}
+          >
+            <Input style={{maxWidth:200}}/>
+          </Form.Item>
+
+          <Form.Item
+            label="测试单位电话"
+            name="测试单位电话"
+            rules={[{ required: true, message: '请输入测试单位电话' }]}
+          >
+            <Input style={{maxWidth:200}}/>
+          </Form.Item>
+
+          <Form.Item
+            label="测试单位传真"
+            name="测试单位传真"
+            rules={[{ required: true, message: '请输入测试单位传真' }]}
+          >
+            <Input style={{maxWidth:200}}/>
+          </Form.Item>
+
+          <Form.Item
+            label="测试单位网址"
+            name="测试单位网址"
+            rules={[{ required: true, message: '请输入测试单位网址' }]}
+          >
+            <Input style={{maxWidth:200}}/>
+          </Form.Item>
+
+          <Form.Item
+            label="测试单位E-mail"
+            name="测试单位E-mail"
+            rules={[{ required: true, message: '请输入测试单位E-mail' }]}
+          >
+            <Input style={{maxWidth:200}}/>
+          </Form.Item>
+
 
           <Title level={4}>一、测试环境</Title>
           <Title level={5}>硬件环境</Title>
