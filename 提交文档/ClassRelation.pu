@@ -25,6 +25,7 @@ LoginPage-->RegisterStaffPage
 Home-->ViewEntrustList
 Home-->ViewProjList
 ViewEntrustList-->ViewEntrust
+ViewProjList-->ViewProject
 
 '----------------------
 '委托部分
@@ -42,28 +43,32 @@ class TadultApplication
 '测试部审核用户申请表
 class MktdptApplicationStep1
 '市场部审核用户申请表
-class Quatation
+class Quotation
 '市场部填写报价单
 class QuotationFeedback
 '用户查看报价单并进行回复
 class MktdptApplicationStep2
 '市场部填写项目编号
-Home-->SubmitApplication
+Home-left->SubmitApplication
+ViewApplication-right->SubmitApplication
 SubmitApplication-->FunctionList
+ViewFunction-right->FunctionList
 FunctionList-->UserUploadFiles
+ViewUserFiles-right->UserUploadFiles
 UserUploadFiles-->UserUploadSample
 UserUploadSample-->TadultApplication
 TadultApplication-->MktdptApplicationStep1
-MktdptApplicationStep1-->Quatation
-Quatation-->QuotationFeedback
+MktdptApplicationStep1-->Quotation
+ViewQuotation-right->Quotation
+Quotation-->QuotationFeedback
 QuotationFeedback-->MktdptApplicationStep2
-
-
 }
 '----------------------
 '合同部分
 '----------------------
-
+Package "合同部分"{
+class ViewContract
+'查看合同
 class TestAgreement
 '履行期限(受托方)
 class CheckTA
@@ -74,11 +79,23 @@ class ClientApplication
 '签章(委托方)
 class OfflineSignContract
 '线下签署保密协议
-
+MktdptApplicationStep2-right->TestAgreement
+TestAgreement-right->CheckTA
+CheckTA-right->TrusteeApplication
+TrusteeApplication-right->ClientApplication
+ClientApplication-right->OfflineSignContract
+ViewContract-->TestAgreement
+ViewContract-->CheckTA
+ViewContract-->TrusteeApplication
+ViewContract-->ClientApplication
+}
 '----------------------
 '测试部分
 '----------------------
-Package "测试部分" #DDDDDD{
+ViewEntrust-->"委托部分"
+ViewEntrust-->ViewContract
+ViewProject-right->"测试部分"
+Package "测试部分" #EEEFFF{
 
 class TestPlan
 '软件测试方案
@@ -99,13 +116,22 @@ class CheckList
 class TestCheckList
 '软件项目委托测试工作检查表
 TestPlan-->TestScenarioReviewForm
+ViewTestPlan-left->TestPlan
 TestScenarioReviewForm-->TestCase
+Viewtsreviewfrom-left->TestScenarioReviewForm
 TestCase-->TestRecord
+ViewTestCase-left->TestCase
 TestRecord-->QuestionList
+ViewTestRecord-left->TestRecord
 QuestionList-->SoftwareDocumentReviewForm
+Viewquestionlist-left->QuestionList
 SoftwareDocumentReviewForm-->TestReport
+Viewsdreviewform-left->SoftwareDocumentReviewForm
 TestReport-->CheckList
+ViewTestReport-left->TestReport
 CheckList-->TestCheckList
+Viewchecklist-left->CheckList
+Viewtestchecklist-left->TestCheckList
 }
 
 @enduml

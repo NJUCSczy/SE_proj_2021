@@ -129,7 +129,7 @@ return (
                             </Descriptions.Item>
 
                             <Descriptions.Item label="发现缺陷用例及具体操作路径" span={3}>
-                            <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{index['发现缺陷用例及具体操作路径（要具体）']}</h4>
+                            <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{index['发现缺陷用例及具体操作路径(要具体)']}</h4>
                             </Descriptions.Item>
 
                             <Descriptions.Item label="关联用例" >
