@@ -178,7 +178,7 @@ function ViewEntrustList(props) {
   const gotoEntrustPage = (id, ContractID) => {
     _state['PageInfo']['id'] = id;
     _state['PageInfo']['ContractID'] = ContractID
-    UpdateUserInfo({ PageInfo: { 'id': id } }, GotoPage('ViewEntrust', _state))
+    UpdateUserInfo({ PageInfo: { 'id': id,'ContractID':ContractID } }, GotoPage('ViewEntrust', _state))
   }
   const updateInfo = () => {
     if (USE_JSON_SERVER) {

@@ -91,7 +91,7 @@ function ViewEntrust(props) {
     )
 
     const ChangePage = (pageName) => {
-        UpdateUserInfo({ PageInfo: { 'id': _state['PageInfo']['id'] } }, GotoPage(pageName, _state))
+        UpdateUserInfo({ PageInfo: { 'id': _state['PageInfo']['id'],'ContractID':_state['PageInfo']['ContractID'] } }, GotoPage(pageName, _state))
     }
 
     return (
