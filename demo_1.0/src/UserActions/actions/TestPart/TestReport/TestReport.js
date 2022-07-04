@@ -164,7 +164,6 @@ function TestReport(props){
           wrapperCol={{ span: 16 }}
           initialValues={USE_JSON_SERVER?{ remember: true }:
           { remember: true },
-          {"样品清单":entrustData['软件测试报告']['样品清单']},
           {"硬件环境":entrustData['软件测试报告']['硬件环境']},
           {"软件环境":entrustData['软件测试报告']['软件环境']},
           {"测试依据":entrustData['软件测试报告']['测试依据']},
@@ -343,36 +342,13 @@ function TestReport(props){
             <Input.TextArea defaultValue={USE_JSON_SERVER?null:entrustData['软件测试报告']['总测试依据']}/>
           </Form.Item>
 
-          <Title level={5}>样品清单</Title>
-          <Form.List  name="样品清单" layout='vertical' width={500}>
-            {(fields, { add, remove }) => (
-              <>
-                {fields.map(({ key, name, ...restField }) => (
-                  <Fragment layout='vertical' key={key} style={{ display: 'flex', marginBottom: 8 }}>
-                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>样品名称</h5>
-                    <Form.Item
-                      {...restField}
-                      name={[name, '样品名称']}
-                      rules={[{ required: true, message: '请填写样品名称' }]}
-                    >
-                      <Input style={{ maxWidth: 500 }} placeholder="样品名称" />
-                    </Form.Item>
-                                          
-                    <Button onClick={() => remove(name)} type='danger'>
-                      删除该样品名称
-                    </Button>
-                  </Fragment>
-                ))}
-                <Form.Item>
-                  <Button type="dashed"
-                    style={{ width: 500, marginTop: 30 }}
-                    onClick={() => add()} icon={<PlusOutlined />}  >
-                    添加新样品名称
-                  </Button>
-                </Form.Item>
-              </>
-            )}
-          </Form.List>
+          <Form.Item
+            label="样品清单"
+            name="样品清单"
+            rules={[{ required: true, message: '请输入样品清单' }]}
+          >
+            <Input.TextArea/>
+          </Form.Item>
 
           <Form.Item
             label="测试结论"
