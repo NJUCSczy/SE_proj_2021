@@ -1,8 +1,7 @@
-import {React, Fragment } from 'react'
+import React ,{ Fragment }from 'react'
 import PropTypes from 'prop-types';
 import { message, DatePicker, Divider, Form, Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import { useState } from 'react';
-import Paragraph from 'antd/lib/skeleton/Paragraph';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { USE_JSON_SERVER,REMOTE_SERVER } from '../../../functions/functions';
 const formItemLayout = {
@@ -10,11 +9,7 @@ const formItemLayout = {
   wrapperCol: { span: 16 },
 };
 /**
- * 1
- * 
- * 2
- * 
- * 3
+ *  在这里编写内容
  * 
  */
 function QuestionList(props) {
@@ -259,7 +254,6 @@ function QuestionList(props) {
 }
 export default QuestionList;
 
-// export default QuestionList;
 QuestionList.propTypes={
   /** 用户状态 */
   _state:PropTypes.object,
