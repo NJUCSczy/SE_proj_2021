@@ -1,0 +1,111 @@
+@startuml
+'基础界面
+'----------------------
+class Home 
+'主界面
+class LoginPage
+'登录界面
+class UserInfoPage
+'用户信息界面 
+class Register
+'注册界面
+class RegisterStaffPage
+'注册工作人员界面
+class ViewEntrustList
+'查看委托列表
+class ViewProjList
+'查看项目列表
+class ViewEntrust
+'查看委托
+
+Home-->LoginPage
+LoginPage-->UserInfoPage
+LoginPage-->Register
+LoginPage-->RegisterStaffPage
+Home-->ViewEntrustList
+Home-->ViewProjList
+ViewEntrustList-->ViewEntrust
+
+'----------------------
+'委托部分
+'----------------------
+Package "委托部分" #DDDDDD{
+class SubmitApplication
+'申请表
+class FunctionList
+'委托测试软件功能列表
+class UserUploadFiles
+'用户上传软件文档
+class UserUploadSample
+'用户上传样品
+class TadultApplication
+'测试部审核用户申请表
+class MktdptApplicationStep1
+'市场部审核用户申请表
+class Quatation
+'市场部填写报价单
+class QuotationFeedback
+'用户查看报价单并进行回复
+class MktdptApplicationStep2
+'市场部填写项目编号
+Home-->SubmitApplication
+SubmitApplication-->FunctionList
+FunctionList-->UserUploadFiles
+UserUploadFiles-->UserUploadSample
+UserUploadSample-->TadultApplication
+TadultApplication-->MktdptApplicationStep1
+MktdptApplicationStep1-->Quatation
+Quatation-->QuotationFeedback
+QuotationFeedback-->MktdptApplicationStep2
+
+
+}
+'----------------------
+'合同部分
+'----------------------
+
+class TestAgreement
+'履行期限(受托方)
+class CheckTA
+'确认履行期限
+class TrusteeApplication
+'签章(受托方)
+class ClientApplication
+'签章(委托方)
+class OfflineSignContract
+'线下签署保密协议
+
+'----------------------
+'测试部分
+'----------------------
+Package "测试部分" #DDDDDD{
+
+class TestPlan
+'软件测试方案
+class TestScenarioReviewForm
+'软件测试方案评审表
+class TestCase
+'测试用例
+class TestRecord
+'测试记录
+class QuestionList
+'软件测试问题清单
+class SoftwareDocumentReviewForm
+'软件文档评审表
+class TestReport
+'测试报告
+class CheckList
+'测试报告检查表
+class TestCheckList
+'软件项目委托测试工作检查表
+TestPlan-->TestScenarioReviewForm
+TestScenarioReviewForm-->TestCase
+TestCase-->TestRecord
+TestRecord-->QuestionList
+QuestionList-->SoftwareDocumentReviewForm
+SoftwareDocumentReviewForm-->TestReport
+TestReport-->CheckList
+CheckList-->TestCheckList
+}
+
+@enduml
