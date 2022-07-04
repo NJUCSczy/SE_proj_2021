@@ -235,7 +235,7 @@ function QuestionList(props) {
               </Fragment>
             ))}
             <Form.Item>
-              <Button type="dashed"
+              <Button type="dashed" id='添加新项目'
                 style={{ width: 500, marginTop: 30 }}
                 onClick={() => {add();setFormValue(formValue+1)}} icon={<PlusOutlined />}  >
                 添加新项目
@@ -247,7 +247,7 @@ function QuestionList(props) {
       
 
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <Button id='提交' type="primary" htmlType="submit">
           提交
         </Button>
       </Form.Item>
