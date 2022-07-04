@@ -10,7 +10,6 @@ import { Typography } from 'antd';
 import moment from 'moment';
 import { USE_JSON_SERVER,REMOTE_SERVER } from '../../../functions/functions';
 
-
 const { Title, Paragraph, Text, Link } = Typography;
 const { RangePicker } = DatePicker;
 
@@ -120,7 +119,7 @@ function TestReport(props){
       }
       else{
       fetch(REMOTE_SERVER+"/test/"+_state['PageInfo']['id']+"/test-doc/test-report", {
-      method: "PUT",
+      method: "POST",
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json;charset=utf-8',
