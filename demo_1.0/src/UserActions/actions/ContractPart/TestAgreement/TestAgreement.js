@@ -1,5 +1,6 @@
 import isMobile from 'is-mobile';
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import { message, Typography, DatePicker, Form, InputNumber, Button, Input } from 'antd';
 import './TestAgreement.css'
 import { useState, useEffect } from 'react';
@@ -10,11 +11,16 @@ const { Title, Paragraph, Text, Link } = Typography;
 var _ = require('lodash');
 var mobile = require('is-mobile');
 
+/**
+ * 
+ * 市场部填写合同前半部分，并提出履行期限的界面
+ * 
+ */
 function TestAgreement(props) {
-  const { UpdateUserInfo, GotoPage, _state } = props;
+  const { UpdateUserInfo, GotoPage, _state, focusedData } = props;
   const userState = props._state
   const [formData, setFormData] = useState({})
-  const [entrustData, setEntrustData] = useState({ '用户申请表': null, '报价单': null,'formData':null })
+  const [entrustData, setEntrustData] = useState({ '用户申请表': null, '报价单': null, 'formData': null })
   const { TextArea } = Input;
 
   const [trusteename, setTN] = useState("\__________");
@@ -155,7 +161,16 @@ function TestAgreement(props) {
   }
 
   useEffect(() => {
-    updateInfo();
+    if (focusedData === undefined)
+      updateInfo();
+    else {
+      setEntrustData(prev => {
+        const newData = _.cloneDeep(prev)
+        newData["用户申请表"] = focusedData["用户申请表"]
+        newData["报价单"] = focusedData["报价单"]
+        return newData
+      })
+    }
   }, []
   )
   // console.log(entrustData)
@@ -179,20 +194,20 @@ function TestAgreement(props) {
 
         <Form.Item label="项目名称" name="项目名称" initialValue={entrustData["用户申请表"]["软件名称"]} rules={[{ required: true, message: '请填写项目名称' }]}>
           {/* <Input placeholder="请输入项目名称" style={{maxWidth:300}}/> */}
-          <Input style={{ maxWidth: 300 }} defaultValue={entrustData["用户申请表"]["软件名称"]}  />
+          <Input style={{ maxWidth: 300 }} defaultValue={entrustData["用户申请表"]["软件名称"]} />
         </Form.Item>
 
         <Form.Item label="委托方(甲方)" name="委托方(甲方)" initialValue={entrustData["用户申请表"]["委托单位(中文)"]} rules={[{ required: true, message: '请填写委托方' }]}>
           {/* <Input placeholder="请输入委托方" style={{maxWidth:180}}/> */}
-          <Input style={{ maxWidth: 180 }} defaultValue={entrustData["用户申请表"]["委托单位(中文)"]}  />
+          <Input style={{ maxWidth: 180 }} defaultValue={entrustData["用户申请表"]["委托单位(中文)"]} />
         </Form.Item>
 
-        <Form.Item  label="受托方(乙方)" name="受托方(乙方)" rules={[{ required: true, message: '请填写受托方' }]}>
+        <Form.Item label="受托方(乙方)" name="受托方(乙方)" rules={[{ required: true, message: '请填写受托方' }]}>
           <Input id='受托方(乙方)' placeholder="请输入受托方" style={{ maxWidth: 180 }} onChange={(e) => { handleChange(e.target.value) }} />
         </Form.Item>
 
         <Form.Item
-          label="签订地点" name="签订地点" 
+          label="签订地点" name="签订地点"
           rules={[{ required: true, message: '请填写签订地点' }]}
         >
           <Input id='签订地点' placeholder="请输入签订地点" style={{ maxWidth: 150 }} />
@@ -202,7 +217,7 @@ function TestAgreement(props) {
           label="签订日期" name='签订日期'
           rules={[{ required: true, message: '请填写签订日期' }]}
         >
-        <DatePicker  id='签订日期' />
+          <DatePicker id='签订日期' />
         </Form.Item>
 
         <Paragraph>
@@ -245,7 +260,7 @@ function TestAgreement(props) {
         <h3>六.履行的期限</h3>
         1.本次测试的履行期限为合同生效之日起&emsp;
         <Form.Item
-          name="合同履行期限" noStyle 
+          name="合同履行期限" noStyle
           rules={[{ required: true, message: '请填写合同履行期限' }]}
         >
           <Input id='履行期限'/*Number min={1} max={10000000}*/ style={{ width: 100 }} />
@@ -256,7 +271,7 @@ function TestAgreement(props) {
         <Form.Item
           label="整改次数限于" labelCol={{ span: 6 }} name="整改限制次数"
           rules={[{ required: true, message: '请填写整改限制次数' }]}>
-          <Input id = '整改次数上限' style={{ width: 100 }} addonAfter="次" />
+          <Input id='整改次数上限' style={{ width: 100 }} addonAfter="次" />
         </Form.Item>
         <Form.Item label="每次不超过" labelCol={{ span: 6 }} name="一次整改限制的天数"
           rules={[{ required: true, message: '请填写整改限制的天数' }]}>
@@ -295,3 +310,14 @@ function TestAgreement(props) {
 }
 
 export default TestAgreement
+
+TestAgreement.propTypes = {
+  /** 用户状态 */
+  _state: PropTypes.object,
+  /** 更新用户状态方法 */
+  UpdateUserInfo: PropTypes.func,
+  /** 切换界面方法 */
+  GotoPage: PropTypes.func,
+  /** 报价单和用户申请表的数据，正常情况下为空。若为空则从后端读取；不为空的情况仅用于测试 */
+  focusedData: PropTypes.object,
+}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import { Tooltip, Input, Select, Form, message, Upload, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { getStageByInfo, getStatusInfo, REMOTE_SERVER } from '../../../functions/functions'
@@ -7,8 +8,13 @@ import { Link } from 'react-router-dom';
 
 var _ = require('lodash');
 
+/**
+ * 
+ * 市场部下载签章和保密协议空白表，并上传填写后的两张表所用的界面
+ * 
+ */
 function OfflineSignContract(props) {
-    const { UpdateUserInfo, GotoPage, _state } = props;
+    const { UpdateUserInfo, GotoPage, _state, focusedData } = props;
     const [formData, setFormData] = useState({ 'files': {} })
     const { Option } = Select;
     const { TextArea } = Input;
@@ -79,11 +85,20 @@ function OfflineSignContract(props) {
             })
     }
     useEffect(() => {
-        updateInfo();
+        if (focusedData === undefined)
+            updateInfo();
+        else {
+            setFormData(prev => {
+                const newData = _.cloneDeep(prev)
+                newData["files"] = focusedData
+                return newData
+            })
+        }
     }, []
     )
 
     const OnFinishForm = (values) => {
+        if (focusedData != undefined) return
         message.loading({ content: "上传中", key: "upload" })
         const res = new FormData();
         res.append('contractTableFile', values['签章']['file']);
@@ -207,12 +222,12 @@ function OfflineSignContract(props) {
                             setDataByKey("保密协议", newFileList);
                         }}
                     >
-                        <Button  icon={<UploadOutlined />}>Select File</Button>
+                        <Button icon={<UploadOutlined />}>Select File</Button>
                     </Upload>
                 </Form.Item>
                 <Form.Item>
                     <Button id='提交' type="primary" htmlType="submit">
-                    提交
+                        提交
                     </Button>
                 </Form.Item>
             </Form>
@@ -221,3 +236,14 @@ function OfflineSignContract(props) {
 
 }
 export default OfflineSignContract;
+
+OfflineSignContract.propTypes = {
+    /** 用户状态 */
+    _state: PropTypes.object,
+    /** 更新用户状态方法 */
+    UpdateUserInfo: PropTypes.func,
+    /** 切换界面方法 */
+    GotoPage: PropTypes.func,
+    /** 下载的空白表文件数据，正常情况下为空。若为空则从后端读取；不为空的情况仅用于测试 */
+    focusedData: PropTypes.object,
+}

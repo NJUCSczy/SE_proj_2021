@@ -1,5 +1,6 @@
 import isMobile from 'is-mobile';
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import { message, DatePicker,Divider, Form, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import './ConfidentialAgreementPartyB.css'
 import { useState } from 'react';
@@ -13,6 +14,11 @@ const { Title, Paragraph, Text, Link } = Typography;
 var _ = require('lodash');
 var mobile = require('is-mobile');
 
+/**
+ * 
+ * 乙方签订的保密协议，仅在jsonserver模拟后端的情况下使用
+ * 
+ */
 function ConfidentialAgreementPartyB(props){
   const { UpdateUserInfo, GotoPage, _state } = props;
 
@@ -179,9 +185,15 @@ function ConfidentialAgreementPartyB(props){
               </Form.Item>
             </Form>
           );
-
-      
-      
 }
 
 export default ConfidentialAgreementPartyB
+
+ConfidentialAgreementPartyB.propTypes = {
+  /** 用户状态 */
+  _state: PropTypes.object,
+  /** 更新用户状态方法 */
+  UpdateUserInfo: PropTypes.func,
+  /** 切换界面方法 */
+  GotoPage: PropTypes.func,
+}
