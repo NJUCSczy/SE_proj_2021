@@ -1,11 +1,12 @@
 import isMobile from 'is-mobile';
-import React, { Component } from 'react'
+import React, { Component,Fragment  } from 'react'
 import PropTypes from 'prop-types';
 import { message, DatePicker, Divider, Form, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import './TadultApplication.css'
 import TextArea from 'antd/lib/input/TextArea';
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
 import { NoFormStatus } from 'antd/lib/form/context';
+import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
 import moment from 'moment';
 import { USE_JSON_SERVER,REMOTE_SERVER } from '../../../functions/functions';
@@ -39,7 +40,7 @@ function TadultApplication(props) {
       return SubmitForm(values);
     }
     var form = {}
-    fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
+    fetch("http://localhost:8000/forms/1" /*+ _state['PageInfo']['id']*/, {
       method: "GET",
       mode: 'cors',
       headers: {
@@ -61,7 +62,7 @@ function TadultApplication(props) {
 
   const SubmitForm = (_form) => {
     if (USE_JSON_SERVER) {
-      fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
+      fetch("http://localhost:8000/forms/1" /*+ _state['PageInfo']['id']*/, {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
@@ -274,6 +275,53 @@ function TadultApplication(props) {
       >
         <Input id='材料检查_其他' style={{ maxWidth: 500 }} />
       </Form.Item>
+
+      <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>样品检查</h2>
+
+      <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>样品列表</h3>
+      <Form.List name={["样品检查", "样品列表"]} layout='vertical' width={500}>
+        {(fields, { add, remove }) => (
+          <>
+            {fields.map(({ key, name, ...restField }) => (
+              <Fragment layout='vertical' key={key} style={{ display: 'flex', marginBottom: 8 }}>
+                    <h5 style={{ fontWeight: 'bolder', marginTop: 30 }}>项目</h5>
+                    <Form.Item
+                      {...restField}
+                      name={[name, '样品名称']}
+                      rules={[{ required: true, message: '请填写样品名称' }]}
+                    >
+                      <Input id='样品名称' style={{ maxWidth: 500 }} placeholder="样品名称" />
+                    </Form.Item>
+                    <Button id='删除该样品列表' onClick={() => remove(name)} type='danger'>
+                      删除该项目
+                    </Button>
+              </Fragment>
+            ))}
+            <Form.Item>
+              <Button type="dashed" id='添加新样品'
+                style={{ width: 500, marginTop: 30 }}
+                onClick={() => add()} icon={<PlusOutlined />}  >
+                添加新项目
+              </Button>
+            </Form.Item>
+          </>
+        )}
+      </Form.List>
+
+      <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>样品状态</h3>
+      <Form.Item
+        name={["样品检查", "样品状态"]}
+      >
+        <Input id='样品检查_样品状态' style={{ maxWidth: 500 }} />
+      </Form.Item>
+
+      <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>来样日期</h3>
+      <Form.Item
+        name={["样品检查", "来样日期"]}
+      >
+        <DatePicker id='样品检查_来样日期' style={{ maxWidth: 500 }} />
+      </Form.Item>
+
 
       <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>确认意见</h2>
       <Form.Item

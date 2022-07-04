@@ -78,7 +78,7 @@ function Viewchecklist(props) {
                         setEntrustData(prev => {
                             const newData = _.cloneDeep(prev)
                             
-                            newData['测试报告检查表'] = data['TestReportEvaluationTableDto']
+                            newData['测试报告检查表'] = data
                             return newData
                         })
                     }
