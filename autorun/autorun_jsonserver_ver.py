@@ -234,12 +234,6 @@ log(False,'Software FunctionList',WARNING,'Page')
 browser.find_element_by_id("软件名称").send_keys('测试软件(自动)')
 browser.find_element_by_id("版本号").send_keys('1.0.0')
 browser.find_element_by_id("添加新功能").click()
-<<<<<<< HEAD
-=======
-browser.find_element_by_id("软件子功能列表").click()
-sleep(0.5)
-browser.find_element_by_id("添加新项目").click()
->>>>>>> ffe59179dc377d38b0761aef0e8de1902d11fbf6
 browser.find_element_by_id("软件功能").send_keys('啥都能干')
 browser.find_element_by_id("添加新项目").click()
 browser.find_element_by_id("软件子功能项目").send_keys('项目1')
@@ -414,7 +408,7 @@ log(False,'Test Contract',WARNING,'Page')
 browser.find_element_by_id("受托方(乙方)").send_keys("SE_A")
 browser.find_element_by_id("签订地点").send_keys("南京大学软件测试中心")
 browser.find_element_by_id("签订日期").click()
-browser.find_element_by_class_name("ant-picker-today-btn").click()
+browser.find_element_by_id("签订日期").send_keys("2022-07-11\n")
 browser.find_element_by_id("履行期限").send_keys("90")
 browser.find_element_by_id("整改次数上限").send_keys("3")
 browser.find_element_by_id("整改时间上限").send_keys("2")
@@ -463,6 +457,9 @@ browser.find_element_by_id("通讯地址").send_keys("lysisgbldad@qq.com")
 browser.find_element_by_id("邮编").send_keys("8923800")
 browser.find_element_by_id("电话").send_keys("18904033116")
 browser.find_element_by_id("传真").send_keys("411092")
+browser.find_element_by_id("开户银行").send_keys("中国工商银行")
+browser.find_element_by_id("户名").send_keys("18904033116")
+browser.find_element_by_id("账号").send_keys("411092")
 
 
 
@@ -526,53 +523,166 @@ log(flag,'Account',ERROR,'not right')
 browser.find_element_by_id("提交").click()
 
 #%%
-#市场部填写保密协议
-View_entrustList()
+# 测试部
+browser.find_element_by_id("home_headers_functions").click()
 sleep(0.5)
-View_latest_entrust()
+browser.find_element_by_id("home_headers_functions_view_test_application").click()
 sleep(0.5)
-browser.find_element_by_id("市场部填写保密协议").click()
+browser.find_element_by_class_name("ant-table-column-sorters").click()
+viewButtons=browser.find_elements_by_id("view_entrust")
+viewButtons[0].click()
+browser.find_element_by_id("填写软件测试方案").click()
 sleep(0.5)
-log(False,'Market Department Non-disclosure Agreement',WARNING,'Page')
-browser.find_element_by_id("basic_委托方").send_keys("司马睿")
-browser.find_element_by_id("basic_项目名").send_keys("bilibili视频弹幕软件")
-browser.find_element_by_id("basic_乙方").send_keys("南京大学软件测试中心")
-browser.find_element_by_id("basic_法人代表").send_keys("法人代表")
-browser.find_element_by_id("basic_日期").click()
-browser.find_element_by_class_name("ant-picker-today-btn").click()
-
-flag = browser.find_element_by_id("basic_委托方").get_attribute('value') == '司马睿'
-log(flag,'Client',ERROR,'not right')
-flag = browser.find_element_by_id("basic_项目名").get_attribute('value') == 'bilibili视频弹幕软件'
-log(flag,'Object Name',ERROR,'not right')
-flag = browser.find_element_by_id("basic_乙方").get_attribute('value') == '南京大学软件测试中心'
-log(flag,'Trustee',ERROR,'not right')
-flag = browser.find_element_by_id("basic_法人代表").get_attribute('value') == '法人代表'
-log(flag,'Deligate',ERROR,'not right')
-
-browser.find_element_by_id("提交").click()
 
 #%%
-#客户填写保密协议
-View_entrustList()
+#测试部填写软件测试方案
+browser.find_element_by_id("basic_版本号").send_keys(114514)
+browser.find_element_by_id("添加新文档修改记录").click()
+browser.find_element_by_id("basic_文档修改记录_0_版本号").send_keys(1919810)
+browser.find_element_by_id("basic_文档修改记录_0_日期").click()
+sleep(0.2)
+browser.find_element_by_class_name("ant-picker-today-btn").click()
+browser.find_element_by_id("basic_文档修改记录_0_AMD").send_keys('M')
+browser.find_element_by_id("basic_文档修改记录_0_修订者").send_keys('czy')
+browser.find_element_by_id("basic_文档修改记录_0_说明").send_keys('已完成')
+browser.find_element_by_id("basic_1.1标识").send_keys('test1')
+browser.find_element_by_id("basic_1.2系统概述").send_keys('此系统仅用于测试')
+browser.find_element_by_id("basic_1.3文档概述").send_keys('文档齐全')
+browser.find_element_by_id("basic_1.4基线").send_keys('baseline')
+browser.find_element_by_id("basic_3.1硬件").send_keys('联想')
+browser.find_element_by_id("basic_3.2软件").send_keys('windows11')
+browser.find_element_by_id("basic_3.3其他").send_keys('无')
+browser.find_element_by_id("basic_3.4参与组织").send_keys('南京大学')
+browser.find_element_by_id("basic_3.5人员").send_keys('czy')
+browser.find_element_by_id("basic_4.1总体设计").send_keys('没设计')
+browser.find_element_by_id("basic_4.1.1测试级别").send_keys('最低级')
+browser.find_element_by_id("basic_4.1.2测试类别").send_keys('随便测测')
+browser.find_element_by_id("basic_4.1.3一般测试条件").send_keys('没条件')
+browser.find_element_by_id("basic_4.2计划执行的测试").send_keys('所有的')
+browser.find_element_by_id("basic_4.3测试用例").send_keys('所有')
+browser.find_element_by_id("basic_测试进度表_制定测试计划_工作量").send_keys('没计划')
+browser.find_element_by_id("basic_测试进度表_制定测试计划_开始时间").click()
+sleep(0.2)
+browser.find_elements_by_class_name("ant-picker-today-btn")[1].click()
+browser.find_element_by_id("basic_测试进度表_制定测试计划_结束时间").click()
+sleep(0.2)
+browser.find_elements_by_class_name("ant-picker-today-btn")[2].click()
+browser.find_element_by_id("basic_测试进度表_设计测试_工作量").send_keys('很少')
+browser.find_element_by_id("basic_测试进度表_设计测试_开始时间").click()
+sleep(0.2)
+browser.find_elements_by_class_name("ant-picker-today-btn")[3].click()
+browser.find_element_by_id("basic_测试进度表_设计测试_结束时间").click()
+sleep(0.2)
+browser.find_elements_by_class_name("ant-picker-today-btn")[4].click()
+browser.find_element_by_id("basic_测试进度表_执行测试_工作量").send_keys('不多')
+browser.find_element_by_id("basic_测试进度表_执行测试_开始时间").click()
+sleep(0.2)
+browser.find_elements_by_class_name("ant-picker-today-btn")[5].click()
+browser.find_element_by_id("basic_测试进度表_执行测试_结束时间").click()
+sleep(0.2)
+browser.find_elements_by_class_name("ant-picker-today-btn")[6].click()
+browser.find_element_by_id("basic_测试进度表_评估测试_工作量").send_keys('很少')
+browser.find_element_by_id("basic_测试进度表_评估测试_开始时间").click()
+sleep(0.2)
+browser.find_elements_by_class_name("ant-picker-today-btn")[7].click()
+browser.find_element_by_id("basic_测试进度表_评估测试_结束时间").click()
+sleep(0.2)
+browser.find_elements_by_class_name("ant-picker-today-btn")[8].click()
+browser.find_element_by_id("basic_需求的可追踪性").send_keys('可追踪')
+
+#%%
+#测试部提交软件测试方案
+browser.find_element_by_id("提交").click()
+sleep(2)
+
+#%%
+#进入质检部填写测试方案评审表界面
+browser.find_element_by_id("home_headers_functions").click()
 sleep(0.5)
-View_latest_entrust()
+browser.find_element_by_id("home_headers_functions_view_test_application").click()
 sleep(0.5)
-browser.find_element_by_id("客户填写保密协议").click()
+browser.find_element_by_class_name("ant-table-column-sorters").click()
+viewButtons=browser.find_elements_by_id("view_entrust")
+viewButtons[0].click()
 sleep(0.5)
-log(False,'Client Non-disclosure Agreement',WARNING,'Page')
-browser.find_element_by_id("basic_甲方").send_keys("委托人甲")
-browser.find_element_by_id("basic_法人代表").send_keys("法人代表")
-browser.find_element_by_id("basic_日期").click()
+browser.find_element_by_id("填写测试方案评审表").click()
+sleep(0.5)
+
+#%%
+#质检部填写测试方案评审表界面
+browser.find_element_by_id("测试方案评审表_软件名称").send_keys('测试软件(自动)')
+browser.find_element_by_id("测试方案评审表_版本号").send_keys('114514')
+browser.find_element_by_id("测试方案评审表_项目编号").send_keys('1919810')
+browser.find_element_by_id("测试方案评审表_测试类别").send_keys('随便测试')
+browser.find_element_by_id("测试方案评审表_pass_0").click()
+browser.find_element_by_id("测试方案评审表_pass_1").click()
+browser.find_element_by_id("测试方案评审表_pass_2").click()
+browser.find_element_by_id("测试方案评审表_pass_3").click()
+browser.find_element_by_id("测试方案评审表_pass_4").click()
+browser.find_element_by_id("测试方案评审表_pass_5").click()
+browser.find_element_by_id("测试方案评审表_pass_6").click()
+browser.find_element_by_id("测试方案评审表_pass_7").click()
+browser.find_element_by_id("测试方案评审表_date_0").click()
+sleep(0.2)
+browser.find_element_by_class_name("ant-picker-today-btn").click()
+browser.find_element_by_id("测试方案评审表_date_1").click()
+sleep(0.2)
+browser.find_elements_by_class_name("ant-picker-today-btn")[1].click()
+browser.find_element_by_id("测试方案评审表_date_2").click()
+sleep(0.2)
+browser.find_elements_by_class_name("ant-picker-today-btn")[2].click()
+browser.find_element_by_id("测试方案评审表_date_3").click()
+sleep(0.2)
+browser.find_elements_by_class_name("ant-picker-today-btn")[3].click()
+browser.find_element_by_id("测试方案评审表_date_4").click()
+sleep(0.2)
+browser.find_elements_by_class_name("ant-picker-today-btn")[4].click()
+browser.find_element_by_id("测试方案评审表_opinion_0").send_keys('没问题')
+browser.find_element_by_id("测试方案评审表_sign_0").send_keys('czy0')
+browser.find_element_by_id("测试方案评审表_opinion_1").send_keys('没问题')
+browser.find_element_by_id("测试方案评审表_sign_1").send_keys('czy1')
+browser.find_element_by_id("测试方案评审表_opinion_2").send_keys('没问题')
+browser.find_element_by_id("测试方案评审表_sign_2").send_keys('czy2')
+browser.find_element_by_id("测试方案评审表_opinion_3").send_keys('没问题')
+browser.find_element_by_id("测试方案评审表_sign_3").send_keys('czy3')
+browser.find_element_by_id("测试方案评审表_opinion_4").send_keys('没问题')
+browser.find_element_by_id("测试方案评审表_sign_4").send_keys('czy4')
+
+#%%
+#质检部提交测试方案评审表
+browser.find_element_by_id("提交").click()
+sleep(2)
+
+#%%
+#进入测试部填写测试用例界面
+browser.find_element_by_id("home_headers_functions").click()
+sleep(0.5)
+browser.find_element_by_id("home_headers_functions_test_application").click()
+sleep(0.5)
+browser.find_element_by_class_name("ant-table-column-sorters").click()
+viewButtons=browser.find_elements_by_id("view_entrust")
+viewButtons[0].click()
+sleep(0.5)
+browser.find_element_by_id("填写测试用例").click()
+sleep(0.5)
+
+#%%
+#测试部填写测试用例
+browser.find_element_by_id("添加新测试用例").click()
+browser.find_element_by_id("basic_测试用例_0_测试分类").send_keys('不知道什么分类')
+browser.find_element_by_id("basic_测试用例_0_ID").send_keys('1')
+browser.find_element_by_id("basic_测试用例_0_测试用例设计说明").send_keys('无')
+browser.find_element_by_id("basic_测试用例_0_与本测试用例有关的规约说明").send_keys('说明')
+browser.find_element_by_id("basic_测试用例_0_预期的结果").send_keys('正常结果')
+browser.find_element_by_id("basic_测试用例_0_测试用例设计者").send_keys('瓦塔西')
+browser.find_element_by_id("basic_测试用例_0_测试时间").click()
+sleep(0.2)
 browser.find_element_by_class_name("ant-picker-today-btn").click()
 
-
-flag = browser.find_element_by_id("basic_甲方").get_attribute('value') == '委托人甲'
-log(flag,'Client',ERROR,'not right')
-flag = browser.find_element_by_id("basic_法人代表").get_attribute('value') == '法人代表'
-log(flag,'Deligate',ERROR,'not right')
-
+#%%
+#测试部提交测试用例
 browser.find_element_by_id("提交").click()
+sleep(2)
 #%%
 #关闭网页
 Quit_browser()
