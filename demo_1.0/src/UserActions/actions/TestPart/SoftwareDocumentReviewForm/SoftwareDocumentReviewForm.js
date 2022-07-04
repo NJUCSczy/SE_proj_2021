@@ -1,4 +1,5 @@
-import {React } from 'react'
+import React  from 'react'
+import PropTypes from 'prop-types';
 import {Fragment} from 'react'
 import { message, DatePicker, Divider, Form, Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import { useState } from 'react';
@@ -291,6 +292,11 @@ const formItemLayout = {
   labelCol: { span: 5 },
   wrapperCol: { span: 16 },
 };
+
+/**
+ *  在这里编写内容
+ * 
+ */
 function SoftwareDocumentReviewForm(props) {
   const { UpdateUserInfo, GotoPage, _state } = props;
   const [formData, setFormData] = useState({})
@@ -468,4 +474,12 @@ function SoftwareDocumentReviewForm(props) {
 }
 export default SoftwareDocumentReviewForm;
 
+SoftwareDocumentReviewForm.propTypes={
+  /** 用户状态 */
+  _state:PropTypes.object,
+  /** 更新用户状态方法 */
+  UpdateUserInfo:PropTypes.func,
+  /** 切换界面方法 */
+  GotoPage:PropTypes.func
+}
 

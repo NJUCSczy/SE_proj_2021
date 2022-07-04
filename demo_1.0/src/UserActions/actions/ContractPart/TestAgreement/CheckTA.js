@@ -1,5 +1,6 @@
 import isMobile from 'is-mobile';
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import { message, Typography, DatePicker, Form, InputNumber, Button, Input } from 'antd';
 import './TestAgreement.css'
 import TextArea from 'antd/lib/input/TextArea';
@@ -13,13 +14,18 @@ const { Option } = Select;
 const { Title, Paragraph, Text, Link } = Typography;
 var _ = require('lodash');
 
+/**
+ * 
+ * 用户查看履行日期的界面
+ * 
+ */
 function CheckTA(props) {
-    const { UpdateUserInfo, GotoPage, _state } = props;
+    const { UpdateUserInfo, GotoPage, _state,focusedData } = props;
     const userState = props._state
     const [entrustData, setEntrustData] = useState({ 'formData': null, '履行期限(受托方部分)': null, '用户申请表': null, '报价单': null })
     const handleChange = (value) => {
         console.log(`selected ${value}`);
-      };
+    };
     const updateInfo = () => {
         if (USE_JSON_SERVER) {
             fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
@@ -106,7 +112,17 @@ function CheckTA(props) {
         }
     }
     useEffect(() => {
-        updateInfo();
+        if (focusedData === undefined)
+            updateInfo();
+        else {
+            setEntrustData(prev => {
+                const newData = _.cloneDeep(prev)
+                newData["用户申请表"] = focusedData["用户申请表"]
+                newData["报价单"] = focusedData["报价单"]
+                newData["履行期限(受托方部分)"] = focusedData["履行期限(受托方部分)"]
+                return newData
+            })
+        }
     }, []
     )
 
@@ -135,7 +151,7 @@ function CheckTA(props) {
                 })
         }
         else {
-            fetch(REMOTE_SERVER + '/contract/'+_state['PageInfo']['ContractID']+'/performanceTerm/partyA', {
+            fetch(REMOTE_SERVER + '/contract/' + _state['PageInfo']['ContractID'] + '/performanceTerm/partyA', {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',
@@ -170,7 +186,7 @@ function CheckTA(props) {
         if (USE_JSON_SERVER) {
             var form = entrustData['formData'];
             form['测试合同']['履行期限接受情况'] = values
-            
+
             SubmitForm(form)
         }
         else {
@@ -206,7 +222,7 @@ function CheckTA(props) {
                 </Form.Item>
 
                 <Form.Item label="签订地点" >
-                    <Input id = '签订地点' style={{ maxWidth: 180 }} defaultValue={entrustData["履行期限(受托方部分)"]["签订地点"]} disabled />
+                    <Input id='签订地点' style={{ maxWidth: 180 }} defaultValue={entrustData["履行期限(受托方部分)"]["签订地点"]} disabled />
                 </Form.Item>
 
                 <Form.Item label="签订日期" >
@@ -216,7 +232,7 @@ function CheckTA(props) {
                 <Paragraph>
                     &emsp;本合同由作为委托方的<strong>{entrustData["用户申请表"]["委托单位(中文)"]}(以下简称"甲方")</strong>与
                     作为受托方的
-                    <strong>{entrustData["履行期限(受托方部分)"]["trusteename"]}(以下简称"乙方")</strong>在平等自愿的基础上,依据《中华人民共和国合同法》有关规定就项目的执行,经友好协商后订立。
+                    <strong>{entrustData["履行期限(受托方部分)"]["受托方(乙方)"]}(以下简称"乙方")</strong>在平等自愿的基础上,依据《中华人民共和国合同法》有关规定就项目的执行,经友好协商后订立。
                 </Paragraph>
 
                 <h3>一.任务表述</h3>
@@ -263,7 +279,7 @@ function CheckTA(props) {
                     <Input id='整改次数上限' style={{ maxWidth: 100 }} addonAfter="次" defaultValue={entrustData["履行期限(受托方部分)"]["整改限制次数"]} disabled />
                 </Form.Item>
                 <Form.Item label="每次不超过" labelCol={{ span: 6 }} >
-                    <Input id= '整改日期上限'style={{ maxWidth: 100 }} addonAfter="天" defaultValue={entrustData["履行期限(受托方部分)"]["一次整改限制的天数"]} disabled />
+                    <Input id='整改日期上限' style={{ maxWidth: 100 }} addonAfter="天" defaultValue={entrustData["履行期限(受托方部分)"]["一次整改限制的天数"]} disabled />
                 </Form.Item>
                 <Paragraph>&emsp;4.	如因甲方原因，导致测试进度延迟、应由甲方负责,乙方不承担责任。</Paragraph>
                 <Paragraph>&emsp;5.	如因乙方原因,导致测试进度延迟,则甲方可酌情提出赔偿要求,赔偿金额不超过甲方已付金额的50%。双方经协商一致后另行签订书面协议，作为本合同的补充。</Paragraph>
@@ -293,7 +309,7 @@ function CheckTA(props) {
                             width: 120,
                         }}
                         onChange={handleChange}
-                        >
+                    >
                         <Option id='态度_下拉栏_接受' value="接受">接受</Option>
                         <Option id='态度_下拉栏_申请再议' value="申请再议">申请再议</Option>
                         <Option id='态度_下拉栏_不接受' value="不接受">不接受</Option>
@@ -306,13 +322,24 @@ function CheckTA(props) {
                 </Form> */}
                 <Form.Item>
                     <Button id='提交' type="primary" htmlType="submit">
-                    提交
+                        提交
                     </Button>
                 </Form.Item>
-                
+
             </Form>)
     )
 }
 
 
 export default CheckTA
+
+CheckTA.propTypes = {
+    /** 用户状态 */
+    _state: PropTypes.object,
+    /** 更新用户状态方法 */
+    UpdateUserInfo: PropTypes.func,
+    /** 切换界面方法 */
+    GotoPage: PropTypes.func,
+    /** 报价单和用户申请表的数据，正常情况下为空。若为空则从后端读取；不为空的情况仅用于测试 */
+    focusedData: PropTypes.object,
+}

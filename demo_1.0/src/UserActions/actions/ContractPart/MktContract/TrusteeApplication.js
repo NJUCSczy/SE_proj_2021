@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import { message, DatePicker, Divider, Form, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import { useState } from 'react';
 import { USE_JSON_SERVER,REMOTE_SERVER } from '../../../functions/functions';
 
+/**
+ * 
+ * 受托方签署合同签章的界面
+ * 
+ */
 function TrusteeApplication(props) {
   const { UpdateUserInfo, GotoPage, _state } = props;
   const [formData, setFormData] = useState({})
@@ -201,3 +207,12 @@ function TrusteeApplication(props) {
   )
 }
 export default TrusteeApplication;
+
+TrusteeApplication.propTypes = {
+  /** 用户状态 */
+  _state: PropTypes.object,
+  /** 更新用户状态方法 */
+  UpdateUserInfo: PropTypes.func,
+  /** 切换界面方法 */
+  GotoPage: PropTypes.func,
+}

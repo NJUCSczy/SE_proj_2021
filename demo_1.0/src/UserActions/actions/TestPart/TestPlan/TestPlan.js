@@ -234,7 +234,7 @@ function TestPlan(props) {
 
       <Form.Item
         label="1.1标识"
-        name="1.1标识"
+        name="标识"
         rules={[{ required: true, message: '请输入标识' }]}
       >
         <Input.TextArea />
@@ -242,7 +242,7 @@ function TestPlan(props) {
 
       <Form.Item
         label="1.2系统概述"
-        name="1.2系统概述"
+        name="系统概述"
         rules={[{ required: true, message: '请输入系统概述' }]}
       >
         <Input.TextArea />
@@ -250,7 +250,7 @@ function TestPlan(props) {
 
       <Form.Item
         label="1.3文档概述"
-        name="1.3文档概述"
+        name="文档概述"
         rules={[{ required: true, message: '请输入文档概述' }]}
       >
         <Input.TextArea />
@@ -258,7 +258,7 @@ function TestPlan(props) {
 
       <Form.Item
         label="1.4基线"
-        name="1.4基线"
+        name="基线"
         rules={[{ required: true, message: '请输入基线' }]}
       >
         <Input.TextArea />
@@ -274,7 +274,7 @@ function TestPlan(props) {
 
       <Form.Item
         label="3.1硬件"
-        name="3.1硬件"
+        name="硬件"
         rules={[{ required: true, message: '请输入硬件' }]}
       >
         <Input.TextArea />
@@ -282,7 +282,7 @@ function TestPlan(props) {
 
       <Form.Item
         label="3.2软件"
-        name="3.2软件"
+        name="软件"
         rules={[{ required: true, message: '请输入软件' }]}
       >
         <Input.TextArea />
@@ -290,7 +290,7 @@ function TestPlan(props) {
 
       <Form.Item
         label="3.3其他"
-        name="3.3其他"
+        name="其他"
         rules={[{ required: true, message: '请输入其他' }]}
       >
         <Input.TextArea />
@@ -298,7 +298,7 @@ function TestPlan(props) {
 
       <Form.Item
         label="3.4参与组织"
-        name="3.4参与组织"
+        name="参与组织"
         rules={[{ required: true, message: '请输入参与组织' }]}
       >
         <Input.TextArea />
@@ -306,7 +306,7 @@ function TestPlan(props) {
 
       <Form.Item
         label="3.5人员"
-        name="3.5人员"
+        name="人员"
         rules={[{ required: true, message: '请输入人员' }]}
       >
         <Input.TextArea />
@@ -320,7 +320,7 @@ function TestPlan(props) {
 
       <Form.Item
         label="4.1总体设计"
-        name="4.1总体设计"
+        name="总体设计"
         rules={[{ required: true, message: '请输入总体设计' }]}
       >
         <Input.TextArea />
@@ -328,7 +328,7 @@ function TestPlan(props) {
 
       <Form.Item
         label="4.1.1测试级别"
-        name="4.1.1测试级别"
+        name="测试级别"
         rules={[{ required: true, message: '请输入测试级别' }]}
       >
         <Input.TextArea />
@@ -336,7 +336,7 @@ function TestPlan(props) {
 
       <Form.Item
         label="4.1.2测试类别"
-        name="4.1.2测试类别"
+        name="测试类别"
         rules={[{ required: true, message: '请输入测试类别' }]}
       >
         <Input.TextArea />
@@ -344,7 +344,7 @@ function TestPlan(props) {
 
       <Form.Item
         label="4.1.3一般测试条件"
-        name="4.1.3一般测试条件"
+        name="一般测试条件"
         rules={[{ required: true, message: '请输入一般测试条件' }]}
       >
         <Input.TextArea />
@@ -352,7 +352,7 @@ function TestPlan(props) {
 
       <Form.Item
         label="4.2计划执行的测试"
-        name="4.2计划执行的测试"
+        name="计划执行的测试"
         rules={[{ required: true, message: '请输入计划执行的测试' }]}
       >
         <Input.TextArea />
@@ -360,7 +360,7 @@ function TestPlan(props) {
 
       <Form.Item
         label="4.3测试用例"
-        name="4.3测试用例"
+        name="测试用例"
         rules={[{ required: true, message: '请输入测试用例' }]}
       >
         <Input.TextArea />

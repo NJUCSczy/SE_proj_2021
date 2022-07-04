@@ -1,6 +1,6 @@
 import React ,{ Fragment }from 'react'
 import isMobile from 'is-mobile';
-
+import PropTypes from 'prop-types';
 import {DatePicker, message, Divider,Tag,Table, Form,Space, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import { useState } from 'react';
 import Paragraph from 'antd/lib/skeleton/Paragraph';
@@ -9,6 +9,12 @@ import { MinusCircleOutlined, PlusOutlined,CloseOutlined, CheckOutlined } from '
 import FormItem from 'antd/lib/form/FormItem';
 import { USE_JSON_SERVER,REMOTE_SERVER } from '../../../functions/functions';
 //import type { ColumnsType } from 'antd/lib/table';
+
+/**
+ * 
+ * 在这里编写内容
+ * 
+ */
 function CheckList(props) {
     const { UpdateUserInfo, GotoPage, _state } = props;
     const [formData, setFormData] = useState({})
@@ -295,3 +301,12 @@ const data = [
 }
 
 export default CheckList;
+
+CheckList.propTypes = {
+  /** 用户状态 */
+  _state: PropTypes.object,
+  /** 更新用户状态方法 */
+  UpdateUserInfo: PropTypes.func,
+  /** 切换界面方法 */
+  GotoPage: PropTypes.func,
+}
