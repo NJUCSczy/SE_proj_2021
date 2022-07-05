@@ -111,7 +111,8 @@ function ViewEntrust(props) {
                                     status={entrustData['stage'] < 0 ? 'error' : 'finish'} />
                                 <Step title='用户提交软件功能列表'
                                     description={entrustData['stage'] < 1 ? '等待用户提交' : '已完成'}
-                                    status={entrustData['stage'] < 1 ? 'wait' : 'finish'} />
+                                    status={entrustData['stage'] < 0 ? 'wait' :
+                                        entrustData['stage'] < 1 ? 'process' : 'finish'} />
                                 <Step title='用户提交软件文档'
                                     description={entrustData['stage'] < 1 ? null :
                                         entrustData['stage'] < 2 ? '等待用户提交' : '已完成'}
