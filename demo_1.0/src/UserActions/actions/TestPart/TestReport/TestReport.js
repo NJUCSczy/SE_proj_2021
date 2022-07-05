@@ -93,7 +93,8 @@ function TestReport(props){
                     SubmitForm(values, true);
                   }
                   else if (data['state'] === 'TEST_REPORT_DENIED' || data['state'] === 'TEST_DOC_WORK_DENIED') {
-                    SubmitForm(values, false);
+                    ApplyForm(values);
+                    //SubmitForm(values, false);
                   }
                   else {
                     alert('状态有误！')
@@ -125,6 +126,38 @@ function TestReport(props){
      
     };
 
+    const ApplyForm = (_form) =>{
+      fetch(REMOTE_SERVER+"/test/"+_state['PageInfo']['id']+"/apply-report-evaluation", {
+        method: "PUT",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json;charset=utf-8',
+          'accessToken': _state['accessToken'],
+          'tokenType': _state['tokenType'],
+          'usrName': _state['userName'],
+          'usrID': _state['userID'],
+          'usrRole': _state['userRole'][0],
+          'Authorization': _state['accessToken']
+        },
+        body: JSON.stringify(_form)
+      })
+        .then(res => {
+          console.log("apply")
+          console.log(res)
+          if (res.status === 200) {
+            message.success({content:"申请重新审核成功！",key:"upload"})
+            GotoPage("ViewProject",_state)
+          }
+          else{
+            message.error({content:"申请重新审核失败！",key:"upload"})
+          }
+          return res.json()
+        })
+        .then(data => {
+          console.log(data)
+        })
+    }
+
     const SubmitForm = (_form, firstTime = false) => {
       if(USE_JSON_SERVER){
       fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'], {
@@ -150,35 +183,35 @@ function TestReport(props){
         })
       }
       else{
-      const URL = firstTime ? (REMOTE_SERVER+"/test/"+_state['PageInfo']['id']+"/test-doc/test-report") : (REMOTE_SERVER+"/test/"+_state['PageInfo']['id']+"/apply-report-evaluation")
-      fetch(URL, {
-      method: firstTime ? "POST" : "PUT",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json;charset=utf-8',
-        'accessToken': _state['accessToken'],
-        'tokenType': _state['tokenType'],
-        'usrName': _state['userName'],
-        'usrID': _state['userID'],
-        'usrRole': _state['userRole'][0],
-        'Authorization': _state['accessToken']
-      },
-      body: JSON.stringify(_form)
-    })
-      .then(res => {
-        console.log(res)
-        if (res.status === 200) {
-          message.success({content:"提交成功！",key:"upload"})
-          GotoPage("ViewProject",_state)
-        }
-        else{
-          message.error({content:"提交失败！",key:"upload"})
-        }
-        return res.json()
-      })
-      .then(data => {
-        console.log(data)
-      })
+        fetch(REMOTE_SERVER+"/test/"+_state['PageInfo']['id']+"/test-doc/test-report", {
+          method:  "POST",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json;charset=utf-8',
+            'accessToken': _state['accessToken'],
+            'tokenType': _state['tokenType'],
+            'usrName': _state['userName'],
+            'usrID': _state['userID'],
+            'usrRole': _state['userRole'][0],
+            'Authorization': _state['accessToken']
+          },
+          body: JSON.stringify(_form)
+        })
+          .then(res => {
+            console.log("post")
+            console.log(res)
+            if (res.status === 200) {
+              message.success({content:"提交成功！",key:"upload"})
+              GotoPage("ViewProject",_state)
+            }
+            else{
+              message.error({content:"提交失败！",key:"upload"})
+            }
+            return res.json()
+          })
+          .then(data => {
+            console.log(data)
+          })
       }
     }
 
@@ -256,7 +289,7 @@ function TestReport(props){
             name="报告日期"
             rules={[{ required: true, message: '请输入报告日期' }]}
           >
-            <DatePicker defaultValue={USE_JSON_SERVER? null: entrustData['软件测试报告']['测试类别']===null? null: moment((entrustData['软件测试报告']['测试类别']), 'YYYY/MM/DD')} format='YYYY/MM/DD' />
+            <DatePicker defaultValue={USE_JSON_SERVER? null: entrustData['软件测试报告']['报告日期']===null? null: moment((entrustData['软件测试报告']['报告日期']), 'YYYY/MM/DD')} format='YYYY/MM/DD' />
           </Form.Item>
 
           <Title level={4}>声明</Title>
