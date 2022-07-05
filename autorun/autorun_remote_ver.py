@@ -12,8 +12,8 @@ browser.get('http://localhost:3000')
 def Login_as_User():
     browser.find_element_by_id("home_headers_mainpage").click()
     browser.find_element_by_id("home_headers_user").click()
-    browser.find_element_by_id("login_input_username").send_keys("czy114514")
-    browser.find_element_by_id("login_input_password").send_keys("123456")
+    browser.find_element_by_id("login_input_username").send_keys("yk1111")
+    browser.find_element_by_id("login_input_password").send_keys("yk1111")
     browser.find_element_by_id("login_button").click()
 def Login_as_mkt():
     browser.find_element_by_id("home_headers_mainpage").click()
