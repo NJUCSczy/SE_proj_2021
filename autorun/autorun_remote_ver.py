@@ -981,6 +981,64 @@ browser.find_element_by_id("测试报告检查表_日期").send_keys("2022-07-23
 browser.find_element_by_id("提交").click()
 sleep(2)
 
+#%%
+#登出
+Logout()
+sleep(1)
+#%%
+# 市场部登录
+Login_as_mkt()
+sleep(2)
+
+#%%
+# 进入填写测试报告检查表
+View_projectList()
+View_latest_proj()
+sleep(0.5)
+browser.find_element_by_id("填写软件项目委托测试工作检查表").click()
+sleep(0.5)
+
+#%%
+# 填写测试报告检查表
+browser.find_element_by_id("软件项目委托测试工作检查表_软件名称").send_keys("酷狗音乐")
+browser.find_element_by_id("软件项目委托测试工作检查表_版本号").send_keys("10.0.1")
+browser.find_element_by_id("软件项目委托测试工作检查表_申报单位").send_keys("公司")
+browser.find_element_by_id("软件项目委托测试工作检查表_软件名称").send_keys("酷狗音乐")
+browser.find_element_by_id("软件项目委托测试工作检查表_起始时间").send_keys("2022-07-06\n")
+browser.find_element_by_id("软件项目委托测试工作检查表_预计完成时间").send_keys("2022-07-23\n")
+browser.find_element_by_id("软件项目委托测试工作检查表_主测人").send_keys("czy")
+browser.find_element_by_id("软件项目委托测试工作检查表_实际完成时间").send_keys("2022-09-13\n")
+browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_1").click()
+browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_2").click()
+browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_3").click()
+browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_4").click()
+browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_5").click()
+browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_6").click()
+browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_7").click()
+browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_9").click()
+browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_11").click()
+browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_12").click()
+browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_13").click()
+browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_14").click()
+browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_15").click()
+browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_16").click()
+browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_17").click()
+browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_18").click()
+browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_19").click()
+browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_20").click()
+browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_21").click()
+browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_22").click()
+browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_23").click()
+browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_24").click()
+browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_25").click()
+browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_26").click()
+
+
+#%%
+#市场部 提交软件项目委托测试工作检查表
+browser.find_element_by_id("提交").click()
+sleep(2)
+
 
 
 
