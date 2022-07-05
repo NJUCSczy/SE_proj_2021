@@ -13,6 +13,7 @@ var _ = require('lodash');
 function ViewProjList(props) {
   const { UpdateUserInfo, GotoPage, _state } = props;
   const [formData, setFormData] = useState({ 'formData': null })
+  const [ProjData,setProjData] = useState({ 'formData': null})
 
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
@@ -263,6 +264,11 @@ function ViewProjList(props) {
               newData["formData"] = data
               return newData
             })
+            setProjData(prev => {
+              const newData = _.cloneDeep(prev)
+              newData["formData"] = data
+              return newData
+            })
           }
         })
     }
@@ -290,15 +296,17 @@ function ViewProjList(props) {
 
   const FliterDataByStage = (minStage, maxStage) => {
     setFormData(prev => {
-      const newData = _.cloneDeep(formData)
+      const newData = _.cloneDeep(ProjData)
       const res = { 'formData': [] }
       newData["formData"].forEach(element => {
         if (USE_JSON_SERVER) {
           if (getTestStageByInfo(element) >= minStage && getTestStageByInfo(element) <= maxStage)
             res["formData"].push(element);
         } else {
-          if (getTestStageByDTAState(element['state']) >= minStage && getTestStageByDTAState(element['state']) <= maxStage)
+          if (getTestStageByDTAState(element['state']) >= minStage && getTestStageByDTAState(element['state']) <= maxStage){
             res["formData"].push(element)
+          }
+            
         }
       });
       console.log(res)
