@@ -279,7 +279,7 @@ function TadultApplication(props) {
       <h2 style={{ fontWeight: 'bolder', marginTop: 30 }}>样品检查</h2>
 
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>样品列表</h3>
-      <Form.List name={["样品检查", "样品列表"]} layout='vertical' width={500}>
+      <Form.List name={["样品检查", "样品列表"]} layout='vertical' rules={[{ required: true, message: '请填写样品检查' }]} width={500}>
         {(fields, { add, remove }) => (
           <>
             {fields.map(({ key, name, ...restField }) => (
@@ -311,6 +311,7 @@ function TadultApplication(props) {
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>样品状态</h3>
       <Form.Item
         name={["样品检查", "样品状态"]}
+        rules={[{ required: true, message: '请填写样品状态' }]}
       >
         <Input id='样品检查_样品状态' style={{ maxWidth: 500 }} />
       </Form.Item>
@@ -318,6 +319,7 @@ function TadultApplication(props) {
       <h3 style={{ fontWeight: 'bolder', marginTop: 30 }}>来样日期</h3>
       <Form.Item
         name={["样品检查", "来样日期"]}
+        rules={[{ required: true, message: '请填写来样日期' }]}
       >
         <DatePicker id='样品检查_来样日期' style={{ maxWidth: 500 }} />
       </Form.Item>

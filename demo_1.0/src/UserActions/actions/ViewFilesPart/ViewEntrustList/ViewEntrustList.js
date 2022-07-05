@@ -267,7 +267,8 @@ function ViewEntrustList(props) {
 
   const FliterDataByState = (State) => {
     switch(State){
-      case '全部':FliterDataByStage(0,100);break;
+      case '全部':FliterDataByStage(-1,100);break;
+      case '错误状态委托':FliterDataByStage(-1,-1);break;
       case '未定项委托':FliterDataByStage(0,12);break;
       case '已定项委托':FliterDataByStage(13,100);break;
       case '已签署合同':FliterDataByStage(21,100);break;
@@ -301,6 +302,7 @@ function ViewEntrustList(props) {
     <>
       <Select defaultValue="全部" style={{ width: 160, marginLeft: 30,marginTop:20,marginBottom:20 }} onChange={FliterDataByState}>
         <Option value="全部">全部</Option>
+        <Option value="错误状态委托">错误状态委托</Option>
         <Option value="未定项委托">未定项委托</Option>
         <Option value="已定项委托">已定项委托</Option>
         <Option value="已签署合同">已签署合同</Option>

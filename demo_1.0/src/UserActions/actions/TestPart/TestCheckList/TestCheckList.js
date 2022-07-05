@@ -378,7 +378,7 @@ function TestCheckList(props) {
         })
     }
     else {
-      fetch(REMOTE_SERVER+"/test/" + _state['PageInfo']['id'] + "/test-doc/test/work-evaluation", {
+      fetch(REMOTE_SERVER+"/test/" + _state['PageInfo']['id'] + "/test-doc/work-evaluation", {
         method: firstTime ? "POST" : "POST",
         headers: {
           'Accept': 'application/json',

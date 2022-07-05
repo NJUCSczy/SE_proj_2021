@@ -304,7 +304,41 @@ function ViewTestReport(props) {
                     </Descriptions.Item>
 
                     <Descriptions.Item label="E-mail" >
-                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试报告']['E-mail']}</h4>
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试报告']['Email']}</h4>
+                    </Descriptions.Item>                  
+
+                </Descriptions>
+
+                <Title style={{ fontWeight: 'bolder', marginTop: 30 }} level={4}>测试单位联系方式</Title>
+
+                <Descriptions
+                bordered
+                layout='vertical'
+                column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+                >
+
+                    <Descriptions.Item label="单位地址" >
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试报告']['测试单位单位地址']}</h4>
+                    </Descriptions.Item>
+
+                    <Descriptions.Item label="单位邮政编码" >
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试报告']['测试单位邮政编码']}</h4>
+                    </Descriptions.Item>
+
+                    <Descriptions.Item label="测试单位电话" >
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试报告']['测试单位电话']}</h4>
+                    </Descriptions.Item>
+
+                    <Descriptions.Item label="测试单位传真" >
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试报告']['测试单位传真']}</h4>
+                    </Descriptions.Item>
+
+                    <Descriptions.Item label="测试单位网址" >
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试报告']['测试单位网址']}</h4>
+                    </Descriptions.Item>
+
+                    <Descriptions.Item label="测试单位E-mail" >
+                    <h4 style={{ fontWeight: 'bolder', marginTop: 10 }} >{entrustData['软件测试报告']['测试单位Email']}</h4>
                     </Descriptions.Item>                  
 
                 </Descriptions>
