@@ -87,7 +87,7 @@ sleep(0.1)
 browser.find_element_by_id("测试类型_软件确认测试").click()
 browser.find_element_by_id("测试类型_其他").click()
 browser.find_element_by_id("测试类型(其他)").send_keys("某个类型")
-browser.find_element_by_id("软件名称").send_keys("测试软件(自动)")
+browser.find_element_by_id("软件名称").send_keys("测试回退")
 browser.find_element_by_id("版本号").send_keys("1.0.0")
 browser.find_element_by_id("委托单位(中文)").send_keys("南京大学软件测试中心")
 browser.find_element_by_id("委托单位(英文)").send_keys("NJU SE test center")
@@ -256,6 +256,12 @@ browser.find_element_by_id("材料检查_操作文档_安装手册").click()
 browser.find_element_by_id("材料检查_操作文档_诊断手册").click()
 browser.find_element_by_id("材料检查_操作文档_支持手册").click()
 browser.find_element_by_id("材料检查_其他").send_keys('无')
+browser.find_element_by_id("添加新样品").click()
+browser.find_element_by_id("样品名称").send_keys('样本1')
+browser.find_element_by_id("样品检查_样品状态").send_keys('检查中')
+browser.find_element_by_id("样品检查_来样日期").click()
+sleep(0.5)
+browser.find_element_by_id("样品检查_来样日期").send_keys('2022-03-29\n')
 browser.find_element_by_id("确认意见_可以测试").click()
 sleep(0.5)
 
@@ -374,7 +380,7 @@ sleep(0.5)
 
 #%%
 #市场部填写测试项目编号
-browser.find_element_by_id("测试项目编号").send_keys("123456")
+browser.find_element_by_id("测试项目编号").send_keys("191220144")
 sleep(0.5)
 
 #%%
@@ -771,7 +777,7 @@ browser.find_element_by_id("添加新项目").click()
 browser.find_element_by_id("软件测试问题清单_项目列表_0_问题(缺陷)简要描述").send_keys("无法承载1e8级压力")
 browser.find_element_by_id("软件测试问题清单_项目列表_0_对应需求条目").send_keys("压力测试")
 browser.find_element_by_id("软件测试问题清单_项目列表_0_发现缺陷的初始条件").send_keys("高压力测试")
-browser.find_element_by_id("软件测试问题清单_项目列表_0_发现缺陷用例及具体操作路径（要具体）").send_keys("通过搭载1e8级模拟用户")
+browser.find_element_by_id("软件测试问题清单_项目列表_0_发现缺陷用例及具体操作路径(要具体)").send_keys("通过搭载1e8级模拟用户")
 browser.find_element_by_id("软件测试问题清单_项目列表_0_关联用例").send_keys("无")
 browser.find_element_by_id("软件测试问题清单_项目列表_0_时间").click()
 sleep(0.5)
@@ -797,7 +803,6 @@ sleep(0.5)
 browser.find_element_by_id("软件文档评审表_软件名称").send_keys("kuguo音乐")
 browser.find_element_by_id("软件文档评审表_版本号").send_keys("10.0.03")
 browser.find_element_by_id("软件文档评审表_评审人").send_keys("czy")
-browser.find_element_by_id("软件文档评审表_软件名称").send_keys("kuguo音乐")
 browser.find_element_by_id("软件文档评审表_评审完成时间").send_keys("2022-09-22\n")
 sleep(0.5)
 browser.find_element_by_id("软件文档评审表_result_1").send_keys("合格")
@@ -877,6 +882,107 @@ browser.find_element_by_id("软件文档评审表_检查人").send_keys("lys")
 # 提交软件文档评审表
 browser.find_element_by_id("提交").click()
 sleep(2)
+
+#%%
+# 进入填写软件测试报告
+View_projectList()
+View_latest_proj()
+sleep(0.5)
+browser.find_element_by_id("填写软件测试报告").click()
+sleep(0.5)
+
+#%%
+# 填写软件测试报告
+browser.find_element_by_id("basic_报告编号").send_keys("10992")
+browser.find_element_by_id("basic_测试类别").send_keys("可靠性测试")
+browser.find_element_by_id("basic_报告日期").send_keys("2022/08/23\n")
+browser.find_element_by_id("basic_版本/型号").send_keys("10.0.12")
+browser.find_element_by_id("basic_测试开始时间").click()
+sleep(0.5)
+browser.find_element_by_id("basic_测试开始时间").send_keys("2022/07/24\n")
+browser.find_element_by_id("basic_测试结束时间").click()
+sleep(0.5)
+browser.find_element_by_id("basic_测试结束时间").send_keys("2022/07/24\n")
+browser.find_element_by_id("basic_测试结论").send_keys("合格")
+browser.find_element_by_id("basic_主测人").send_keys("lys")
+browser.find_element_by_id("basic_主测人日期").click()
+sleep(0.5)
+browser.find_element_by_id("basic_主测人日期").send_keys("2022/07/24\n")
+browser.find_element_by_id("basic_审核人").send_keys("czy")
+browser.find_element_by_id("basic_审核人日期").click()
+sleep(0.5)
+browser.find_element_by_id("basic_审核人日期").send_keys("2022/07/24\n")
+browser.find_element_by_id("basic_批准人").send_keys("gbl")
+browser.find_element_by_id("basic_批准人日期").click()
+sleep(0.5)
+browser.find_element_by_id("basic_批准人日期").send_keys("2022/07/24\n")
+browser.find_element_by_id("basic_E-mail").send_keys("1250214413@qq.com")
+browser.find_element_by_id("basic_测试单位网址").send_keys("www.ceshidanwei.com")
+browser.find_element_by_id("basic_测试单位E-mail").send_keys("1921680025@qq.com")
+browser.find_element_by_id("添加新硬件环境").click()
+browser.find_element_by_id("basic_硬件环境_0_硬件类别").send_keys("普通计算机")
+browser.find_element_by_id("basic_硬件环境_0_硬件名称").send_keys("机器")
+browser.find_element_by_id("basic_硬件环境_0_配置").send_keys("普通")
+browser.find_element_by_id("basic_硬件环境_0_数量").send_keys("1")
+browser.find_element_by_id("添加新软件环境").click()
+browser.find_element_by_id("basic_软件环境_0_软件名称").send_keys("南大测试体系")
+browser.find_element_by_id("basic_软件环境_0_版本").send_keys("7.09")
+browser.find_element_by_id("软件环境_软件类别_软件").click()
+browser.find_element_by_id("添加新参考资料分项").click()
+browser.find_element_by_id("basic_参考资料_0_参考资料分项").send_keys("无")
+browser.find_element_by_id("basic_测试执行记录").send_keys("这是一个执行记录")
+
+#%%
+# 提交 软件测试报告
+browser.find_element_by_id("提交").click()
+sleep(2)
+
+#%%
+#登出
+Logout()
+sleep(1)
+#%%
+# 质量部登录
+Login_as_qlty()
+sleep(2)
+#%%
+# 进入填写测试报告检查表
+View_projectList()
+View_latest_proj()
+sleep(0.5)
+browser.find_element_by_id("填写测试报告检查表").click()
+sleep(0.5)
+
+#%%
+#质量部填写测试报告检查表
+browser.find_element_by_id("测试报告检查表_软件名称").send_keys("kugou音乐")
+browser.find_element_by_id("测试报告检查表_委托单位").send_keys("某公司")
+browser.find_element_by_id("测试报告检查表_tableItem_0").click()
+browser.find_element_by_id("测试报告检查表_tableItem_1").click()
+browser.find_element_by_id("测试报告检查表_tableItem_2").click()
+browser.find_element_by_id("测试报告检查表_tableItem_3").click()
+browser.find_element_by_id("测试报告检查表_tableItem_4").click()
+browser.find_element_by_id("测试报告检查表_tableItem_5").click()
+browser.find_element_by_id("测试报告检查表_tableItem_6").click()
+browser.find_element_by_id("测试报告检查表_tableItem_7").click()
+browser.find_element_by_id("测试报告检查表_tableItem_8").click()
+browser.find_element_by_id("测试报告检查表_tableItem_9").click()
+browser.find_element_by_id("测试报告检查表_tableItem_10").click()
+browser.find_element_by_id("测试报告检查表_tableItem_11").click()
+browser.find_element_by_id("测试报告检查表_tableItem_12").click()
+browser.find_element_by_id("测试报告检查表_tableItem_13").click()
+browser.find_element_by_id("测试报告检查表_检查人").send_keys("czy")
+browser.find_element_by_id("测试报告检查表_日期").send_keys("2022-07-23\n")
+
+
+
+#%%
+#质检部 提交测试报告检查表
+browser.find_element_by_id("提交").click()
+sleep(2)
+
+
+
 
 # %%
 #关闭网页
