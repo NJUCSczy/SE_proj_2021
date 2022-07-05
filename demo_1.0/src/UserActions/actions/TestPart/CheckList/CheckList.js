@@ -289,7 +289,7 @@ const data = [
         <DatePicker />
       </Form.Item>
       
-      <Button type="primary" htmlType="submit">
+      <Button id="提交" type="primary" htmlType="submit">
           提交
         </Button>
         </Form>
