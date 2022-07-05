@@ -321,7 +321,7 @@ function TestReport(props){
             label="来样日期"
             name="来样日期"
           >
-            <DatePicker defaultValue={USE_JSON_SERVER? null: entrustData['软件测试报告']['测试类别']===null? null: moment((entrustData['软件测试报告']['来样日期']), 'YYYY/MM/DD')} format='YYYY/MM/DD' />
+            <DatePicker defaultValue={USE_JSON_SERVER? null: entrustData['软件测试报告']['来样日期']===null? null: moment((entrustData['软件测试报告']['来样日期']), 'YYYY/MM/DD')} format='YYYY/MM/DD' />
           </Form.Item>
 
           <Form.Item
@@ -365,7 +365,7 @@ function TestReport(props){
             label="样品清单"
             name="样品清单"
           >
-            <Input.TextArea/>
+            <Input.TextArea defaultValue={USE_JSON_SERVER?null:entrustData['软件测试报告']['样品清单']}/>
           </Form.Item>
 
           <Form.Item
@@ -463,9 +463,9 @@ function TestReport(props){
 
           <Form.Item
             label="E-mail"
-            name="E-mail"
+            name="Email"
           >
-            <Input defaultValue={USE_JSON_SERVER?null:entrustData['软件测试报告']['E-mail']} style={{maxWidth:200}}/>
+            <Input defaultValue={USE_JSON_SERVER?null:entrustData['软件测试报告']['Email']} style={{maxWidth:200}}/>
           </Form.Item>
 
           <Title level={4}>测试单位联系方式</Title>
@@ -509,10 +509,10 @@ function TestReport(props){
 
           <Form.Item
             label="测试单位E-mail"
-            name="测试单位E-mail"
+            name="测试单位Email"
             rules={[{ required: true, message: '请输入测试单位E-mail' }]}
           >
-            <Input defaultValue={USE_JSON_SERVER?null:entrustData['软件测试报告']['测试单位E-mail']} style={{maxWidth:200}}/>
+            <Input defaultValue={USE_JSON_SERVER?null:entrustData['软件测试报告']['测试单位Email']} style={{maxWidth:200}}/>
           </Form.Item>
 
 
