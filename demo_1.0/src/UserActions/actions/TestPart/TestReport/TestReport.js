@@ -70,30 +70,62 @@ function TestReport(props){
     const onFinishForm = (values) => {
       console.log('Success:', values);
       if(!USE_JSON_SERVER){
-        return SubmitForm(values)
+        fetch(REMOTE_SERVER + "/test/projects/" + _state['PageInfo']['id'], {
+          method: "GET",
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json;charset=utf-8',
+              'accessToken': _state['accessToken'],
+              'tokenType': _state['tokenType'],
+              'usrName': _state['userName'],
+              'usrID': _state['userID'],
+              'usrRole': _state['userRole'][0],
+              'Authorization': _state['accessToken']
+          },
+        })
+            .then(res => {
+                return res.json()
+            })
+            .then(data => {
+                console.log(data)
+                if (data != null) {
+                  if (data['state'] === 'TEST_DOC_TEST_REPORT') {
+                    SubmitForm(values, true);
+                  }
+                  else if (data['state'] === 'TEST_REPORT_DENIED' || data['state'] === 'TEST_DOC_WORK_DENIED') {
+                    SubmitForm(values, false);
+                  }
+                  else {
+                    alert('状态有误！')
+                  }
+                }
+            })
       }
-      var form = {}
-      fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
-        method: "GET",
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-        .then(res => {
-          return res.json()
+      else{
+        var form = {}
+        fetch("http://localhost:8000/forms/" + _state['PageInfo']['id'], {
+          method: "GET",
+          mode: 'cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
         })
-        .then(data => {
-          if (data != null) {
-            form = data
-            form['软件测试报告']=values
-            SubmitForm(form)
-          }
-          console.log(data)
-        })
+          .then(res => {
+            return res.json()
+          })
+          .then(data => {
+            if (data != null) {
+              form = data
+              form['软件测试报告']=values
+              SubmitForm(form)
+            }
+            console.log(data)
+          })
+      }
+     
     };
 
-    const SubmitForm = (_form) => {
+    const SubmitForm = (_form, firstTime = false) => {
       if(USE_JSON_SERVER){
       fetch("http://localhost:8000/forms/"+ _state['PageInfo']['id'], {
         method: "PUT",
@@ -118,8 +150,9 @@ function TestReport(props){
         })
       }
       else{
-      fetch(REMOTE_SERVER+"/test/"+_state['PageInfo']['id']+"/test-doc/test-report", {
-      method: "POST",
+      const URL = firstTime ? (REMOTE_SERVER+"/test/"+_state['PageInfo']['id']+"/test-doc/test-report") : (REMOTE_SERVER+"/test/"+_state['PageInfo']['id']+"/apply-report-evaluation")
+      fetch(URL, {
+      method: firstTime ? "POST" : "PUT",
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json;charset=utf-8',
