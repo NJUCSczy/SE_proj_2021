@@ -91,7 +91,7 @@ function ViewEntrust(props) {
     )
 
     const ChangePage = (pageName) => {
-        UpdateUserInfo({ PageInfo: { 'id': _state['PageInfo']['id'],'ContractID':_state['PageInfo']['ContractID'] } }, GotoPage(pageName, _state))
+        UpdateUserInfo({ PageInfo: { 'id': _state['PageInfo']['id'] } }, GotoPage(pageName, _state))
     }
 
     return (
@@ -181,35 +181,158 @@ function ViewEntrust(props) {
                 </Collapse>
                 {(() => {
                     switch (entrustData['stage']) {
-                        case 0: return (<Button id='填写软件功能列表' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('FunctionList')}>填写软件功能列表</Button>);
-                        case 1: return (<Button id='上传软件文档' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('UserUploadFiles')}>上传软件文档</Button>);
-                        case 2: return (<Button id='提交样品' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('UserUploadSample')}>提交样品</Button>);
-                        case 3: return (<Button id='测试部审核' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('TadultApplication')}>测试部审核</Button>);
+                        case 0: 
+                            switch (_state.userRole[0]){
+                                case 'ROLE_ADMIN':return  (<Button id='填写软件功能列表' type="primary" style={{ marginLeft: 20 }}
+                                                        onClick={() => ChangePage('FunctionList')}>填写软件功能列表</Button>);
+                                case 'ROLE_USER':return   (<Button id='填写软件功能列表' type="primary" style={{ marginLeft: 20 }}
+                                                        onClick={() => ChangePage('FunctionList')}>填写软件功能列表</Button>);
+                                case 'ROLE_MODMARKET':return ;
+                                case 'ROLE_MODTEST':return ;
+                                case 'ROLE_MODQLTY':return ;
+                            };
+
+                        case 1: 
+                            switch (_state.userRole[0]){
+                                case 'ROLE_ADMIN':return (<Button id='上传软件文档' type="primary" style={{ marginLeft: 20 }}
+                                                onClick={() => ChangePage('UserUploadFiles')}>上传软件文档</Button>);
+                                case 'ROLE_USER':return (<Button id='上传软件文档' type="primary" style={{ marginLeft: 20 }}
+                                                onClick={() => ChangePage('UserUploadFiles')}>上传软件文档</Button>);
+                                case 'ROLE_MODMARKET':return ;
+                                case 'ROLE_MODTEST':return ;
+                                case 'ROLE_MODQLTY':return ;
+                          };
+
+                        case 2: 
+                            switch (_state.userRole[0]){
+                                case 'ROLE_ADMIN':return (<Button id='提交样品' type="primary" style={{ marginLeft: 20 }}
+                                onClick={() => ChangePage('UserUploadSample')}>提交样品</Button>);
+                                case 'ROLE_USER':return (<Button id='提交样品' type="primary" style={{ marginLeft: 20 }}
+                                onClick={() => ChangePage('UserUploadSample')}>提交样品</Button>);
+                                case 'ROLE_MODMARKET':return ;
+                                case 'ROLE_MODTEST':return ;
+                                case 'ROLE_MODQLTY':return ;
+                            };
+
+                        case 3: 
+                            switch (_state.userRole[0]){
+                              case 'ROLE_ADMIN':return (<Button id='测试部审核' type="primary" style={{ marginLeft: 20 }}
+                                                    onClick={() => ChangePage('TadultApplication')}>测试部审核</Button>);
+                              case 'ROLE_USER':return ;
+                              case 'ROLE_MODMARKET':return ;
+                              case 'ROLE_MODTEST':return (<Button id='测试部审核' type="primary" style={{ marginLeft: 20 }}
+                                                onClick={() => ChangePage('TadultApplication')}>测试部审核</Button>);
+                              case 'ROLE_MODQLTY':return ;
+                            };
+
                         case 4: case 6: case 10: case 15: return null;
-                        case 5: case 7: return (<Button id='市场部审核' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('MktdptApplicationStep1')}>市场部审核</Button>);
-                        case 8: case 11: return (<Button id='发起议价' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('Quotation')}>发起议价</Button>);
-                        case 9: return (<Button id='查看议价' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('QuotationFeedback')}>查看议价</Button>);
-                        case 12: return (<Button id='完成申请表' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('MktdptApplicationStep2')}>完成申请表</Button>);
-                        case 13: case 16: return (<Button id='起草测试合同，拟定履行期限' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('TestAgreement')}>起草测试合同，拟定履行期限</Button>);
-                        case 14: return (<Button id='查看履行日期' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('CheckTA')}>查看履行日期</Button>);
-                        case 17: return (<Button id='市场部填写签章' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('TrusteeApplication')}>市场部填写签章</Button>);
-                        case 18: return (<Button id='客户填写签章' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('ClientApplication')}>客户填写签章</Button>);
-                        case 19: return (<Button id='市场部下载并完成合同和保密协议' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('OfflineSignContract')}>市场部下载并完成合同和保密协议</Button>);
-                        case 20: return (<Button id='客户填写保密协议' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('ConfidentialAgreementPartyA')}>客户填写保密协议</Button>);
+                        case 5: case 7: 
+                            switch (_state.userRole[0]){
+                                case 'ROLE_ADMIN':return (<Button id='市场部审核' type="primary" style={{ marginLeft: 20 }}
+                                onClick={() => ChangePage('MktdptApplicationStep1')}>市场部审核</Button>);
+                                case 'ROLE_USER':return ;
+                                case 'ROLE_MODMARKET':return (<Button id='市场部审核' type="primary" style={{ marginLeft: 20 }}
+                                onClick={() => ChangePage('MktdptApplicationStep1')}>市场部审核</Button>);
+                                case 'ROLE_MODTEST':return ;
+                                case 'ROLE_MODQLTY':return ;
+                            };
+
+                        case 8: case 11:
+                            switch (_state.userRole[0]){
+                                case 'ROLE_ADMIN':return (<Button id='发起议价' type="primary" style={{ marginLeft: 20 }}
+                                onClick={() => ChangePage('Quotation')}>发起议价</Button>);
+                                case 'ROLE_USER':return ;
+                                case 'ROLE_MODMARKET':return (<Button id='发起议价' type="primary" style={{ marginLeft: 20 }}
+                                onClick={() => ChangePage('Quotation')}>发起议价</Button>);
+                                case 'ROLE_MODTEST':return ;
+                                case 'ROLE_MODQLTY':return ;
+                            };
+
+                        case 9: 
+                            switch (_state.userRole[0]){
+                                case 'ROLE_ADMIN':return (<Button id='查看议价' type="primary" style={{ marginLeft: 20 }}
+                                                    onClick={() => ChangePage('QuotationFeedback')}>查看议价</Button>);
+                                case 'ROLE_USER':return (<Button id='查看议价' type="primary" style={{ marginLeft: 20 }}
+                                                    onClick={() => ChangePage('QuotationFeedback')}>查看议价</Button>);
+                                case 'ROLE_MODMARKET':return ;
+                                case 'ROLE_MODTEST':return ;
+                                case 'ROLE_MODQLTY':return ;
+                            };
+                        case 12: 
+                            switch (_state.userRole[0]){
+                                case 'ROLE_ADMIN':return (<Button id='完成申请表' type="primary" style={{ marginLeft: 20 }}
+                                                    onClick={() => ChangePage('MktdptApplicationStep2')}>完成申请表</Button>);
+                                case 'ROLE_USER':return ;
+                                case 'ROLE_MODMARKET':return (<Button id='完成申请表' type="primary" style={{ marginLeft: 20 }}
+                                                    onClick={() => ChangePage('MktdptApplicationStep2')}>完成申请表</Button>);
+                                case 'ROLE_MODTEST':return ;
+                                case 'ROLE_MODQLTY':return ;
+                            };
+                        case 13: case 16: 
+                            switch (_state.userRole[0]){
+                                case 'ROLE_ADMIN':return (<Button id='起草测试合同，拟定履行期限' type="primary" style={{ marginLeft: 20 }}
+                                                    onClick={() => ChangePage('TestAgreement')}>起草测试合同，拟定履行期限</Button>);
+                                case 'ROLE_USER':return ;
+                                case 'ROLE_MODMARKET':return (<Button id='起草测试合同，拟定履行期限' type="primary" style={{ marginLeft: 20 }}
+                                                    onClick={() => ChangePage('TestAgreement')}>起草测试合同，拟定履行期限</Button>);
+                                case 'ROLE_MODTEST':return ;
+                                case 'ROLE_MODQLTY':return ;
+                            };
+
+                        case 14: 
+                            switch (_state.userRole[0]){
+                                case 'ROLE_ADMIN':return (<Button id='查看履行日期' type="primary" style={{ marginLeft: 20 }}
+                                                    onClick={() => ChangePage('CheckTA')}>查看履行日期</Button>);
+                                case 'ROLE_USER': return (<Button id='查看履行日期' type="primary" style={{ marginLeft: 20 }}
+                                                    onClick={() => ChangePage('CheckTA')}>查看履行日期</Button>);
+                                case 'ROLE_MODMARKET':return ;
+                                case 'ROLE_MODTEST':return ;
+                                case 'ROLE_MODQLTY':return ;
+                            };
+                        
+                        case 17: 
+                            switch (_state.userRole[0]){
+                                case 'ROLE_ADMIN':return (<Button id='市场部填写签章' type="primary" style={{ marginLeft: 20 }}
+                                                    onClick={() => ChangePage('TrusteeApplication')}>市场部填写签章</Button>);
+                                case 'ROLE_USER':return ;
+                                case 'ROLE_MODMARKET':return (<Button id='市场部填写签章' type="primary" style={{ marginLeft: 20 }}
+                                                    onClick={() => ChangePage('TrusteeApplication')}>市场部填写签章</Button>);
+                                case 'ROLE_MODTEST':return ;
+                                case 'ROLE_MODQLTY':return ;
+                            };
+
+                        case 18: 
+                            switch (_state.userRole[0]){
+                                case 'ROLE_ADMIN':return (<Button id='客户填写签章' type="primary" style={{ marginLeft: 20 }}
+                                                    onClick={() => ChangePage('ClientApplication')}>客户填写签章</Button>);
+                                case 'ROLE_USER': return (<Button id='客户填写签章' type="primary" style={{ marginLeft: 20 }}
+                                                    onClick={() => ChangePage('ClientApplication')}>客户填写签章</Button>);
+                                case 'ROLE_MODMARKET':return ;
+                                case 'ROLE_MODTEST':return ;
+                                case 'ROLE_MODQLTY':return ;
+                            };
+
+                        case 19: 
+                            switch (_state.userRole[0]){
+                                case 'ROLE_ADMIN':return (<Button id='市场部下载并完成合同和保密协议' type="primary" style={{ marginLeft: 20 }}
+                                onClick={() => ChangePage('OfflineSignContract')}>市场部下载并完成合同和保密协议</Button>);
+                                case 'ROLE_USER':return ;
+                                case 'ROLE_MODMARKET':return (<Button id='市场部下载并完成合同和保密协议' type="primary" style={{ marginLeft: 20 }}
+                                onClick={() => ChangePage('OfflineSignContract')}>市场部下载并完成合同和保密协议</Button>);
+                                case 'ROLE_MODTEST':return ;
+                                case 'ROLE_MODQLTY':return ;
+                            };
+
+                        case 20: 
+                            switch (_state.userRole[0]){
+                                case 'ROLE_ADMIN':return (<Button id='客户填写保密协议' type="primary" style={{ marginLeft: 20 }}
+                                                    onClick={() => ChangePage('ConfidentialAgreementPartyA')}>客户填写保密协议</Button>);
+                                case 'ROLE_USER': return (<Button id='客户填写保密协议' type="primary" style={{ marginLeft: 20 }}
+                                                    onClick={() => ChangePage('ConfidentialAgreementPartyA')}>客户填写保密协议</Button>);
+                                case 'ROLE_MODMARKET':return ;
+                                case 'ROLE_MODTEST':return ;
+                                case 'ROLE_MODQLTY':return ;
+                            };
                     }
                 })()}
                 <h1 style={{ marginTop: 60 }}>文件列表</h1>
