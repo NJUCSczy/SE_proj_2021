@@ -321,7 +321,7 @@ function TestReport(props){
             label="来样日期"
             name="来样日期"
           >
-            <DatePicker defaultValue={USE_JSON_SERVER? null: entrustData['软件测试报告']['测试类别']===null? null: moment((entrustData['软件测试报告']['来样日期']), 'YYYY/MM/DD')} format='YYYY/MM/DD' />
+            <DatePicker defaultValue={USE_JSON_SERVER? null: entrustData['软件测试报告']['来样日期']===null? null: moment((entrustData['软件测试报告']['来样日期']), 'YYYY/MM/DD')} format='YYYY/MM/DD' />
           </Form.Item>
 
           <Form.Item
@@ -365,7 +365,7 @@ function TestReport(props){
             label="样品清单"
             name="样品清单"
           >
-            <Input.TextArea/>
+            <Input.TextArea defaultValue={USE_JSON_SERVER?null:entrustData['软件测试报告']['样品清单']}/>
           </Form.Item>
 
           <Form.Item
@@ -463,9 +463,9 @@ function TestReport(props){
 
           <Form.Item
             label="E-mail"
-            name="E-mail"
+            name="Email"
           >
-            <Input defaultValue={USE_JSON_SERVER?null:entrustData['软件测试报告']['E-mail']} style={{maxWidth:200}}/>
+            <Input defaultValue={USE_JSON_SERVER?null:entrustData['软件测试报告']['Email']} style={{maxWidth:200}}/>
           </Form.Item>
 
           <Title level={4}>测试单位联系方式</Title>
@@ -509,10 +509,10 @@ function TestReport(props){
 
           <Form.Item
             label="测试单位E-mail"
-            name="测试单位E-mail"
+            name="测试单位Email"
             rules={[{ required: true, message: '请输入测试单位E-mail' }]}
           >
-            <Input defaultValue={USE_JSON_SERVER?null:entrustData['软件测试报告']['测试单位E-mail']} style={{maxWidth:200}}/>
+            <Input defaultValue={USE_JSON_SERVER?null:entrustData['软件测试报告']['测试单位Email']} style={{maxWidth:200}}/>
           </Form.Item>
 
 
@@ -599,20 +599,20 @@ function TestReport(props){
                         <Col span={30} >
                           <Radio id="软件环境_软件类别_操作系统" value="操作系统" style={{ lineHeight: '32px' }} >操作系统</Radio>
                         </Col>
-                        <Col  span={30}>
+                        <Col span={30}>
                           <Radio id="软件环境_软件类别_软件"  value="软件" style={{ lineHeight: '32px' }}>软件</Radio>
                         </Col>
                         <Col span={30}>
-                          <Radio id="软件环境_软件类别_辅助工具" value="辅助工具" style={{ lineHeight: '32px' }}>辅助工具</Radio>
+                          <Radio id="软件环境_软件类别_辅助工具"  value="辅助工具" style={{ lineHeight: '32px' }}>辅助工具</Radio>
                         </Col>
                         <Col span={30}>
-                          <Radio id="软件环境_软件类别_开发工具" value="开发工具" style={{ lineHeight: '32px' }}>开发工具</Radio>
+                          <Radio id="软件环境_软件类别_开发工具"  value="开发工具" style={{ lineHeight: '32px' }}>开发工具</Radio>
                         </Col>
                         <Col span={30}>
-                          <Radio id="软件环境_软件类别_被测试样品" value="被测试样品" style={{ lineHeight: '32px' }}>被测试样品</Radio>
+                          <Radio id="软件环境_软件类别_被测试样品"  value="被测试样品" style={{ lineHeight: '32px' }}>被测试样品</Radio>
                         </Col>
                         <Col span={30}>
-                          <Radio id="软件环境_软件类别_其他" value="其他" style={{ lineHeight: '32px' }}>其他</Radio>
+                          <Radio id="软件环境_软件类别_其他"  value="其他" style={{ lineHeight: '32px' }}>其他</Radio>
                         </Col>
                       </Radio.Group>
                     </Form.Item>
@@ -682,7 +682,7 @@ function TestReport(props){
                   </Fragment>
                 ))}
                 <Form.Item>
-                  <Button type="dashed"
+                  <Button type="dashed" id="添加新测试依据分项"
                     style={{ width: 500, marginTop: 30 }}
                     onClick={() => add()} icon={<PlusOutlined />}  >
                     添加新测试依据分项
@@ -714,7 +714,7 @@ function TestReport(props){
                   </Fragment>
                 ))}
                 <Form.Item>
-                  <Button type="dashed" id="添加新参考资料分项"
+                  <Button type="dashed" id = "添加新参考资料分项"
                     style={{ width: 500, marginTop: 30 }}
                     onClick={() => add()} icon={<PlusOutlined />}  >
                     添加新参考资料分项
@@ -765,7 +765,7 @@ function TestReport(props){
                   </Fragment>
                 ))}
                 <Form.Item>
-                  <Button type="dashed"
+                  <Button type="dashed" id="添加新功能性测试"
                     style={{ width: 500, marginTop: 30 }}
                     onClick={() => add()} icon={<PlusOutlined />}  >
                     添加新功能性测试
@@ -815,7 +815,7 @@ function TestReport(props){
                   </Fragment>
                 ))}
                 <Form.Item>
-                  <Button type="dashed"
+                  <Button type="dashed" id="添加新效率测试"
                     style={{ width: 500, marginTop: 30 }}
                     onClick={() => add()} icon={<PlusOutlined />}  >
                     添加新效率测试
@@ -865,7 +865,7 @@ function TestReport(props){
                   </Fragment>
                 ))}
                 <Form.Item>
-                  <Button type="dashed"
+                  <Button type="dashed" id="添加新可移植性测试"
                     style={{ width: 500, marginTop: 30 }}
                     onClick={() => add()} icon={<PlusOutlined />}  >
                     添加新可移植性测试
@@ -1036,7 +1036,7 @@ function TestReport(props){
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-            <Button id="提交" type="primary" htmlType="submit">
+            <Button id="提交" type="primary" htmlType="submit"> 
               提交
             </Button>
           </Form.Item>

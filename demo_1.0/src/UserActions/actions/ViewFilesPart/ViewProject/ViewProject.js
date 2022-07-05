@@ -169,31 +169,139 @@ function ViewProject(props){
                 </Collapse>
                 {(() => {
                     switch (entrustData['stage']) {
-                        case 0: return (<Button id='填写软件测试方案' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('TestPlan')}>填写软件测试方案</Button>);
-                        case 1: return (<Button id='填写测试方案评审表' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('TestScenarioReviewForm')}>填写测试方案评审表</Button>);
-                        case 2: return (<Button id='重新填写软件测试方案' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('TestPlan')}>重新填写软件测试方案</Button>);
-                        case 3: return (<Button id='填写测试用例' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('TestCase')}>填写测试用例</Button>);
-                        case 4: return (<Button id='填写软件测试记录' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('TestRecord')}>填写软件测试记录</Button>);
-                        case 5: return (<Button id='填写软件测试问题清单' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('QuestionList')}>填写软件测试问题清单</Button>);
-                        case 6: return (<Button id='填写软件文档评审表' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('SoftwareDocumentReviewForm')}>填写软件文档评审表</Button>);
-                        case 7: return (<Button id='填写软件测试报告' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('TestReport')}>填写软件测试报告</Button>);
-                        case 8: return (<Button id='填写测试报告检查表' type="primary" style={{ marginLeft: 20 }}
+                        case 0: 
+                        switch (_state.userRole[0]){
+                            case 'ROLE_ADMIN':return (<Button id='填写软件测试方案' type="primary" style={{ marginLeft: 20 }}
+                                                onClick={() => ChangePage('TestPlan')}>填写软件测试方案</Button>);
+                            case 'ROLE_USER':return ;
+                            case 'ROLE_MODMARKET':return ;
+                            case 'ROLE_MODTEST':return (<Button id='填写软件测试方案' type="primary" style={{ marginLeft: 20 }}
+                                                onClick={() => ChangePage('TestPlan')}>填写软件测试方案</Button>);
+                            case 'ROLE_MODQLTY':return ;
+                        };
+
+                        case 1: 
+                        switch (_state.userRole[0]){
+                            case 'ROLE_ADMIN':return (<Button id='填写测试方案评审表' type="primary" style={{ marginLeft: 20 }}
+                                                onClick={() => ChangePage('TestScenarioReviewForm')}>填写测试方案评审表</Button>);
+                            case 'ROLE_USER':return ;
+                            case 'ROLE_MODMARKET':return ;
+                            case 'ROLE_MODTEST':return ;
+                            case 'ROLE_MODQLTY':return (<Button id='填写测试方案评审表' type="primary" style={{ marginLeft: 20 }}
+                                                onClick={() => ChangePage('TestScenarioReviewForm')}>填写测试方案评审表</Button>);
+                        };
+
+                        case 2: 
+                        switch (_state.userRole[0]){
+                            case 'ROLE_ADMIN':return (<Button id='重新填写软件测试方案' type="primary" style={{ marginLeft: 20 }}
+                                                onClick={() => ChangePage('TestPlan')}>重新填写软件测试方案</Button>);
+                            case 'ROLE_USER':return ;
+                            case 'ROLE_MODMARKET':return ;
+                            case 'ROLE_MODTEST':return (<Button id='重新填写软件测试方案' type="primary" style={{ marginLeft: 20 }}
+                                                onClick={() => ChangePage('TestPlan')}>重新填写软件测试方案</Button>);
+                            case 'ROLE_MODQLTY':return ;
+                        };
+
+                        case 3: 
+                        switch (_state.userRole[0]){
+                            case 'ROLE_ADMIN':return (<Button id='填写测试用例' type="primary" style={{ marginLeft: 20 }}
+                                                onClick={() => ChangePage('TestCase')}>填写测试用例</Button>);
+                            case 'ROLE_USER':return ;
+                            case 'ROLE_MODMARKET':return ;
+                            case 'ROLE_MODTEST':return (<Button id='填写测试用例' type="primary" style={{ marginLeft: 20 }}
+                                                onClick={() => ChangePage('TestCase')}>填写测试用例</Button>);
+                            case 'ROLE_MODQLTY':return ;
+                        };
+
+                        case 4: 
+                        switch (_state.userRole[0]){
+                            case 'ROLE_ADMIN':return (<Button id='填写软件测试记录' type="primary" style={{ marginLeft: 20 }}
+                                                onClick={() => ChangePage('TestRecord')}>填写软件测试记录</Button>);
+                            case 'ROLE_USER':return ;
+                            case 'ROLE_MODMARKET':return ;
+                            case 'ROLE_MODTEST':return (<Button id='填写软件测试记录' type="primary" style={{ marginLeft: 20 }}
+                                                onClick={() => ChangePage('TestRecord')}>填写软件测试记录</Button>);
+                            case 'ROLE_MODQLTY':return ;
+                        };
+
+                        case 5: 
+                        switch (_state.userRole[0]){
+                            case 'ROLE_ADMIN':return (<Button id='填写软件测试问题清单' type="primary" style={{ marginLeft: 20 }}
+                                                onClick={() => ChangePage('QuestionList')}>填写软件测试问题清单</Button>);
+                            case 'ROLE_USER':return ;
+                            case 'ROLE_MODMARKET':return ;
+                            case 'ROLE_MODTEST':return (<Button id='填写软件测试问题清单' type="primary" style={{ marginLeft: 20 }}
+                                                onClick={() => ChangePage('QuestionList')}>填写软件测试问题清单</Button>);
+                            case 'ROLE_MODQLTY':return ;
+                        };
+
+                        case 6: 
+                        switch (_state.userRole[0]){
+                            case 'ROLE_ADMIN':return (<Button id='填写软件文档评审表' type="primary" style={{ marginLeft: 20 }}
+                                                onClick={() => ChangePage('SoftwareDocumentReviewForm')}>填写软件文档评审表</Button>);
+                            case 'ROLE_USER':return ;
+                            case 'ROLE_MODMARKET':return ;
+                            case 'ROLE_MODTEST':return (<Button id='填写软件文档评审表' type="primary" style={{ marginLeft: 20 }}
+                                                onClick={() => ChangePage('SoftwareDocumentReviewForm')}>填写软件文档评审表</Button>);
+                            case 'ROLE_MODQLTY':return ;
+                        };
+
+                        case 7: 
+                        switch (_state.userRole[0]){
+                            case 'ROLE_ADMIN':return (<Button id='填写软件测试报告' type="primary" style={{ marginLeft: 20 }}
+                                                onClick={() => ChangePage('TestReport')}>填写软件测试报告</Button>);
+                            case 'ROLE_USER':return ;
+                            case 'ROLE_MODMARKET':return ;
+                            case 'ROLE_MODTEST':return (<Button id='填写软件测试报告' type="primary" style={{ marginLeft: 20 }}
+                                                onClick={() => ChangePage('TestReport')}>填写软件测试报告</Button>);
+                            case 'ROLE_MODQLTY':return ;
+                        };
+
+                        case 8: 
+                        switch (_state.userRole[0]){
+                            case 'ROLE_ADMIN':return (<Button id='填写测试报告检查表' type="primary" style={{ marginLeft: 20 }}
                             onClick={() => ChangePage('CheckList')}>填写测试报告检查表</Button>);
-                        case 9: return (<Button id='重新填写软件测试报告' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('TestReport')}>重新填写软件测试报告</Button>);
-                        case 10: return (<Button id='填写软件项目委托测试工作检查表' type="primary" style={{ marginLeft: 20 }}
-                            onClick={() => ChangePage('TestCheckList')}>填写软件项目委托测试工作检查表</Button>);
+                            case 'ROLE_USER':return ;
+                            case 'ROLE_MODMARKET':return ;
+                            case 'ROLE_MODTEST':return ;
+                            case 'ROLE_MODQLTY':return (<Button id='填写测试报告检查表' type="primary" style={{ marginLeft: 20 }}
+                            onClick={() => ChangePage('CheckList')}>填写测试报告检查表</Button>);
+                        };
+
+                        case 9: 
+                        switch (_state.userRole[0]){
+                            case 'ROLE_ADMIN':return (<Button id='重新填写软件测试报告' type="primary" style={{ marginLeft: 20 }}
+                                                onClick={() => ChangePage('TestReport')}>重新填写软件测试报告</Button>);
+                            case 'ROLE_USER':return ;
+                            case 'ROLE_MODMARKET':return ;
+                            case 'ROLE_MODTEST':return (<Button id='重新填写软件测试报告' type="primary" style={{ marginLeft: 20 }}
+                                                onClick={() => ChangePage('TestReport')}>重新填写软件测试报告</Button>);
+                            case 'ROLE_MODQLTY':return ;
+                        };
+
+                        case 10: 
+                        switch (_state.userRole[0]){
+                            case 'ROLE_ADMIN':return (<Button id='填写软件项目委托测试工作检查表' type="primary" style={{ marginLeft: 20 }}
+                                                onClick={() => ChangePage('TestCheckList')}>填写软件项目委托测试工作检查表</Button>);
+                            case 'ROLE_USER':return ;
+                            case 'ROLE_MODMARKET':return (<Button id='填写软件项目委托测试工作检查表' type="primary" style={{ marginLeft: 20 }}
+                                                onClick={() => ChangePage('TestCheckList')}>填写软件项目委托测试工作检查表</Button>);
+                            case 'ROLE_MODTEST':return ;
+                            case 'ROLE_MODQLTY':return ;
+                        };
+
                         case 11:return null;
-                        case 12: return (<Button id='重新填写软件测试报告' type="primary" style={{ marginLeft: 20 }}
+                        case 12: 
+                        switch (_state.userRole[0]){
+                            case 'ROLE_ADMIN':return (<Button id='重新填写软件测试报告' type="primary" style={{ marginLeft: 20 }}
                             onClick={() => ChangePage('TestReport')}>重新填写软件测试报告</Button>);
+                            case 'ROLE_USER':return ;
+                            case 'ROLE_MODMARKET':return ;
+                            case 'ROLE_MODTEST':return (<Button id='重新填写软件测试报告' type="primary" style={{ marginLeft: 20 }}
+                            onClick={() => ChangePage('TestReport')}>重新填写软件测试报告</Button>);
+                            case 'ROLE_MODQLTY':return ;
+                        };
+                        
                     }
                 })()}
 
