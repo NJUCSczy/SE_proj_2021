@@ -4,6 +4,7 @@ from time import sleep
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 import os
+import datetime
 options=webdriver.ChromeOptions()
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 browser=webdriver.Chrome(options=options)
@@ -380,7 +381,9 @@ sleep(0.5)
 
 #%%
 #市场部填写测试项目编号
-browser.find_element_by_id("测试项目编号").send_keys("191220144")
+curr_time = datetime.datetime.now()
+pronum = datetime.datetime.strftime(curr_time,'%Y%m%d%H%M%S')
+browser.find_element_by_id("测试项目编号").send_keys(pronum)
 sleep(0.5)
 
 #%%
