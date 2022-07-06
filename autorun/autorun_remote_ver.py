@@ -4,6 +4,7 @@ from time import sleep
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 import os
+import random
 options=webdriver.ChromeOptions()
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 browser=webdriver.Chrome(options=options)
@@ -380,7 +381,8 @@ sleep(0.5)
 
 #%%
 #市场部填写测试项目编号
-browser.find_element_by_id("测试项目编号").send_keys("191220144")
+projID=random.randint(10000,99999)
+browser.find_element_by_id("测试项目编号").send_keys(str(projID))
 sleep(0.5)
 
 #%%
@@ -916,9 +918,9 @@ browser.find_element_by_id("basic_批准人").send_keys("gbl")
 browser.find_element_by_id("basic_批准人日期").click()
 sleep(0.5)
 browser.find_element_by_id("basic_批准人日期").send_keys("2022/07/24\n")
-browser.find_element_by_id("basic_E-mail").send_keys("1250214413@qq.com")
+#browser.find_element_by_id("basic_E-mail").send_keys("1250214413@qq.com")
 browser.find_element_by_id("basic_测试单位网址").send_keys("www.ceshidanwei.com")
-browser.find_element_by_id("basic_测试单位E-mail").send_keys("1921680025@qq.com")
+browser.find_element_by_id("basic_测试单位Email").send_keys("1921680025@qq.com")
 browser.find_element_by_id("添加新硬件环境").click()
 browser.find_element_by_id("basic_硬件环境_0_硬件类别").send_keys("普通计算机")
 browser.find_element_by_id("basic_硬件环境_0_硬件名称").send_keys("机器")
