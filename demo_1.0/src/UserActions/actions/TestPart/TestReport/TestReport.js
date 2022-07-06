@@ -249,7 +249,9 @@ function TestReport(props){
           <Form.Item
             label="报告编号"
             name="报告编号"
-            rules={[{ required: true, message: '请输入报告编号' }]}
+            rules={USE_JSON_SERVER? [{ required: true, message: '请输入报告编号' }]:
+            entrustData['软件测试报告']['报告编号']===null?  
+            [{ required: true, message: '请输入报告编号' }] : null}
           >
             <Input defaultValue={USE_JSON_SERVER?null:entrustData['软件测试报告']['报告编号']} style={{maxWidth:200}}/>
           </Form.Item>
@@ -279,7 +281,8 @@ function TestReport(props){
           <Form.Item
             label="测试类别"
             name="测试类别"
-            rules={[{ required: true, message: '请输入测试类别' }]}
+            rules={USE_JSON_SERVER? [{ required: true, message: '请输入测试类别' }]:
+            entrustData['软件测试报告']['测试类别']===null?  [{ required: true, message: '请输入测试类别' }]: null}
           >
             <Input defaultValue={USE_JSON_SERVER?null:entrustData['软件测试报告']['测试类别']} style={{maxWidth:200}}/>
           </Form.Item>
@@ -287,7 +290,8 @@ function TestReport(props){
           <Form.Item
             label="报告日期"
             name="报告日期"
-            rules={[{ required: true, message: '请输入报告日期' }]}
+            rules={USE_JSON_SERVER? [{ required: true, message: '请输入报告日期' }]:
+            entrustData['软件测试报告']['报告日期']===null?  [{ required: true, message: '请输入报告日期' }]: null}
           >
             <DatePicker defaultValue={USE_JSON_SERVER? null: entrustData['软件测试报告']['报告日期']===null? null: moment((entrustData['软件测试报告']['报告日期']), 'YYYY/MM/DD')} format='YYYY/MM/DD' />
           </Form.Item>
@@ -345,7 +349,8 @@ function TestReport(props){
           <Form.Item
             label="版本/型号"
             name="版本/型号"
-            rules={[{ required: true, message: '请输入版本/型号' }]}
+            rules={USE_JSON_SERVER? [{ required: true, message: '请输入版本/型号' }]:
+            entrustData['软件测试报告']['版本/型号']===null? [{ required: true, message: '请输入版本/型号' }]: null}
           >
             <Input defaultValue={USE_JSON_SERVER?null:entrustData['软件测试报告']['版本/型号']} style={{maxWidth:200}}/>
           </Form.Item>
@@ -367,17 +372,19 @@ function TestReport(props){
           <Form.Item 
             name="测试开始时间" 
             label="测试开始时间" 
-            rules={[{ required: true, message: '请输入测试开始时间' }]}
+            rules={USE_JSON_SERVER? [{ required: true, message: '请输入测试开始时间' }]:
+            entrustData['软件测试报告']['测试开始时间']===null? [{ required: true, message: '请输入测试开始时间' }]: null}
           >  
-            <DatePicker defaultValue={USE_JSON_SERVER? null: entrustData['软件测试报告']['测试类别']===null? null: moment((entrustData['软件测试报告']['测试开始时间']), 'YYYY/MM/DD')} format='YYYY/MM/DD' />
+            <DatePicker defaultValue={USE_JSON_SERVER? null: entrustData['软件测试报告']['测试开始时间']===null? null: moment((entrustData['软件测试报告']['测试开始时间']), 'YYYY/MM/DD')} format='YYYY/MM/DD' />
           </Form.Item>
 
           <Form.Item 
             name="测试结束时间" 
-            label="测试结束时间" 
-            rules={[{ required: true, message: '请输入测试结束时间' }]}
+            label="测试结束时间"
+            rules={USE_JSON_SERVER? [{ required: true, message: '请输入测试结束时间' }]:
+            entrustData['软件测试报告']['测试结束时间']===null? [{ required: true, message: '请输入测试结束时间' }]: null} 
           >  
-            <DatePicker defaultValue={USE_JSON_SERVER? null: entrustData['软件测试报告']['测试类别']===null? null: moment((entrustData['软件测试报告']['测试结束时间']), 'YYYY/MM/DD')} format='YYYY/MM/DD' />
+            <DatePicker defaultValue={USE_JSON_SERVER? null: entrustData['软件测试报告']['测试结束时间']===null? null: moment((entrustData['软件测试报告']['测试结束时间']), 'YYYY/MM/DD')} format='YYYY/MM/DD' />
           </Form.Item>
 
           <Form.Item
@@ -404,7 +411,8 @@ function TestReport(props){
           <Form.Item
             label="测试结论"
             name="测试结论"
-            rules={[{ required: true, message: '请输入测试结论' }]}
+            rules={USE_JSON_SERVER? [{ required: true, message: '请输入测试结论' }]:
+            entrustData['软件测试报告']['测试结论']===null?  [{ required: true, message: '请输入测试结论' }]: null} 
           >
             <Input.TextArea defaultValue={USE_JSON_SERVER?null:entrustData['软件测试报告']['测试结论']}/>
           </Form.Item>
@@ -412,7 +420,8 @@ function TestReport(props){
           <Form.Item
             label="主测人"
             name="主测人"
-            rules={[{ required: true, message: '请输入主测人' }]}
+            rules={USE_JSON_SERVER? [{ required: true, message: '请输入主测人' }]:
+            entrustData['软件测试报告']['主测人']===null? [{ required: true, message: '请输入主测人' }] : null} 
           >
             <Input defaultValue={USE_JSON_SERVER?null:entrustData['软件测试报告']['主测人']} style={{maxWidth:200}}/>      
           </Form.Item>
@@ -420,15 +429,17 @@ function TestReport(props){
           <Form.Item
             label="主测人日期"
             name="主测人日期"
-            rules={[{ required: true, message: '请输入主测人日期' }]}
+            rules={USE_JSON_SERVER? [{ required: true, message: '请输入主测人日期' }]:
+            entrustData['软件测试报告']['主测人日期']===null? [{ required: true, message: '请输入主测人日期' }] : null} 
           >
-            <DatePicker defaultValue={USE_JSON_SERVER? null: entrustData['软件测试报告']['测试类别']===null? null: moment((entrustData['软件测试报告']['主测人日期']), 'YYYY/MM/DD')} format='YYYY/MM/DD' />
+            <DatePicker defaultValue={USE_JSON_SERVER? null: entrustData['软件测试报告']['主测人日期']===null? null: moment((entrustData['软件测试报告']['主测人日期']), 'YYYY/MM/DD')} format='YYYY/MM/DD' />
           </Form.Item>
 
           <Form.Item
             label="审核人"
             name="审核人"
-            rules={[{ required: true, message: '请输入审核人' }]}
+            rules={USE_JSON_SERVER? [{ required: true, message: '请输入审核人' }]:
+            entrustData['软件测试报告']['审核人']===null? [{ required: true, message: '请输入审核人' }] : null} 
           >
             <Input defaultValue={USE_JSON_SERVER?null:entrustData['软件测试报告']['审核人']} style={{maxWidth:200}}/>
           </Form.Item>
@@ -436,15 +447,17 @@ function TestReport(props){
           <Form.Item
             label="审核人日期"
             name="审核人日期"
-            rules={[{ required: true, message: '请输入审核人日期' }]}
+            rules={USE_JSON_SERVER? [{ required: true, message: '请输入审核人日期' }]:
+            entrustData['软件测试报告']['审核人日期']===null? [{ required: true, message: '请输入审核人日期' }] : null} 
           >
-            <DatePicker defaultValue={USE_JSON_SERVER? null: entrustData['软件测试报告']['测试类别']===null? null: moment((entrustData['软件测试报告']['审核人日期']), 'YYYY/MM/DD')} format='YYYY/MM/DD' />
+            <DatePicker defaultValue={USE_JSON_SERVER? null: entrustData['软件测试报告']['审核人日期']===null? null: moment((entrustData['软件测试报告']['审核人日期']), 'YYYY/MM/DD')} format='YYYY/MM/DD' />
           </Form.Item>
 
           <Form.Item
             label="批准人"
             name="批准人"
-            rules={[{ required: true, message: '请输入批准人' }]}
+            rules={USE_JSON_SERVER? [{ required: true, message: '请输入批准人' }]:
+            entrustData['软件测试报告']['批准人']===null? [{ required: true, message: '请输入批准人' }] : null} 
           >
             <Input defaultValue={USE_JSON_SERVER?null:entrustData['软件测试报告']['批准人']} style={{maxWidth:200}}/>
           </Form.Item>
@@ -452,9 +465,10 @@ function TestReport(props){
           <Form.Item
             label="批准人日期"
             name="批准人日期"
-            rules={[{ required: true, message: '请输入批准人日期' }]}
+            rules={USE_JSON_SERVER? [{ required: true, message: '请输入批准人日期' }]:
+            entrustData['软件测试报告']['批准人日期']===null? [{ required: true, message: '请输入批准人日期' }] : null} 
           >
-            <DatePicker defaultValue={USE_JSON_SERVER? null: entrustData['软件测试报告']['测试类别']===null? null: moment((entrustData['软件测试报告']['批准人日期']), 'YYYY/MM/DD')} format='YYYY/MM/DD' />
+            <DatePicker defaultValue={USE_JSON_SERVER? null: entrustData['软件测试报告']['批准人日期']===null? null: moment((entrustData['软件测试报告']['批准人日期']), 'YYYY/MM/DD')} format='YYYY/MM/DD' />
           </Form.Item>
 
           <Title level={4}>委托单位联系方式</Title>
@@ -535,7 +549,8 @@ function TestReport(props){
           <Form.Item
             label="测试单位网址"
             name="测试单位网址"
-            rules={[{ required: true, message: '请输入测试单位网址' }]}
+            rules={USE_JSON_SERVER? [{ required: true, message: '请输入测试单位网址' }]:
+            entrustData['软件测试报告']['测试单位网址']===null? [{ required: true, message: '请输入测试单位网址' }] : null} 
           >
             <Input defaultValue={USE_JSON_SERVER?null:entrustData['软件测试报告']['测试单位网址']} style={{maxWidth:200}}/>
           </Form.Item>
@@ -543,7 +558,8 @@ function TestReport(props){
           <Form.Item
             label="测试单位E-mail"
             name="测试单位Email"
-            rules={[{ required: true, message: '请输入测试单位E-mail' }]}
+            rules={USE_JSON_SERVER? [{ required: true, message: '请输入测试单位E-mail' }]:
+            entrustData['软件测试报告']['测试单位Email']===null? [{ required: true, message: '请输入测试单位E-mail' }] : null} 
           >
             <Input defaultValue={USE_JSON_SERVER?null:entrustData['软件测试报告']['测试单位Email']} style={{maxWidth:200}}/>
           </Form.Item>
@@ -1063,7 +1079,8 @@ function TestReport(props){
           <Form.Item
             label="测试执行记录"
             name="测试执行记录"
-            rules={[{ required: true, message: '请输入测试执行记录' }]}
+            rules={USE_JSON_SERVER? [{ required: true, message: '请输入测试执行记录' }]:
+            entrustData['软件测试报告']['测试执行记录']===null? [{ required: true, message: '请输入测试执行记录' }] : null} 
           >
             <Input.TextArea defaultValue={USE_JSON_SERVER?null:entrustData['软件测试报告']['测试执行记录']}/>
           </Form.Item>

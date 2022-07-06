@@ -4,11 +4,40 @@ from time import sleep
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 import os
+import logging
+import datetime
+INFO = 1
+DEBUG = 2
+WARNING = 3
+ERROR = 4
+CRITICAL = 5
+curr_time = datetime.datetime.now()
+time_str = datetime.datetime.strftime(curr_time,'%Y%m%d-%H%M%S')
+logname = 'log/test' + time_str + '.log'
+logging.basicConfig(filename=logname,level=logging.INFO)
 options=webdriver.ChromeOptions()
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 browser=webdriver.Chrome(options=options)
 browser.maximize_window()
 browser.get('http://localhost:3000')
+flag = (browser == None)
+if flag:
+    logging.critical('404 NOT FOUND')
+else:
+    logging.info('Website FOUND.')
+def log(flag,name,mode,alert):
+    _passname = name + ' PASS'
+    _alert = name + ' ' + alert
+    if flag:
+        logging.info(_passname)
+    elif mode == DEBUG:# 事实上这里是不会显示的，原因在于selenium的debug信息过多设置的消息等级为info
+        logging.debug(_alert)
+    elif mode == WARNING:
+        logging.warning(_alert)
+    elif mode == ERROR:
+        logging.error(_alert)
+    elif mode == CRITICAL:
+        logging.critical(_alert)
 def Login_as_User():
     browser.find_element_by_id("home_headers_mainpage").click()
     browser.find_element_by_id("home_headers_user").click()
@@ -91,7 +120,7 @@ browser.find_element_by_id("软件名称").send_keys("测试回退")
 browser.find_element_by_id("版本号").send_keys("1.0.0")
 browser.find_element_by_id("委托单位(中文)").send_keys("南京大学软件测试中心")
 browser.find_element_by_id("委托单位(英文)").send_keys("NJU SE test center")
-browser.find_element_by_id("开发单位").send_keys("SEE GroupA")
+browser.find_element_by_id("开发单位").send_keys("SE GroupA")
 browser.find_element_by_id("单位性质_下拉栏").click()
 sleep(0.1)
 browser.find_element_by_id("单位性质_科研院校").click()
@@ -127,7 +156,6 @@ browser.find_element_by_id("运行环境_服务器端_硬件_内存要求").send
 browser.find_element_by_id("运行环境_服务器端_硬件_硬盘要求").send_keys("256")
 browser.find_element_by_id("运行环境_服务器端_硬件_其他要求").send_keys("通电就行")
 browser.find_element_by_id("运行环境_服务器端_软件_操作系统").send_keys("Windows")
-browser.find_element_by_id("运行环境_服务器端_软件_版本").send_keys("10")
 browser.find_element_by_id("运行环境_服务器端_软件_编程语言").send_keys("JSX")
 browser.find_element_by_id("运行环境_服务器端_软件_架构_下拉栏").click()
 sleep(0.1)
@@ -150,6 +178,70 @@ browser.find_element_by_id("委托单位信息_联系人").send_keys("陈致远"
 browser.find_element_by_id("委托单位信息_手机").send_keys("18913936384")
 browser.find_element_by_id("委托单位信息_email").send_keys("3067887178@qq.com")
 browser.find_element_by_id("委托单位信息_网址").send_keys("https://github.com/NJUCSczy/SE_proj_2021")
+
+flag = browser.find_element_by_id("软件名称").get_attribute('value') == "测试回退"
+log(flag,'Software Name',ERROR,'not right')
+flag = browser.find_element_by_id("版本号").get_attribute('value') == "1.0.0"
+log(flag,'Build Number',ERROR,'not right')
+flag = browser.find_element_by_id("委托单位(中文)").get_attribute('value') == "南京大学软件测试中心"
+log(flag,'Trustee(CN)',ERROR,'not right')
+flag = browser.find_element_by_id("委托单位(英文)").get_attribute('value') == "NJU SE test center"
+log(flag,'Trustee(EN)',ERROR,'not right')
+flag = browser.find_element_by_id("开发单位").get_attribute('value') == "SE GroupA"
+log(flag,'Development Unit',ERROR,'not right')
+flag = browser.find_element_by_id("软件用户对象描述").get_attribute('value') == "一般通过网民"
+log(flag,'User Object',ERROR,'not right')
+flag = browser.find_element_by_id("主要功能及用途简介").get_attribute('value') == "没什么用，这里水个300字"
+log(flag,'Main Function',ERROR,'not right')
+flag = browser.find_element_by_id("软件规模_功能数").get_attribute('value') == "114514"
+log(flag,'Function Number',ERROR,'not right')
+flag = browser.find_element_by_id("软件规模_代码行数").get_attribute('value') == "1919810"
+log(flag,'Code Number',ERROR,'not right')
+flag = browser.find_element_by_id("运行环境_客户端_操作系统_Windows版本").get_attribute('value') == "11"
+log(flag,'Edition of Runtime Environment Client Windows System',ERROR,'not right')
+flag = browser.find_element_by_id("运行环境_客户端_操作系统_Linux版本").get_attribute('value') == "8"
+log(flag,'Edition of Runtime Environment Client Linux System',ERROR,'not right')
+flag = browser.find_element_by_id("运行环境_客户端_内存要求").get_attribute('value') == "4096"
+log(flag,'Memory Requirments of Runtime Environment Client ',ERROR,'not right')
+flag = browser.find_element_by_id("运行环境_客户端_其他要求").get_attribute('value') == "没什么其他要求了"
+log(flag,'Other Requirments of Runtime Environment Client ',ERROR,'not right')
+flag = browser.find_element_by_id("运行环境_服务器端_硬件_内存要求").get_attribute('value') == "1024"
+log(flag,'Memory Requirments of Runtime Environment Server',ERROR,'not right')
+flag = browser.find_element_by_id("运行环境_服务器端_硬件_硬盘要求").get_attribute('value') == "256"
+log(flag,'HDD Requirments of Runtime Environment Server',ERROR,'not right')
+flag = browser.find_element_by_id("运行环境_服务器端_硬件_其他要求").get_attribute('value') == "通电就行"
+log(flag,'Other Requirments of Runtime Environment Server',ERROR,'not right')
+flag = browser.find_element_by_id("运行环境_服务器端_软件_操作系统").get_attribute('value') == "Windows"
+log(flag,'Runtime Environment Server OS System',ERROR,'not right')
+flag = browser.find_element_by_id("运行环境_服务器端_软件_编程语言").get_attribute('value') == "JSX"
+log(flag,'Programming Language of Runtime Environment Server',ERROR,'not right')
+flag = browser.find_element_by_id("运行环境_服务器端_软件_数据库").get_attribute('value') == "SQL"
+log(flag,'Runtime Environment Server Database',ERROR,'not right')
+flag = browser.find_element_by_id("运行环境_服务器端_软件_中间件").get_attribute('value') == "洒家不知道什么是中间件"
+log(flag,'Runtime Environment Server Middlepart',ERROR,'not right')
+flag = browser.find_element_by_id("运行环境_服务器端_软件_其他支撑软件").get_attribute('value') == "不需要"
+log(flag,'Runtime Environment Server Other Supporting Software',ERROR,'not right')
+flag = browser.find_element_by_id("运行环境_服务器端_软件_版本").get_attribute('value') == "10"
+log(flag,'Edition of Runtime Environment Server',ERROR,'not right')
+flag = browser.find_element_by_id("运行环境_网络环境").get_attribute('value') == "5G"
+log(flag,'Runtime Network Environment',ERROR,'not right')
+flag = browser.find_element_by_id("委托单位信息_电话").get_attribute('value') == "10086"
+log(flag,'Trustee Telephone',ERROR,'not right')
+flag = browser.find_element_by_id("委托单位信息_传真").get_attribute('value') == "没有传真"
+log(flag,'Trustee Fax',ERROR,'not right')
+flag = browser.find_element_by_id("委托单位信息_地址").get_attribute('value') == "江苏省南京市栖霞区仙林大道163号"
+log(flag,'Trustee Address',ERROR,'not right')
+flag = browser.find_element_by_id("委托单位信息_邮编").get_attribute('value') == "210023"
+log(flag,'Trustee Post Code',ERROR,'not right')
+flag = browser.find_element_by_id("委托单位信息_联系人").get_attribute('value') == "陈致远"
+log(flag,'Trustee Liaison Man',ERROR,'not right')
+flag = browser.find_element_by_id("委托单位信息_手机").get_attribute('value') == "18913936384"
+log(flag,'Trustee Liaison Man Phone Number',ERROR,'not right')
+flag = browser.find_element_by_id("委托单位信息_email").get_attribute('value') == "3067887178@qq.com"
+log(flag,'Trustee Email',ERROR,'not right')
+flag = browser.find_element_by_id("委托单位信息_网址").get_attribute('value') == "https://github.com/NJUCSczy/SE_proj_2021"
+log(flag,'Trustee Web Address',ERROR,'not right')
+
 
 #%%
 #提交用户申请表
@@ -174,7 +266,10 @@ browser.find_element_by_id("软件功能").send_keys('啥都能干')
 browser.find_element_by_id("添加新项目").click()
 browser.find_element_by_id("软件子功能项目").send_keys('项目1')
 browser.find_element_by_id("功能说明").send_keys('也是啥都能干')
-
+flag = browser.find_element_by_id("软件名称").get_attribute('value') == '测试软件(自动)'
+log(flag,'Software Name',ERROR,'not right')
+flag = browser.find_element_by_id("版本号").get_attribute('value') == '1.0.0'
+log(flag,'Software Edition',ERROR,'not right')
 #%%
 #提交软件功能表
 browser.find_element_by_id("提交按钮").click()
@@ -264,7 +359,9 @@ sleep(0.5)
 browser.find_element_by_id("样品检查_来样日期").send_keys('2022-03-29\n')
 browser.find_element_by_id("确认意见_可以测试").click()
 sleep(0.5)
-
+flag = browser.find_element_by_id("材料检查_其他").get_attribute('value') == '无'
+log(flag,'Material Check',ERROR,'not right')
+sleep(0.5)
 #%%
 #测试部提交审核
 browser.find_element_by_id("提交").click()
@@ -295,6 +392,8 @@ browser.find_element_by_id("市场部受理意见_受理").click()
 sleep(0.5)
 browser.find_element_by_id("市场部备注").send_keys('审核没问题')
 sleep(0.5)
+flag = browser.find_element_by_id("市场部备注").get_attribute('value') == '审核没问题'
+log(flag,'Market Department Check',ERROR,'not right')
 
 #%%
 #市场部提交审核
@@ -322,7 +421,24 @@ browser.find_element_by_id("行合计").send_keys("123")
 browser.find_element_by_id("小计").send_keys("123")
 browser.find_element_by_id("税率").send_keys("9")
 browser.find_element_by_id("总计").send_keys("142")
-
+flag = browser.find_element_by_id("软件名称").get_attribute('value') == '测试软件(自动)'
+log(flag,'Software Name',ERROR,'not right')
+flag = browser.find_element_by_id("项目").get_attribute('value') == '项目1'
+log(flag,'Subject',ERROR,'not right')
+flag = browser.find_element_by_id("分项").get_attribute('value') == '分项1'
+log(flag,'Subitem',ERROR,'not right')
+flag = browser.find_element_by_id("单价").get_attribute('value') == '123'
+log(flag,'Price',ERROR,'not right')
+flag = browser.find_element_by_id("说明").get_attribute('value') == '说明'
+log(flag,'Explain',ERROR,'not right')
+flag = browser.find_element_by_id("行合计").get_attribute('value') == '123'
+log(flag,'Line Total',ERROR,'not right')
+flag = browser.find_element_by_id("小计").get_attribute('value') == '123'
+log(flag,'Subtotal',ERROR,'not right')
+flag = browser.find_element_by_id("税率").get_attribute('value') == '9'
+log(flag,'Tax Rate',ERROR,'not right')
+flag = browser.find_element_by_id("总计").get_attribute('value') == '142'
+log(flag,'Total',ERROR,'not right')
 #%%
 #市场部提交报价单
 browser.find_element_by_id("提交").click()
@@ -354,7 +470,9 @@ browser.find_element_by_id("委托人签字").send_keys("cc")
 browser.find_element_by_id("委托人签字日期").click()
 browser.find_element_by_class_name("ant-picker-today-btn").click()
 sleep(0.5)
-
+flag = browser.find_element_by_id("委托人签字").get_attribute('value') == 'cc'
+log(flag,'Sign',ERROR,'not right')
+sleep(0.5)
 #%%
 #提交回复报价单
 browser.find_element_by_id("提交").click()
@@ -380,8 +498,12 @@ sleep(0.5)
 
 #%%
 #市场部填写测试项目编号
-browser.find_element_by_id("测试项目编号").send_keys("191220144")
+curr_time = datetime.datetime.now()
+pronum = datetime.datetime.strftime(curr_time,'%Y%m%d%H%M%S')
+browser.find_element_by_id("测试项目编号").send_keys(pronum)
 sleep(0.5)
+flag = browser.find_element_by_id("测试项目编号").get_attribute('value') == pronum
+log(flag,'Trial Project Number',ERROR,'not right')
 
 #%%
 #提交测试项目编号
@@ -916,9 +1038,8 @@ browser.find_element_by_id("basic_批准人").send_keys("gbl")
 browser.find_element_by_id("basic_批准人日期").click()
 sleep(0.5)
 browser.find_element_by_id("basic_批准人日期").send_keys("2022/07/24\n")
-browser.find_element_by_id("basic_E-mail").send_keys("1250214413@qq.com")
 browser.find_element_by_id("basic_测试单位网址").send_keys("www.ceshidanwei.com")
-browser.find_element_by_id("basic_测试单位E-mail").send_keys("1921680025@qq.com")
+browser.find_element_by_id("basic_测试单位Email").send_keys("1921680025@qq.com")
 browser.find_element_by_id("添加新硬件环境").click()
 browser.find_element_by_id("basic_硬件环境_0_硬件类别").send_keys("普通计算机")
 browser.find_element_by_id("basic_硬件环境_0_硬件名称").send_keys("机器")
@@ -1003,7 +1124,6 @@ sleep(0.5)
 browser.find_element_by_id("软件项目委托测试工作检查表_软件名称").send_keys("酷狗音乐")
 browser.find_element_by_id("软件项目委托测试工作检查表_版本号").send_keys("10.0.1")
 browser.find_element_by_id("软件项目委托测试工作检查表_申报单位").send_keys("公司")
-browser.find_element_by_id("软件项目委托测试工作检查表_软件名称").send_keys("酷狗音乐")
 browser.find_element_by_id("软件项目委托测试工作检查表_起始时间").send_keys("2022-07-06\n")
 browser.find_element_by_id("软件项目委托测试工作检查表_预计完成时间").send_keys("2022-07-23\n")
 browser.find_element_by_id("软件项目委托测试工作检查表_主测人").send_keys("czy")
