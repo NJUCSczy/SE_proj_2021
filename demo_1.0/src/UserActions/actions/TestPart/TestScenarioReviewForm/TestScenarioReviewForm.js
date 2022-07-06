@@ -20,7 +20,7 @@ const columns =[
     title:'评审意见',
     dataIndex:'opinion',
     render:(_, record,index) => (
-      <Form.Item name={'opinion_'+index} initialValue={''} rules={[{ required: true, message: '请填写软件名称' }]}>
+      <Form.Item name={'opinion_'+index} initialValue={''} rules={[{ required: true, message: '请填写评审意见' }]}>
       <Input></Input>
       </Form.Item>
     ),
@@ -30,7 +30,7 @@ const columns =[
     title:'签字',
     dataIndex:'sign',
     render:(_, record,index) => (
-      <Form.Item name={'sign_'+index} initialValue={''} rules={[{ required: true, message: '请填写软件名称' }]}>
+      <Form.Item name={'sign_'+index} initialValue={''} rules={[{ required: true, message: '请填写签字' }]}>
       <Input></Input>
       </Form.Item>
     ),
@@ -39,7 +39,7 @@ const columns =[
     title:'日期',
     dataIndex:'date',
     render:(_, record,index) => (
-      <Form.Item name={'date_'+index} initialValue={''} rules={[{ required: true, message: '请填写软件名称' }]}>
+      <Form.Item name={'date_'+index} initialValue={''} rules={[{ required: true, message: '请填写日期' }]}>
       <DatePicker/>
       </Form.Item>
     ),
@@ -292,7 +292,7 @@ function TestScenarioReviewForm(props) {
               ></Column>
               <Column title='不通过及原因' dataIndex='fail' key='fail'
                 render={(_, record,index) => (
-                  <Form.Item name={'fail_reason_'+index} initialValue={''} rules={[{ required: (selectData['pass_'+index]!=true), message: '请填写软件名称' }]}>
+                  <Form.Item name={'fail_reason_'+index} initialValue={''} rules={[{ required: (selectData['pass_'+index]!=true), message: '请填写不通过的原因' }]}>
                   <Input disabled={(selectData['pass_'+index]===true)}/>
                   </Form.Item>
                 )}
