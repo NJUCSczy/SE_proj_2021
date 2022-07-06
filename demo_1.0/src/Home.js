@@ -61,6 +61,7 @@ import ViewTestCase from './UserActions/actions/ViewFilesPart/ViewTestCase/ViewT
 import ViewTestPlan from './UserActions/actions/ViewFilesPart/ViewTestPlan/ViewTestPlan';
 import ViewTestRecord from './UserActions/actions/ViewFilesPart/ViewTestRecord/ViewTestRecord';
 import ViewTestReport from './UserActions/actions/ViewFilesPart/ViewTestReport/ViewTestReport';
+import ViewLatexTestReport from './UserActions/actions/ViewFilesPart/ViewLatexTestReport/ViewLatexTestReport';
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -262,6 +263,9 @@ class Home extends React.Component {
             case 'Viewtsreviewform':
                 this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看项目列表', '查看项目', '查看测试方案评审表', '0'] });
                 return (<Viewtsreviewform _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></Viewtsreviewform>);
+            case 'ViewLatexTestReport':
+                this.setState({ HeaderMenuIndex: '3', BreadcrumbByIndex: ['首页', '查看项目列表', '查看项目', '下载测试报告Latex文件', '0'] });
+                return (<ViewLatexTestReport _state={_state} UpdateUserInfo={this.UpdateUserInfo} GotoPage={this.GotoPage}></ViewLatexTestReport>);
 
 
 
@@ -356,7 +360,8 @@ class Home extends React.Component {
             "查看软件测试记录电子记录": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewTestRecord', this.state) }}>查看软件测试记录电子记录</a></Breadcrumb.Item>,
             "查看软件测试报告": <Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewTestReport', this.state) }}>查看软件测试报告</a></Breadcrumb.Item>,
             "查看测试方案评审表": <Breadcrumb.Item><a onClick={() => { this.GotoPage('Viewtsreviewform', this.state) }}>查看测试方案评审表</a></Breadcrumb.Item>,
-            
+            "下载测试报告Latex文件":<Breadcrumb.Item><a onClick={() => { this.GotoPage('ViewLatexTestReport', this.state) }}>下载测试报告Latex文件</a></Breadcrumb.Item>,
+
 
             "机构信息": <Breadcrumb.Item><a onClick={() => { this.GotoPage('Info1', this.state) }}>机构信息</a></Breadcrumb.Item>,
             "资质信息": <Breadcrumb.Item><a onClick={() => { this.GotoPage('Info2', this.state) }}>资质信息</a></Breadcrumb.Item>,
