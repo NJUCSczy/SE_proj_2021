@@ -1,0 +1,61 @@
+INFO:root:Website FOUND.
+INFO:root:Website FOUND.
+ERROR:root:Software Name not right
+INFO:root:Build Number PASS
+INFO:root:Trustee(CN) PASS
+INFO:root:Trustee(EN) PASS
+ERROR:root:Development Unit not right
+INFO:root:User Object PASS
+INFO:root:Main Function PASS
+INFO:root:Function Number PASS
+INFO:root:Code Number PASS
+INFO:root:Edition of Runtime Environment Client Windows System PASS
+INFO:root:Edition of Runtime Environment Client Linux System PASS
+INFO:root:Memory Requirments of Runtime Environment Client  PASS
+INFO:root:Other Requirments of Runtime Environment Client  PASS
+INFO:root:Memory Requirments of Runtime Environment Server PASS
+INFO:root:HDD Requirments of Runtime Environment Server PASS
+INFO:root:Other Requirments of Runtime Environment Server PASS
+INFO:root:Runtime Environment Server OS System PASS
+INFO:root:Programming Language of Runtime Environment Server PASS
+INFO:root:Runtime Environment Server Database PASS
+INFO:root:Runtime Environment Server Middlepart PASS
+INFO:root:Runtime Environment Server Other Supporting Software PASS
+ERROR:root:Edition of Runtime Environment Server not right
+INFO:root:Runtime Network Environment PASS
+INFO:root:Trustee Telephone PASS
+INFO:root:Trustee Fax PASS
+INFO:root:Trustee Address PASS
+INFO:root:Trustee Post Code PASS
+INFO:root:Trustee Liaison Man PASS
+INFO:root:Trustee Liaison Man Phone Number PASS
+INFO:root:Trustee Email PASS
+INFO:root:Trustee Web Address PASS
+INFO:root:Software Name PASS
+INFO:root:Software Edition PASS
+INFO:root:Material Check PASS
+INFO:root:Software Name PASS
+INFO:root:Subject PASS
+INFO:root:Subitem PASS
+INFO:root:Price PASS
+INFO:root:Explain PASS
+INFO:root:Line Total PASS
+INFO:root:Subtotal PASS
+INFO:root:Tax Rate PASS
+INFO:root:Total PASS
+INFO:root:Sign PASS
+INFO:root:Trial Project Number PASS
+ERROR:root:Trustee Name not right
+ERROR:root:Signing Address not right
+ERROR:root:Alternation Time not right
+ERROR:root:Alternation Upper Limit not right
+ERROR:root:Alternation Time Upper Limit not right
+INFO:root:Total Name PASS
+ERROR:root:Deligate not right
+ERROR:root:Liaison Man not right
+ERROR:root:Liaison Address not right
+ERROR:root:Postal Code not right
+ERROR:root:Phone Number not right
+ERROR:root:Fax not right
+ERROR:root:Bank not right
+ERROR:root:Account not right
