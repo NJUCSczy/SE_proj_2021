@@ -1,5 +1,6 @@
 import isMobile from 'is-mobile';
 import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types';
 import { message, DatePicker,TimePicker,Divider, Form, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Input } from 'antd';
 import './TestCase.css'
 import { useState } from 'react';
@@ -15,6 +16,11 @@ const { RangePicker } = DatePicker;
 var _ = require('lodash');
 var mobile = require('is-mobile');
 
+/**
+ * 
+ * 在这里编写内容
+ * 
+ */
 function TestCase(props){
     const { UpdateUserInfo, GotoPage, _state } = props;
     const [formData, setFormData] = useState({})
@@ -218,3 +224,12 @@ function TestCase(props){
 }
 
 export default TestCase
+
+TestCase.propTypes={
+  /** 用户状态 */
+  _state:PropTypes.object,
+  /** 更新用户状态方法 */
+  UpdateUserInfo:PropTypes.func,
+  /** 切换界面方法 */
+  GotoPage:PropTypes.func
+}
