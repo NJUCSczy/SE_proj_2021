@@ -1191,7 +1191,7 @@ sleep(0.5)
 
 #%%
 # 填写软件文档评审表
-browser.find_element_by_id("软件文档评审表_软件名称").send_keys("kuguo音乐")
+browser.find_element_by_id("软件文档评审表_软件名称").send_keys("shuaigou音乐")
 flag = browser.find_element_by_id("软件文档评审表_软件名称").get_attribute('value') == "shuaigou音乐"
 log(flag,'Software_document_review_form_Software_name',ERROR,'not right')
 
