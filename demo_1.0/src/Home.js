@@ -62,27 +62,27 @@ import ViewTestPlan from './UserActions/actions/ViewFilesPart/ViewTestPlan/ViewT
 import ViewTestRecord from './UserActions/actions/ViewFilesPart/ViewTestRecord/ViewTestRecord';
 import ViewTestReport from './UserActions/actions/ViewFilesPart/ViewTestReport/ViewTestReport';
 import ViewLatexTestReport from './UserActions/actions/ViewFilesPart/ViewLatexTestReport/ViewLatexTestReport';
-
+import MainPage from './StaticPages/MainPage/Main';
 
 const { Header, Content, Footer, Sider } = Layout;
 
 const mobile = require('is-mobile');
 
-const MainPage = (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>首页</div>);
+//const MainPage = (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>首页</div>);
 
 class Home extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            PageContent: MainPage,
+            PageContent: (<MainPage />),
             userID: null,
             userRole: ["ROLE_USER"],
             userName: null,
             accessToken: null,
             tokenType: null,
             HeaderMenuIndex: '1',
-            BreadcrumbByIndex: ['0', '0', '0', '0', '0'],
+            BreadcrumbByIndex: ['首页 ', '0', '0', '0', '0'],
             PageInfo: { 'id': 0, 'ContractID': 0 }
         };
     }
@@ -99,8 +99,8 @@ class Home extends React.Component {
     GetPageInfo = (PageName, _state) => {
         switch (PageName) {
             case 'MainPage':
-                this.setState({ HeaderMenuIndex: '1', BreadcrumbByIndex: ['0', '0', '0', '0', '0'] });
-                return MainPage;
+                this.setState({ HeaderMenuIndex: '1', BreadcrumbByIndex: ['首页', '0', '0', '0', '0'] });
+                return (<MainPage />);
 
             case 'UserInfo':
                 this.setState({ HeaderMenuIndex: '2', BreadcrumbByIndex: ['首页', '用户信息', '0', '0', '0'] });

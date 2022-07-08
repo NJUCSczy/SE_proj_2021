@@ -1,0 +1,18 @@
+@import '~antd/dist/antd.css';
+
+
+.main_ground{
+	/* background-image: url(./images/back.jpg); */
+	background-repeat: no-repeat;
+	background-size: cover;
+	text-align: center;
+	height: 80%;
+	width: 90%;
+	position: absolute;
+}
+
+.main_text{
+	/* background-image: url(./images/back.jpg); */
+	color:rgb(255, 255, 255);
+    font-family: 'Comic Sans MS',宋体;
+}
