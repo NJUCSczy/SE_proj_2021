@@ -19,7 +19,7 @@ options=webdriver.ChromeOptions()
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 browser=webdriver.Chrome(options=options)
 browser.maximize_window()
-browser.get('http://localhost:3000')
+browser.get('http://localhost:3003')
 flag = (browser == None)
 if flag:
     logging.critical('404 NOT FOUND')
@@ -43,6 +43,13 @@ def Login_as_User():
     browser.find_element_by_id("home_headers_user").click()
     browser.find_element_by_id("login_input_username").send_keys("yk1111")
     browser.find_element_by_id("login_input_password").send_keys("yk1111")
+
+    
+    flag= browser.find_element_by_id("login_input_username").get_attribute('value') == "yk1111"
+    log(flag,"login_input_username",ERROR,'not right')
+    flag= browser.find_element_by_id("login_input_password").get_attribute('value') == "yk1111"
+    log(flag,"login_input_password",ERROR,'not right')
+
     browser.find_element_by_id("login_button").click()
 def Login_as_mkt():
     browser.find_element_by_id("home_headers_mainpage").click()
@@ -102,11 +109,6 @@ def View_latest_proj():
 Login_as_User()
 sleep(0.5)
 
-flag= browser.find_element_by_id("login_input_username").get_attribute('value') == "yk1111"
-log(flag,"login_input_username",ERROR,'not right')
-flag= browser.find_element_by_id("login_input_password").get_attribute('value') == "yk1111"
-log(flag,"login_input_password",ERROR,'not right')
-
 # %%
 #跳转到用户申请表界面
 #请先登录！
@@ -120,7 +122,7 @@ browser.find_element_by_id("测试类型_下拉栏").click()
 sleep(0.1)
 browser.find_element_by_id("测试类型_软件确认测试").click()
 browser.find_element_by_id("测试类型_其他").click()
-browser.find_element_by_id("测试类型(其他)").send_keys("某个类型")
+browser.find_element_by_id("测试类型(其他)").send_keys("压力测试")
 browser.find_element_by_id("软件名称").send_keys("测试回退")
 browser.find_element_by_id("版本号").send_keys("1.0.0")
 browser.find_element_by_id("委托单位(中文)").send_keys("南京大学软件测试中心")
@@ -129,8 +131,8 @@ browser.find_element_by_id("开发单位").send_keys("SE GroupA")
 browser.find_element_by_id("单位性质_下拉栏").click()
 sleep(0.1)
 browser.find_element_by_id("单位性质_科研院校").click()
-browser.find_element_by_id("软件用户对象描述").send_keys("一般通过网民")
-browser.find_element_by_id("主要功能及用途简介").send_keys("没什么用，这里水个300字")
+browser.find_element_by_id("软件用户对象描述").send_keys("中型企业")
+browser.find_element_by_id("主要功能及用途简介").send_keys("承载用户登录并保护其数据")
 browser.find_element_by_id("测试依据_下拉栏").click()
 sleep(0.1)
 browser.find_element_by_id("测试依据_GB/T 25000.51-2010").click()
@@ -159,7 +161,7 @@ browser.find_element_by_id("运行环境_服务器端_硬件_架构_PC服务器"
 browser.find_element_by_id("运行环境_服务器端_硬件_架构_UNIX/Linux服务器").click()
 browser.find_element_by_id("运行环境_服务器端_硬件_内存要求").send_keys("1024")
 browser.find_element_by_id("运行环境_服务器端_硬件_硬盘要求").send_keys("256")
-browser.find_element_by_id("运行环境_服务器端_硬件_其他要求").send_keys("通电就行")
+browser.find_element_by_id("运行环境_服务器端_硬件_其他要求").send_keys("内存8GB以上")
 browser.find_element_by_id("运行环境_服务器端_软件_操作系统").send_keys("Windows")
 browser.find_element_by_id("运行环境_服务器端_软件_编程语言").send_keys("JSX")
 browser.find_element_by_id("运行环境_服务器端_软件_架构_下拉栏").click()
@@ -167,7 +169,7 @@ sleep(0.1)
 browser.find_element_by_id("运行环境_服务器端_软件_架构_C/S").click()
 browser.find_element_by_id("运行环境_服务器端_软件_架构_其他").click()
 browser.find_element_by_id("运行环境_服务器端_软件_数据库").send_keys("SQL")
-browser.find_element_by_id("运行环境_服务器端_软件_中间件").send_keys("洒家不知道什么是中间件")
+browser.find_element_by_id("运行环境_服务器端_软件_中间件").send_keys("无中间件")
 browser.find_element_by_id("运行环境_服务器端_软件_其他支撑软件").send_keys("不需要")
 browser.find_element_by_id("运行环境_服务器端_软件_版本").send_keys("10")
 browser.find_element_by_id("运行环境_网络环境").send_keys("5G")
@@ -176,7 +178,7 @@ browser.find_element_by_id("样品和数量_提交的样品_退还给我们").cl
 browser.find_element_by_id("希望测试完成时间").click()
 browser.find_element_by_class_name("ant-picker-today-btn").click()
 browser.find_element_by_id("委托单位信息_电话").send_keys("10086")
-browser.find_element_by_id("委托单位信息_传真").send_keys("没有传真")
+browser.find_element_by_id("委托单位信息_传真").send_keys("110089")
 browser.find_element_by_id("委托单位信息_地址").send_keys("江苏省南京市栖霞区仙林大道163号")
 browser.find_element_by_id("委托单位信息_邮编").send_keys("210023")
 browser.find_element_by_id("委托单位信息_联系人").send_keys("陈致远")
@@ -194,9 +196,9 @@ flag = browser.find_element_by_id("委托单位(英文)").get_attribute('value')
 log(flag,'Trustee(EN)',ERROR,'not right')
 flag = browser.find_element_by_id("开发单位").get_attribute('value') == "SE GroupA"
 log(flag,'Development Unit',ERROR,'not right')
-flag = browser.find_element_by_id("软件用户对象描述").get_attribute('value') == "一般通过网民"
+flag = browser.find_element_by_id("软件用户对象描述").get_attribute('value') == "中型企业"
 log(flag,'User Object',ERROR,'not right')
-flag = browser.find_element_by_id("主要功能及用途简介").get_attribute('value') == "没什么用，这里水个300字"
+flag = browser.find_element_by_id("主要功能及用途简介").get_attribute('value') == "承载用户登录并保护其数据"
 log(flag,'Main Function',ERROR,'not right')
 flag = browser.find_element_by_id("软件规模_功能数").get_attribute('value') == "114514"
 log(flag,'Function Number',ERROR,'not right')
@@ -208,7 +210,7 @@ flag = browser.find_element_by_id("运行环境_客户端_操作系统_Linux版�
 log(flag,'Edition of Runtime Environment Client Linux System',ERROR,'not right')
 flag = browser.find_element_by_id("运行环境_客户端_内存要求").get_attribute('value') == "4096"
 log(flag,'Memory Requirments of Runtime Environment Client ',ERROR,'not right')
-flag = browser.find_element_by_id("运行环境_客户端_其他要求").get_attribute('value') == "没什么其他要求了"
+flag = browser.find_element_by_id("运行环境_客户端_其他要求").get_attribute('value') == "内存8GB以上"
 log(flag,'Other Requirments of Runtime Environment Client ',ERROR,'not right')
 flag = browser.find_element_by_id("运行环境_服务器端_硬件_内存要求").get_attribute('value') == "1024"
 log(flag,'Memory Requirments of Runtime Environment Server',ERROR,'not right')
@@ -232,7 +234,7 @@ flag = browser.find_element_by_id("运行环境_网络环境").get_attribute('va
 log(flag,'Runtime Network Environment',ERROR,'not right')
 flag = browser.find_element_by_id("委托单位信息_电话").get_attribute('value') == "10086"
 log(flag,'Trustee Telephone',ERROR,'not right')
-flag = browser.find_element_by_id("委托单位信息_传真").get_attribute('value') == "没有传真"
+flag = browser.find_element_by_id("委托单位信息_传真").get_attribute('value') == "110089"
 log(flag,'Trustee Fax',ERROR,'not right')
 flag = browser.find_element_by_id("委托单位信息_地址").get_attribute('value') == "江苏省南京市栖霞区仙林大道163号"
 log(flag,'Trustee Address',ERROR,'not right')
@@ -264,14 +266,14 @@ sleep(0.5)
 
 #%%
 #填写软件功能列表
-browser.find_element_by_id("软件名称").send_keys('测试软件(自动)')
+browser.find_element_by_id("软件名称").send_keys('shuaigou音乐')
 browser.find_element_by_id("版本号").send_keys('1.0.0')
 browser.find_element_by_id("添加新功能").click()
-browser.find_element_by_id("软件功能").send_keys('啥都能干')
+browser.find_element_by_id("软件功能").send_keys('播放音乐')
 browser.find_element_by_id("添加新项目").click()
 browser.find_element_by_id("软件子功能项目").send_keys('项目1')
-browser.find_element_by_id("功能说明").send_keys('也是啥都能干')
-flag = browser.find_element_by_id("软件名称").get_attribute('value') == '测试软件(自动)'
+browser.find_element_by_id("功能说明").send_keys('保存用户数据')
+flag = browser.find_element_by_id("软件名称").get_attribute('value') == 'shuaigou音乐'
 log(flag,'Software Name',ERROR,'not right')
 flag = browser.find_element_by_id("版本号").get_attribute('value') == '1.0.0'
 log(flag,'Software Edition',ERROR,'not right')
@@ -313,7 +315,7 @@ sleep(0.5)
 #%%
 #用户上传样品文件
 browser.find_element_by_id("样品文件").send_keys(os.path.split(os.path.realpath(__file__))[0]+"/test_files/test4.txt")
-browser.find_element_by_id("备注").send_keys('样品的一个备注')
+browser.find_element_by_id("备注").send_keys('这里是为shuaigou音乐的第四版样品。')
 sleep(0.5)
 
 #%%
@@ -330,12 +332,7 @@ sleep(1)
 #测试部人员登录
 Login_as_test()
 sleep(1)
-
-flag= browser.find_element_by_id("login_input_username").get_attribute('value') == "test1"
-log(flag,"login_input_username",ERROR,'not right')
-flag= browser.find_element_by_id("login_input_password").get_attribute('value') == "123456"
-log(flag,"login_input_password",ERROR,'not right')
-
+''
 #%%
 #进入测试部审核界面
 View_entrustList()
@@ -387,10 +384,6 @@ sleep(1)
 Login_as_mkt()
 sleep(1)
 
-flag= browser.find_element_by_id("login_input_username").get_attribute('value') == "mkt1"
-log(flag,"login_input_username",ERROR,'not right')
-flag= browser.find_element_by_id("login_input_password").get_attribute('value') == "123456"
-log(flag,"login_input_password",ERROR,'not right')
 
 #%%
 #进入市场部审核界面
@@ -427,7 +420,7 @@ sleep(0.5)
 #%%
 #市场部填写报价单
 browser.find_element_by_id("添加新项目").click()
-browser.find_element_by_id("软件名称").send_keys("测试软件(自动)")
+browser.find_element_by_id("软件名称").send_keys("shuaigou音乐")
 browser.find_element_by_id("项目").send_keys("项目1")
 browser.find_element_by_id("分项").send_keys("分项1")
 browser.find_element_by_id("单价").send_keys("123")
@@ -436,7 +429,7 @@ browser.find_element_by_id("行合计").send_keys("123")
 browser.find_element_by_id("小计").send_keys("123")
 browser.find_element_by_id("税率").send_keys("9")
 browser.find_element_by_id("总计").send_keys("142")
-flag = browser.find_element_by_id("软件名称").get_attribute('value') == '测试软件(自动)'
+flag = browser.find_element_by_id("软件名称").get_attribute('value') == 'shuaigou音乐'
 log(flag,'Software Name',ERROR,'not right')
 flag = browser.find_element_by_id("项目").get_attribute('value') == '项目1'
 log(flag,'Subject',ERROR,'not right')
@@ -469,10 +462,6 @@ sleep(1)
 Login_as_User()
 sleep(1)
 
-flag= browser.find_element_by_id("login_input_username").get_attribute('value') == "yk1111"
-log(flag,"login_input_username",ERROR,'not right')
-flag= browser.find_element_by_id("login_input_password").get_attribute('value') == "yk1111"
-log(flag,"login_input_password",ERROR,'not right')
 
 #%%
 #进入用户回复报价界面
@@ -486,11 +475,11 @@ sleep(0.5)
 #%%
 #用户回复报价单
 browser.find_element_by_id("用户反馈_接受").click()
-browser.find_element_by_id("委托人签字").send_keys("cc")
+browser.find_element_by_id("委托人签字").send_keys("陈致远")
 browser.find_element_by_id("委托人签字日期").click()
 browser.find_element_by_class_name("ant-picker-today-btn").click()
 sleep(0.5)
-flag = browser.find_element_by_id("委托人签字").get_attribute('value') == 'cc'
+flag = browser.find_element_by_id("委托人签字").get_attribute('value') == '陈致远'
 log(flag,'Sign',ERROR,'not right')
 sleep(0.5)
 #%%
@@ -508,10 +497,6 @@ sleep(1)
 Login_as_mkt()
 sleep(1)
 
-flag= browser.find_element_by_id("login_input_username").get_attribute('value') == "mkt1"
-log(flag,"login_input_username",ERROR,'not right')
-flag= browser.find_element_by_id("login_input_password").get_attribute('value') == "123456"
-log(flag,"login_input_password",ERROR,'not right')
 
 #%%
 #进入市场部完成测试申请书界面
@@ -546,7 +531,7 @@ sleep(0.5)
 
 #%%
 #市场部填写测试合同前半部分以及履行日期
-browser.find_element_by_id("受托方(乙方)").send_keys("cc")
+browser.find_element_by_id("受托方(乙方)").send_keys("南京大学测试中心")
 browser.find_element_by_id("签订地点").send_keys("南京大学")
 browser.find_element_by_id("签订日期").click()
 sleep(0.2)
@@ -556,7 +541,7 @@ browser.find_element_by_id("整改次数上限").send_keys("5")
 browser.find_element_by_id("整改时间上限").send_keys("6")
 sleep(0.5)
 
-flag = browser.find_element_by_id("受托方(乙方)").get_attribute('value') == "cc"
+flag = browser.find_element_by_id("受托方(乙方)").get_attribute('value') == "南京大学测试中心"
 log(flag,'Trustee Name',ERROR,'not right')
 
 flag = browser.find_element_by_id("签订地点").get_attribute('value') == '南京大学'
@@ -586,10 +571,6 @@ sleep(1)
 Login_as_User()
 sleep(1)
 
-flag= browser.find_element_by_id("login_input_username").get_attribute('value') == "yk1111"
-log(flag,"login_input_username",ERROR,'not right')
-flag= browser.find_element_by_id("login_input_password").get_attribute('value') == "yk1111"
-log(flag,"login_input_password",ERROR,'not right')
 
 #%%
 #进入用户查看履行日期界面
@@ -602,9 +583,9 @@ sleep(0.5)
 
 #%%
 #用户接受履行期限
-browser.find_element_by_id("意见").send_keys("没毛病")
+browser.find_element_by_id("意见").send_keys("同意")
 
-flag = browser.find_element_by_id("意见").get_attribute('value') == '没毛病'
+flag = browser.find_element_by_id("意见").get_attribute('value') == '同意'
 log(flag,'Suggestion',ERROR,'not right')
 
 browser.find_element_by_id("态度_下拉栏").click()
@@ -627,11 +608,6 @@ sleep(1)
 Login_as_mkt()
 sleep(1)
 
-flag= browser.find_element_by_id("login_input_username").get_attribute('value') == "mkt1"
-log(flag,"login_input_username",ERROR,'not right')
-flag= browser.find_element_by_id("login_input_password").get_attribute('value') == "123456"
-log(flag,"login_input_password",ERROR,'not right')
-
 #%%
 #进入市场部填写签章界面
 View_entrustList()
@@ -643,8 +619,8 @@ sleep(0.5)
 #%%
 #市场部填写合同签章
 browser.find_element_by_id("单位全称").send_keys("南京大学软件测试中心")
-browser.find_element_by_id("授权代表").send_keys("czy")
-browser.find_element_by_id("联系人").send_keys("czy")
+browser.find_element_by_id("授权代表").send_keys("陈致远")
+browser.find_element_by_id("联系人").send_keys("陈致远")
 browser.find_element_by_id("通讯地址").send_keys("南京大学仙林校区")
 browser.find_element_by_id("邮编").send_keys("210046")
 browser.find_element_by_id("电话").send_keys("10086")
@@ -656,9 +632,9 @@ sleep(0.5)
 
 flag = browser.find_element_by_id("单位全称").get_attribute('value') == '南京大学软件测试中心'
 log(flag,'Total Name',ERROR,'not right')
-flag = browser.find_element_by_id("授权代表").get_attribute('value') == 'czy'
+flag = browser.find_element_by_id("授权代表").get_attribute('value') == '陈致远'
 log(flag,'Deligate',ERROR,'not right')
-flag = browser.find_element_by_id("联系人").get_attribute('value') == 'czy'
+flag = browser.find_element_by_id("联系人").get_attribute('value') == '陈致远'
 log(flag,'Liaison Man',ERROR,'not right')
 flag = browser.find_element_by_id("通讯地址").get_attribute('value') == '南京大学仙林校区'
 log(flag,'Liaison Address',ERROR,'not right')
@@ -690,10 +666,6 @@ sleep(1)
 Login_as_User()
 sleep(1)
 
-flag= browser.find_element_by_id("login_input_username").get_attribute('value') == "yk1111"
-log(flag,"login_input_username",ERROR,'not right')
-flag= browser.find_element_by_id("login_input_password").get_attribute('value') == "yk1111"
-log(flag,"login_input_password",ERROR,'not right')
 
 #%%
 #进入用户填写合同签章界面
@@ -722,7 +694,7 @@ flag = browser.find_element_by_id("授权代表").get_attribute('value') == 'cc'
 log(flag,'Deligate',ERROR,'not right')
 flag = browser.find_element_by_id("联系人").get_attribute('value') == 'cc'
 log(flag,'Liaison Man',ERROR,'not right')
-flag = browser.find_element_by_id("通讯地址").get_attribute('value') == '南京大学仙林校区"'
+flag = browser.find_element_by_id("通讯地址").get_attribute('value') == '南京大学仙林校区'
 log(flag,'Liaison Address',ERROR,'not right')
 flag = browser.find_element_by_id("邮编").get_attribute('value') == '210046'
 log(flag,'Postal Code',ERROR,'not right')
@@ -749,11 +721,6 @@ sleep(1)
 #市场部人员登录
 Login_as_mkt()
 sleep(1)
-
-flag= browser.find_element_by_id("login_input_username").get_attribute('value') == "mkt1"
-log(flag,"login_input_username",ERROR,'not right')
-flag= browser.find_element_by_id("login_input_password").get_attribute('value') == "123456"
-log(flag,"login_input_password",ERROR,'not right')
 
 #%%
 #进入市场部下载并完成合同和保密协议界面
@@ -783,11 +750,6 @@ sleep(1)
 Login_as_test()
 sleep(1)
 
-flag= browser.find_element_by_id("login_input_username").get_attribute('value') == "test1"
-log(flag,"login_input_username",ERROR,'not right')
-flag= browser.find_element_by_id("login_input_password").get_attribute('value') == "123456"
-log(flag,"login_input_password",ERROR,'not right')
-
 #%%
 #进入测试部填写软件测试方案界面
 View_projectList()
@@ -798,14 +760,14 @@ sleep(0.5)
 
 #%%
 #测试部填写软件测试方案
-browser.find_element_by_id("basic_版本号").send_keys(114514)
-flag = browser.find_element_by_id("basic_版本号").get_attribute('value') == 114514
+browser.find_element_by_id("basic_版本号").send_keys("114514")
+flag = browser.find_element_by_id("basic_版本号").get_attribute('value') == '114514'
 log(flag,'basic_version_number',ERROR,'not right')
 
 browser.find_element_by_id("添加新文档修改记录").click()
 
-browser.find_element_by_id("basic_文档修改记录_0_版本号").send_keys(1919810)
-flag = browser.find_element_by_id("basic_文档修改记录_0_版本号").get_attribute('value') == 1919810
+browser.find_element_by_id("basic_文档修改记录_0_版本号").send_keys('1919810')
+flag = browser.find_element_by_id("basic_文档修改记录_0_版本号").get_attribute('value') == '1919810'
 log(flag,'basic_document_modification_record_0_version_number',ERROR,'not right')
 
 browser.find_element_by_id("basic_文档修改记录_0_日期").click()
@@ -860,20 +822,20 @@ browser.find_element_by_id("basic_人员").send_keys('czy')
 flag = browser.find_element_by_id("basic_人员").get_attribute('value') == 'czy'
 log(flag,'basic_personnel',ERROR,'not right')
 
-browser.find_element_by_id("basic_总体设计").send_keys('没设计')
-flag = browser.find_element_by_id("basic_总体设计").get_attribute('value') == '没设计'
+browser.find_element_by_id("basic_总体设计").send_keys('按GB/T标准设计')
+flag = browser.find_element_by_id("basic_总体设计").get_attribute('value') == '按GB/T标准设计'
 log(flag,'basic_overall_design',ERROR,'not right')
 
 browser.find_element_by_id("basic_测试级别").send_keys('最低级')
 flag = browser.find_element_by_id("basic_测试级别").get_attribute('value') == '最低级'
 log(flag,'basic_test_level',ERROR,'not right')
 
-browser.find_element_by_id("basic_测试类别").send_keys('随便测测')
-flag = browser.find_element_by_id("basic_测试类别").get_attribute('value') == '随便测测'
+browser.find_element_by_id("basic_测试类别").send_keys('压力测试')
+flag = browser.find_element_by_id("basic_测试类别").get_attribute('value') == '压力测试'
 log(flag,'basic_test_category',ERROR,'not right')
 
-browser.find_element_by_id("basic_一般测试条件").send_keys('没条件')
-flag = browser.find_element_by_id("basic_一般测试条件").get_attribute('value') == '没条件'
+browser.find_element_by_id("basic_一般测试条件").send_keys('标准测试条件')
+flag = browser.find_element_by_id("basic_一般测试条件").get_attribute('value') == '标准测试条件'
 log(flag,'basic_general_test_conditions',ERROR,'not right')
 
 browser.find_element_by_id("basic_计划执行的测试").send_keys('所有的')
@@ -884,8 +846,8 @@ browser.find_element_by_id("basic_测试用例").send_keys('所有')
 flag = browser.find_element_by_id("basic_测试用例").get_attribute('value') == '所有'
 log(flag,'basic_test_cases',ERROR,'not right')
 
-browser.find_element_by_id("basic_测试进度表_制定测试计划_工作量").send_keys('没计划')
-flag = browser.find_element_by_id("basic_测试进度表_制定测试计划_工作量").get_attribute('value') == '没计划'
+browser.find_element_by_id("basic_测试进度表_制定测试计划_工作量").send_keys('500样本组')
+flag = browser.find_element_by_id("basic_测试进度表_制定测试计划_工作量").get_attribute('value') == '500样本组'
 log(flag,'basic_test_schedule_develop_test_plan_ workload',ERROR,'not right')
 
 browser.find_element_by_id("basic_测试进度表_制定测试计划_开始时间").click()
@@ -895,8 +857,8 @@ browser.find_element_by_id("basic_测试进度表_制定测试计划_结束时�
 sleep(0.2)
 browser.find_elements_by_class_name("ant-picker-today-btn")[2].click()
 
-browser.find_element_by_id("basic_测试进度表_设计测试_工作量").send_keys('很少')
-flag = browser.find_element_by_id("basic_测试进度表_设计测试_工作量").get_attribute('value') == '很少'
+browser.find_element_by_id("basic_测试进度表_设计测试_工作量").send_keys('100样本组')
+flag = browser.find_element_by_id("basic_测试进度表_设计测试_工作量").get_attribute('value') == '100样本组'
 log(flag,'basic_test_schedule_design_test_workload',ERROR,'not right')
 
 browser.find_element_by_id("basic_测试进度表_设计测试_开始时间").click()
@@ -906,8 +868,8 @@ browser.find_element_by_id("basic_测试进度表_设计测试_结束时间").cl
 sleep(0.2)
 browser.find_elements_by_class_name("ant-picker-today-btn")[4].click()
 
-browser.find_element_by_id("basic_测试进度表_执行测试_工作量").send_keys('不多')
-flag = browser.find_element_by_id("basic_测试进度表_执行测试_工作量").get_attribute('value') == '不多'
+browser.find_element_by_id("basic_测试进度表_执行测试_工作量").send_keys('100样本组')
+flag = browser.find_element_by_id("basic_测试进度表_执行测试_工作量").get_attribute('value') == '100样本组'
 log(flag,'basic_test_schedule_perform_tests_workload',ERROR,'not right')
 
 browser.find_element_by_id("basic_测试进度表_执行测试_开始时间").click()
@@ -917,8 +879,8 @@ browser.find_element_by_id("basic_测试进度表_执行测试_结束时间").cl
 sleep(0.2)
 browser.find_elements_by_class_name("ant-picker-today-btn")[6].click()
 
-browser.find_element_by_id("basic_测试进度表_评估测试_工作量").send_keys('很少')
-flag = browser.find_element_by_id("basic_测试进度表_评估测试_工作量").get_attribute('value') == '很少'
+browser.find_element_by_id("basic_测试进度表_评估测试_工作量").send_keys('200样本组')
+flag = browser.find_element_by_id("basic_测试进度表_评估测试_工作量").get_attribute('value') == '200样本组'
 log(flag,'basic_test_schedule_assessment_tests_workload',ERROR,'not right')
 
 browser.find_element_by_id("basic_测试进度表_评估测试_开始时间").click()
@@ -947,11 +909,6 @@ sleep(1)
 Login_as_qlty()
 sleep(1)
 
-flag= browser.find_element_by_id("login_input_username").get_attribute('value') == "qlty1"
-log(flag,"login_input_username",ERROR,'not right')
-flag= browser.find_element_by_id("login_input_password").get_attribute('value') == "123456"
-log(flag,"login_input_password",ERROR,'not right')
-
 #%%
 #进入质检部填写测试方案评审表界面
 View_projectList()
@@ -962,8 +919,8 @@ sleep(0.5)
 
 #%%
 #质检部填写测试方案评审表界面
-browser.find_element_by_id("测试方案评审表_软件名称").send_keys('测试软件(自动)')
-flag = browser.find_element_by_id("测试方案评审表_软件名称").get_attribute('value') == '测试软件(自动)'
+browser.find_element_by_id("测试方案评审表_软件名称").send_keys('shuaigou音乐')
+flag = browser.find_element_by_id("测试方案评审表_软件名称").get_attribute('value') == 'shuaigou音乐'
 log(flag,'Test_plan_review_form_Software_name',ERROR,'not right')
 
 browser.find_element_by_id("测试方案评审表_版本号").send_keys('114514')
@@ -974,8 +931,8 @@ browser.find_element_by_id("测试方案评审表_项目编号").send_keys('1919
 flag = browser.find_element_by_id("测试方案评审表_项目编号").get_attribute('value') == '1919810'
 log(flag,'Test_plan_review_form_Project_number',ERROR,'not right')
 
-browser.find_element_by_id("测试方案评审表_测试类别").send_keys('随便测试')
-flag = browser.find_element_by_id("测试方案评审表_测试类别").get_attribute('value') == '随便测试'
+browser.find_element_by_id("测试方案评审表_测试类别").send_keys('压力测试')
+flag = browser.find_element_by_id("测试方案评审表_测试类别").get_attribute('value') == '压力测试'
 log(flag,'Test_plan_review_form_Test_category',ERROR,'not right')
 
 browser.find_element_by_id("测试方案评审表_pass_0").click()
@@ -1061,11 +1018,6 @@ sleep(1)
 Login_as_test()
 sleep(1)
 
-flag= browser.find_element_by_id("login_input_username").get_attribute('value') == "test1"
-log(flag,"login_input_username",ERROR,'not right')
-flag= browser.find_element_by_id("login_input_password").get_attribute('value') == "123456"
-log(flag,"login_input_password",ERROR,'not right')
-
 #%%
 #进入测试部填写测试用例界面
 View_projectList()
@@ -1077,8 +1029,8 @@ sleep(0.5)
 #%%
 #测试部填写测试用例
 browser.find_element_by_id("添加新测试用例").click()
-browser.find_element_by_id("basic_测试用例_0_测试分类").send_keys('不知道什么分类')
-flag = browser.find_element_by_id("basic_测试用例_0_测试分类").get_attribute('value') == '不知道什么分类'
+browser.find_element_by_id("basic_测试用例_0_测试分类").send_keys('压力测试')
+flag = browser.find_element_by_id("basic_测试用例_0_测试分类").get_attribute('value') == '压力测试'
 log(flag,'basic_Test_case_0_Test_classification',ERROR,'not right')
 
 browser.find_element_by_id("basic_测试用例_0_ID").send_keys('1')
@@ -1097,8 +1049,8 @@ browser.find_element_by_id("basic_测试用例_0_预期的结果").send_keys('�
 flag = browser.find_element_by_id("basic_测试用例_0_预期的结果").get_attribute('value') == '正常结果'
 log(flag,'basic_Test_case_0_Expected_results',ERROR,'not right')
 
-browser.find_element_by_id("basic_测试用例_0_测试用例设计者").send_keys('瓦塔西')
-flag = browser.find_element_by_id("basic_测试用例_0_测试用例设计者").get_attribute('value') == '瓦塔西'
+browser.find_element_by_id("basic_测试用例_0_测试用例设计者").send_keys('陈致远')
+flag = browser.find_element_by_id("basic_测试用例_0_测试用例设计者").get_attribute('value') == '陈致远'
 log(flag,'basic_Test_case_0_Test_case_Designer',ERROR,'not right')
 
 browser.find_element_by_id("basic_测试用例_0_测试时间").click()
@@ -1127,61 +1079,61 @@ sleep(0.5)
 browser.find_element_by_id("测试分类_可靠性测试").click()
 
 browser.find_element_by_id("basic_软件测试记录_0_序号").send_keys("1")
-flag = browser.find_element_by_id("basic_测试用例_0_序号").get_attribute('value') == '1'
+flag = browser.find_element_by_id("basic_软件测试记录_0_序号").get_attribute('value') == '1'
 log(flag,'basic_Test_case_0_Serial_number',ERROR,'not right')
 
 browser.find_element_by_id("basic_软件测试记录_0_测试特性").send_keys("无")
-flag = browser.find_element_by_id("basic_测试用例_0_测试特性").get_attribute('value') == '无'
+flag = browser.find_element_by_id("basic_软件测试记录_0_测试特性").get_attribute('value') == '无'
 log(flag,'basic_Test_case_0_Test_characteristics',ERROR,'not right')
 
 browser.find_element_by_id("basic_软件测试记录_0_测试用例设计说明").send_keys("提高泛用性")
-flag = browser.find_element_by_id("basic_测试用例_0_测试用例设计说明").get_attribute('value') == '提高泛用性'
+flag = browser.find_element_by_id("basic_软件测试记录_0_测试用例设计说明").get_attribute('value') == '提高泛用性'
 log(flag,'basic_Test_case_0_Test_case_design_description',ERROR,'not right')
 
 browser.find_element_by_id("basic_软件测试记录_0_与本测试用例有关的规约说明").send_keys("1e9")
-flag = browser.find_element_by_id("basic_测试用例_0_与本测试用例有关的规约说明").get_attribute('value') == '1e9'
+flag = browser.find_element_by_id("basic_软件测试记录_0_与本测试用例有关的规约说明").get_attribute('value') == '1e9'
 log(flag,'basic_Test_case_0_Specification_related_to_this_test_case',ERROR,'not right')
 
 browser.find_element_by_id("basic_软件测试记录_0_前提条件").send_keys("24h通电")
-flag = browser.find_element_by_id("basic_测试用例_0_前提条件").get_attribute('value') == '24h通电'
+flag = browser.find_element_by_id("basic_软件测试记录_0_前提条件").get_attribute('value') == '24h通电'
 log(flag,'basic_Test_case_0_prerequisite',ERROR,'not right')
 
 browser.find_element_by_id("basic_软件测试记录_0_测试用例执行过程").send_keys("多组分次执行")
-flag = browser.find_element_by_id("basic_测试用例_0_测试用例执行过程").get_attribute('value') == '多组分次执行'
+flag = browser.find_element_by_id("basic_软件测试记录_0_测试用例执行过程").get_attribute('value') == '多组分次执行'
 log(flag,'basic_Test_case_0_Test_case_execution_process',ERROR,'not right')
 
 sleep(0.5)
 browser.find_element_by_id("basic_软件测试记录_0_预期的结果").send_keys("预期通过90%")
-flag = browser.find_element_by_id("basic_测试用例_0_预期的结果").get_attribute('value') == '预期通过90%'
+flag = browser.find_element_by_id("basic_软件测试记录_0_预期的结果").get_attribute('value') == '预期通过90%'
 log(flag,'basic_Test_case_0_Expected_results',ERROR,'not right')
 
 browser.find_element_by_id("basic_软件测试记录_0_测试用例设计者").send_keys("lys")
-flag = browser.find_element_by_id("basic_测试用例_0_测试用例设计者").get_attribute('value') == 'lys'
+flag = browser.find_element_by_id("basic_软件测试记录_0_测试用例设计者").get_attribute('value') == 'lys'
 log(flag,'basic_Test_case_0_Expected_results',ERROR,'not right')
 
 browser.find_element_by_id("basic_软件测试记录_0_实际结果").send_keys("通过97%")
-flag = browser.find_element_by_id("basic_测试用例_0_实际结果").get_attribute('value') == '通过97%'
+flag = browser.find_element_by_id("basic_软件测试记录_0_实际结果").get_attribute('value') == '通过97%'
 log(flag,'basic_Test_case_0_Actual_results',ERROR,'not right')
 
 browser.find_element_by_id("basic_软件测试记录_0_是否与预期结果一致").send_keys("基本一致")
-flag = browser.find_element_by_id("basic_测试用例_0_是否与预期结果一致").get_attribute('value') == '基本一致'
+flag = browser.find_element_by_id("basic_软件测试记录_0_是否与预期结果一致").get_attribute('value') == '基本一致'
 log(flag,'basic_Test_case_0_consistent_with_the_expected_results',ERROR,'not right')
 
 browser.find_element_by_id("basic_软件测试记录_0_相关的BUG编号").send_keys("1154")
-flag = browser.find_element_by_id("basic_测试用例_0_相关的BUG编号").get_attribute('value') == '1154'
+flag = browser.find_element_by_id("basic_软件测试记录_0_相关的BUG编号").get_attribute('value') == '1154'
 log(flag,'basic_Test_case_0_Relevant_bug_number',ERROR,'not right')
 
 browser.find_element_by_id("basic_软件测试记录_0_用例执行者").send_keys("czy")
-flag = browser.find_element_by_id("basic_测试用例_0_用例执行者").get_attribute('value') == 'czy'
+flag = browser.find_element_by_id("basic_软件测试记录_0_用例执行者").get_attribute('value') == 'czy'
 log(flag,'basic_Test_case_0_Use_case_performer',ERROR,'not right')
 
 browser.find_element_by_id("basic_软件测试记录_0_执行测试时间").click()
 browser.find_element_by_id("basic_软件测试记录_0_执行测试时间").send_keys("2022-09-23\n")
-flag = browser.find_element_by_id("basic_测试用例_0_执行测试时间").get_attribute('value') == '2022-09-23\n'
+flag = browser.find_element_by_id("basic_软件测试记录_0_执行测试时间").get_attribute('value') == '2022-09-23'
 log(flag,'basic_Test_case_0_Test_execution_time',ERROR,'not right')
 
 browser.find_element_by_id("basic_软件测试记录_0_确认人").send_keys("czy")
-flag = browser.find_element_by_id("basic_测试用例_0_确认人").get_attribute('value') == 'czy'
+flag = browser.find_element_by_id("basic_软件测试记录_0_确认人").get_attribute('value') == 'czy'
 log(flag,'basic_Test_case_0_Identify_Person',ERROR,'not right')
 
 #%%
@@ -1225,7 +1177,7 @@ browser.find_element_by_id("软件测试问题清单_项目列表_0_时间").cli
 sleep(0.5)
 
 browser.find_element_by_id("软件测试问题清单_项目列表_0_时间").send_keys("2022-09-23 19:00:03\n")
-flag = browser.find_element_by_id("软件测试问题清单_项目列表_0_时间").get_attribute('value') == "2022-09-23 19:00:03\n"
+flag = browser.find_element_by_id("软件测试问题清单_项目列表_0_时间").get_attribute('value') == "2022-09-23 19:00:03"
 log(flag,'Software_testing_problem_list_List_of_items_0_time',ERROR,'not right')
 
 browser.find_element_by_id("软件测试问题清单_项目列表_0_责任人").send_keys("czy")
@@ -1251,8 +1203,8 @@ sleep(0.5)
 
 #%%
 # 填写软件文档评审表
-browser.find_element_by_id("软件文档评审表_软件名称").send_keys("kuguo音乐")
-flag = browser.find_element_by_id("软件文档评审表_软件名称").get_attribute('value') == "kuguo音乐"
+browser.find_element_by_id("软件文档评审表_软件名称").send_keys("shuaigou音乐")
+flag = browser.find_element_by_id("软件文档评审表_软件名称").get_attribute('value') == "shuaigou音乐"
 log(flag,'Software_document_review_form_Software_name',ERROR,'not right')
 
 browser.find_element_by_id("软件文档评审表_版本号").send_keys("10.0.03")
@@ -1264,7 +1216,7 @@ flag = browser.find_element_by_id("软件文档评审表_评审人").get_attribu
 log(flag,'Software_document_review_form_Reviewer',ERROR,'not right')
 
 browser.find_element_by_id("软件文档评审表_评审完成时间").send_keys("2022-09-22\n")
-flag = browser.find_element_by_id("软件文档评审表_评审完成时间").get_attribute('value') == "2022-09-22\n"
+flag = browser.find_element_by_id("软件文档评审表_评审完成时间").get_attribute('value') == "2022-09-22"
 log(flag,'Software_document_review_form_Review_completion_time',ERROR,'not right')
 
 sleep(0.5)
@@ -1541,7 +1493,7 @@ browser.find_element_by_id("软件文档评审表_description_35").send_keys("�
 flag = browser.find_element_by_id("软件文档评审表_description_35").get_attribute('value') == "无"
 log(flag,'Software_document_review_form_description_35',ERROR,'not right')
 
-browser.find_element_by_id("软件文档评审表_检查人").send_keys("lys")
+browser.find_element_by_id("软件文档评审表_检查人").send_keys("刘岩菘")
 #%%
 # 提交软件文档评审表
 browser.find_element_by_id("提交").click()
@@ -1566,7 +1518,7 @@ flag = browser.find_element_by_id("basic_测试类别").get_attribute('value') =
 log(flag,'basic_Test_category',ERROR,'not right')
 
 browser.find_element_by_id("basic_报告日期").send_keys("2022/08/23\n")
-flag = browser.find_element_by_id("basic_报告日期").get_attribute('value') == "2022/08/23\n"
+flag = browser.find_element_by_id("basic_报告日期").get_attribute('value') == "2022/08/23"
 log(flag,'basic_Report_date',ERROR,'not right')
 
 browser.find_element_by_id("basic_版本/型号").send_keys("10.0.12")
@@ -1577,14 +1529,14 @@ browser.find_element_by_id("basic_测试开始时间").click()
 sleep(0.5)
 
 browser.find_element_by_id("basic_测试开始时间").send_keys("2022/07/24\n")
-flag = browser.find_element_by_id("basic_测试开始时间").get_attribute('value') == "2022/07/24\n"
+flag = browser.find_element_by_id("basic_测试开始时间").get_attribute('value') == "2022/07/24"
 log(flag,'basic_Test_start_time',ERROR,'not right')
 
 browser.find_element_by_id("basic_测试结束时间").click()
 sleep(0.5)
 
 browser.find_element_by_id("basic_测试结束时间").send_keys("2022/07/24\n")
-flag = browser.find_element_by_id("basic_测试结束时间").get_attribute('value') == "2022/07/24\n"
+flag = browser.find_element_by_id("basic_测试结束时间").get_attribute('value') == "2022/07/24"
 log(flag,'basic_Test_end_time',ERROR,'not right')
 
 browser.find_element_by_id("basic_测试结论").send_keys("合格")
@@ -1599,29 +1551,29 @@ browser.find_element_by_id("basic_主测人日期").click()
 sleep(0.5)
 
 browser.find_element_by_id("basic_主测人日期").send_keys("2022/07/24\n")
-flag = browser.find_element_by_id("basic_主测人日期").get_attribute('value') == "2022/07/24\n"
+flag = browser.find_element_by_id("basic_主测人日期").get_attribute('value') == "2022/07/24"
 log(flag,'basic_Main_tester_date',ERROR,'not right')
 
-browser.find_element_by_id("basic_审核人").send_keys("czy")
-flag = browser.find_element_by_id("basic_审核人").get_attribute('value') == "czy"
+browser.find_element_by_id("basic_审核人").send_keys("陈致远")
+flag = browser.find_element_by_id("basic_审核人").get_attribute('value') == "陈致远"
 log(flag,'basic_Reviewer',ERROR,'not right')
 
 browser.find_element_by_id("basic_审核人日期").click()
 sleep(0.5)
 
 browser.find_element_by_id("basic_审核人日期").send_keys("2022/07/24\n")
-flag = browser.find_element_by_id("basic_审核人日期").get_attribute('value') == "2022/07/24\n"
+flag = browser.find_element_by_id("basic_审核人日期").get_attribute('value') == "2022/07/24"
 log(flag,'basic_Reviewed_by_date',ERROR,'not right')
 
-browser.find_element_by_id("basic_批准人").send_keys("gbl")
-flag = browser.find_element_by_id("basic_批准人").get_attribute('value') == "gbl"
+browser.find_element_by_id("basic_批准人").send_keys("顾本龙")
+flag = browser.find_element_by_id("basic_批准人").get_attribute('value') == "顾本龙"
 log(flag,'basic_certifier',ERROR,'not right')
 
 browser.find_element_by_id("basic_批准人日期").click()
 sleep(0.5)
 
 browser.find_element_by_id("basic_批准人日期").send_keys("2022/07/24\n")
-flag = browser.find_element_by_id("basic_批准人日期").get_attribute('value') == "2022/07/24\n"
+flag = browser.find_element_by_id("basic_批准人日期").get_attribute('value') == "2022/07/24"
 log(flag,'basic_Approved_by_date',ERROR,'not right')
 
 browser.find_element_by_id("basic_测试单位网址").send_keys("www.ceshidanwei.com")
@@ -1669,8 +1621,8 @@ flag = browser.find_element_by_id("basic_参考资料_0_参考资料分项").get
 log(flag,'basic_References_0_Reference_sub_item',ERROR,'not right')
 
 
-browser.find_element_by_id("basic_测试执行记录").send_keys("这是一个执行记录")
-flag = browser.find_element_by_id("basic_测试执行记录").get_attribute('value') == "这是一个执行记录"
+browser.find_element_by_id("basic_测试执行记录").send_keys("2022/06/30执行001-200号测试样例")
+flag = browser.find_element_by_id("basic_测试执行记录").get_attribute('value') == "2022/06/30执行001-200号测试样例"
 log(flag,'basic_Test_execution_record',ERROR,'not right')
 
 #%%
@@ -1687,10 +1639,6 @@ sleep(1)
 Login_as_qlty()
 sleep(2)
 
-flag= browser.find_element_by_id("login_input_username").get_attribute('value') == "qlty1"
-log(flag,"login_input_username",ERROR,'not right')
-flag= browser.find_element_by_id("login_input_password").get_attribute('value') == "123456"
-log(flag,"login_input_password",ERROR,'not right')
 
 #%%
 # 进入填写测试报告检查表
@@ -1702,8 +1650,8 @@ sleep(0.5)
 
 #%%
 #质量部填写测试报告检查表
-browser.find_element_by_id("测试报告检查表_软件名称").send_keys("kugou音乐")
-flag = browser.find_element_by_id("测试报告检查表_软件名称").get_attribute('value') == "kugou音乐"
+browser.find_element_by_id("测试报告检查表_软件名称").send_keys("shuaigou音乐")
+flag = browser.find_element_by_id("测试报告检查表_软件名称").get_attribute('value') == "shuaigou音乐"
 log(flag,'Test_report_checklist_software_name',ERROR,'not right')
 
 browser.find_element_by_id("测试报告检查表_委托单位").send_keys("某公司")
@@ -1725,12 +1673,12 @@ browser.find_element_by_id("测试报告检查表_tableItem_11").click()
 browser.find_element_by_id("测试报告检查表_tableItem_12").click()
 browser.find_element_by_id("测试报告检查表_tableItem_13").click()
 
-browser.find_element_by_id("测试报告检查表_检查人").send_keys("czy")
-flag = browser.find_element_by_id("测试报告检查表_检查人").get_attribute('value') == "czy"
+browser.find_element_by_id("测试报告检查表_检查人").send_keys("陈致远")
+flag = browser.find_element_by_id("测试报告检查表_检查人").get_attribute('value') == "陈致远"
 log(flag,'Test_report_checklist_Inspector',ERROR,'not right')
 
 browser.find_element_by_id("测试报告检查表_日期").send_keys("2022-07-23\n")
-flag = browser.find_element_by_id("测试报告检查表_日期").get_attribute('value') == "2022-07-23\n"
+flag = browser.find_element_by_id("测试报告检查表_日期").get_attribute('value') == "2022-07-23"
 log(flag,'Test_report_checklist_date',ERROR,'not right')
 
 #%%
@@ -1747,10 +1695,6 @@ sleep(1)
 Login_as_mkt()
 sleep(2)
 
-flag= browser.find_element_by_id("login_input_username").get_attribute('value') == "mkt1"
-log(flag,"login_input_username",ERROR,'not right')
-flag= browser.find_element_by_id("login_input_password").get_attribute('value') == "123456"
-log(flag,"login_input_password",ERROR,'not right')
 
 #%%
 # 进入填写测试报告检查表
@@ -1762,8 +1706,8 @@ sleep(0.5)
 
 #%%
 # 填写测试报告检查表
-browser.find_element_by_id("软件项目委托测试工作检查表_软件名称").send_keys("酷狗音乐")
-flag = browser.find_element_by_id("软件项目委托测试工作检查表_软件名称").get_attribute('value') == "酷狗音乐"
+browser.find_element_by_id("软件项目委托测试工作检查表_软件名称").send_keys("shuaigou音乐")
+flag = browser.find_element_by_id("软件项目委托测试工作检查表_软件名称").get_attribute('value') == "shuaigou音乐"
 log(flag,'Checklist_for_entrusted_testing_of_software_projects_Software_name',ERROR,'not right')
 
 browser.find_element_by_id("软件项目委托测试工作检查表_版本号").send_keys("10.0.1")
@@ -1775,11 +1719,11 @@ flag = browser.find_element_by_id("软件项目委托测试工作检查表_申�
 log(flag,'Checklist_for_entrusted_testing_of_software_projects_Applicant',ERROR,'not right')
 
 browser.find_element_by_id("软件项目委托测试工作检查表_起始时间").send_keys("2022-07-06\n")
-flag = browser.find_element_by_id("软件项目委托测试工作检查表_起始时间").get_attribute('value') == "2022-07-06\n"
+flag = browser.find_element_by_id("软件项目委托测试工作检查表_起始时间").get_attribute('value') == "2022-07-06"
 log(flag,'Checklist_for_entrusted_testing_of_software_projects_start_time',ERROR,'not right')
 
 browser.find_element_by_id("软件项目委托测试工作检查表_预计完成时间").send_keys("2022-07-23\n")
-flag = browser.find_element_by_id("软件项目委托测试工作检查表_预计完成时间").get_attribute('value') == "2022-07-23\n"
+flag = browser.find_element_by_id("软件项目委托测试工作检查表_预计完成时间").get_attribute('value') == "2022-07-23"
 log(flag,'Checklist_for_entrusted_testing_of_software_projects_Estimated_completion_time',ERROR,'not right')
 
 browser.find_element_by_id("软件项目委托测试工作检查表_主测人").send_keys("czy")
@@ -1787,7 +1731,7 @@ flag = browser.find_element_by_id("软件项目委托测试工作检查表_主�
 log(flag,'Checklist_for_entrusted_testing_of_software_projects_Main_tester',ERROR,'not right')
 
 browser.find_element_by_id("软件项目委托测试工作检查表_实际完成时间").send_keys("2022-09-13\n")
-flag = browser.find_element_by_id("软件项目委托测试工作检查表_实际完成时间").get_attribute('value') == "2022-09-13\n"
+flag = browser.find_element_by_id("软件项目委托测试工作检查表_实际完成时间").get_attribute('value') == "2022-09-13"
 log(flag,'Checklist_for_entrusted_testing_of_software_projects_Actual_completion_time',ERROR,'not right')
 
 browser.find_element_by_id("软件项目委托测试工作检查表_tableItem_1").click()
