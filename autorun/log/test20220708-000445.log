@@ -1,0 +1,253 @@
+INFO:root:Website FOUND.
+INFO:root:login_input_username PASS
+INFO:root:login_input_password PASS
+INFO:root:Software Name PASS
+INFO:root:Build Number PASS
+INFO:root:Trustee(CN) PASS
+INFO:root:Trustee(EN) PASS
+INFO:root:Development Unit PASS
+INFO:root:User Object PASS
+INFO:root:Main Function PASS
+INFO:root:Function Number PASS
+INFO:root:Code Number PASS
+INFO:root:Edition of Runtime Environment Client Windows System PASS
+INFO:root:Edition of Runtime Environment Client Linux System PASS
+INFO:root:Memory Requirments of Runtime Environment Client  PASS
+INFO:root:Other Requirments of Runtime Environment Client  PASS
+INFO:root:Memory Requirments of Runtime Environment Server PASS
+INFO:root:HDD Requirments of Runtime Environment Server PASS
+INFO:root:Other Requirments of Runtime Environment Server PASS
+INFO:root:Runtime Environment Server OS System PASS
+INFO:root:Programming Language of Runtime Environment Server PASS
+INFO:root:Runtime Environment Server Database PASS
+INFO:root:Runtime Environment Server Middlepart PASS
+INFO:root:Runtime Environment Server Other Supporting Software PASS
+INFO:root:Edition of Runtime Environment Server PASS
+INFO:root:Runtime Network Environment PASS
+INFO:root:Trustee Telephone PASS
+INFO:root:Trustee Fax PASS
+INFO:root:Trustee Address PASS
+INFO:root:Trustee Post Code PASS
+INFO:root:Trustee Liaison Man PASS
+INFO:root:Trustee Liaison Man Phone Number PASS
+INFO:root:Trustee Email PASS
+INFO:root:Trustee Web Address PASS
+INFO:root:Software Name PASS
+INFO:root:Software Edition PASS
+INFO:root:Material Check PASS
+INFO:root:Market Department Check PASS
+INFO:root:Software Name PASS
+INFO:root:Subject PASS
+INFO:root:Subitem PASS
+INFO:root:Price PASS
+INFO:root:Explain PASS
+INFO:root:Line Total PASS
+INFO:root:Subtotal PASS
+INFO:root:Tax Rate PASS
+INFO:root:Total PASS
+INFO:root:login_input_username PASS
+INFO:root:login_input_password PASS
+INFO:root:Sign PASS
+INFO:root:Trial Project Number PASS
+INFO:root:Trustee Name PASS
+INFO:root:Signing Address PASS
+INFO:root:Alternation Time PASS
+INFO:root:Alternation Upper Limit PASS
+INFO:root:Alternation Time Upper Limit PASS
+INFO:root:login_input_username PASS
+INFO:root:login_input_password PASS
+INFO:root:Suggestion PASS
+INFO:root:Total Name PASS
+INFO:root:Deligate PASS
+INFO:root:Liaison Man PASS
+INFO:root:Liaison Address PASS
+INFO:root:Postal Code PASS
+INFO:root:Phone Number PASS
+INFO:root:Fax PASS
+INFO:root:Bank PASS
+INFO:root:Account PASS
+INFO:root:Account PASS
+INFO:root:login_input_username PASS
+INFO:root:login_input_password PASS
+INFO:root:Total Name PASS
+INFO:root:Deligate PASS
+INFO:root:Liaison Man PASS
+ERROR:root:Liaison Address not right
+INFO:root:Postal Code PASS
+INFO:root:Phone Number PASS
+INFO:root:Fax PASS
+INFO:root:Bank PASS
+INFO:root:Account PASS
+ERROR:root:basic_version_number not right
+ERROR:root:basic_document_modification_record_0_version_number not right
+INFO:root:basic_document_modification_record_0_AMD PASS
+INFO:root:basic_document_modification_record_0_riviser PASS
+INFO:root:basic_document_modification_record_0_illustration PASS
+INFO:root:basic_identification PASS
+INFO:root:basic_system_overview PASS
+INFO:root:basic_document_overview PASS
+INFO:root:basic_baseline PASS
+INFO:root:basic_hardware PASS
+INFO:root:basic_software PASS
+INFO:root:basic_others PASS
+INFO:root:basic_participating_organizations PASS
+INFO:root:basic_personnel PASS
+INFO:root:basic_overall_design PASS
+INFO:root:basic_test_level PASS
+INFO:root:basic_test_category PASS
+INFO:root:basic_general_test_conditions PASS
+INFO:root:basic_planned_tests PASS
+INFO:root:basic_test_cases PASS
+INFO:root:basic_test_schedule_develop_test_plan_ workload PASS
+INFO:root:basic_test_schedule_design_test_workload PASS
+INFO:root:basic_test_schedule_perform_tests_workload PASS
+INFO:root:basic_test_schedule_assessment_tests_workload PASS
+INFO:root:basic_traceability_of_requirements PASS
+INFO:root:Test_plan_review_form_Software_name PASS
+INFO:root:Test_plan_review_form_Version_number PASS
+INFO:root:Test_plan_review_form_Project_number PASS
+INFO:root:Test_plan_review_form_Test_category PASS
+INFO:root:Test_plan_review_form_opinion_0 PASS
+INFO:root:Test_plan_review_form_sign_0 PASS
+INFO:root:Test_plan_review_form_opinion_1 PASS
+INFO:root:Test_plan_review_form_sign_1 PASS
+INFO:root:Test_plan_review_form_opinion_2 PASS
+INFO:root:Test_plan_review_form_sign_2 PASS
+INFO:root:Test_plan_review_form_opinion_3 PASS
+INFO:root:Test_plan_review_form_sign_3 PASS
+INFO:root:Test_plan_review_form_opinion_4 PASS
+INFO:root:Test_plan_review_form_sign_4 PASS
+INFO:root:basic_Test_case_0_Test_classification PASS
+INFO:root:basic_Test_case_0_ID PASS
+INFO:root:basic_Test_case_0_Test_case_design_description PASS
+INFO:root:basic_Test_case_0_Specification_related_to_this_test_case PASS
+INFO:root:basic_Test_case_0_Expected_results PASS
+INFO:root:basic_Test_case_0_Test_case_Designer PASS
+INFO:root:basic_Test_case_0_Serial_number PASS
+INFO:root:basic_Test_case_0_Test_characteristics PASS
+INFO:root:basic_Test_case_0_Test_case_design_description PASS
+INFO:root:basic_Test_case_0_Specification_related_to_this_test_case PASS
+INFO:root:basic_Test_case_0_prerequisite PASS
+INFO:root:basic_Test_case_0_Test_case_execution_process PASS
+INFO:root:basic_Test_case_0_Expected_results PASS
+INFO:root:basic_Test_case_0_Expected_results PASS
+INFO:root:basic_Test_case_0_Actual_results PASS
+INFO:root:basic_Test_case_0_consistent_with_the_expected_results PASS
+INFO:root:basic_Test_case_0_Relevant_bug_number PASS
+INFO:root:basic_Test_case_0_Use_case_performer PASS
+ERROR:root:basic_Test_case_0_Test_execution_time not right
+INFO:root:basic_Test_case_0_Identify_Person PASS
+INFO:root:Software_testing_problem_list_List_of_items_0_Brief_description_of_the_problem(defect) PASS
+INFO:root:Software_testing_problem_list_List_of_items_0_Corresponding_requirement_items PASS
+INFO:root:Software_testing_problem_list_List_of_items_0_Initial_conditions_for_finding_defects PASS
+INFO:root:Software_testing_problem_list_List_of_items_0_paths_to_find_Defect_use_cases_and_specific_operations PASS
+INFO:root:Software_testing_problem_list_List_of_items_0_Associated_use_case PASS
+ERROR:root:Software_testing_problem_list_List_of_items_0_time not right
+INFO:root:Software_testing_problem_list_List_of_items_0_person_liable PASS
+INFO:root:Software_testing_problem_list_List_of_items_0_Modification_suggestions PASS
+INFO:root:Software_document_review_form_Software_name PASS
+INFO:root:Software_document_review_form_Version_number PASS
+INFO:root:Software_document_review_form_Reviewer PASS
+ERROR:root:Software_document_review_form_Review_completion_time not right
+INFO:root:Software_document_review_form_result_1 PASS
+INFO:root:Software_document_review_form_description_1 PASS
+INFO:root:Software_document_review_form_result_2 PASS
+INFO:root:Software_document_review_form_description_2 PASS
+INFO:root:Software_document_review_form_result_3 PASS
+INFO:root:Software_document_review_form_description_3 PASS
+INFO:root:Software_document_review_form_result_4 PASS
+INFO:root:Software_document_review_form_description_4 PASS
+INFO:root:Software_document_review_form_result_5 PASS
+INFO:root:Software_document_review_form_description_5 PASS
+INFO:root:Software_document_review_form_result_6 PASS
+INFO:root:Software_document_review_form_description_6 PASS
+INFO:root:Software_document_review_form_result_7 PASS
+INFO:root:Software_document_review_form_description_7 PASS
+INFO:root:Software_document_review_form_result_8 PASS
+INFO:root:Software_document_review_form_description_8 PASS
+INFO:root:Software_document_review_form_result_9 PASS
+INFO:root:Software_document_review_form_description_9 PASS
+INFO:root:Software_document_review_form_result_10 PASS
+INFO:root:Software_document_review_form_description_10 PASS
+INFO:root:Software_document_review_form_result_11 PASS
+INFO:root:Software_document_review_form_description_11 PASS
+INFO:root:Software_document_review_form_result_12 PASS
+INFO:root:Software_document_review_form_description_12 PASS
+INFO:root:Software_document_review_form_result_13 PASS
+INFO:root:Software_document_review_form_description_13 PASS
+INFO:root:Software_document_review_form_result_14 PASS
+INFO:root:Software_document_review_form_description_14 PASS
+INFO:root:Software_document_review_form_result_16 PASS
+INFO:root:Software_document_review_form_description_16 PASS
+INFO:root:Software_document_review_form_result_17 PASS
+INFO:root:Software_document_review_form_description_17 PASS
+INFO:root:Software_document_review_form_result_18 PASS
+INFO:root:Software_document_review_form_description_18 PASS
+INFO:root:Software_document_review_form_result_19 PASS
+INFO:root:Software_document_review_form_description_19 PASS
+INFO:root:Software_document_review_form_result_20 PASS
+INFO:root:Software_document_review_form_description_20 PASS
+INFO:root:Software_document_review_form_result_21 PASS
+INFO:root:Software_document_review_form_description_21 PASS
+INFO:root:Software_document_review_form_result_22 PASS
+INFO:root:Software_document_review_form_description_22 PASS
+INFO:root:Software_document_review_form_result_23 PASS
+INFO:root:Software_document_review_form_description_23 PASS
+INFO:root:Software_document_review_form_result_24 PASS
+INFO:root:Software_document_review_form_description_24 PASS
+INFO:root:Software_document_review_form_result_25 PASS
+INFO:root:Software_document_review_form_description_25 PASS
+INFO:root:Software_document_review_form_result_26 PASS
+INFO:root:Software_document_review_form_description_26 PASS
+INFO:root:Software_document_review_form_result_27 PASS
+INFO:root:Software_document_review_form_description_27 PASS
+INFO:root:Software_document_review_form_result_28 PASS
+INFO:root:Software_document_review_form_description_28 PASS
+INFO:root:Software_document_review_form_result_29 PASS
+INFO:root:Software_document_review_form_description_29 PASS
+INFO:root:Software_document_review_form_result_30 PASS
+INFO:root:Software_document_review_form_description_30 PASS
+INFO:root:Software_document_review_form_result_31 PASS
+INFO:root:Software_document_review_form_description_31 PASS
+INFO:root:Software_document_review_form_result_32 PASS
+INFO:root:Software_document_review_form_description_32 PASS
+INFO:root:Software_document_review_form_result_33 PASS
+INFO:root:Software_document_review_form_description_33 PASS
+INFO:root:Software_document_review_form_result_34 PASS
+INFO:root:Software_document_review_form_description_34 PASS
+INFO:root:Software_document_review_form_result_35 PASS
+INFO:root:Software_document_review_form_description_35 PASS
+INFO:root:basic_Report_number PASS
+INFO:root:basic_Test_category PASS
+ERROR:root:basic_Report_date not right
+INFO:root:basic_Version/model PASS
+ERROR:root:basic_Test_start_time not right
+ERROR:root:basic_Test_end_time not right
+INFO:root:basic_Test_conclusion PASS
+INFO:root:basic_Main_tester PASS
+ERROR:root:basic_Main_tester_date not right
+INFO:root:basic_Reviewer PASS
+ERROR:root:basic_Reviewed_by_date not right
+INFO:root:basic_certifier PASS
+ERROR:root:basic_Approved_by_date not right
+INFO:root:basic_website_of_testing_unit PASS
+INFO:root:basic_Email_of_testing_unit PASS
+INFO:root:basic_Hardware_environment_0_hardware_category PASS
+INFO:root:basic_Hardware_environment_0_hardware_name PASS
+INFO:root:basic_Hardware_environment_0_collocation PASS
+INFO:root:basic_Hardware_environment_0_numbers PASS
+INFO:root:basic_Software_environment_0_software_name PASS
+INFO:root:basic_Software_environment_0_edition PASS
+INFO:root:basic_References_0_Reference_sub_item PASS
+INFO:root:basic_Test_execution_record PASS
+INFO:root:Test_report_checklist_software_name PASS
+INFO:root:Test_report_checklist_Entrusting_unit PASS
+INFO:root:Test_report_checklist_Inspector PASS
+ERROR:root:Test_report_checklist_date not right
+INFO:root:Checklist_for_entrusted_testing_of_software_projects_Software_name PASS
+INFO:root:Checklist_for_entrusted_testing_of_software_projects_Version_number PASS
+INFO:root:Checklist_for_entrusted_testing_of_software_projects_Applicant PASS
+ERROR:root:Checklist_for_entrusted_testing_of_software_projects_start_time not right
+ERROR:root:Checklist_for_entrusted_testing_of_software_projects_Estimated_completion_time not right
+INFO:root:Checklist_for_entrusted_testing_of_software_projects_Main_tester PASS
+ERROR:root:Checklist_for_entrusted_testing_of_software_projects_Actual_completion_time not right
