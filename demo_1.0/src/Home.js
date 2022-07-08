@@ -412,7 +412,7 @@ class Home extends React.Component {
                                 0: (<a id="home_headers_mainpage" onClick={() => { this.GotoPage('MainPage', this.state) }}><Space style={{ color: 'white' }}>首页</Space></a>),
                                 1: (<a id="home_headers_user" onClick={() => { this.state.accessToken === null ? this.GotoPage('Login', this.state) : this.GotoPage('UserInfo', this.state) }}><Space style={{ color: 'white' }}>{this.state.accessToken === null ? "用户" : this.state.userName}</Space></a>),
                                 2: (this.state.userRole[0] == "ROLE_ADMIN") ? adminFunctionMenu : ((this.state.userRole[0] == "ROLE_USER") ? userFunctionMenu : staffFunctionMenu),
-                                3: infoMenu,
+                                // 3: infoMenu,
                             }[index],
                         }))}
                     />

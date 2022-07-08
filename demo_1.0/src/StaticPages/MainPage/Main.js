@@ -38,6 +38,13 @@ function MainPage() {
           <p className='main_text'>DESIGNED by GROUP A of 软件工程实验2022</p>
           <GithubOutlined style={{color:'white'}}/>&emsp;<a className='main_text' href="https://github.com/NJUCSczy/SE_proj_2021">Source Code</a>
           <br/>
+          <br/>
+          <h4 className='main_text'>友情链接 
+           || <a className='main_text' href="https://www.nju.edu.cn/">南京大学</a>  
+           | <a className='main_text' href="https://keysoftlab.nju.edu.cn/">计算机软件新技术国家重点实验室(南京大学)</a>  
+           | <a className='main_text' href="https://cs.nju.edu.cn/">南京大学计算机科学与技术系</a>  
+           | <a className='main_text' href="https://jw.nju.edu.cn/">南京大学本科生院</a>  
+          </h4>
       <br/>
 
       </div>
