@@ -1,0 +1,117 @@
+INFO:root:Website FOUND.
+INFO:root:Software Name PASS
+INFO:root:Build Number PASS
+INFO:root:Trustee(CN) PASS
+INFO:root:Trustee(EN) PASS
+INFO:root:Development Unit PASS
+INFO:root:User Object PASS
+INFO:root:Main Function PASS
+INFO:root:Function Number PASS
+INFO:root:Code Number PASS
+INFO:root:Edition of Runtime Environment Client Windows System PASS
+INFO:root:Edition of Runtime Environment Client Linux System PASS
+INFO:root:Memory Requirments of Runtime Environment Client  PASS
+INFO:root:Other Requirments of Runtime Environment Client  PASS
+INFO:root:Memory Requirments of Runtime Environment Server PASS
+INFO:root:HDD Requirments of Runtime Environment Server PASS
+INFO:root:Other Requirments of Runtime Environment Server PASS
+INFO:root:Runtime Environment Server OS System PASS
+INFO:root:Programming Language of Runtime Environment Server PASS
+INFO:root:Runtime Environment Server Database PASS
+INFO:root:Runtime Environment Server Middlepart PASS
+INFO:root:Runtime Environment Server Other Supporting Software PASS
+INFO:root:Edition of Runtime Environment Server PASS
+INFO:root:Runtime Network Environment PASS
+INFO:root:Trustee Telephone PASS
+INFO:root:Trustee Fax PASS
+INFO:root:Trustee Address PASS
+INFO:root:Trustee Post Code PASS
+INFO:root:Trustee Liaison Man PASS
+INFO:root:Trustee Liaison Man Phone Number PASS
+INFO:root:Trustee Email PASS
+INFO:root:Trustee Web Address PASS
+INFO:root:Software Name PASS
+INFO:root:Software Edition PASS
+INFO:root:Material Check PASS
+INFO:root:Market Department Check PASS
+INFO:root:Software Name PASS
+INFO:root:Subject PASS
+INFO:root:Subitem PASS
+INFO:root:Price PASS
+INFO:root:Explain PASS
+INFO:root:Line Total PASS
+INFO:root:Subtotal PASS
+INFO:root:Tax Rate PASS
+INFO:root:Total PASS
+INFO:root:Sign PASS
+INFO:root:Trial Project Number PASS
+INFO:root:Trustee Name PASS
+INFO:root:Signing Address PASS
+INFO:root:Alternation Time PASS
+INFO:root:Alternation Upper Limit PASS
+INFO:root:Alternation Time Upper Limit PASS
+INFO:root:Suggestion PASS
+INFO:root:Total Name PASS
+INFO:root:Deligate PASS
+INFO:root:Liaison Man PASS
+INFO:root:Liaison Address PASS
+INFO:root:Postal Code PASS
+INFO:root:Phone Number PASS
+INFO:root:Fax PASS
+INFO:root:Bank PASS
+INFO:root:Account PASS
+INFO:root:Account PASS
+INFO:root:Total Name PASS
+INFO:root:Deligate PASS
+INFO:root:Liaison Man PASS
+ERROR:root:Liaison Address not right
+INFO:root:Postal Code PASS
+INFO:root:Phone Number PASS
+INFO:root:Fax PASS
+INFO:root:Bank PASS
+INFO:root:Account PASS
+INFO:root:basic_version_number PASS
+INFO:root:basic_document_modification_record_0_version_number PASS
+INFO:root:basic_document_modification_record_0_AMD PASS
+INFO:root:basic_document_modification_record_0_riviser PASS
+INFO:root:basic_document_modification_record_0_illustration PASS
+INFO:root:basic_identification PASS
+INFO:root:basic_system_overview PASS
+INFO:root:basic_document_overview PASS
+INFO:root:basic_baseline PASS
+INFO:root:basic_hardware PASS
+INFO:root:basic_software PASS
+INFO:root:basic_others PASS
+INFO:root:basic_participating_organizations PASS
+INFO:root:basic_personnel PASS
+INFO:root:basic_overall_design PASS
+INFO:root:basic_test_level PASS
+INFO:root:basic_test_category PASS
+INFO:root:basic_general_test_conditions PASS
+INFO:root:basic_planned_tests PASS
+INFO:root:basic_test_cases PASS
+INFO:root:basic_test_schedule_develop_test_plan_ workload PASS
+INFO:root:basic_test_schedule_design_test_workload PASS
+INFO:root:basic_test_schedule_perform_tests_workload PASS
+INFO:root:basic_test_schedule_assessment_tests_workload PASS
+INFO:root:basic_traceability_of_requirements PASS
+INFO:root:Test_plan_review_form_Software_name PASS
+INFO:root:Test_plan_review_form_Version_number PASS
+INFO:root:Test_plan_review_form_Project_number PASS
+INFO:root:Test_plan_review_form_Test_category PASS
+INFO:root:Test_plan_review_form_opinion_0 PASS
+INFO:root:Test_plan_review_form_sign_0 PASS
+INFO:root:Test_plan_review_form_opinion_1 PASS
+INFO:root:Test_plan_review_form_sign_1 PASS
+INFO:root:Test_plan_review_form_opinion_2 PASS
+INFO:root:Test_plan_review_form_sign_2 PASS
+INFO:root:Test_plan_review_form_opinion_3 PASS
+INFO:root:Test_plan_review_form_sign_3 PASS
+INFO:root:Test_plan_review_form_opinion_4 PASS
+INFO:root:Test_plan_review_form_sign_4 PASS
+INFO:root:basic_Test_case_0_Test_classification PASS
+INFO:root:basic_Test_case_0_ID PASS
+INFO:root:basic_Test_case_0_Test_case_design_description PASS
+INFO:root:basic_Test_case_0_Specification_related_to_this_test_case PASS
+INFO:root:basic_Test_case_0_Expected_results PASS
+INFO:root:basic_Test_case_0_Test_case_Designer PASS
