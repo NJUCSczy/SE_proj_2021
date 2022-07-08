@@ -251,9 +251,10 @@ function TestReport(props){
             name="报告编号"
             rules={USE_JSON_SERVER? [{ required: true, message: '请输入报告编号' }]:
             entrustData['软件测试报告']['报告编号']===null?  
-            [{ required: true, message: '请输入报告编号' }] : null}
+            [{ required: true, message: '请输入报告编号' }] : [{required:false}]}
+            // initialValues={{'no':USE_JSON_SERVER?null:entrustData['软件测试报告']['报告编号']}}
           >
-            <Input defaultValue={USE_JSON_SERVER?null:entrustData['软件测试报告']['报告编号']} style={{maxWidth:200}}/>
+            <Input name='no' defaultValue={USE_JSON_SERVER?null:entrustData['软件测试报告']['报告编号']} style={{maxWidth:200}}/>
           </Form.Item>
 
           <Form.Item
