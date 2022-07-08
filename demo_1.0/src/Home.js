@@ -62,27 +62,27 @@ import ViewTestPlan from './UserActions/actions/ViewFilesPart/ViewTestPlan/ViewT
 import ViewTestRecord from './UserActions/actions/ViewFilesPart/ViewTestRecord/ViewTestRecord';
 import ViewTestReport from './UserActions/actions/ViewFilesPart/ViewTestReport/ViewTestReport';
 import ViewLatexTestReport from './UserActions/actions/ViewFilesPart/ViewLatexTestReport/ViewLatexTestReport';
-
+import MainPage from './StaticPages/MainPage/Main';
 
 const { Header, Content, Footer, Sider } = Layout;
 
 const mobile = require('is-mobile');
 
-const MainPage = (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>首页</div>);
+//const MainPage = (<div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>首页</div>);
 
 class Home extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            PageContent: MainPage,
+            PageContent: (<MainPage />),
             userID: null,
             userRole: ["ROLE_USER"],
             userName: null,
             accessToken: null,
             tokenType: null,
             HeaderMenuIndex: '1',
-            BreadcrumbByIndex: ['0', '0', '0', '0', '0'],
+            BreadcrumbByIndex: ['首页 ', '0', '0', '0', '0'],
             PageInfo: { 'id': 0, 'ContractID': 0 }
         };
     }
@@ -99,8 +99,8 @@ class Home extends React.Component {
     GetPageInfo = (PageName, _state) => {
         switch (PageName) {
             case 'MainPage':
-                this.setState({ HeaderMenuIndex: '1', BreadcrumbByIndex: ['0', '0', '0', '0', '0'] });
-                return MainPage;
+                this.setState({ HeaderMenuIndex: '1', BreadcrumbByIndex: ['首页', '0', '0', '0', '0'] });
+                return (<MainPage />);
 
             case 'UserInfo':
                 this.setState({ HeaderMenuIndex: '2', BreadcrumbByIndex: ['首页', '用户信息', '0', '0', '0'] });
@@ -412,7 +412,7 @@ class Home extends React.Component {
                                 0: (<a id="home_headers_mainpage" onClick={() => { this.GotoPage('MainPage', this.state) }}><Space style={{ color: 'white' }}>首页</Space></a>),
                                 1: (<a id="home_headers_user" onClick={() => { this.state.accessToken === null ? this.GotoPage('Login', this.state) : this.GotoPage('UserInfo', this.state) }}><Space style={{ color: 'white' }}>{this.state.accessToken === null ? "用户" : this.state.userName}</Space></a>),
                                 2: (this.state.userRole[0] == "ROLE_ADMIN") ? adminFunctionMenu : ((this.state.userRole[0] == "ROLE_USER") ? userFunctionMenu : staffFunctionMenu),
-                                3: infoMenu,
+                                // 3: infoMenu,
                             }[index],
                         }))}
                     />
